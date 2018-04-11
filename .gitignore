@@ -1,0 +1,7 @@
+/.vs/Fish/v15/.suo
+/.vs/Fish/v15/sqlite3/storage.ide
+*.dll
+/Library/*
+/Temp/*
+/Fish.csproj
+/Fish.sln
