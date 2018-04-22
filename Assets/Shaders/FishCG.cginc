@@ -1,9 +1,9 @@
-﻿// Upgrade NOTE: commented out 'half4 unity_LightmapST', a built-in variable
-// Upgrade NOTE: commented out 'sampler2D unity_Lightmap', a built-in variable
-// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+﻿
+
+const float pi=3.141592;
 
 // Global Lighting
-uniform fixed3 _Gbl_Lgt;
+uniform fixed3 _Global_LightColor;
 uniform fixed3 _Gbl_Pnt;
 uniform fixed3 _Gbl_Amb;
 uniform fixed3 _Gbl_Spc;
@@ -11,12 +11,12 @@ uniform fixed3 _Gbl_Rim;
 uniform fixed3 _Gbl_Wat;
 uniform fixed3 _Gbl_Sfx1;
 
-#ifdef QUALITY_HGH
-	uniform fixed3 _FogColor;
-	uniform fixed _FogClamp;
-	uniform float _FogDistMin;
-	uniform float _FogDistMax;
-#endif
+//fog
+uniform fixed3 _FogColor;
+uniform fixed _FogClamp;
+uniform float _FogDistMin;
+uniform float _FogDistMax;
+
 			
 #ifdef LIGHTMAP_ON
 	// uniform sampler2D unity_Lightmap;
@@ -315,9 +315,9 @@ inline fixed3 inlineLightmapWithShadows ( half2 uv, half shd ) {
 	#ifdef LIGHTMAP_ON
 		fixed3 lm = UNITY_SAMPLE_TEX2D ( unity_Lightmap, uv );
 		#ifndef QUALITY_LOW
-			fixed3 lightmap = _Gbl_Amb + shd * lm.r * _Gbl_Lgt + lm.g * _Gbl_Pnt;
+			fixed3 lightmap = _Gbl_Amb + shd * lm.r * _Global_LightColor + lm.g * _Gbl_Pnt;
 		#else
-			fixed3 lightmap = _Gbl_Amb + shd * lm.r * _Gbl_Lgt;
+			fixed3 lightmap = _Gbl_Amb + shd * lm.r * _Global_LightColor;
 		#endif
 	#else
 		fixed3 lightmap = (1,1,1);
@@ -330,9 +330,9 @@ inline fixed3 inlineLightmapBasic ( half2 uv ) {
 	#ifdef LIGHTMAP_ON
 		fixed3 lm = UNITY_SAMPLE_TEX2D ( unity_Lightmap, uv );
 		#ifndef QUALITY_LOW
-			fixed3 lightmap = _Gbl_Amb + lm.r * _Gbl_Lgt + lm.g * _Gbl_Pnt;
+			fixed3 lightmap = _Gbl_Amb + lm.r * _Global_LightColor + lm.g * _Gbl_Pnt;
 		#else
-			fixed3 lightmap = _Gbl_Amb + lm.r * _Gbl_Lgt;
+			fixed3 lightmap = _Gbl_Amb + lm.r * _Global_LightColor;
 		#endif
 	#else
 		fixed3 lightmap = (1,1,1);
@@ -342,9 +342,9 @@ inline fixed3 inlineLightmapBasic ( half2 uv ) {
 
 inline fixed3 inlineVLM_Full ( fixed4 vc ) {
 	#ifndef QUALITY_LOW
-		fixed3 vlmlight = _Gbl_Amb + _Gbl_Lgt * vc.r + _Gbl_Pnt * vc.g;
+		fixed3 vlmlight = _Gbl_Amb + _Global_LightColor * vc.r + _Gbl_Pnt * vc.g;
 	#else
-		fixed3 vlmlight = _Gbl_Amb + _Gbl_Lgt * vc.r;
+		fixed3 vlmlight = _Gbl_Amb + _Global_LightColor * vc.r;
 	#endif
 	return vlmlight;
 }
@@ -360,7 +360,7 @@ inline fixed3 inlineVLM_Shade ( fixed3 sun, fixed shd ) {
 }
 
 inline fixed3 inlineVLM_Sun ( fixed sun ) {
-	fixed3 sunlight = sun * _Gbl_Lgt;
+	fixed3 sunlight = sun * _Global_LightColor;
 	return sunlight;
 }
 
@@ -380,6 +380,82 @@ inline half2 inlineShadeProbes (half4 normal)
 } 
 
 inline half3 inlineShadowBasic ( half shd ) {
-	half3 shdcolor = _Gbl_Amb + shd * _Gbl_Lgt;
+	half3 shdcolor = _Gbl_Amb + shd * _Global_LightColor;
 	return shdcolor;
 }
+
+
+inline float4 VertexTranslate(float4 _vertex, float4 _offset ){
+
+	float4x4 xyzw=float4x4(1.0,0.0,0.0,_offset.x,
+							 0.0,1.0,0.0,_offset.y,
+							 0.0,0.0,1.0,_offset.z,
+							 0.0,0.0,0.0,1.0  );
+
+	return mul(xyzw,_vertex);
+
+}
+
+inline float4 VertexScale(float4 _vertex, float4 _scale ){
+
+	float4x4 xyzw=float4x4(_scale.x,0.0,0.0,0.0,
+							 0.0,_scale.y,0.0,0.0,
+							 0.0,0.0,_scale.z,0.0,
+							 0.0,0.0,0.0,1.0  );
+
+	return mul(xyzw,_vertex);
+
+}
+
+//暂时不可用
+inline float4 VertexRotation(float4 _vertex, float4 _rotation ){
+
+	float radx=radians(_rotation.x);
+	float rady=radians(_rotation.y);
+	float radz=radians(_rotation.z);
+
+	float sinx=sin(radx);
+	float cosx=cos(radx);
+	float siny=sin(rady);
+	float cosy=cos(rady);
+	float sinz=sin(radz);
+	float cosz=cos(radz);
+
+
+	float4x4 xyzw=(cosy*cosz,-cosy*sinz,siny,0.0,
+				   cosx*sinz+sinx*siny*cosz,cosx*cosz-sinx*siny*sinz,-sinx*cosy,0.0,
+				   sinx*sinz-cosx*siny*cosz,sinx*cosz+cosx*siny*sinz,cosx*cosy,0.0,
+				   0.0,0.0,0.0,1.0);
+
+	return mul(xyzw,_vertex);
+
+}
+
+inline float3 RotationZ(float3 _vertex,float _angle ){
+
+	float radz=radians(_angle);
+	float sinz=sin(radz);
+	float cosz=cos(radz);
+
+	return float3( _vertex.x*cosz-_vertex.y*sinz,_vertex.x*sinz+_vertex.y*cosz,	_vertex.z);
+}
+
+inline float2 RotationUV(float2 _uv,float _angle ){
+
+	_uv-=float2(0.5,0.5);
+	float radz=radians(_angle);
+	float sinz=sin(radz);
+	float cosz=cos(radz);
+
+	_uv=float2( _uv.x*cosz-_uv.y*sinz,_uv.x*sinz+_uv.y*cosz)+float2(0.5,0.5);
+
+	return _uv;
+}
+
+inline float2 TranslateUV(float2 _uv ,float2 _offset){
+
+	float2 uv=_uv+_offset;
+	return uv-floor(uv);
+
+}
+

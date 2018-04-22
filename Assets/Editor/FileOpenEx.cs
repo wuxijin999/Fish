@@ -8,7 +8,7 @@ public class FileOpenEx
     [OnOpenAssetAttribute(1)]
     public static bool step1(int instanceID, int line)
     {
-        return false; 
+        return false;
     }
 
     // step2 has an attribute with index 2, so will be called after step1
@@ -18,7 +18,7 @@ public class FileOpenEx
         string path = AssetDatabase.GetAssetPath(EditorUtility.InstanceIDToObject(instanceID));
         string name = Application.dataPath + "/" + path.Replace("Assets/", "");
 
-        if (name.EndsWith(".shader"))
+        if (name.EndsWith(".Shader") || name.EndsWith(".cginc") || name.EndsWith(".shader"))
         {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -30,6 +30,6 @@ public class FileOpenEx
             return true;
         }
 
-        return false; 
+        return false;
     }
 }
