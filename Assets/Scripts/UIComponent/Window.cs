@@ -5,6 +5,8 @@ using UnityEngine;
 public class Window : MonoBehaviour
 {
 
+
+
     int m_Function = 0;
     public int function
     {
@@ -14,6 +16,7 @@ public class Window : MonoBehaviour
 
     public void Open(int _function)
     {
+
 
     }
 

@@ -5,3 +5,8 @@
 /Temp/*
 /Fish.csproj
 /Fish.sln
+/.vs/Fish/v15/Browse.VC.db
+/.vs/Fish/v15/Browse.VC.opendb
+/.vscode/settings.json
+/Fish.Editor.csproj
+/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
