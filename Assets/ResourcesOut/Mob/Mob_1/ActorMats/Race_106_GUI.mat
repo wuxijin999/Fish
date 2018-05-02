@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Race_106_GUI
+  m_Shader: {fileID: 4800000, guid: 03ceb30f4dc0a794f878e94a66422003, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 2a0b1474c614ec94686608153014ceb6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _CubeMap
+        second:
+          m_Texture: {fileID: 8900000, guid: 49b44fbcb5af4f543ab0b739f0d30d3d, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _NormTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 01907547d30b261439e6aecbc750b850, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ChanTex
+        second:
+          m_Texture: {fileID: 2800000, guid: cbecf4530ef00974a8635ce22f7fbda8, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RampTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 0a4aabc9d7b271f45aa0a429489fcfdd, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DuDvTex
+        second:
+          m_Texture: {fileID: 2800000, guid: f236659b6ebfe814f82f10c224c33926, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Hit
+        second: 0
+      data:
+        first:
+          name: _SpecPow
+        second: 3
+      data:
+        first:
+          name: _SpecMult
+        second: 3
+      data:
+        first:
+          name: _RimPow
+        second: 2
+      data:
+        first:
+          name: _RimMult
+        second: 1
+      data:
+        first:
+          name: _Shadow
+        second: .194642857
+      data:
+        first:
+          name: _ShadowEdge
+        second: .364285707
+      data:
+        first:
+          name: _RimWidth
+        second: .310714304
+      data:
+        first:
+          name: _Burn
+        second: 0
+      data:
+        first:
+          name: _SpecBright
+        second: 1
+      data:
+        first:
+          name: _SpecSpread
+        second: 1
+      data:
+        first:
+          name: _MinLight
+        second: 0
+      data:
+        first:
+          name: _MaxLight
+        second: 1
+      data:
+        first:
+          name: _SpecDir
+        second: .5
+      data:
+        first:
+          name: _ShadowStr
+        second: .200000003
+      data:
+        first:
+          name: _BaTi
+        second: 0
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .588235319, g: .588235319, b: .588235319, a: 1}
+      data:
+        first:
+          name: _TintColor
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _LightProbeTintR
+        second: {r: 1, g: 1, b: 1, a: 1}
+      data:
+        first:
+          name: _SkinPeach
+        second: {r: 1, g: 1, b: 1, a: 0}

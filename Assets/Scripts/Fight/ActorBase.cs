@@ -37,11 +37,13 @@ public class ActorBase
         set { m_BrainState = value; }
     }
 
+    MotionHinge m_MotionHinge;
+    public MotionHinge motionHinge { get { return m_MotionHinge; } }
+
     protected virtual void OnFixedUpdate()
     {
 
     }
-
 
     protected virtual void OnUpdate1()
     {
