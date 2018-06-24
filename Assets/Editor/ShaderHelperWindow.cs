@@ -3,6 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[InitializeOnLoad]
+public class ShaderInitialize
+{
+
+    static ShaderInitialize()
+    {
+        Shader.SetGlobalColor("_Global_LightColor", new Color(0.8f, 0.8f, 0.8f, 1));
+        Shader.SetGlobalColor("_Gbl_Pnt", new Color(1, 1, 1, 1));
+        Shader.SetGlobalColor("_Gbl_Amb", new Color(1, 1, 1, 1));
+        Shader.SetGlobalColor("_Gbl_Spc", new Color(0.8f, 0.8f, 0.8f, 1));
+        Shader.SetGlobalColor("_Gbl_Rim", new Color(1, 1, 1, 1));
+        Shader.SetGlobalColor("_Gbl_Wat", new Color(1, 1, 1, 1));
+    }
+}
+
+
 public class ShaderHelperWindow : ScriptableWizard
 {
 

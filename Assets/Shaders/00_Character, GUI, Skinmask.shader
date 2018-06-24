@@ -12,9 +12,11 @@ Shader "Mechanist CHAR/Character, GUI, Skinmask"
 		_NormTex ("Norm Texture", 2D) = "white" {}
 		_ChanTex ("Spec Texture", 2D) = "white" {}
 		_CubeMap ("Cubemap", CUBE) = "white" {}
+		_SpecularPow("SpecularPow",Float)=1
+		_LightPow("LightPow",Float)=1
   		
-  		[HideInInspector] _Hit ( "Hidden Hit", Float ) = 0
-  		[HideInInspector] _BaTi ( "Hidden BaTi", Float ) = 0
+  		 _Hit ( "Hidden Hit", Float ) = 0
+  		 _BaTi ( "Hidden BaTi", Float ) = 0
 	}
 
 	Subshader
@@ -86,9 +88,11 @@ Shader "Mechanist CHAR/Character, GUI, Skinmask"
 				// properties
 				uniform half _Hit;
 				uniform half _BaTi;
-				
-			vertShader vert ( vertexInput v )
-			{
+				uniform half _SpecularPow;
+				uniform half _LightPow;
+
+				vertShader vert ( vertexInput v )
+				{
 				vertShader o;
                	half3 worldVertex = mul ( unity_ObjectToWorld, v.vertex ).xyz;
 				
@@ -109,10 +113,10 @@ Shader "Mechanist CHAR/Character, GUI, Skinmask"
 				
 				// hit effect
 				half hit = max ( 0, _Hit * pow ( 1.0 - max ( 0, dot ( v.normal, normalize ( ObjSpaceViewDir ( v.vertex ) ) ) ), 4 ) ); // hit effect
-				half3 bati = _BaTi * half3(1,0,0) * sin ( _Time.z * 3 );
+				half3 bati = _BaTi * half3(1,0,0) * sin ( _Time.y * 3.14 );
 				
 				// vertex lighting
-				//o.lgt = inlineLights ( worldVertex ) + hit + bati * bati;
+				//o.lgt = inlineLights ( worldVertex ); + hit + bati * bati;
 				//o.lgt = hit + bati * bati;
 				
 				#if !defined (SHADOWS_OFF)
@@ -140,13 +144,13 @@ Shader "Mechanist CHAR/Character, GUI, Skinmask"
 				#else
 					fixed shdlight = dot (_WorldSpaceLightPos0, normDIR ) * channels.b;
 				#endif
-				shdlight = smoothstep( 0.333, 0.333 + 0.666 * bumpmap.b, shdlight );
+				shdlight = smoothstep( 0, 0.333 + 0.666 * bumpmap.b,  pow( shdlight,_LightPow) );
 
 				// spec, rim
 				fixed dotprod = max ( 0, dot ( i.cam, normDIR ) );
 				fixed spclight = pow ( dotprod, 5 ) * channels.r*3;
 				fixed rimlight = pow ( 1 - dotprod, 2 ) * channels.b * 0.5;
-				fixed3 additive = _Gbl_Spc * spclight + _Gbl_Rim * rimlight;
+				fixed3 additive =shdlight*( _Gbl_Spc * spclight + _Gbl_Rim * rimlight);
 				
 				// reflection
 				fixed3 reflDIR = reflect ( i.ref, normDIR );
@@ -154,7 +158,7 @@ Shader "Mechanist CHAR/Character, GUI, Skinmask"
 				reflight *= 0.5 + outcolor;
 				
 				// composite
-				outcolor = lerp ( outcolor, reflight, channels.g);
+				outcolor = lerp ( outcolor, reflight, pow( channels.g,_SpecularPow));
 				outcolor *= 0.3 + _Gbl_Amb + _Global_LightColor * shdlight;
 				outcolor *= 0.6 + additive;
 				
