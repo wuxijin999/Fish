@@ -10,3 +10,4 @@
 /.vscode/settings.json
 /Fish.Editor.csproj
 /obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache
+*Library/
