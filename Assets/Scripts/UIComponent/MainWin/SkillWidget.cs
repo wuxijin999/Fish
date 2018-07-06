@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkillWidget : MonoBehaviour {
+public class SkillWidget : Widget
+{
+    public override void AddListeners()
+    {
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void BindControllers()
+    {
+    }
 }

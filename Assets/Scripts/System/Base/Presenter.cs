@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelBase<T> where T : class, new()
+public class Presenter<T> where T : class, new()
 {
 
     static T m_Instance;
-    public static T Instance
-    {
+    public static T Instance {
         get { return m_Instance ?? (m_Instance = new T()); }
     }
 
-    protected ModelBase()
+    protected Presenter()
     {
 
     }
@@ -35,7 +34,5 @@ public class ModelBase<T> where T : class, new()
     {
 
     }
-
-
 
 }

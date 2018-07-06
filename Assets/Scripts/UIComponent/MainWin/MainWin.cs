@@ -5,9 +5,8 @@ using UnityEngine.Jobs;
 
 public class MainWin : Window
 {
-    [SerializeField] RectTransform m_SkillContainer;
-    [SerializeField] RectTransform m_HeroBreifInfoContainer;
-
+    [SerializeField] SkillWidget m_SkillWidget;
+    [SerializeField] HeroBriefInfoWidget m_HeroBreifInfoWidget;
 
 
 }

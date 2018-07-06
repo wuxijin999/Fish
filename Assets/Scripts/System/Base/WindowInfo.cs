@@ -11,14 +11,11 @@ public class WindowInfo : MonoBehaviour
 
     [SerializeField] bool m_DynamicDepth = false;
     [SerializeField] int m_Depth;
-    public int depth
-    {
-        get
-        {
+    public int depth {
+        get {
             return m_Depth;
         }
-        set
-        {
+        set {
             if (m_DynamicDepth)
             {
                 m_Depth = value;
@@ -28,7 +25,13 @@ public class WindowInfo : MonoBehaviour
     }
 
     [SerializeField] bool m_Interactable = false;
-
+    public bool interactable {
+        get { return m_Interactable; }
+        set {
+            m_Interactable = value;
+            m_Raycaster.enabled = m_Interactable;
+        }
+    }
 
     private void Awake()
     {

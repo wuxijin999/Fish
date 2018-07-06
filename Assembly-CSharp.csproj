@@ -71,8 +71,13 @@
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
     <Compile Include="Assets\Scripts\Stage\StageUtility.cs" />
-    <Compile Include="Assets\Scripts\System\Base\ModelBase.cs" />
+    <Compile Include="Assets\Scripts\System\Base\Model.cs" />
     <Compile Include="Assets\Scripts\System\Base\ModelUtility.cs" />
+    <Compile Include="Assets\Scripts\System\Base\Presenter.cs" />
+    <Compile Include="Assets\Scripts\System\Base\PresenterUtility.cs" />
+    <Compile Include="Assets\Scripts\System\Base\Widget.cs" />
+    <Compile Include="Assets\Scripts\System\Base\Window.cs" />
+    <Compile Include="Assets\Scripts\System\Base\WindowInfo.cs" />
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
@@ -83,9 +88,6 @@
     <Compile Include="Assets\Scripts\UIComponent\MainWin\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Widget.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Window.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\WindowInfo.cs" />
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorPattern.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Assets\Scripts\Utility\LocalSave.cs" />
     <Compile Include="Assets\Scripts\Utility\MaterialUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\MathUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\QualityUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ResolutionUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ShaderUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeroBriefInfoWidget : MonoBehaviour {
+public class HeroBriefInfoWidget : Widget
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public override void AddListeners()
+    {
+    }
+
+    public override void BindControllers()
+    {
+    }
+
 }

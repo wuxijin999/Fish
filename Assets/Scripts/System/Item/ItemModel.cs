@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemModel : ModelBase<ItemModel>
+public class ItemModel : Model<ItemModel>
 {
     Dictionary<int, Item> itemDictionary = new Dictionary<int, Item>();
 
