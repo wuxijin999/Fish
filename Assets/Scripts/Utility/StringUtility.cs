@@ -5,7 +5,7 @@ using System.Text;
 public class StringUtility
 {
     public static readonly string[] splitSeparator = new string[] { "|" };
-     static StringBuilder m_StringBuilder = new StringBuilder();
+    static StringBuilder m_StringBuilder = new StringBuilder();
 
     public static string Contact(params object[] _objects)
     {

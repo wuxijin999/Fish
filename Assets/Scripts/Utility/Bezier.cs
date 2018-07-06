@@ -14,8 +14,6 @@ public class Bezier
         Vector3 B = Vector3.zero;
         float t1 = (1 - t);
         B = t1 * P0 + P1 * t;
-        //B.y = t1*P0.y + P1.y*t;  
-        //B.z = t1*P0.z + P1.z*t;  
         return B;
     }
 
@@ -34,8 +32,6 @@ public class Bezier
         float t2 = t * (1 - t);
         float t3 = t * t;
         B = P0 * t1 + 2 * t2 * P1 + t3 * P2;
-        //B.y = P0.y*t1 + 2*t2*P1.y + t3*P2.y;  
-        //B.z = P0.z*t1 + 2*t2*P1.z + t3*P2.z;  
         return B;
     }
 
@@ -56,8 +52,6 @@ public class Bezier
         float t3 = t * t * (1 - t);
         float t4 = t * t * t;
         B = P0 * t1 + 3 * t2 * P1 + 3 * t3 * P2 + P3 * t4;
-        //B.y = P0.y*t1 + 3*t2*P1.y + 3*t3*P2.y + P3.y*t4;  
-        //B.z = P0.z*t1 + 3*t2*P1.z + 3*t3*P2.z + P3.z*t4;  
         return B;
     }
 }

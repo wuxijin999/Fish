@@ -61,20 +61,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\BloomEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\CreaseShadingEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\EdgeDetectionEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\TonemappingEditor.cs" />
-    <Compile Include="Assets\Standard Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\QObjectList.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QChildrenCountComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QColorComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QComponentsComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QErrorComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QGameObjectIconComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QLockComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QMonoBehaviorIconComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QPrefabComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QRendererComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QSeparatorComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QStaticComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QTagIconComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QTagLayerComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QTreeMapComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QVisibilityComponent.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pdata\QResources.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pdata\QSettings.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phelper\QColorPickerWindow.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phelper\QObjectListInspector.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phelper\QObjectListManager.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phierarchy\QHierarchySettingsWindow.cs" />
+    <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
     <Reference Include="Unity.PackageManagerUI.Editor">
       <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
@@ -92,6 +103,12 @@
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -381,12 +398,6 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{DCF65927-5E8D-EDE9-5785-310F92A154D7}</Project>
-      <Name>Assembly-CSharp-firstpass</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

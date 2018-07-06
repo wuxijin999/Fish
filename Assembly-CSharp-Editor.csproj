@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\CreateClass.cs" />
     <Compile Include="Assets\Editor\FileOpenEx.cs" />
+    <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />
     <Compile Include="Assets\Editor\ShaderHelperWindow.cs" />
     <Compile Include="Assets\ScenesResources\Effects\Sorting View\Editor\SortingView.cs" />
     <None Include="Assets\Editor\ScriptTemplate\ShaderPattern.txt" />
@@ -83,6 +84,12 @@
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -377,6 +384,10 @@
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{05A4E7E8-3B49-606D-5ABB-207B603E5081}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{6E51D54F-150E-4036-8EEE-B64BB958A123}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
