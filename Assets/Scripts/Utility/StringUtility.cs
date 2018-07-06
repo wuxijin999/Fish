@@ -20,5 +20,4 @@ public class StringUtility
         return m_StringBuilder.ToString();
     }
 
-
 }

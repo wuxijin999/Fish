@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Text.RegularExpressions;
 
 public static class VectorUtility
 {
@@ -43,9 +44,9 @@ public static class VectorUtility
         _input = _input.Replace("(", "").Replace(")", "");
         var stringArray = _input.Split(',');
 
-        float x = 0f;
-        float y = 0f;
-        float z = 0f;
+        var x = 0f;
+        var y = 0f;
+        var z = 0f;
         if (stringArray.Length > 0)
         {
             float.TryParse(stringArray[0], out x);

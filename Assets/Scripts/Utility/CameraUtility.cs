@@ -4,47 +4,22 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System;
 
-public class CameraUtility
+public static class CameraUtility
 {
-    public static void AddCullingMask(Camera _camera, int _layer)
-    {
-        _camera.cullingMask |= (1 << _layer);
-    }
 
-    public static void RemoveCullingMask(Camera _camera, int _layer)
+    public static void AddCullingMask(this Camera _camera, int _layer)
     {
-        _camera.cullingMask &= ~(1 << _layer);
-    }
-
-    static bool screenShotCutTextureCreated = false;
-    static Rect screenRect;
-    static Stack<Texture2D> screenShotCutTexturePool = new Stack<Texture2D>();
-
-    static Texture2D RequireTexture2D()
-    {
-        if (screenShotCutTexturePool.Count > 0)
+        if (_camera != null)
         {
-            return screenShotCutTexturePool.Pop();
-        }
-        else
-        {
-            return new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+            _camera.cullingMask |= (1 << _layer);
         }
     }
 
-    static void RecycleTexture2D(Texture2D _texture)
+    public static void RemoveCullingMask(this Camera _camera, int _layer)
     {
-        if (_texture != null)
+        if (_camera != null)
         {
-            screenShotCutTexturePool.Push(_texture);
-        }
-    }
-
-    public static void StopShotCut(RawImage _image)
-    {
-        if (_image.texture != null)
-        {
-            RecycleTexture2D((Texture2D)_image.texture);
+            _camera.cullingMask &= ~(1 << _layer);
         }
     }
 

@@ -38,7 +38,6 @@ public static class LocalSave
 
     public static void SetFloat(string key, float value)
     {
-
         PlayerPrefs.SetFloat(key, value);
     }
 
@@ -111,10 +110,17 @@ public static class LocalSave
         else
         {
             var v = new Vector3();
-            var strArray = PlayerPrefs.GetString(key).Split(';');
-            v.x = float.Parse(strArray[0]);
-            v.y = float.Parse(strArray[2]);
-            v.z = float.Parse(strArray[4]);
+            try
+            {
+                var strArray = PlayerPrefs.GetString(key).Split(';');
+                v.x = float.Parse(strArray[0]);
+                v.y = float.Parse(strArray[2]);
+                v.z = float.Parse(strArray[4]);
+            }
+            catch (Exception ex)
+            {
+                Debug.Log(ex);
+            }
 
             return v;
         }
