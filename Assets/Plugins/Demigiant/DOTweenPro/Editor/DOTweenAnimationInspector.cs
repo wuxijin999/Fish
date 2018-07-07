@@ -106,6 +106,7 @@ namespace DG.DOTweenEditor
             onUpdateProperty = base.serializedObject.FindProperty("onUpdate");
             onStepCompleteProperty = base.serializedObject.FindProperty("onStepComplete");
             onCompleteProperty = base.serializedObject.FindProperty("onComplete");
+            onRewindProperty = base.serializedObject.FindProperty("onRewind");
             onTweenCreatedProperty = base.serializedObject.FindProperty("onTweenCreated");
 
             // Convert _AnimationType to _animationTypeNoSlashes

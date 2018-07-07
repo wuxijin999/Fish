@@ -76,7 +76,7 @@ namespace DG.Tweening
 
         void Start()
         {
-            if (_tweenCreated) return;
+            if (_tweenCreated || !isActive || !isValid) return;
 
             CreateTween();
             _tweenCreated = true;
@@ -358,6 +358,9 @@ namespace DG.Tweening
             if (hasOnComplete) {
                 if (onComplete != null) tween.OnComplete(onComplete.Invoke);
             } else onComplete = null;
+            if (hasOnRewind) {
+                if (onRewind != null) tween.OnRewind(onRewind.Invoke);
+            } else onRewind = null;
 
             if (autoPlay) tween.Play();
             else tween.Pause();
@@ -443,6 +446,11 @@ namespace DG.Tweening
         public void DOPlayAllById(string id)
         {
             DOTween.Play(id);
+        }
+
+        public void DOPauseAllById(string id)
+        {
+            DOTween.Pause(id);
         }
 
         public void DOPlayBackwardsById(string id)
