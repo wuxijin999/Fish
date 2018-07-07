@@ -14,6 +14,7 @@ public class Tween : MonoBehaviour
 
     [SerializeField] Trigger m_Trigger = Trigger.Enable;
     [SerializeField] WrapMode m_WrapMode = WrapMode.Once;
+    [SerializeField] float m_Delay = 0f;
     [SerializeField] float m_Duration = 1f;
     [SerializeField] Ease m_Ease = Ease.Linear;
     [SerializeField] UIEvent m_OnComplete;
@@ -68,6 +69,18 @@ public class Tween : MonoBehaviour
 
     void Begin()
     {
+        var delay = m_Delay;
+        if (delay < 0f)
+        {
+            delay = 0f;
+        }
+
+        var duration = m_Duration;
+        if (duration < 0f)
+        {
+            duration = 0f;
+        }
+
         var loopTimes = 1;
         var loopType = LoopType.Restart;
 
@@ -90,18 +103,18 @@ public class Tween : MonoBehaviour
         switch (m_Type)
         {
             case TweenType.Position:
-                BeginPosition(loopTimes, loopType);
+                BeginPosition(delay, duration, loopTimes, loopType);
                 break;
             case TweenType.Rotation:
-                BeginRotation(loopTimes, loopType);
+                BeginRotation(delay, duration, loopTimes, loopType);
                 break;
             case TweenType.Scale:
-                BeginScale(loopTimes, loopType);
+                BeginScale(delay, duration, loopTimes, loopType);
                 break;
         }
     }
 
-    private void BeginPosition(int _loopTimes, LoopType _loopType)
+    private void BeginPosition(float _delay, float _duration, int _loopTimes, LoopType _loopType)
     {
         if (m_IsLocal)
         {
@@ -109,39 +122,39 @@ public class Tween : MonoBehaviour
             {
                 var rectTransform = this.transform as RectTransform;
                 rectTransform.anchoredPosition = from;
-                rectTransform.DOLocalMove(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+                rectTransform.DOLocalMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
             }
             else
             {
                 this.transform.localPosition = from;
-                this.transform.DOLocalMove(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+                this.transform.DOLocalMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
             }
         }
         else
         {
             this.transform.position = from;
-            this.transform.DOMove(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DOMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
         }
     }
 
-    private void BeginRotation(int _loopTimes, LoopType _loopType)
+    private void BeginRotation(float _delay, float _duration, int _loopTimes, LoopType _loopType)
     {
         if (m_IsLocal)
         {
             this.transform.localEulerAngles = from;
-            this.transform.DOLocalRotate(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DOLocalRotate(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
         }
         else
         {
             this.transform.eulerAngles = from;
-            this.transform.DORotate(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DORotate(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
         }
     }
 
-    private void BeginScale(int _loopTimes, LoopType _loopType)
+    private void BeginScale(float _delay, float _duration, int _loopTimes, LoopType _loopType)
     {
         this.transform.localScale = from;
-        this.transform.DOScale(to, m_Duration).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+        this.transform.DOScale(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
     }
 
     private void OnComplete()
