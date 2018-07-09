@@ -15,9 +15,11 @@ public class ButtonEx : Button
     public int negativeSound = 0;
 
     float m_AbleTime = 0f;
-    public float ableTime {
+    public float ableTime
+    {
         get { return m_AbleTime; }
-        private set {
+        private set
+        {
             m_AbleTime = value;
             if (ableTimeChangeEvent != null)
             {
@@ -49,11 +51,11 @@ public class ButtonEx : Button
     {
         if (customPositiveSound)
         {
-            SoundPlayer.Instance.PlayUIAudio(positiveSound);
+            //   SoundPlayer.Instance.PlayUIAudio(positiveSound);
         }
         else
         {
-            SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickPositiveAudio);
+            // SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickPositiveAudio);
         }
     }
 
@@ -61,11 +63,11 @@ public class ButtonEx : Button
     {
         if (customNegativeSound)
         {
-            SoundPlayer.Instance.PlayUIAudio(negativeSound);
+            // SoundPlayer.Instance.PlayUIAudio(negativeSound);
         }
         else
         {
-            SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickNegativeAudio);
+            //SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickNegativeAudio);
         }
     }
 
