@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-[RequireComponent(typeof(ColorPattern))]
+[CustomEditor(typeof(ColorPattern))]
 public class ColorPatternEditor : Editor
 {
     SerializedProperty m_White;
@@ -27,18 +27,17 @@ public class ColorPatternEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
         EditorGUILayout.Space();
         base.serializedObject.Update();
 
-        EditorGUILayout.PropertyField(m_White, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Green, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Blue, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Purple, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Orange, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Red, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Pink, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Gray, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_White, new GUIContent("标准白"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Green, new GUIContent("标准绿"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Blue, new GUIContent("标准蓝"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Purple, new GUIContent("标准紫"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Orange, new GUIContent("标准橙"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Red, new GUIContent("标准红"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Pink, new GUIContent("标准粉"), new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(m_Gray, new GUIContent("标准灰"), new GUILayoutOption[0]);
 
         base.serializedObject.ApplyModifiedProperties();
     }

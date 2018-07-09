@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\Editor\DOTweenAnimationInspector.cs" />
     <Compile Include="Assets\Plugins\QHierarchy\Editor\QObjectList.cs" />
     <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\pbase\QBaseComponent.cs" />
     <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\pcomponent\QChildrenCountComponent.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phierarchy\QHierarchy.cs" />
     <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\phierarchy\QHierarchySettingsWindow.cs" />
     <Compile Include="Assets\Plugins\QHierarchy\Editor\Scripts\QHierarchyInitializer.cs" />
+    <None Include="Assets\Plugins\Demigiant\DemiLib\Core\Editor\DemiEditor.xml" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -350,6 +352,33 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiEditor">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenEditor">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenProEditor">
+      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.7/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -370,12 +399,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenEditor">
-      <HintPath>H:/Fish/Assets/Plugins/DOTween/Editor/DOTweenEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>H:/Fish/Assets/Plugins/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>
@@ -404,6 +427,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{DCF65927-5E8D-EDE9-5785-310F92A154D7}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

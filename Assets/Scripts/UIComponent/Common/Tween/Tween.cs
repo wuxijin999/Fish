@@ -7,10 +7,15 @@ using UnityEngine.Events;
 public class Tween : MonoBehaviour
 {
     [SerializeField] TweenType m_Type = TweenType.Position;
+    public TweenType type { get { return m_Type; } }
+
     [SerializeField] bool m_IsUI = true;
     [SerializeField] bool m_IsLocal = true;
     [SerializeField] Vector3 m_From = Vector3.zero;
     [SerializeField] Vector3 m_To = Vector3.zero;
+
+    [Range(0, 1)] [SerializeField] float m_AlphaFrom = 1f;
+    [Range(0, 1)] [SerializeField] float m_AlphaTo = 1f;
 
     [SerializeField] Trigger m_Trigger = Trigger.Enable;
     [SerializeField] WrapMode m_WrapMode = WrapMode.Once;
@@ -19,17 +24,34 @@ public class Tween : MonoBehaviour
     public float duration { get { return m_Duration; } }
 
     [SerializeField] Ease m_Ease = Ease.Linear;
-    [SerializeField] UIEvent m_OnComplete;
+    [SerializeField] UIEvent m_OnComplete = null;
+
+    CanvasGroup m_CanvasGroup;
+    CanvasGroup canvasGroup { get { return m_CanvasGroup ?? (m_CanvasGroup = this.AddMissingComponent<CanvasGroup>()); } }
 
     Vector3 from;
     Vector3 to;
+
+    float alphaFrom = 1f;
+    float alphaTo = 1f;
 
     private void OnEnable()
     {
         if (m_Trigger == Trigger.Enable)
         {
-            from = m_From;
-            to = m_To;
+            switch (m_Type)
+            {
+                case TweenType.Alpha:
+                    alphaFrom = m_AlphaFrom;
+                    alphaTo = m_AlphaTo;
+                    break;
+                case TweenType.Position:
+                case TweenType.Rotation:
+                case TweenType.Scale:
+                    from = m_From;
+                    to = m_To;
+                    break;
+            }
 
             Begin();
         }
@@ -39,8 +61,19 @@ public class Tween : MonoBehaviour
     {
         if (m_Trigger == Trigger.Start)
         {
-            from = m_From;
-            to = m_To;
+            switch (m_Type)
+            {
+                case TweenType.Alpha:
+                    alphaFrom = m_AlphaFrom;
+                    alphaTo = m_AlphaTo;
+                    break;
+                case TweenType.Position:
+                case TweenType.Rotation:
+                case TweenType.Scale:
+                    from = m_From;
+                    to = m_To;
+                    break;
+            }
 
             Begin();
         }
@@ -53,12 +86,57 @@ public class Tween : MonoBehaviour
 
     public Tween Play(bool _forward = true)
     {
-        from = _forward ? m_From : m_To;
-        to = _forward ? m_To : m_From;
+        switch (m_Type)
+        {
+            case TweenType.Alpha:
+                alphaFrom = _forward ? m_AlphaFrom : m_AlphaTo;
+                alphaTo = _forward ? m_AlphaTo : m_AlphaFrom;
+                break;
+            case TweenType.Position:
+            case TweenType.Rotation:
+            case TweenType.Scale:
+                from = _forward ? m_From : m_To;
+                to = _forward ? m_To : m_From;
+                break;
+        }
 
         Begin();
 
         return this;
+    }
+
+    public Tween Play(TweenType _type, Vector3 _from, Vector3 _to, float _duration)
+    {
+        switch (m_Type)
+        {
+            case TweenType.Position:
+            case TweenType.Rotation:
+            case TweenType.Scale:
+                from = _from;
+                to = _to;
+                m_Duration = _duration;
+                Begin();
+                break;
+            default:
+                return this;
+        }
+
+        return this;
+    }
+
+    public Tween Play(TweenType _type, float _from, float _to, float _duration)
+    {
+        switch (m_Type)
+        {
+            case TweenType.Alpha:
+                alphaFrom = Mathf.Clamp01(_from);
+                alphaTo = Mathf.Clamp01(_to);
+                m_Duration = _duration;
+                Begin();
+                return this;
+            default:
+                return this;
+        }
     }
 
     public Tween OnComplete(UnityAction _onComplete)
@@ -113,6 +191,9 @@ public class Tween : MonoBehaviour
             case TweenType.Scale:
                 BeginScale(delay, duration, loopTimes, loopType);
                 break;
+            case TweenType.Alpha:
+                BeginFade(delay, duration, loopTimes, loopType);
+                break;
         }
     }
 
@@ -159,6 +240,12 @@ public class Tween : MonoBehaviour
         this.transform.DOScale(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
     }
 
+    private void BeginFade(float _delay, float _duration, int _loopTimes, LoopType _loopType)
+    {
+        canvasGroup.alpha = alphaFrom;
+        canvasGroup.DOFade(alphaTo, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+    }
+
     private void OnComplete()
     {
         if (m_OnComplete != null)
@@ -186,6 +273,7 @@ public class Tween : MonoBehaviour
         Position,
         Rotation,
         Scale,
+        Alpha,
     }
 
 }

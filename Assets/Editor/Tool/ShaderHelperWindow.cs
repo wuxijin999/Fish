@@ -26,7 +26,7 @@ public class ShaderHelperWindow : ScriptableWizard
     [MenuItem("Shader/调色板")]
     public static void Open()
     {
-        window = GetWindowWithRect<ShaderHelperWindow>(new Rect(400, 100, 400, 200), true);
+        window = GetWindow(typeof(ShaderHelperWindow), false, "Shader调色板") as ShaderHelperWindow;
         window.Show();
         window.autoRepaintOnSceneChange = true;
     }
@@ -48,9 +48,6 @@ public class ShaderHelperWindow : ScriptableWizard
 
         EditorGUILayout.EndHorizontal();
     }
-
-
-
 
 
 }

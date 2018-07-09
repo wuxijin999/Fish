@@ -171,3 +171,16 @@ H:\Fish\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 H:\Fish\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 H:\Fish\obj\Debug\Assembly-CSharp.dll
 H:\Fish\obj\Debug\Assembly-CSharp.pdb
+H:\Fish\Temp\bin\Debug\DemiLib.dll
+H:\Fish\Temp\bin\Debug\DOTween.dll
+H:\Fish\Temp\bin\Debug\DOTween43.dll
+H:\Fish\Temp\bin\Debug\DOTween46.dll
+H:\Fish\Temp\bin\Debug\DOTween50.dll
+H:\Fish\Temp\bin\Debug\DOTweenPro.dll
+H:\Fish\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+H:\Fish\Temp\bin\Debug\DemiLib.xml
+H:\Fish\Temp\bin\Debug\DOTween.xml
+H:\Fish\Temp\bin\Debug\DOTween43.xml
+H:\Fish\Temp\bin\Debug\DOTween46.xml
+H:\Fish\Temp\bin\Debug\DOTween50.xml
+H:\Fish\Temp\bin\Debug\DOTweenPro.xml

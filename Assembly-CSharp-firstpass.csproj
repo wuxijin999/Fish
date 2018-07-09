@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Plugins\Demigiant\DOTweenPro\DOTweenAnimation.cs" />
+    <None Include="Assets\Plugins\Demigiant\DOTweenPro\readme.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
