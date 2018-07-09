@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Window : MonoBehaviour
 {
-    [SerializeField] RectTransform m_BackGround;
-    [SerializeField] RectTransform m_Content;
+    [SerializeField] protected RectTransform m_BackGround;
+    [SerializeField] protected RectTransform m_Content;
 
     int m_Function = 0;
-    public int function {
+    public int function
+    {
         get { return m_Function; }
         private set { m_Function = value; }
     }

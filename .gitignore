@@ -56,3 +56,11 @@ packages/
 /Assembly-CSharp-firstpass.csproj
 *.dll
 Assembly-
+/Assembly-CSharp.csproj
+/Assembly-CSharp-Editor.csproj
+/Assembly-CSharp-Editor-firstpass.csproj
+/Assembly-CSharp-firstpass.csproj
+/obj/Debug/Assembly-CSharp-Editor.csproj.CoreCompileInputs.cache
+/obj/Debug/Assembly-CSharp-Editor-firstpass.csproj.CoreCompileInputs.cache
+/obj/Debug/Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
+/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

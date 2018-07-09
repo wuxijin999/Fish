@@ -81,7 +81,10 @@
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ButtonEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\ConfirmCancel\ConfirmCancalPresenter.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\ConfirmCancel\ConfirmCancelWin.cs" />
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
     <Compile Include="Assets\Scripts\UIComponent\MainWin\HeroBriefInfoWidget.cs" />
     <Compile Include="Assets\Scripts\UIComponent\MainWin\MainWin.cs" />
@@ -341,6 +344,24 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>C:/Users/leonard/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
@@ -349,24 +370,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/leonard/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween46">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTweenPro">
-      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>
