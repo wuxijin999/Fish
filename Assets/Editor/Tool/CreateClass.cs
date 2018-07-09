@@ -139,7 +139,6 @@ class UIClassTemplate : EndNameEditAction
 
 public class CreateUIWindowClassFile
 {
-
     static string templatePath = "Assets/Editor/ScriptTemplate/WindowTemplate.txt";
 
     [MenuItem("Assets/Create/Custom C# Script/Window", false, 5)]
@@ -200,6 +199,126 @@ class UIWindowTemplate : EndNameEditAction
 
 }
 
+public class CreateModelClassFile
+{
+    static string templatePath = "Assets/Editor/ScriptTemplate/ModelTemplate.txt";
 
+    [MenuItem("Assets/Create/Custom C# Script/Model", false, 6)]
+    public static void CreateUIClass()
+    {
+        var newModelPath = GetSelectedPathOrFallback() + "/NewModel.cs";
+        AssetDatabase.DeleteAsset(newModelPath);
+        ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<UIModelTemplate>(), newModelPath, null, templatePath);
+    }
 
+    public static string GetSelectedPathOrFallback()
+    {
+        string path = "Assets";
+        foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+        {
+            path = AssetDatabase.GetAssetPath(obj);
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+            {
+                path = Path.GetDirectoryName(path);
+                break;
+            }
+        }
+        return path;
+    }
 
+}
+
+class UIModelTemplate : EndNameEditAction
+{
+
+    public override void Action(int instanceId, string pathName, string resourceFile)
+    {
+        UnityEngine.Object o = CreateScriptAssetFromTemplate(pathName, resourceFile);
+        ProjectWindowUtil.ShowCreatedAsset(o);
+    }
+
+    internal static UnityEngine.Object CreateScriptAssetFromTemplate(string pathName, string resourceFile)
+    {
+        string fullPath = Path.GetFullPath(pathName);
+
+        StreamReader streamReader = new StreamReader(resourceFile);
+        string text = streamReader.ReadToEnd();
+        streamReader.Close();
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pathName);
+        text = Regex.Replace(text, "#ClassName*#", fileNameWithoutExtension);
+        text = Regex.Replace(text, "#DateTime#", System.DateTime.Now.ToLongDateString());
+
+        bool encoderShouldEmitUTF8Identifier = true;
+        bool throwOnInvalidBytes = false;
+        UTF8Encoding encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier, throwOnInvalidBytes);
+        bool append = false;
+        StreamWriter streamWriter = new StreamWriter(fullPath, append, encoding);
+        streamWriter.Write(text);
+        streamWriter.Close();
+        AssetDatabase.ImportAsset(pathName);
+        return AssetDatabase.LoadAssetAtPath(pathName, typeof(UnityEngine.Object));
+    }
+
+}
+
+public class CreatePresenterClassFile
+{
+    static string templatePath = "Assets/Editor/ScriptTemplate/PresenterTemplate.txt";
+
+    [MenuItem("Assets/Create/Custom C# Script/Presenter", false,7)]
+    public static void CreateUIClass()
+    {
+        var newPresenterPath = GetSelectedPathOrFallback() + "/NewPresenter.cs";
+        AssetDatabase.DeleteAsset(newPresenterPath);
+        ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<UIPresenterTemplate>(), newPresenterPath, null, templatePath);
+    }
+
+    public static string GetSelectedPathOrFallback()
+    {
+        string path = "Assets";
+        foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+        {
+            path = AssetDatabase.GetAssetPath(obj);
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+            {
+                path = Path.GetDirectoryName(path);
+                break;
+            }
+        }
+        return path;
+    }
+
+}
+
+class UIPresenterTemplate : EndNameEditAction
+{
+
+    public override void Action(int instanceId, string pathName, string resourceFile)
+    {
+        UnityEngine.Object o = CreateScriptAssetFromTemplate(pathName, resourceFile);
+        ProjectWindowUtil.ShowCreatedAsset(o);
+    }
+
+    internal static UnityEngine.Object CreateScriptAssetFromTemplate(string pathName, string resourceFile)
+    {
+        string fullPath = Path.GetFullPath(pathName);
+
+        StreamReader streamReader = new StreamReader(resourceFile);
+        string text = streamReader.ReadToEnd();
+        streamReader.Close();
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pathName);
+        text = Regex.Replace(text, "#ClassName*#", fileNameWithoutExtension);
+        text = Regex.Replace(text, "#DateTime#", System.DateTime.Now.ToLongDateString());
+
+        bool encoderShouldEmitUTF8Identifier = true;
+        bool throwOnInvalidBytes = false;
+        UTF8Encoding encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier, throwOnInvalidBytes);
+        bool append = false;
+        StreamWriter streamWriter = new StreamWriter(fullPath, append, encoding);
+        streamWriter.Write(text);
+        streamWriter.Close();
+        AssetDatabase.ImportAsset(pathName);
+        return AssetDatabase.LoadAssetAtPath(pathName, typeof(UnityEngine.Object));
+    }
+
+}

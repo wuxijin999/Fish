@@ -1,5 +1,5 @@
 ﻿//--------------------------------------------------------
-//    [Author]:           第二世界
+//    [Author]:           Fish
 //    [  Date ]:           #DateTime#
 //--------------------------------------------------------
 
@@ -9,40 +9,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Snxxz.UI {
+public class #ClassName# : Window
+{
 
-    public class #ClassName# : Window
+    #region Built-in
+    protected override void BindController()
     {
-
-        #region Built-in
-        protected override void BindController()
-        {
-        }
-
-        protected override void AddListeners()
-        {
-        }
-
-        protected override void OnPreOpen()
-        {
-        }
-
-        protected override void OnAfterOpen()
-        {
-        }
-
-        protected override void OnPreClose()
-        {
-        }
-
-        protected override void OnAfterClose()
-        {
-        }
-        #endregion
-   
     }
 
+    protected override void AddListeners()
+    {
+    }
+
+    protected override void OnPreOpen()
+    {
+    }
+
+    protected override void OnAfterOpen()
+    {
+    }
+
+    protected override void OnPreClose()
+    {
+    }
+
+    protected override void OnAfterClose()
+    {
+    }
+    #endregion
+   
 }
+
 
 
 

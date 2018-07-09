@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Widget : MonoBehaviour
 {
-
     public abstract void AddListeners();
     public abstract void BindControllers();
 

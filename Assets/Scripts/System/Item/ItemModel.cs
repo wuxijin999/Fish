@@ -6,6 +6,22 @@ public class ItemModel : Model<ItemModel>
 {
     Dictionary<int, Item> itemDictionary = new Dictionary<int, Item>();
 
+    public override void Init()
+    {
+    }
+
+    public override void UnInit()
+    {
+    }
+
+    public override void OnSwitchAccount()
+    {
+    }
+
+    public override void OnLoginOk()
+    {
+    }
+
     public Item GetItemByInstanceId(int _instanceId)
     {
         Item item;

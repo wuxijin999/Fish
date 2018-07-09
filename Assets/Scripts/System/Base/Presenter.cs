@@ -1,8 +1,14 @@
-﻿using System.Collections;
+﻿//---------------------------------------------------
+//
+//
+//---------------------------------------------------
+
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Presenter<T> where T : class, new()
+public abstract class Presenter<T> where T : class, new()
 {
 
     static T m_Instance;
@@ -15,24 +21,9 @@ public class Presenter<T> where T : class, new()
 
     }
 
-    public virtual void Init()
-    {
-
-    }
-
-    public virtual void UnInit()
-    {
-
-    }
-
-    protected virtual void OnSwitchAccount()
-    {
-
-    }
-
-    protected virtual void OnLoginOk()
-    {
-
-    }
+    public abstract void Init();
+    public abstract void UnInit();
+    public abstract void OnSwitchAccount();
+    public abstract void OnLoginOk();
 
 }

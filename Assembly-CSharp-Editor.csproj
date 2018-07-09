@@ -67,7 +67,9 @@
     <Compile Include="Assets\Editor\Tool\ShaderHelperWindow.cs" />
     <Compile Include="Assets\ScenesResources\Effects\Sorting View\Editor\SortingView.cs" />
     <None Include="Assets\Editor\ScriptTemplate\ShaderPattern.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\ModelTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\WindowTemplate.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\PresenterTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\UIMonobehaviorScriptTemplate.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

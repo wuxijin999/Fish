@@ -1,18 +1,15 @@
 ﻿//--------------------------------------------------------
-//    [Author]:           第二世界
+//    [Author]:           Fish
 //    [  Date ]:           #DateTime#
 //--------------------------------------------------------
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-namespace Snxxz.UI {
-
-    public class #ClassName#:MonoBehaviour {
+public class #ClassName#:MonoBehaviour {
 
 
 
-    }
 
 }
 
