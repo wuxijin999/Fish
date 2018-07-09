@@ -16,6 +16,8 @@ public class Tween : MonoBehaviour
     [SerializeField] WrapMode m_WrapMode = WrapMode.Once;
     [SerializeField] float m_Delay = 0f;
     [SerializeField] float m_Duration = 1f;
+    public float duration { get { return m_Duration; } }
+
     [SerializeField] Ease m_Ease = Ease.Linear;
     [SerializeField] UIEvent m_OnComplete;
 

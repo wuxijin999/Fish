@@ -61,12 +61,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\CreateClass.cs" />
-    <Compile Include="Assets\Editor\FileOpenEx.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />
-    <Compile Include="Assets\Editor\ShaderHelperWindow.cs" />
+    <Compile Include="Assets\Editor\Tool\CreateClass.cs" />
+    <Compile Include="Assets\Editor\Tool\FileOpenEx.cs" />
+    <Compile Include="Assets\Editor\Tool\ShaderHelperWindow.cs" />
     <Compile Include="Assets\ScenesResources\Effects\Sorting View\Editor\SortingView.cs" />
     <None Include="Assets\Editor\ScriptTemplate\ShaderPattern.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\WindowTemplate.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\UIMonobehaviorScriptTemplate.txt" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

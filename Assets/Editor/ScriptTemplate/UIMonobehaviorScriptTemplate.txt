@@ -1,0 +1,20 @@
+﻿//--------------------------------------------------------
+//    [Author]:           第二世界
+//    [  Date ]:           #DateTime#
+//--------------------------------------------------------
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+namespace Snxxz.UI {
+
+    public class #ClassName#:MonoBehaviour {
+
+
+
+    }
+
+}
+
+
+

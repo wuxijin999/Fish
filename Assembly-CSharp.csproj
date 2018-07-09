@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Assets\UILoader.cs" />
     <Compile Include="Assets\Scripts\Fight\ActiveMotion.cs" />
     <Compile Include="Assets\Scripts\Fight\ActorBase.cs" />
     <Compile Include="Assets\Scripts\Fight\ActorEngine.cs" />
@@ -77,10 +78,14 @@
     <Compile Include="Assets\Scripts\System\Base\PresenterUtility.cs" />
     <Compile Include="Assets\Scripts\System\Base\Widget.cs" />
     <Compile Include="Assets\Scripts\System\Base\Window.cs" />
+    <Compile Include="Assets\Scripts\System\Base\WindowAsyncLoad.cs" />
+    <Compile Include="Assets\Scripts\System\Base\WindowCenter.cs" />
     <Compile Include="Assets\Scripts\System\Base\WindowInfo.cs" />
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
+    <Compile Include="Assets\Scripts\System\NetLink\PleaseWaitPresenter.cs" />
+    <Compile Include="Assets\Scripts\System\NetLink\PleaseWaitWin.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ButtonEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
     <Compile Include="Assets\Scripts\UIComponent\ConfirmCancel\ConfirmCancalPresenter.cs" />
@@ -91,6 +96,7 @@
     <Compile Include="Assets\Scripts\UIComponent\MainWin\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
+    <Compile Include="Assets\Scripts\Utility\AssetSource.cs" />
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorPattern.cs" />
@@ -111,20 +117,21 @@
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\Scripts\Utility\SingletonMonobehaviour.cs" />
     <Compile Include="Assets\Scripts\Utility\StringUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\TransformExtension.cs" />
     <Compile Include="Assets\Scripts\Utility\UIUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\VectorUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\WaitingForSecondConst.cs" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\Snxxz_02_Water2.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\Snxxz_00_Character,Spec,Reflect,Normal.shader" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\FishCG.cginc" />
-    <None Include="Assets\1_ResourcesOut\3_Shader\00_Character, GUI, Skinmask.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Water2.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character,Spec,Reflect,Normal.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\FishCG.cginc" />
+    <None Include="Assets\ResourcesOut\3_Shader\00_Character, GUI, Skinmask.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>

@@ -6,6 +6,18 @@ using UnityEngine.EventSystems;
 
 public static class UIUtility
 {
+    public static GameObject CreateWidget(string _sourceName, string _name)
+    {
+        var prefab = UILoader.LoadPrefab(_sourceName);
+        if (prefab == null)
+        {
+            return null;
+        }
+
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = string.IsNullOrEmpty(_name) ? _sourceName : _name;
+        return instance;
+    }
 
     public static T GetComponent<T>(this Transform transform, string path) where T : Component
     {

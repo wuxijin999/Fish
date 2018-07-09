@@ -7,7 +7,7 @@ public class ConfirmCancelWin : Window
 {
 
     [SerializeField] TextMeshProUGUI m_Title;
-    [SerializeField] TextMeshProUGUI m_Content;
+    [SerializeField] TextMeshProUGUI m_Description;
 
     [SerializeField] ButtonEx m_Cancel;
     [SerializeField] ButtonEx m_Confirm;
@@ -28,4 +28,27 @@ public class ConfirmCancelWin : Window
         }
     }
 
+    protected override void BindController()
+    {
+    }
+
+    protected override void AddListeners()
+    {
+    }
+
+    protected override void OnPreOpen()
+    {
+    }
+
+    protected override void OnAfterOpen()
+    {
+    }
+
+    protected override void OnPreClose()
+    {
+    }
+
+    protected override void OnAfterClose()
+    {
+    }
 }

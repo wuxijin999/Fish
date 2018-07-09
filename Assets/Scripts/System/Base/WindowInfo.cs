@@ -33,6 +33,20 @@ public class WindowInfo : MonoBehaviour
         }
     }
 
+    [SerializeField] bool m_ClickEmptyToClose;
+    public bool clickEmptyToClose {
+        get { return m_ClickEmptyToClose; }
+    }
+
+    [SerializeField] bool m_Persistent;
+    public bool persistent { get { return m_Persistent; } }
+
+    [SerializeField] bool m_FullScreen;
+    public bool fullScreen { get { return m_FullScreen; } }
+
+    [SerializeField] Tween m_Tween;
+    public Tween tween { get { return m_Tween; } }
+
     private void Awake()
     {
         if (!m_DynamicDepth)
