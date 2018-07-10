@@ -1,6 +1,5 @@
 /.vs/Fish/v15/.suo
 /.vs/Fish/v15/sqlite3/storage.ide
-*.dll
 /Library/*
 /Temp/*
 /Fish.csproj
@@ -43,7 +42,6 @@ _ReSharper*/
 .vs/
 #Nuget packages folder
 packages/
-*.dll
 *Assembly/
 /Assembly-CSharp.csproj
 /Assembly-CSharp-Editor.csproj
@@ -54,7 +52,6 @@ packages/
 /Assembly-CSharp-Editor.csproj
 /Assembly-CSharp-Editor-firstpass.csproj
 /Assembly-CSharp-firstpass.csproj
-*.dll
 Assembly-
 /Assembly-CSharp.csproj
 /Assembly-CSharp-Editor.csproj
