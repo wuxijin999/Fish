@@ -6,11 +6,21 @@ using System;
 public class Clock
 {
     Action onAlarm;
-    public readonly DateTime endTime;
+    public readonly DateTime endTime1;
+    public readonly float endTime2;
+    public readonly ClockType type;
 
     public Clock(DateTime _endTime, Action _callBack)
     {
-        endTime = _endTime;
+        type = ClockType.DateTimeClock;
+        endTime1 = _endTime;
+        onAlarm = _callBack;
+    }
+
+    public Clock(float _endTime, Action _callBack)
+    {
+        type = ClockType.UnityTimeClock;
+        endTime2 = _endTime;
         onAlarm = _callBack;
     }
 
@@ -23,10 +33,27 @@ public class Clock
         }
     }
 
+    public enum ClockType
+    {
+        DateTimeClock,
+        UnityTimeClock,
+    }
+
     static bool inited = false;
     static List<Clock> clocks = new List<Clock>();
 
     public static void Create(DateTime _endTime, Action _callBack)
+    {
+        if (!inited)
+        {
+            GlobalTimeEvent.Instance.secondEvent += OnPerSecond;
+            inited = true;
+        }
+
+        clocks.Add(new Clock(_endTime, _callBack));
+    }
+
+    public static void Create(float _endTime, Action _callBack)
     {
         if (!inited)
         {
@@ -54,12 +81,26 @@ public class Clock
         for (int i = clocks.Count - 1; i >= 0; i--)
         {
             var clock = clocks[i];
-            if (DateTime.Now > clock.endTime)
+            switch (clock.type)
             {
-                clock.Alarm();
-                clocks.Remove(clock);
+                case ClockType.DateTimeClock:
+                    if (DateTime.Now > clock.endTime1)
+                    {
+                        clock.Alarm();
+                        clocks.Remove(clock);
+                    }
+                    break;
+                case ClockType.UnityTimeClock:
+                    if (Time.time > clock.endTime2)
+                    {
+                        clock.Alarm();
+                        clocks.Remove(clock);
+                    }
+                    break;
             }
+
         }
+
     }
 
 

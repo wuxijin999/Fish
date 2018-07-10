@@ -46,6 +46,10 @@ public class PopupTipsWidget : Widget
         tips.Enqueue(_tip);
     }
 
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 
     private void Update()
     {
@@ -53,8 +57,13 @@ public class PopupTipsWidget : Widget
         {
             nextTipTime = Time.time + interval;
 
-            var tip = tips.Dequeue();
+            while (activedBehaviours.Count >= maxCount)
+            {
+                activedBehaviours[0].FadeOut(1f, 0f, 0.5f, OnFadeOut);
+                activedBehaviours.RemoveAt(0);
+            }
 
+            var tip = tips.Dequeue();
             var instance = pool.Get();
             var behaviour = instance.GetComponent<PopupTipBehaviour>();
             activedBehaviours.Add(behaviour);
@@ -90,12 +99,6 @@ public class PopupTipsWidget : Widget
 
     IEnumerator Co_DelayReArrange(float _delay)
     {
-        while (activedBehaviours.Count > maxCount)
-        {
-            activedBehaviours[0].FadeOut(1f, 0f, 0.5f, OnFadeOut);
-            activedBehaviours.RemoveAt(0);
-        }
-
         yield return new WaitForSeconds(_delay);
 
         for (int i = 0; i < activedBehaviours.Count - 1; i++)
