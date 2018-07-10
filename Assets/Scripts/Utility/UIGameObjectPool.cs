@@ -48,7 +48,11 @@ public class UIGameObjectPool
             DebugEx.LogWarningFormat("回收的对象 {0} 并不是从池里取得的...", instance.name);
         }
 
-        m_FreeList.Add(instance);
+        instance.transform.SetParent(null);
+        if (!m_FreeList.Contains(instance))
+        {
+            m_FreeList.Add(instance);
+        }
     }
 
     public void Clear()

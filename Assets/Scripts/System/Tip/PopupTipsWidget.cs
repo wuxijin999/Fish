@@ -10,6 +10,9 @@ using UnityEngine.UI;
 public class PopupTipsWidget : Widget
 {
 
+    const int maxCount = 3;
+    const float eisxtTime = 5f;
+
     [SerializeField] float m_PopupSpeed = 10f;
     public float popupSpeed { get { return Mathf.Clamp(m_PopupSpeed, 5f, 1000f); } }
 
@@ -17,9 +20,13 @@ public class PopupTipsWidget : Widget
     [SerializeField] RectTransform m_PriorPoint;
 
     UIGameObjectPool m_Pool;
-    UIGameObjectPool pool { get { return m_Pool ?? (UIGameObjectPoolUtility.Create(UILoader.LoadPrefab("PopupTipBehaviour"))); } }
+    UIGameObjectPool pool { get { return m_Pool ?? (m_Pool = UIGameObjectPoolUtility.Create(UILoader.LoadPrefab("PopupTipBehaviour"))); } }
 
-    Queue<PopupTipBehaviour> activedBehaviours = new Queue<PopupTipBehaviour>();
+    Queue<string> tips = new Queue<string>();
+    List<PopupTipBehaviour> activedBehaviours = new List<PopupTipBehaviour>();
+
+    float interval = 0.5f;
+    float nextTipTime = 0f;
 
     public override void AddListeners()
     {
@@ -31,14 +38,78 @@ public class PopupTipsWidget : Widget
 
     public void Popup(string _tip)
     {
-        var instance = pool.Get();
-        var behaviour = instance.GetComponent<PopupTipBehaviour>();
+        while (tips.Count > maxCount)
+        {
+            tips.Dequeue();
+        }
 
-        var from = m_StartPoint.anchoredPosition.y;
-        var to = m_PriorPoint.anchoredPosition.y;
-        var duration = (from - to) / popupSpeed;
+        tips.Enqueue(_tip);
+    }
 
-        behaviour.Popup(_tip, from, to, duration);
+
+    private void Update()
+    {
+        if (Time.time > nextTipTime && tips.Count > 0)
+        {
+            nextTipTime = Time.time + interval;
+
+            var tip = tips.Dequeue();
+
+            var instance = pool.Get();
+            var behaviour = instance.GetComponent<PopupTipBehaviour>();
+            activedBehaviours.Add(behaviour);
+            behaviour.transform.SetParentEx(this.transform, m_StartPoint.localPosition, Quaternion.identity, Vector3.one);
+
+            var from = m_StartPoint.anchoredPosition.y;
+            var to = m_PriorPoint.anchoredPosition.y;
+            var duration = Mathf.Abs(to - from) / popupSpeed;
+
+            behaviour.fadeOutTime = Time.time + eisxtTime;
+            behaviour.Popup(tip, from, to, duration);
+
+            if (activedBehaviours.Count > 1)
+            {
+                var delay = (Mathf.Abs(to - from) - behaviour.rectTransform.rect.height) / popupSpeed;
+                StartCoroutine("Co_DelayReArrange", delay);
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        for (int i = activedBehaviours.Count - 1; i >= 0; i--)
+        {
+            var activedBehaviour = activedBehaviours[i];
+            if (Time.time > activedBehaviour.fadeOutTime)
+            {
+                activedBehaviour.FadeOut(1f, 0f, 0.5f, OnFadeOut);
+                activedBehaviours.Remove(activedBehaviour);
+            }
+        }
+    }
+
+    IEnumerator Co_DelayReArrange(float _delay)
+    {
+        while (activedBehaviours.Count > maxCount)
+        {
+            activedBehaviours[0].FadeOut(1f, 0f, 0.5f, OnFadeOut);
+            activedBehaviours.RemoveAt(0);
+        }
+
+        yield return new WaitForSeconds(_delay);
+
+        for (int i = 0; i < activedBehaviours.Count - 1; i++)
+        {
+            var activedBehaviour = activedBehaviours[i];
+            var formY = activedBehaviour.rectTransform.anchoredPosition.y;
+            var toY = activedBehaviour.rectTransform.anchoredPosition.y + activedBehaviour.rectTransform.rect.height;
+            activedBehaviour.Move(formY, toY, Mathf.Abs(formY - toY) / popupSpeed);
+        }
+    }
+
+    private void OnFadeOut(PopupTipBehaviour _behaviour)
+    {
+        pool.Release(_behaviour.gameObject);
     }
 
 

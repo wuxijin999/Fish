@@ -53,7 +53,7 @@ public class Tween : MonoBehaviour
                     break;
             }
 
-            Begin();
+            Begin(m_Type);
         }
     }
 
@@ -75,7 +75,7 @@ public class Tween : MonoBehaviour
                     break;
             }
 
-            Begin();
+            Begin(m_Type);
         }
     }
 
@@ -86,6 +86,8 @@ public class Tween : MonoBehaviour
 
     public Tween Play(bool _forward = true)
     {
+        m_OnComplete.RemoveAllListeners();
+
         switch (m_Type)
         {
             case TweenType.Alpha:
@@ -100,14 +102,16 @@ public class Tween : MonoBehaviour
                 break;
         }
 
-        Begin();
+        Begin(m_Type);
 
         return this;
     }
 
     public Tween Play(TweenType _type, Vector3 _from, Vector3 _to, float _duration)
     {
-        switch (m_Type)
+        m_OnComplete.RemoveAllListeners();
+
+        switch (_type)
         {
             case TweenType.Position:
             case TweenType.Rotation:
@@ -115,7 +119,7 @@ public class Tween : MonoBehaviour
                 from = _from;
                 to = _to;
                 m_Duration = _duration;
-                Begin();
+                Begin(_type);
                 break;
             default:
                 return this;
@@ -126,13 +130,15 @@ public class Tween : MonoBehaviour
 
     public Tween Play(TweenType _type, float _from, float _to, float _duration)
     {
-        switch (m_Type)
+        m_OnComplete.RemoveAllListeners();
+
+        switch (_type)
         {
             case TweenType.Alpha:
                 alphaFrom = Mathf.Clamp01(_from);
                 alphaTo = Mathf.Clamp01(_to);
                 m_Duration = _duration;
-                Begin();
+                Begin(_type);
                 return this;
             default:
                 return this;
@@ -147,7 +153,7 @@ public class Tween : MonoBehaviour
         return this;
     }
 
-    void Begin()
+    void Begin(TweenType _type)
     {
         var delay = m_Delay;
         if (delay < 0f)
@@ -161,13 +167,13 @@ public class Tween : MonoBehaviour
             duration = 0f;
         }
 
-        var loopTimes = 1;
+        var loopTimes = 0;
         var loopType = LoopType.Restart;
 
         switch (m_WrapMode)
         {
             case WrapMode.Once:
-                loopTimes = 1;
+                loopTimes = 0;
                 loopType = LoopType.Restart;
                 break;
             case WrapMode.Loop:
@@ -180,7 +186,7 @@ public class Tween : MonoBehaviour
                 break;
         }
 
-        switch (m_Type)
+        switch (_type)
         {
             case TweenType.Position:
                 BeginPosition(delay, duration, loopTimes, loopType);

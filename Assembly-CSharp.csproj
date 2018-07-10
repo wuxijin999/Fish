@@ -128,6 +128,7 @@
     <Compile Include="Assets\Scripts\Utility\UIUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\VectorUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\WaitingForSecondConst.cs" />
+    <Compile Include="Assets\tipTest.cs" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
@@ -359,6 +360,9 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
+    <Reference Include="DebugEx">
+      <HintPath>H:/Fish/Assets/Plugins/DebugEx.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>H:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
@@ -385,9 +389,6 @@
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="DebugEx">
-      <HintPath>H:/Fish/Assets/Plugins/DebugEx.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

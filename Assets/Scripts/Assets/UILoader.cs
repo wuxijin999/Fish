@@ -18,7 +18,16 @@ public class UILoader
 
     public static GameObject LoadPrefab(string _name)
     {
-        return null;
+        GameObject prefab = null;
+        if (AssetSource.uiFromEditor)
+        {
+#if UNITY_EDITOR
+            var path = StringUtility.Contact("Assets/ResourcesOut/1_UI/UIPrefabs/", _name, ".prefab");
+            prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+#endif
+        }
+
+        return prefab;
     }
 
     public static void UnLoadWindowAsset(string _name)

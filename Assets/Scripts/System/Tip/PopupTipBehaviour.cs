@@ -12,13 +12,14 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RectTransform))]
 public class PopupTipBehaviour : UIBehaviour
 {
-
     [SerializeField] TextMeshProUGUI m_Content;
     [SerializeField] Tween m_Tween;
     [SerializeField] CanvasGroup m_CanvasGroup;
 
+    public float fadeOutTime { get; set; }
+
     RectTransform m_RecTransform;
-    RectTransform rectTransform { get { return m_RecTransform ?? (this.transform as RectTransform); } }
+    public RectTransform rectTransform { get { return m_RecTransform ?? (this.transform as RectTransform); } }
 
     public void Popup(string _content, float _fromY, float _toY, float _duration)
     {
@@ -34,10 +35,17 @@ public class PopupTipBehaviour : UIBehaviour
         m_Tween.Play(Tween.TweenType.Position, from, to, _duration);
     }
 
-    public void FadeOut(float _fromAlpha, float _toAlpha, float _duration)
+    public void FadeOut(float _fromAlpha, float _toAlpha, float _duration, UnityAction<PopupTipBehaviour> _callBack)
     {
-        m_Tween.Play(Tween.TweenType.Alpha, _fromAlpha, _toAlpha, _duration);
+        m_Tween.Play(Tween.TweenType.Alpha, _fromAlpha, _toAlpha, _duration).OnComplete(() =>
+        {
+            if (_callBack != null)
+            {
+                _callBack(this);
+            }
+        });
     }
+
 
 }
 

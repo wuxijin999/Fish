@@ -184,3 +184,4 @@ H:\Fish\Temp\bin\Debug\DOTween43.xml
 H:\Fish\Temp\bin\Debug\DOTween46.xml
 H:\Fish\Temp\bin\Debug\DOTween50.xml
 H:\Fish\Temp\bin\Debug\DOTweenPro.xml
+H:\Fish\Temp\bin\Debug\DebugEx.dll

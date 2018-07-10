@@ -183,3 +183,4 @@ H:\Fish\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 H:\Fish\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
 H:\Fish\obj\Debug\Assembly-CSharp-firstpass.dll
 H:\Fish\obj\Debug\Assembly-CSharp-firstpass.pdb
+H:\Fish\Temp\bin\Debug\DebugEx.dll
