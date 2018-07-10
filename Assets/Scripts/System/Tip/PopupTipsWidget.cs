@@ -102,7 +102,7 @@ public class PopupTipsWidget : Widget
         {
             var activedBehaviour = activedBehaviours[i];
             var formY = activedBehaviour.rectTransform.anchoredPosition.y;
-            var toY = activedBehaviour.rectTransform.anchoredPosition.y + activedBehaviour.rectTransform.rect.height;
+            var toY = m_PriorPoint.anchoredPosition.y + activedBehaviour.rectTransform.rect.height * (activedBehaviours.Count - i - 1);
             activedBehaviour.Move(formY, toY, Mathf.Abs(formY - toY) / popupSpeed);
         }
     }
