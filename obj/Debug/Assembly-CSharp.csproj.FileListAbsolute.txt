@@ -372,3 +372,6 @@ E:\Fish\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\Fish\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 E:\Fish\obj\Debug\Assembly-CSharp.dll
 E:\Fish\obj\Debug\Assembly-CSharp.pdb
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Editor.dll
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.IncludePaths.dll
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Runtime.dll

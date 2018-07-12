@@ -2,10 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class UIGameObjectPoolUtility
 {
+    public static readonly Vector3 HIDE_POINT = new Vector3(0, 5000, 0);
+
     static int instanceId = 1000;
-    static Dictionary<int, UIGameObjectPool> pools = new Dictionary<int, UIGameObjectPool>();
+    public static Dictionary<int, UIGameObjectPool> pools = new Dictionary<int, UIGameObjectPool>();
 
     public static UIGameObjectPool Create(GameObject _prefab)
     {

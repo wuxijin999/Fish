@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class UIGameObjectPool
 {
-
     private List<GameObject> m_FreeList = new List<GameObject>();
     private List<GameObject> m_ActiveList = new List<GameObject>();
     private GameObject m_Prefab;
 
+    public readonly GameObject root;
     public readonly int instanceId = 0;
     string name;
 
     public UIGameObjectPool(int _instanceId, GameObject _prefab)
     {
+        root = new GameObject(StringUtility.Contact("UIPool_", _instanceId));
+        Object.DontDestroyOnLoad(root);
+        root.transform.position = UIGameObjectPoolUtility.HIDE_POINT;
+
         instanceId = _instanceId;
         m_Prefab = _prefab;
         name = _prefab.name;
@@ -48,7 +52,7 @@ public class UIGameObjectPool
             DebugEx.LogWarningFormat("回收的对象 {0} 并不是从池里取得的...", instance.name);
         }
 
-        instance.transform.SetParent(null);
+        instance.transform.SetParent(root.transform);
         if (!m_FreeList.Contains(instance))
         {
             m_FreeList.Add(instance);
@@ -78,6 +82,21 @@ public class UIGameObjectPool
         m_Prefab = null;
         m_FreeList = null;
         m_ActiveList = null;
+        GameObject.Destroy(root);
     }
+
+
+#if UNITY_EDITOR
+    public List<GameObject> GetFreeList()
+    {
+        return new List<GameObject>(m_FreeList);
+    }
+
+    public List<GameObject> GetActiveList()
+    {
+        return new List<GameObject>(m_ActiveList);
+    }
+
+#endif
 
 }

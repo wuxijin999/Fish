@@ -370,3 +370,6 @@ E:\Fish\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 E:\Fish\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
 E:\Fish\obj\Debug\Assembly-CSharp-firstpass.dll
 E:\Fish\obj\Debug\Assembly-CSharp-firstpass.pdb
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Editor.dll
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.IncludePaths.dll
+H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Runtime.dll
