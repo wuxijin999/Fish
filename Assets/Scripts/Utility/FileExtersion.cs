@@ -7,7 +7,7 @@ using System.Text;
 
 public class FileExtersion
 {
-    public static string[] lineSplit = new string[] { "\r\n" }; //行间隔体
+    public readonly static string lineSplit = "\r\n"; //行间隔体
 
     public static List<FileInfo> GetFileInfos(string _path, string[] _searchPatterns)
     {
@@ -123,7 +123,7 @@ public class FileExtersion
         {
             string fileName = Path.GetFileName(formFileName);
             string toFileName = Path.Combine(_to, fileName);
-            File.Copy(formFileName, toFileName,true);
+            File.Copy(formFileName, toFileName, true);
         }
 
         var fromDirs = Directory.GetDirectories(_from);
