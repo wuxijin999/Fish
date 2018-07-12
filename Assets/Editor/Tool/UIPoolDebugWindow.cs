@@ -23,21 +23,6 @@ public class UIPoolDebugWindow : EditorWindow
             EditorGUILayout.Space();
             DrawPool(pool);
         }
-        foreach (var pool in pools.Values)
-        {
-            GUILayout.Space(20);
-            DrawPool(pool);
-        }
-        foreach (var pool in pools.Values)
-        {
-            GUILayout.Space(20);
-            DrawPool(pool);
-        }
-        foreach (var pool in pools.Values)
-        {
-            GUILayout.Space(20);
-            DrawPool(pool);
-        }
 
         EditorGUILayout.EndScrollView();
     }
@@ -109,18 +94,18 @@ public class UIPoolDebugWindow : EditorWindow
         {
             poolInstance = _instance;
         }
-
     }
-
 
 #if UNITY_EDITOR
     [MenuItem("Tools/UI 对象池")]
     public static void CreatePoolDebugWindow()
     {
+        UIGameObjectPoolUtility.CreatePoolDebugWindow();
         var window = GetWindow(typeof(UIPoolDebugWindow), false, "对象池Debug") as UIPoolDebugWindow;
         window.Show();
-        window.pools = UIGameObjectPoolUtility.pools;
+        window.pools = EditorHelper.uiGameObjectPools;
         window.autoRepaintOnSceneChange = true;
     }
 #endif
+
 }

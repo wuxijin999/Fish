@@ -11,7 +11,7 @@ public class UIGameObjectPoolUtility
     public static readonly Vector3 HIDE_POINT = new Vector3(0, 5000, 0);
 
     static int instanceId = 1000;
-    public static Dictionary<int, UIGameObjectPool> pools = new Dictionary<int, UIGameObjectPool>();
+    static Dictionary<int, UIGameObjectPool> pools = new Dictionary<int, UIGameObjectPool>();
 
     public static UIGameObjectPool Create(GameObject _prefab)
     {
@@ -38,4 +38,10 @@ public class UIGameObjectPoolUtility
         return true;
     }
 
+#if UNITY_EDITOR
+    public static void CreatePoolDebugWindow()
+    {
+        EditorHelper.uiGameObjectPools = pools;
+    }
+#endif
 }

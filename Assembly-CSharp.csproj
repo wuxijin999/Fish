@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\Utility\ComponentExtersion.cs" />
     <Compile Include="Assets\Scripts\Utility\Constants.cs" />
     <Compile Include="Assets\Scripts\Utility\DeviceUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\EditorHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\FileExtersion.cs" />
     <Compile Include="Assets\Scripts\Utility\FontUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\GlobalTimeEvent.cs" />
