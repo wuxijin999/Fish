@@ -70,7 +70,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     public void StartDownLoad()
     {
         step = Step.DownLoad;
-        SnxxzGame.Instance.StartCoroutine(Co_StartDownLoad());
+        CoroutineUtility.Instance.Coroutine(Co_StartDownLoad());
     }
 
     IEnumerator Co_StartDownLoad()
@@ -82,10 +82,10 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
             var assetVersion = tasks[i];
 
             var remoteURL = StringUtility.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
-            var localURL = StringUtility.Contact(ResourcesPath.Instance.ExternalStorePath, assetVersion.relativePath);
+            var localURL = StringUtility.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            SnxxzGame.Instance.StartCoroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtility.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
         }
 
         while (okCount < totalCount)
@@ -94,8 +94,6 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
 
         step = Step.Completed;
-        WindowCenter.Instance.Close<DownLoadWin>();
-        WindowCenter.Instance.Close<InGameDownLoadWin>();
 
         if (downLoadOkCallBack != null)
         {
@@ -105,7 +103,6 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
 
         if (restartApp)
         {
-            SDKUtility.Instance.RestartApp();
         }
     }
 
@@ -119,10 +116,10 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         else
         {
             var remoteURL = StringUtility.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", _assetVersion.relativePath);
-            var localURL = StringUtility.Contact(ResourcesPath.Instance.ExternalStorePath, _assetVersion.relativePath);
+            var localURL = StringUtility.Contact(AssetPath.ExternalStorePath, _assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, _assetVersion);
-            SnxxzGame.Instance.StartCoroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtility.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
         }
     }
 

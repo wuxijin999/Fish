@@ -68,15 +68,7 @@ public class AssetVersionUtility
             {
                 if (!assetVersion.CheckLocalFileValid())
                 {
-                    if (assetVersion.IsPriorAsset())
-                    {
-                        priorDownLoadAssetVersions.Add(assetVersion);
-                    }
-                    else
-                    {
-                        unpriorDownLoadAssetVersions.Add(assetVersion);
-                    }
-
+                    priorDownLoadAssetVersions.Add(assetVersion);
                     assetVersion.localValid = false;
                 }
                 else
@@ -151,16 +143,16 @@ public class AssetVersionUtility
             switch (assetVersion.fileLocation)
             {
                 case AssetVersion.StorageLocation.StreamingAsset:
-                    path = StringUtility.Contact(ResourcesPath.Instance.StreamingAssetPath, _assetKey);
+                    path = StringUtility.Contact(AssetPath.StreamingAssetPath, _assetKey);
                     break;
                 case AssetVersion.StorageLocation.ExternalStore:
-                    path = StringUtility.Contact(ResourcesPath.Instance.ExternalStorePath, _assetKey);
+                    path = StringUtility.Contact(AssetPath.ExternalStorePath, _assetKey);
                     break;
             }
         }
         else
         {
-            path = StringUtility.Contact(ResourcesPath.Instance.StreamingAssetPath, _assetKey);
+            path = StringUtility.Contact(AssetPath.StreamingAssetPath, _assetKey);
         }
 
         return path;

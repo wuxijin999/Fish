@@ -196,3 +196,17 @@ public class VersionConfig : ScriptableObject
     }
 
 }
+
+public enum InstalledAsset
+{
+    NullAsset = 0,
+    HalfAsset = 1,
+    FullAsset = 2,
+    IngoreDownLoad = 3,
+}
+
+public enum VersionAuthority
+{
+    InterTest = 0,
+    Release = 1,
+}

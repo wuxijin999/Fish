@@ -15,7 +15,7 @@ public class VersionUtility : Singleton<VersionUtility>
     public const string VERSION_URL = "http://pub.game.secondworld.net.cn:11000/appversion/?";
     const string VERSION_URL_PURE = "http://pub.game.secondworld.net.cn:11000/purge/appversion/?";
 
-    public string androidRoot { get { return StringUtility.Contact(SDKUtility.Instance.GetAndroidRoot(), "/", VersionConfig.Get().bundleIdentifier); } }
+    public string androidRoot { get { return VersionConfig.Get().bundleIdentifier; } }
 
     public float progress {
         get { return RemoteFile.TotalDownloadSize / ((float)versionInfo.GetLatestVersion().file_size * 1024); }
@@ -74,17 +74,14 @@ public class VersionUtility : Singleton<VersionUtility>
                         if (File.Exists(apkLocalURL))
                         {
                             step = Step.ApkExist;
-                            WindowCenter.Instance.OpenFromLocal<VersionUpdateWin>();
                         }
                         else
                         {
                             step = Step.DownLoadPrepared;
-                            WindowCenter.Instance.OpenFromLocal<VersionUpdateWin>();
                         }
                         break;
                     case RuntimePlatform.IPhonePlayer:
                         step = Step.DownLoadPrepared;
-                        WindowCenter.Instance.OpenFromLocal<VersionUpdateWin>();
                         break;
                     default:
                         step = Step.Completed;
@@ -185,7 +182,7 @@ public class VersionUtility : Singleton<VersionUtility>
             }
             catch (Exception ex)
             {
-                DesignDebug.Log(ex);
+                DebugEx.Log(ex);
                 return string.Empty;
             }
         }

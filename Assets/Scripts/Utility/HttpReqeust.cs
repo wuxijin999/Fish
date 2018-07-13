@@ -25,7 +25,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
     {
         if (_url == null || _url.Length == 0)
         {
-            DesignDebug.LogError("PHPDataComm post 参数有错");
+            DebugEx.LogError("PHPDataComm post 参数有错");
             if (_result != null)
             {
                 _result(false, string.Empty);
@@ -58,7 +58,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
         {
             if (!string.IsNullOrEmpty(PostData.text))
             {
-                DesignDebug.LogFormat("WWW 数据通信,请求数据成功：{0}", PostData.text);
+                DebugEx.LogFormat("WWW 数据通信,请求数据成功：{0}", PostData.text);
                 isSuccess = true;
                 if (_result != null)
                 {
@@ -124,7 +124,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
                 }
                 catch (System.Exception ex)
                 {
-                    DesignDebug.LogError(ex);
+                    DebugEx.LogError(ex);
                     request.Abort();
                     bSucceed = false;
                     retMessage = ex.Message;
@@ -139,7 +139,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
             }
             catch (System.Exception ex)
             {
-                DesignDebug.LogError(ex);
+                DebugEx.LogError(ex);
                 request.Abort();
                 bSucceed = false;
                 retMessage = ex.Message;
@@ -183,7 +183,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
                     response.Close();
                 }
                 request.Abort();
-                DesignDebug.LogError(ex);
+                DebugEx.LogError(ex);
                 retMessage = ex.Message;
             }
 
@@ -195,7 +195,7 @@ public class HttpRequest : SingletonMonobehaviour<HttpRequest>
         {
             _result(bSucceed, retMessage);
             _result = null;
-            DesignDebug.LogFormat("Http 数据通信 {0},请求数据结果：{1},内容：{2}", _method, bSucceed, retMessage);
+            DebugEx.LogFormat("Http 数据通信 {0},请求数据结果：{1},内容：{2}", _method, bSucceed, retMessage);
         }
     }
 
