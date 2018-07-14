@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ActorEngine : Singleton<ActorEngine>
+public class ActorEngine : SingletonMonobehaviour<ActorEngine>
 {
 
-    public event Action onFixedUpdateEvent;
+    public event System.Action onFixedUpdateEvent;
 
-    public event Action onUpdateEvent1;
-    public event Action onUpdateEvent2;
+    public event System.Action onUpdateEvent1;
+    public event System.Action onUpdateEvent2;
 
-    public event Action onLateUpdateEvent1;
-    public event Action onLateUpdateEvent2;
+    public event System.Action onLateUpdateEvent1;
+    public event System.Action onLateUpdateEvent2;
+
+    public void Launch()
+    {
+
+    }
 
     private void FixedUpdate()
     {

@@ -5,12 +5,16 @@ using UnityEngine;
 public class ActorBase
 {
 
+    int m_InstanceId = 0;
+    public int instanceId {
+        get { return m_InstanceId; }
+        set { m_InstanceId = value; }
+    }
+
     bool m_Enable = false;
-    public bool enable
-    {
+    public bool enable {
         get { return m_Enable; }
-        set
-        {
+        set {
             ActorEngine.Instance.onFixedUpdateEvent -= OnFixedUpdate;
             ActorEngine.Instance.onUpdateEvent1 -= OnUpdate1;
             ActorEngine.Instance.onUpdateEvent2 -= OnUpdate2;
@@ -31,14 +35,13 @@ public class ActorBase
     }
 
     ActorBrainState m_BrainState = ActorBrainState.Sane;
-    public ActorBrainState brainState
-    {
+    public ActorBrainState brainState {
         get { return m_BrainState; }
         set { m_BrainState = value; }
     }
 
-    MotionHinge m_MotionHinge;
-    public MotionHinge motionHinge { get { return m_MotionHinge; } }
+    ActionController m_ActionController = null;
+    public ActionController actionController { get { return m_ActionController; } }
 
     protected virtual void OnFixedUpdate()
     {
@@ -64,7 +67,6 @@ public class ActorBase
     {
 
     }
-
 
 }
 

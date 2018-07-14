@@ -8,7 +8,7 @@ public class Launch : MonoBehaviour
     private void Awake()
     {
         ModelUtility.Init();
+        ActorEngine.Instance.Launch();
     }
-
 
 }

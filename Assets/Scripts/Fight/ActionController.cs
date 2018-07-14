@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MotionHinge
+public class ActionController
 {
 
-    MotionState m_State = MotionState.CombatIdle;
-    public MotionState state
+    ActionState m_State = ActionState.CombatIdle;
+    public ActionState state
     {
         get { return m_State; }
         set

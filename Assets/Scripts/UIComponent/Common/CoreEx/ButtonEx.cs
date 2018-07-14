@@ -6,7 +6,7 @@ using System;
 public class ButtonEx : Button
 {
 
-    public event Action ableTimeChangeEvent;
+    public event System.Action ableTimeChangeEvent;
 
     public float interval;
     public bool customPositiveSound = false;

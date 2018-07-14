@@ -23,7 +23,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
 
     public event Action<Step> downLoadStepChangeEvent;
 
-    Action downLoadOkCallBack;
+    System.Action downLoadOkCallBack;
 
     Step m_Step = Step.None;
     public Step step {
@@ -41,7 +41,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
     }
 
-    public void Prepare(List<AssetVersion> _downLoadTasks, bool _prior, Action _downLoadOkCallBack)
+    public void Prepare(List<AssetVersion> _downLoadTasks, bool _prior, System.Action _downLoadOkCallBack)
     {
         tasks = _downLoadTasks;
         downLoadOkCallBack = _downLoadOkCallBack;

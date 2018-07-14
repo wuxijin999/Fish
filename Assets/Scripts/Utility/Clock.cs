@@ -5,19 +5,19 @@ using System;
 
 public class Clock
 {
-    Action onAlarm;
+    System.Action onAlarm;
     public readonly DateTime endTime1;
     public readonly float endTime2;
     public readonly ClockType type;
 
-    public Clock(DateTime _endTime, Action _callBack)
+    public Clock(DateTime _endTime, System.Action _callBack)
     {
         type = ClockType.DateTimeClock;
         endTime1 = _endTime;
         onAlarm = _callBack;
     }
 
-    public Clock(float _endTime, Action _callBack)
+    public Clock(float _endTime, System.Action _callBack)
     {
         type = ClockType.UnityTimeClock;
         endTime2 = _endTime;
@@ -42,7 +42,7 @@ public class Clock
     static bool inited = false;
     static List<Clock> clocks = new List<Clock>();
 
-    public static void Create(DateTime _endTime, Action _callBack)
+    public static void Create(DateTime _endTime, System.Action _callBack)
     {
         if (!inited)
         {
@@ -53,7 +53,7 @@ public class Clock
         clocks.Add(new Clock(_endTime, _callBack));
     }
 
-    public static void Create(float _endTime, Action _callBack)
+    public static void Create(float _endTime, System.Action _callBack)
     {
         if (!inited)
         {

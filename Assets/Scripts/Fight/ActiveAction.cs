@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveMotion : Motion
+public class ActiveAction : Action
 {
 
     public virtual void OnAttackBegin()

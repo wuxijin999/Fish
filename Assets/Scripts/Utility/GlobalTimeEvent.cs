@@ -5,12 +5,12 @@ using System;
 
 public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
 {
-    public event Action secondEvent;
-    public event Action minuteEvent;
-    public event Action fiveMinuteEvent;
-    public event Action tenMinuteEvent;
-    public event Action halfHourEvent;
-    public event Action hourEvent;
+    public event System.Action secondEvent;
+    public event System.Action minuteEvent;
+    public event System.Action fiveMinuteEvent;
+    public event System.Action tenMinuteEvent;
+    public event System.Action halfHourEvent;
+    public event System.Action hourEvent;
 
     int secondBuf = -1;
     int minuteBuf = -1;

@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Motion : MonoBehaviour
+public class Action : MonoBehaviour
 {
 
 
 
 }
 
-public enum MotionState
+public enum ActionState
 {
     CombatIdle = 1,
     Walk = 2,

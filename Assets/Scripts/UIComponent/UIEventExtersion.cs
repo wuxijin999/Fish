@@ -40,7 +40,7 @@ public class UIEventString:UnityEvent<string> {
 
 public class BizEvent {
 
-    event Action bizEvent;
+    event System.Action bizEvent;
     public BizEvent() {
 
     }
@@ -55,14 +55,14 @@ public class BizEvent {
         bizEvent = null;
     }
 
-    public static BizEvent operator +(BizEvent _event,Action _action) {
+    public static BizEvent operator +(BizEvent _event, System.Action _action) {
         if(_event != null) {
             _event.bizEvent += _action;
         }
         return _event;
     }
 
-    public static BizEvent operator -(BizEvent _event,Action _action) {
+    public static BizEvent operator -(BizEvent _event, System.Action _action) {
         if(_event != null) {
             _event.bizEvent -= _action;
         }
