@@ -43,6 +43,14 @@ public class ActorBase
     ActionController m_ActionController = null;
     public ActionController actionController { get { return m_ActionController; } }
 
+    public readonly Transform transform;
+    public float speed { get; set; }
+
+    public ActorBase(Transform _transform)
+    {
+        transform = _transform;
+    }
+
     protected virtual void OnFixedUpdate()
     {
 

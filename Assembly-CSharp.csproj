@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Fight\ActorEngine.cs" />
     <Compile Include="Assets\Scripts\Fight\Hero.cs" />
     <Compile Include="Assets\Scripts\Fight\PassiveAction.cs" />
+    <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
