@@ -51,8 +51,7 @@ public class VersionUtility : Singleton<VersionUtility>
             tables["branch"] = VersionConfig.Get().branch.ToString();
         }
 
-        var url = StringUtility.Contact(VERSION_URL, HttpRequest.HashtablaToString(tables));
-
+        var url = StringUtility.Contact(VERSION_URL, HttpRequest.HashTableToString(tables));
         HttpRequest.Instance.RequestHttpGet(url, HttpRequest.defaultHttpContentType, 1, OnVersionCheckResult);
     }
 
