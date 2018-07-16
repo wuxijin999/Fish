@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Text;
-using System;
+using UnityEngine;
 
 public class HttpAsyncHandle : MonoBehaviour
 {
