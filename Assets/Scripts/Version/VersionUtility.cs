@@ -52,7 +52,7 @@ public class VersionUtility : Singleton<VersionUtility>
         }
 
         var url = StringUtility.Contact(VERSION_URL, HttpRequest.HashTableToString(tables));
-        HttpRequest.Instance.RequestHttpGet(url, HttpRequest.defaultHttpContentType, 1, OnVersionCheckResult);
+        HttpRequest.Instance.RequestHttpGet(url, OnVersionCheckResult);
     }
 
     private void OnVersionCheckResult(bool _ok, string _result)
