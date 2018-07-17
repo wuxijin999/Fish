@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Launch : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Launch : MonoBehaviour
     {
         ModelUtility.Init();
         ActorEngine.Instance.Launch();
+
+        ItemConfig.Init();
     }
 
 }

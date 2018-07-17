@@ -193,7 +193,6 @@ GameObject:
   - component: {fileID: 345834354}
   - component: {fileID: 345834353}
   - component: {fileID: 345834352}
-  - component: {fileID: 345834356}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -268,18 +267,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &345834356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 345834351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f8cef94c598690428c6fa4faa87b4a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Atlas: {fileID: 4343727234628468602, guid: 257172893208c3140b63e5428cae4971, type: 2}
 --- !u!1001 &365568505
 Prefab:
   m_ObjectHideFlags: 0
@@ -318,6 +305,10 @@ Prefab:
     - target: {fileID: 484492, guid: 8d11cb314173cd8498378555b078de4e, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 184492, guid: 8d11cb314173cd8498378555b078de4e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d11cb314173cd8498378555b078de4e, type: 2}
@@ -603,13 +594,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1715302625}
+  - component: {fileID: 1715302626}
   m_Layer: 0
   m_Name: Launch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1715302625
 Transform:
   m_ObjectHideFlags: 0
@@ -623,6 +615,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1715302626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1715302624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1853a4e8e461247b92366f4ac68cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035107020
 GameObject:
   m_ObjectHideFlags: 0

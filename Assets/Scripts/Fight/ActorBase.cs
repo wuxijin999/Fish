@@ -60,29 +60,27 @@ public class ActorBase
 
     protected virtual void OnFixedUpdate()
     {
-
     }
 
     protected virtual void OnUpdate1()
     {
-
     }
 
     protected virtual void OnUpdate2()
     {
-
     }
 
     protected virtual void OnLateUpdate1()
     {
-
     }
 
     protected virtual void OnLateUpdate2()
     {
-
     }
 
+    private void OnGetValue(System.IntPtr stmt)
+    {
+    }
 }
 
 

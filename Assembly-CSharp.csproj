@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Assets\DownLoadAndDiscompressTask.cs" />
     <Compile Include="Assets\Scripts\Assets\RemoteFile.cs" />
     <Compile Include="Assets\Scripts\Assets\UILoader.cs" />
+    <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
     <Compile Include="Assets\Scripts\Fight\Action.cs" />
     <Compile Include="Assets\Scripts\Fight\ActionController.cs" />
     <Compile Include="Assets\Scripts\Fight\ActiveAction.cs" />
@@ -153,46 +154,47 @@
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
+    <None Include="Assets\ResourcesOut\6_Audio\readme.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Water2.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
-    <None Include="Assets\ResourcesOut\5_Config\BossHome.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\ItemConfig.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character,Spec,Reflect,Normal.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\FishCG.cginc" />
     <None Include="Assets\ResourcesOut\3_Shader\00_Character, GUI, Skinmask.shader" />
     <Reference Include="com.unity.render-pipelines.core.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.render-pipelines.core.Runtime">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.Runtime.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.postprocessing.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/com.unity.postprocessing.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AssetBundleBrowser.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.AssetBundleBrowser.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.postprocessing.Runtime">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/com.unity.postprocessing.Runtime.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.render-pipelines.core.IncludePaths">
-      <HintPath>H:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.IncludePaths.dll</HintPath>
+      <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.IncludePaths.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -390,31 +392,31 @@
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="DebugEx">
-      <HintPath>H:/Fish/Assets/Plugins/DebugEx.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/DebugEx.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>
     <Reference Include="DOTween">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
     </Reference>
     <Reference Include="DOTween43">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+      <HintPath>E:/Fish/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+      <HintPath>C:/Users/leonard/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.StandardEvents">
-      <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/leonard/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

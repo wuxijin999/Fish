@@ -3,10 +3,11 @@
 --- !u!687078895 &4343727234628468602
 SpriteAtlas:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: New Sprite Atlas 1
   m_EditorData:
+    serializedVersion: 2
     textureSettings:
       serializedVersion: 2
       anisoLevel: 1
@@ -19,6 +20,17 @@ SpriteAtlas:
       crunchedCompression: 0
       sRGB: 1
     platformSettings:
+    - serializedVersion: 2
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
     - serializedVersion: 2
       m_BuildTarget: Standalone
       m_MaxTextureSize: 2048
@@ -41,7 +53,7 @@ SpriteAtlas:
       m_AllowsAlphaSplitting: 0
       m_Overridden: 1
       m_AndroidETC2FallbackOverride: 0
-    packingParameters:
+    packingSettings:
       serializedVersion: 2
       padding: 4
       blockOffset: 1
@@ -56,10 +68,10 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 4343727234628468602, guid: dd5222f0ce385044b95b5daf8fdff6ce,
     type: 2}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 5ce45c2ffbcef5540883e3b4e2baf7a9, type: 3}
   - {fileID: 21300000, guid: 307590a4d0aae7248a1781bfe8e9d950, type: 3}
+  - {fileID: 21300000, guid: 5ce45c2ffbcef5540883e3b4e2baf7a9, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Arrows_a
   - CDMask_a
+  - Arrows_a
   m_Tag: aaaa
   m_IsVariant: 1
