@@ -11,13 +11,12 @@ public class PathFinder
     int cornerIndex = 0;
     State state = State.Idle;
 
-    Transform transform;
+    Transform transform { get { return owner.transform; } }
     ActorBase owner;
 
     public PathFinder(ActorBase _actor)
     {
         owner = _actor;
-        transform = _actor.transform;
     }
 
     public bool ReCalculatePath(Vector3 _startPosition, Vector3 _endPosition, int _mask = NavMesh.AllAreas)
