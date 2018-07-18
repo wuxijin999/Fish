@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System;
+using UnityEngine;
 
 public partial class #ClassName#
 {
@@ -49,7 +50,7 @@ public partial class #ClassName#
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "#ClassName#.txt";
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "#FileName#.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
             var lines = File.ReadAllLines(path);
@@ -63,6 +64,8 @@ public partial class #ClassName#
 
                 rawDatas[id] = line;
             }
+
+			DebugEx.LogFormat("加载结束#ClassName#：{0}",   DateTime.Now);
         });
     }
 

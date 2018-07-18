@@ -1,0 +1,86 @@
+int	int	int	int	int	string	string	string	string	int	int
+FuncId	LimitLV	LimitMagicWeapon	LimiRealmLV	LimitMissionID	Remark	State	Tip	Icon	open	ContinueTask
+功能编号(唯一)	限制等级(全局)	需要解锁法宝ID	需要境界等级	需要完成的任务ID	注释	功能说明	功能未开启提示	对应ICON	客户端是否默认开启	开启后是否继续任务
+1	0	10201	0	0	强化	装备强化，提升人物大量基础属性。	FuncNoOpen_Strengthen	QianghuaIcon_a	1	1
+2	58	0	0	0	宝石		FuncNoOpen_Gem1	icon_Attack_gems9	1	0
+3	2	0	0	0	翅膀		FuncLimit_Level	icon_zb_qx_cb_1	1	0
+6	0	10501	0	0	灵宠	修仙之路萌宠相伴，强力技能助你登上三界之巅，你永远不是一个人在战斗。	FuncNoOpen_Pet	PetIcon_a	1	1
+7	2	0	0	0	法宝		FuncLimit_Level		1	0
+8	0	10601	0	0	坐骑	拉风坐骑，驱之可遨游三界。	FuncNoOpen_Mount	ZuoqiIcon_a	1	1
+80	36	0	0	0	符印塔开启		FuncNoOpen_RuneTower1	RuneTower_a	1	0
+10	70	0	0	0	魔族法宝		FuncNoOpen_MoZu1		1	0
+12	80	0	0	0	境界开启		FuncNoOpen_Realm1	JingJieIcon_a	1	0
+15	65	0	0	0	仙盟开启		FuncNoOpen_Fairy1	MengIcon_a	1	0
+16	135	0	0	0	仙盟任务开启		FuncNoOpen_Task1		1	0
+20	110	0	0	0	神兵开启		FuncNoOpen_Magic1	TY_GN_28	1	0
+21	0	10701	0	0	世界Boss		FuncNoOpen_WorldBoss1	DabaoIcon_a	1	0
+22	110	0	0	0	个人BOSS开启		FuncNoOpen_PersonBoss1	DabaoIcon_a	1	0
+23	90	0	0	0	Boss之家开启		FuncNoOpen_BossHome1	DabaoIcon_a	1	0
+24	2	0	0	0	称号		FuncNoOpen_Title1		1	0
+28	2	0	0	0	天赋		FuncLimit_Level		1	0
+34	70	0	0	104060	师门悬赏开启		FuncNoOpen_DailyQuest1	DailyIcon_a	1	1
+36	200	10901	0	0	套装锻造	收集套装石，激活酷炫套装，塑造最强战力！	FuncNoOpen_Suit1	TY_GN_33	1	0
+40	2	0	0	0	地图功能		KaiQi_Map	MapIcon_a	1	0
+60	112	0	0	0	经验祈愿开启		FuncNoOpen_Pray1	FuLiIcon_a	1	0
+61	30	0	0	0	铜钱祈愿开启		FuncNoOpen_Pray2	FuLiIcon_a	1	0
+71	110	0	0	0	世界等级		FuncLimit_Level		1	0
+72	108	0	0	0	排行榜开启		FuncNoOpen_RankPanel1	RankIcon_a	1	0
+73	100	0	0	0	仙缘		FuncNoOpen_Friend1	FriendIcon_a	1	0
+74	110	0	0	0	仙魔之争		FuncNoOpen_XMZZ1		1	0
+75	72	0	0	0	合成		FuncNoOpen_He1	HeChengIcon_a	1	0
+76	0	10301	0	0	封魔坛	挑战魔坛Boss，掉落装备材料。勇争伤害第一，Boss双倍掉落。	FuncNoOpen_DaBao1	TY_GN_16	1	1
+77	80	0	0	0	集市开启		FuncNoOpen_Market1	MarketIcon_a	1	0
+78	60	0	0	0	日常		FuncNoOpen_DailyQuest1	DailyIcon_a	1	0
+79	2	0	0	0	商城		FuncLimit_Level	ShangchengIcon_a	1	0
+9	0	10401	0	0	符印	挑战符印塔，解锁八个符印槽孔，镶嵌符印可增加大量特殊属性。	FuncNoOpen_Rune	FuYinIcon_a	1	0
+81	28	0	0	0	签到开启		FuncNoOpen_SignIn1	FuLiIcon_a	1	0
+82	220	0	0	0	潜力提升		FuncNoOpen_Sp1	TB_DJ_148	1	0
+83	250	0	0	0	冰晶矿脉开启		FuncLimit_Level	DailyIcon_a	1	0
+84	110	0	0	0	仙盟宴会		FuncNoOpen_XMYH1		1	0
+85	60	0	0	0	麒麟之府开启		FuncLimit_Level	DailyIcon_a	1	0
+86	82	0	0	104080	仙界秘境开启		FuncLimit_Level	DailyIcon_a	1	0
+87	0	30100	0	0	炼丹		FuncNoOpen_LianDanLu	LianDanIcon_a	1	0
+88	105	0	0	0	宗门试炼开启		FuncLimit_Level	DailyIcon_a	1	0
+89	110	0	0	0	守卫人皇		FuncLimit_Level		1	0
+90	180	0	0	0	翅膀精炼		FuncNoOpen_WingsRefine1	TB_DJ_3711	1	0
+91	240	11001	0	0	装备洗练	挑战冰晶矿脉，获取洗练芒晶，洗练自身装备，提升特殊属性！	FuncNoOpen_Wash1	TY_GN_35	1	0
+92	200	0	0	0	打宝-古神禁地		FuncNoOpen_GuShen1	DabaoIcon_a	1	0
+93	260	0	0	0	装备合成		FuncNoOpen_AutoZhan1	TY_GN_32	1	0
+94	16	0	0	0	守护		FuncLimit_Level		1	0
+95	39	0	0	0	技能法宝		FuncLimit_Level		1	0
+96	43	0	0	0	自由加点开启		FuncNoOpen_FreePoint1	JiaoSeIcon_a	1	0
+97	0	10802	0	0	翅膀合成		FuncNoOpen_WingsHe1	TB_DJ_3711	1	0
+98	110	0	0	0	混乱妖域		FuncLimit_Level		1	0
+99	800	0	0	0	欢乐寻宝开启		FuncLimit_Level		1	0
+100	100	0	0	0	战力提升开启		FuncLimit_Level	W_combat	1	0
+101	110	0	0	0	上古战场		FuncNoOpen_SGZC1		1	0
+102	100	0	0	0	聊天		FuncNoOpen_ChatLimit1		1	0
+103	220	0	0	0	娲皇遗迹	娲皇神迹，闯关挑战，获潜力值，得熔彩石，提升技能等级。	FuncLimit_Level	DailyIcon_a	1	0
+104	0	0	0	101010	神秘任务1		FuncLimit_Level		1	0
+105	0	0	0	101100	神秘任务2		FuncLimit_Level		1	0
+106	0	10200	0	0	人族法宝		FuncLimit_Level	Renzu_103	1	0
+108	120	0	0	0	一键挂机		FuncLimit_Level		1	0
+109	70	0	0	0	被动技能		FuncNoOpen_PassSkill1		1	0
+110	1	0	0	0	首充		FuncNoOpen_Recharge1		1	0
+111	110	0	0	0	仙盟联赛		FuncNoOpen_UnionMatch1		1	0
+112	800	0	0	0	法宝铸炼		FuncLimit_Level		1	0
+113	1	0	0	0	充值		FuncNoOpen_Recharge1	MoneyIcon_a	1	0
+114	110	0	0	0	我要天机		FuncLimit_Level		1	0
+115	52	0	0	0	七天登陆奖励开启		FuncNoOpen_SevenOnLine	FuLiIcon_a	1	0
+116	60	0	0	0	等级礼包开启		FuncNoOpen_LVGift	FuLiIcon_a	1	0
+117	2	0	0	0	Vip		FuncLimit_Level		1	0
+118	0	0	0	0	仙玉投资		FuncLimit_Level		1	0
+119	0	0	0	0	月卡投资		FuncLimit_Level		1	0
+120	0	0	0	0	VIP投资		FuncLimit_Level		1	0
+121	2	0	0	0	法宝开启		FuncLimit_Level	Renzu_102	1	0
+122	30	0	0	0	让红包飞		FuncLimit_Level		1	0
+123	100	0	0	0	装备分解		FuncNoOpen_EquipDevour1	TY_GN_37	1	0
+124	95	0	0	0	仙宝寻主		FuncNoOpen_XBXZ1	TreasureFindHost	1	0
+125	55	0	0	0	全民冲榜		FuncLimit_Level		1	0
+126	150	0	0	0	法宝之魂		FuncNoOpen_TreasureSoul	TreasureSoul	1	0
+127	100	0	0	0	日常界面用（封魔坛）	挑战魔坛Boss，掉落装备材料，勇争伤害第一，Boss双倍掉落。	FuncNoOpen_DaBao1	TY_GN_16	1	0
+128	35	0	0	0	首充倒计时		FuncLimit_Level		1	0
+129	120	0	0	0	广告功能		FuncLimit_Level		1	0
+130	800	0	0	0	极品白拿		FuncLimit_Level		1	0
+131	800	0	0	0	多倍经验活动		FuncLimit_Level		1	0
+132	30	0	0	0	开服特惠		FuncLimit_Level		1	0

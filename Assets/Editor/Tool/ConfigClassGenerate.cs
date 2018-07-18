@@ -195,9 +195,10 @@ public class CreateConfigClassFile
 
     public static void CreatNewConfigClass(string _name)
     {
-        var newConfigPath = configClassPath + string.Format("/{0}.cs", _name);
+        var newConfigPath = configClassPath + string.Format("/{0}Config.cs", _name);
         AssetDatabase.DeleteAsset(newConfigPath);
         UnityEngine.Object o = CreateScriptAssetFromTemplate(newConfigPath, templatePath);
+        AddConfigInit(newConfigPath);
         ProjectWindowUtil.ShowCreatedAsset(o);
 
         if (FileCreateEvent != null)
@@ -218,6 +219,7 @@ public class CreateConfigClassFile
         text = Regex.Replace(text, "#DateTime#", System.DateTime.Now.ToLongDateString());
         text = Regex.Replace(text, "#Field#", CreateConfigClassFile.filedContent);
         text = Regex.Replace(text, "#Read#", CreateConfigClassFile.readContent);
+        text = Regex.Replace(text, "#FileName#", fileNameWithoutExtension.Substring(0, fileNameWithoutExtension.Length - 6));
 
         bool encoderShouldEmitUTF8Identifier = true;
         bool throwOnInvalidBytes = false;
@@ -228,6 +230,30 @@ public class CreateConfigClassFile
         streamWriter.Close();
         AssetDatabase.ImportAsset(pathName);
         return AssetDatabase.LoadAssetAtPath(pathName, typeof(UnityEngine.Object));
+    }
+
+    internal static void AddConfigInit(string _pathName)
+    {
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(_pathName);
+        string add = string.Format("{0}.Init();", fileNameWithoutExtension);
+
+        string path = Application.dataPath + "/Scripts/Utility/ConfigInitiator.cs";
+        var text = File.ReadAllText(path);
+
+        if (!text.Contains(add))
+        {
+            text = text.Replace("//初始化结束\r\n", add + "\r\n" + "\t\t//初始化结束\r\n");
+        }
+
+        bool encoderShouldEmitUTF8Identifier = true;
+        bool throwOnInvalidBytes = false;
+        UTF8Encoding encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier, throwOnInvalidBytes);
+        bool append = false;
+        StreamWriter streamWriter = new StreamWriter(path, append, encoding);
+        streamWriter.Write(text);
+        streamWriter.Close();
+        AssetDatabase.ImportAsset(path);
+
     }
 }
 

@@ -1,0 +1,7 @@
+﻿int	int	int	int	int
+ID	DataMapId	InspireType	InspireCount	MoneyCount
+id	地图数据id	鼓舞类型	鼓舞次数限制	单次消耗金钱数量
+1	31080	1	5	1000
+2	31080	2	10	5
+3	52010	1	5	1000
+4	52010	2	10	2

@@ -1,0 +1,16 @@
+int	string	int	string	string
+id	resourceName	itemID	useContent	Icon
+ID	资源名	物品ID	用途	图标
+1	铜钱	2100	强化装备、合成道具	Wp_Copper3
+2	经验	2103	提升等级	Exp_1
+3	坐骑丹	181	提升坐骑等级	icon_zqd
+4	灵宠丹	4151	灵宠升级	wp_ls_lsd
+5	符印	4308	符印镶嵌、符印分解	FuYinIcon_a
+6	攻击神兵石	106	提升攻击神兵等级	SB_attack1
+7	生命神兵石	103	提升生命神兵等级	SB_life1
+8	暴击神兵石	109	提升暴击神兵等级	SB_Crit1
+9	青鸾之羽	3801	合成一代翅膀、精炼翅膀	cl_cb_1
+10	潜力点	148	提升技能等级	TB_DJ_148
+11	火凤精血	3802	合成二代翅膀、精炼翅膀	cl_cb_2
+12	洗炼石	5303	装备洗炼	wp_xls
+13	神凰冠羽	3803	合成三代翅膀、精炼翅膀	cl_cb_3

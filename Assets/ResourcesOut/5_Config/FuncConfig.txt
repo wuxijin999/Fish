@@ -1,0 +1,391 @@
+string	string	string	string	string	string
+KEY	Numerical1	Numerical2	Numerical3	Numerical4	Numerical5
+标识	数值1	数值2	数值3	数值4	数值5
+GemOpen	1|3|5	0	0	0	0
+GemOpenVip	6	0	0	0	0
+GemType1	3|4|5|6|7	可镶嵌生命翡翠	0	0	0
+GemType2	1|2|8|9|10	可镶嵌攻击炎晶	0	0	0
+GemTypeCount	2	0	0	0	0
+GemUpCostFormula	1_3501|2_3511	3	0	0	0
+GemAttr	{0}+{1}	0	0	0	0
+GemNewAttr	{0}级新增{1}属性	0	0	0	0
+OneKeySellGridCount	48	0	0	0	0
+OneKeySellItemType	101|102|103|104|105|106|107	0	0	0	0
+LifePotionlist	901|902|903|904				
+BagCompound	25_21|44_18|39_17				
+OpenBagItem	951	((index/4.0$)#)	20	0	0
+InitDepotCellCount	60	0	0	0	0
+MaxDepotCellCount	100	0	0	0	0
+DepotSortPriority	101|102|103|104|105|106|107|108|109|110|112	0	0	0	0
+InitBagCellCount	60	0	0	0	0
+MaxBagCellCount	100	0	0	0	0
+BagUseItem	4	0	0	0	0
+PackageSortPriority	101|102|103|104|105|106|107|108|109|110|111	0	0	0	0
+ExpValueDes	(PlayerReExp!MaxReExp)*TimeValue				
+IceLodeNeedPoint	1500	31401001_50|31403001_300	0	0	0
+ClearDevilPoint	1200	{30102001:20,30102002:50,30102003:300}	0	0	0
+AI197Point	{"31040":[[16,34],[18,99]]} 				
+AI198Point	{"3119000":[[15,19],[7,16],[13,22],[21,26]],"3119001":[[15,19],[7,16],[13,22],[21,26]],"3119002":[[15,19],[7,16],[13,22],[21,26]],"3119003":[[15,19],[7,16],[13,22],[21,26]],"3119004":[[15,19],[7,16],[13,22],[21,26]],"3119005":[[15,19],[7,16],[13,22],[21,26]],"3119006":[[15,19],[7,16],[13,22],[21,26]],"3118000":[[71,17],[73,63],[21,48]],"5101002":[[114,19]],"5101004":[[56,65],[83,88]],"3101000":[[6,25]],"4111000":[[17,16]],"4111001":[[17,16]],"4111002":[[17,16]],"4111003":[[17,16]],"4111004":[[17,16]],"4111005":[[17,16]],"4111006":[[17,16]],"4111007":[[17,16]],"4111008":[[17,16]],"4111009":[[77,17]],"4111010":[[77,17]],"4111011":[[77,17]],"4111012":[[77,17]],"4111013":[[77,17]],"4111014":[[77,17]],"4111015":[[77,17]],"4111016":[[77,17]],"4111017":[[77,17]],"4111018":[[77,17]],"4111019":[[77,17]],"4111020":[[77,17]],"4111021":[[77,17]],"4111022":[[77,17]],"3116000":[[59,25],[116,27],[88,53],[114,65],[36,78],[135,82],[99,93],[109,111],[66,111],[41,120]],"6001000":[[46,16],[10,18]],"6001001":[[198,24],[184,21],[144,23],[123,23]],"6001002":[[294,21],[279,21],[264,21],[236,23]],"3121000":[[12,38]],"5101007":[[66,118]],"5101003":[[18,66]],"5101005":[[122,70]],"5101006":[[8,109],[17,109],[12,119]]} 				
+RuneShop	2	0	0	0	0
+RuneUnlock	0|204|304|404|504|604|704|804	0	0	0	0
+RuneDoubleInlayCnt	908_1|1008_2|1108_3|1208_4				
+RunePackageNum	200	0	0	0	0
+RuneAttr7	(118154*(0.1+0.3*(level/50.0)+0.35*(level/50.0^2)+0.25*(level/50.0^3))*2*0.5/20#)	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr6	(118154*(0.1+0.3*(level/50.0)+0.35*(level/50.0^2)+0.25*(level/50.0^3))*2*0.5#)	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr44	1300+level*200	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneAttr45	1300+level*200	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneAttr46	1000+level*100	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1	0	0
+RuneAttr35	(118154*(0.1+0.3*(level/50.0)+0.35*(level/50.0^2)+0.25*(level/50.0^3))*2*0.5/20*0.7/5#)*5	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneAttr36	(118154*(0.1+0.3*(level/50.0)+0.35*(level/50.0^2)+0.25*(level/50.0^3))*2*0.5/20*0.7/3/5#)*5	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneAttr63	1500+level*500	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr64	(1500+level*500)*1.3	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr65	1500+level*500	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr66	1500+level*500	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr11	1000+level*50	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1	0	0
+RuneAttr42	level*600	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr41	level*400	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr27	(150+level*50)/2	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneAttr8	(118154*(0.1+0.3*(level/50.0)+0.35*(level/50.0^2)+0.25*(level/50.0^3))*2*0.5/20/3#)	1_0.2|2_0.3|3_0.5|4_0.7|5_1	1.5	0	0
+RuneAttr26	150+level*50	1_0.3|2_0.45|3_0.6|4_0.75|5_1	1.5	0	0
+RuneExp	(4000000*(0.02*((level-1)/49.0)+0.08*(((level-1)/49.0)^2)+0.2*(((level-1)/49.0)^3)+0.3*(((level-1)/49.0)^4)+0.4*(((level-1)/49.0)^5))#)-(4000000*(0.02*((((level-2)@0))/49.0)+0.08*(((((level-2)@0))/49.0)^2)+0.2*(((((level-2)@0))/49.0)^3)+0.3*(((((level-2)@0))/49.0)^4)+0.4*(((((level-2)@0))/49.0)^5))#)	1_0.5|2_0.7|3_0.8|4_0.9|5_1	1.6	1_100|2_300|3_3000|4_15000|5_30000	0
+RuneMaxLV	50	0	0	0	0
+TowerRuneType	{"1":[2],"2":[1],"3":[5],"4":[17],"5":[15],"6":[11],"7":[9],"8":[8],"9":[10],"10":[16],"11":[14],"12":[13]}	8			
+RuneTowerSweepBuy	2	25			
+MonsterMinimum	10				
+MonsterHighest	99				
+MonsterOutput	10000				
+FriendMaxCnt	50	0	0	0	0
+BlacklistMaxCnt	20	0	0	0	0
+EnemiesMaxCnt	20	0	0	0	0
+ContactsMaxCnt	20	0	0	0	0
+ComposeAddonsType	101|102|103|104|105|106|107	0	0	0	0
+ComposeAddonsQuality	1|2	0	0	0	0
+ComposeAddonsFormula	(((800+100*itemClassLV)*(0.6+(itemColor-2)*0.4)#)!2500)	0	0	0	0
+ComposeJobLimit	{"1": [5012],"2": [5022]}				
+ComposeAutoLimit	4|1	4|1			
+Coins1	万	亿	0	0	0
+BourseQuality	3_1|4_1|4_2|5_2|5_3	0	0	0	0
+BourseSaleLimit	8	1440	21600	0	0
+BoursePriceLimit	2	100000000			
+BourseUpdataCD	2000				
+BourseMaxRecord	30				
+SkillXPAddByFB	31090|31060|31250	0	0	0	0
+SPSkillType	{"1":[1005,2005,3005,50005,50105,50205,50305,50405,50505,50605,50705,50805,55005,55105,55205,55305,55405,55505,55605,55705,55805,60005,60105,60205,60305,60405,60505,60605,60705,60805],"2":[1035,2035,3035,50035,50135,50235,50335,50435,50535,50635,50735,50835,55035,55135,55235,55335,55435,55535,55635,55735,55835,60035,60135,60235,60335,60435,60535,60635,60735,60835],"3":[1065,2065,3065,50065,50165,50265,50365,50465,50565,50665,50765,50865,55065,55165,55265,55365,55465,55565,55665,55765,55865,60065,60165,60265,60365,60465,60565,60665,60765,60865]}	6000	0	0	0
+SkillActTypeIdSort	150|50000|50100|50400|50200|50300|50500|50600|50700|50800	250|55000|55100|55400|55200|55300|55500|55600|55700|55800	350|60000|60100|60400|60200|60300|60500|60600|60700|60800	0	0
+QuickJobSkill1	50000|50100|50400|50200|50300|50500|50600	0	0	0	0
+QuickJobSkill2	55000|55100|55400|55200|55300|55500|55600	0	0	0	0
+QuickJobSkill3	60000|60100|60400|60200|60300|60500|60600	0	0	0	0
+JobFitterSkill	100|101|102|103|50301|50701	200|201|202|203	300|301|302|303	0	0
+PassSkillEquipLimit	{"0":{"level":65},"1":{"level":90},"2":{"level":200},"3":{"level":250},"4":{"vipLv":5},"5":{"MountLv":80}}	6	3		
+PassSkillEquipGetWay	{"0":[61],"1":[61],"2":[61],"3":[61],"4":[80],"5":[32]}	61_前往挂机|32_坐骑|80_VIP			
+SpecialPassSkills	50901|55901|60901				
+CreatRolePoint1	2_54|3_18|4_15|5_8	0	0	0	0
+CreatRolePoint2	2_12|3_19|4_15|5_51	0	0	0	0
+CreatRolePoint3	2_52|3_20|4_13|5_12	0	0	0	0
+LVUPAddPoint	5|5|5|5|5|5	0	0	0	0
+PointAttr1	6_CON*6|7_(0.52*STR#)|8_(0.35*PHY#)|9_(STR*2+PNE*2#)|10_(PHY*0.2#)	0	0	0	0
+PointAttr2	6_CON*6|7_(0.6*PNE#)|8_(0.3*PHY#)|9_(STR*2+PNE*2#)|10_(PHY*0.3#)	0	0	0	0
+PointAttr3	6_CON*6|7_(0.52*STR#)|8_(0.35*PHY#)|9_(STR*2+PNE*2#)|10_(PHY*0.4#)	0	0	0	0
+PointAdd1	2_0.8|3_0.2	0	0	0	0
+PointAdd2	3_0.2|5_0.8	0	0	0	0
+PointAdd3	2_0.75|3_0.25	0	0	0	0
+PointAddAttr	2|3|4|5	0	0	0	0
+FreePointsGet1	2	5	0	0	0
+FreePointsGet2	2	5	0	0	0
+PlayerMaxLV	500	0	0	0	0
+MaxLVExpStore	20000000000	0	0	0	0
+GreatMasterStartLV	800	0	0	0	0
+AtkInterval	(1000*(1/(atkSpeed/10000.0&)@0.5)#)	0	0	0	0
+MoveSpeedClient	((3+((speed/100.0&)-1)*2)!5)	0	0	0	0
+FightpowerFormula	(((MinAtk+MaxAtk)*20/2.0+Def*20+MaxHP+IceAtk*20+IceDef*20+SuperHit*SuperHitRate/10000.0*20+Hit/10000.0+Miss/10000.0+(((AtkSpeed+10000.0)/10000.0&)-1)*AtkSpeedParameter+DamagePer/10000.0+DamReduce/10000.0+IgnoreDefRate/10000.0+LuckyHitRate/10000.0*LuckyHitParameter+LuckyHit/10000.0*LuckyHitParameter+DamBackPer/10000.0+DamagePerPVP/10000.0+DamagePerPVPReduce/10000.0+FinalHurt*10+FinalHurtReduce*10+(PetMinAtk+PetMaxAtk)/2.0*(1+PetDamPer/10000.0)*10+DamChanceDef/10000.0+AtkBackHP*20+BleedDamage/10000.0+FaintRate/10000.0+SuperHitReduce/10000.0+LuckyHitRateReduce/10000.0+IgnoreDefRateReduce/10000.0+SkillAtkRate/10000.0+SkillAtkRateReduce/10000.0+OnlyFinalHurt*10.0+PVPAtkBackHP*20.0)#)	0	0	0	0
+RealmFBHelpAttr	{"0":{"51":2000},"1":{"51":1500},"2":{"51":2000,"13":500}}	10000	6		
+ReduceSitTimeItemID	4503	4504	2|1		
+BigRealmSitTime	12|14	18|20			
+RealmGuardian	10				
+BugleItem	2050	0	0	0	0
+QuickReply1	注意躲避BOSS技能	0	0	0	0
+QuickReply2	不要挂机，集火啊	0	0	0	0
+QuickReply3	不服来PK	0	0	0	0
+QuickReply4	来打BOSS啊	0	0	0	0
+QuickReply5	晚上有活动	0	0	0	0
+QuickReply6	嗯，好的	0	0	0	0
+QuickReply7	请求支援	0	0	0	0
+MessageLength	50	0	0	0	0
+EquipDecomposeScreen	1|2|3|4|5|6|7|8	3|4|5	0	0	0
+PetAbsorbType	1|2|3|4|5|6|7	40	0	0	0
+PetQuality	1|2|3|4|5|6	<color=#686868ff>【玄阶】</color>|<color=#006be3ff>【灵阶】</color>|<color=#da48d5ff>【幻阶】</color>|<color=#ff6701ff>【仙阶】</color>|<color=#ff0303ff>【神阶】</color>|<color=#f6408dff>【圣阶】</color>	【玄阶】|【灵阶】|【幻阶】|【仙阶】|【神阶】|【圣阶】	0	0
+PetUpItem	4151				
+RankListCnt	100	0	0	0	0
+KirinNpc	0	4151|4151|4151|4151|4151|4151			0
+SignConsumption	10				
+GodWeapon1	101|102|103	0	0	0	0
+GodWeapon2	104|105|106	0	0	0	0
+GodWeapon3	107|108|109	0	0	0	0
+GodWeapon4	110|111|112	0	0	0	0
+GodModel	{"1":"SB01","2":"SB02","3":"SB03"}	{"1":"LifeMagic","2":"AttackMagician","3":"CritMagic"}	0	0	0
+CarryShop	1	0	0	0	0
+EquipSuitLimit	4	2	3	0	0
+EquipSuitColorStar	{"1":[4,1],"2":[5,2]}	2			
+EquipSuitMaxLv	{"3":{"1":8,"2":8},"4":{"1":8,"2":8},"5":{"1":8,"2":8},"6":{"1":8,"2":8},"7":{"1":8,"2":8},"8":{"1":8,"2":8},"9":{"1":8,"2":8},"10":{"1":8,"2":8}}				
+EquipSuitType	{"1":[3,4,5,6,7],"2":[8,9,10]}				
+EquipWashMaxLV	1_2|2_2|3_3|4_6|5_8|6_10|7_10|8_10|9_10|10_10|11_10|12_10|13_10|14_10|15_10|16_10|17_10	0	0	0	0
+EquipWashGroup1	1|2	0	0	0	0
+EquipWashGroup2	3|4|5|6|7	0	0	0	0
+EquipWashGroup3	8|9|10	0	0	0	0
+CreateFamilyMinLV	65	0	0	0	0
+CreateFamilyNeedMoney	5000000	5	0	0	0
+FakeFamilyName	["情谊永恒","唯我独尊","横扫天下","第一仙盟","称霸全服","聚义仙侠","风云残卷","勇者联盟","皇族"]	3			
+FamilyBroadcast	3	5	0	0	0
+FamilyPurview	2|2|2|2|2|2|2|2	0	0	0	0
+FamilyTechNeedLV	1_50|2_50|3_50|4_200|5_200|6_350|7_350	0	0	0	0
+FamilyTechIcon	1_XF3801|2_XF3802|3_XF3803|4_XF3804|5_XF3805|6_XF3806|7_XF3807	1_破军|2_强壮|3_坚固|4_锐识|5_灵跃|6_破法|7_银盾	0	0	0
+FamilyRedPacketCnt	10	0	0	0	0
+FamilyRedPacketGoldLimit	1000	0	0	0	0
+FamilyBossWeekNum	5	0	0	0	0
+FamilyBossNeedFood	7000	0	0	0	0
+FamilyBossOpen	31210	7000	20|22	5	0
+FamilyBossInfo	狗熊王	30903001	3901	0	0
+FamilyBossDrop	{"150":[10371,20371,10372,20372,10374,20374,10351,20351,10352,20352,10354,20354,10331,20331,10332,20332,10334,20334],"200":[10471,20471,10472,20472,10474,20474,10451,20451,10452,20452,10454,20454,10431,20431,10432,20432,10434,20434],"250":[10571,20571,10572,20572,10574,20574,10551,20551,10552,20552,10554,20554,10531,20531,10532,20532,10534,20534],"300":[10671,20671,10672,20672,10674,20674,10651,20651,10652,20652,10654,20654,10631,20631,10632,20632,10634,20634],"350":[10771,20771,10772,20772,10774,20774,10751,20751,10752,20752,10754,20754,10731,20731,10732,20732,10734,20734],"450":[10871,20871,10872,20872,10874,20874,10851,20851,10852,20852,10854,20854,10831,20831,10832,20832,10834,20834],"1000":[10971,20971,10972,20972,10974,20974,10951,20951,10952,20952,10954,20954,10931,20931,10932,20932,10934,20934]}	0	0	0	0
+SpecialActivitys	{"1":{"Title":"Fairy_Boss","Icon":"wp_xmgx"}}				
+FamilyStoreItemRule1	1|2|3|4|5|6|7	0|1|0	0	0	0
+FamilyStoreItemRule2	8|9|10	4|0|3	0	0	0
+PetFoodExchange	1130	1	50	999	0
+FamilyStoreSpace	139	0	0	0	0
+FamilyShop	3	2	0	0	0
+PartyReward	0	[100,0]	["PartyKing",1,[(28,25,1)]]	1	
+FamilyPartyDeskNpcID	30908001				
+FamilyActive	20|40|70|100|150	10|10|15|25|30			
+FamilyMatchResourcePoint	[[(170,18,5)],[(56,131,5)],[(170,132,5)],[(111,74,5)],[(56,18,5)]]	[30909001,30909002,30909003,30909004,30909005]	[[2,5,4,3,1],[1,3,4,5,2]]	0	6000
+FamilyMatchResourcePoint1	30909004_2|	3			
+FamilyMatchRandomBuff	[[113,18],[113,131],[165,74],[52,74]]	1	[30909006,30909007,30909008]	120	
+FamilyMatchPersonalScore	12	12	20	16	10
+FamilyMatchGuide	M007|M014|M021|M028|M057|M077|M078				
+FamilyMatchRankReward	{1:[[28,100,1],[26,40000,1]],4:[[28,80,1],[26,32000,1]],10:[[28,60,1],[26,24000,1]],15:[[28,50,1],[26,16000,1]],20:[[40,2,1],[26,8000,1]]}	[60,70,80,90,100]	[[103,2,1],[105,3,1],[26,60000,1]]		
+FamilyMatchRankOneReward	{215 :[[2299,1,0]], 265:[[2279,1,0]],315:[[2281,1,0]],365:[[2283,1,0]],415:[[2285,1,0]]}				
+FamilyMatchSRankOneReward	{215 :[[2300,1,0]], 265:[[2280,1,0]],315:[[2282,1,0]],365:[[2284,1,0]],415:[[2286,1,0]]}				
+FamilyMatchDayReward	[[914,1,1],[911,1,1],[2298,1,1]]	11|12	41		
+FamilyMatchLianWinReward	[[2278,1,0]]	3	3		
+SpecialActivityInfom	{"100":{"Icon":"Money_Type_5","Name":"FamilyMatchName"}}				
+SenderSys	系统邮件	0	0	0	0
+WingLV	{"5":1,"6":2,"8":3,"10":4,"12":5}				
+WingRealmLimit	3711_1|3712_4|3713_8|3714_12|3715_16|3721_1|3722_4|3723_8|3724_12|3725_16				
+WingLegendAttrCountPreview	[[6,1],[8,1],[10,2],[12,2]]				
+WingLegendAttrValuePreview	{"6":{"30":[400,800,1200,1600],"33":[200,400,600,800]},"8":{"30":[1600,2000,2400,2800],"33":[800,1000,1200,1400]},"10":{"30":[2800,3200],"33":[1400,1600]},"12":{"30":[3200,4000],"33":[1600,2000]}}				
+WingWashItemType	111				
+WingInitialWashValue	[[6190,0],[7142,7],[7857,15],[8476,25],[9047,43],[10000,52]]	3711|3721			
+AtkAngle	90	0	0	0	0
+MaxTargetRange	7	0	0	0	0
+flyMinDistance	6				
+SearchInterval	1000				
+HandupResumeTime	100				
+RoleTurnedAngle	18	0	0	0	0
+AtkWaitingTime	2	0	0	0	0
+NpcMoveSpeedCoefficient	110				
+OpenJob	1|2	0	0	0	0
+Job1Head	0_Job101HeadIcon|1_Job101HeadIcon|2_Job101HeadIcon|3_Job101HeadIcon|4_Job101HeadIcon	0_Job101SmallHeadIcon|1_Job101SmallHeadIcon|2_Job101SmallHeadIcon|3_Job101SmallHeadIcon|4_Job101SmallHeadIcon	0	0	0
+Job2Head	0_Job201HeadIcon|1_Job201HeadIcon|2_Job201HeadIcon|3_Job201HeadIcon|4_Job201HeadIcon	0_Job201SmallHeadIcon|1_Job201SmallHeadIcon|2_Job201SmallHeadIcon|3_Job201SmallHeadIcon|4_Job201SmallHeadIcon	0	0	0
+Job3Head	0_JOB100|1_JOB100|2_JOB100|3_JOB100|4_JOB100	0_JOB100|1_JOB100|2_JOB100|3_JOB100|4_JOB100	0	0	0
+AutomaticSwitch	7				
+XpSkillID	1_150|2_250|3_350	31250			
+SkillPanelUnlock	105				
+LowHpRemind	30				
+BossListMapID	21070|21100				
+TaskRetract	21070|21100|10050|10060|10070|10080				
+OneKeyBtnMap	31020|31030				
+Strengthen1	1|2|8|9|10	0	0	0	0
+Strengthen2	3|4|5|6|7	0	0	0	0
+StrengthenDisplay	1|2|3|4|5|6|7|8|9|10	0	0	0	0
+EquipArea	1|2|3|4|5|6|7|8|9|10	主手|副手|帽子|衣袍|腰带|下装|鞋履|仙器·龙牙|仙器·如意|仙器·如意	0	0	0
+StrengthenLevelLimit	1_1|2_1|3_1|4_1|5_1|6_1|7_1|8_2|9_3|10_3	1_1|2_1|8_1|9_1|10_1|3_2|4_2|5_2|6_2|7_2			
+EquipStrengthen	2	0	0	0	0
+StrengthenRedPointLevel	10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100|110|120|130|140|150|160|170|180|190|200				
+EquipPlace	1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19	Weapon|SecondWeapon|Hat|Clothes|Belt|Pants|Shoes|Necklace|FairyCan01|FairyCan02|Wings|Guard|Ornament_Mask|Ornament_Earring|Ornament_Cloak|Ornament_Bangle|Ornament_Belt|Ornament_Badge|Ornament_Mount	0	0	0
+EquipBaseAttNameWeapom	7	0	0	0	0
+EquipBaseAttNameArmor	8	6	0	0	0
+EquipBaseAttNameNecklace	7	0	0	0	0
+EquipBaseAttNameCup	7	11	0	0	0
+GuardianSpeed	4	4	6	0	0
+GuardianPickupRange	25	3	0	0	0
+GuardianTraceRange	4	26	0	0	0
+GuardianImpendRange	1	0	0	0	0
+GuardianRandomIdle	4	8			
+SH4101	Sh01	50109001	1014|1015|1027	1	0
+SH4102	Sh02	50109002	1025|1026|1027	0	0
+SH4105	Sh01	50109001	1014|1015|1027	1	0
+GuardianHigh	1				
+GuardianPickUpID	4101|4105				
+GuardianTips	{"4101":["守护","【通过商城购买获得】"],"4102":["守护","【通过商城购买获得】"],"4105":["守护","【通过任务奖励获得】"]}				
+LegendAttrCountPreview	{"3":{"0":[1,0,0],"1":[0,1,0]},"4":{"0":[2,0,0],"1":[1,1,0],"2":[0,2,0]},"5":{"1":[2,1,0],"2":[1,2,0],"3":[0,3,0]},"6":{"3":[0,3,1]}}				
+LegendAttrRulePreview	{"1":[[15,25,44,52,54,55],[11,51,19],0],"2":[[15,25,44,52,54,55],[11,51,19],0],"3":[[22,45,44,53,54,55],[20,50,69],18],"4":[[22,45,44,53,54,55],[20,50,69],30],"5":[[22,45,44,53,54,55],[20,50,11],29],"6":[[22,45,44,53,54,55],[20,50,69],14],"7":[[22,45,44,53,54,55],[20,50,69],71],"8":[[15,25,44,52,54,55],[11,12,70],0],"9":[[15,25,44,52,54,55],[20,12,70],0],"10":[[15,25,44,52,54,55],[20,12,70],0]}				
+LegendAttrValueByColorPreview	{"51":[[3,200],[4,320],[5,400],[6,400]],"19":[[3,200],[4,320],[5,400],[6,400]],"11":[[3,625],[4,1000],[5,1250],[6,1250]],"12":[[3,250],[4,400],[5,500],[6,500]],"70":[[3,1000],[4,1600],[5,2000],[6,2000]],"20":[[3,200],[4,320],[5,400],[6,400]],"50":[[3,200],[4,320],[5,400],[6,400]],"69":[[3,250],[4,400],[5,500],[6,500]],"15":[[3,500],[4,800],[5,1000],[6,1000]],"25":[[3,500],[4,800],[5,1000],[6,1000]],"52":[[3,20],[4,25],[5,33],[6,33]],"45":[[3,500],[4,800],[5,1000],[6,1000]],"44":[[3,500],[4,800],[5,1000],[6,1000]],"22":[[3,250],[4,400],[5,500],[6,500]],"53":[[3,3],[4,4],[5,5],[6,5]],"54":[[3,250],[4,400],[5,500],[6,500]],"55":[[3,250],[4,400],[5,500],[6,500]]}				
+LegendAttrValueByClassLVPreview	{"29":[[9,600],[10,900],[11,1200],[12,1320],[13,1425],[14,1500],[15,1575]],"30":[[9,2000],[10,3000],[11,4000],[12,4400],[13,4750],[14,5000],[15,5250]],"14":[[9,1600],[10,2400],[11,3200],[12,3520],[13,3800],[14,4000],[15,4200]],"18":[[9,2000],[10,3000],[11,4000],[12,4400],[13,4750],[14,5000],[15,5250]],"71":[[9,800],[10,1200],[11,1600],[12,1760],[13,1900],[14,2000],[15,2100]]}				
+LegendAttrColor	{"1":[29,30,14,18,71],"2":[51,19,11,12,70,20,50,69],"3":[15,25,52,45,44,22,53,54,55]}	{"30":{"1500":["31cefb"],"2500":["ec4bf6"],"3500":["f8983b"],"10000":["ff0000"]},"33":{"750":["31cefb"],"1250":["ec4bf6"],"1750":["f8983b"],"10000":["ff0000"]}}	0	0	0
+EquipGSFormula	(((MinAtk+MaxAtk)*5.0+Def*5.0+MaxHP/4.0+AtkPer/10000.0+DamagePer/10000.0+SuperHitRate/10000.0+SuperHitPer/10000.0+DamReducePer/10000.0+MaxHPPer/10000.0+DefPer/10000.0+LuckyHitRate/10000.0+PetDamPer/10000.0+PerLVAtk/100.0+MissRate/10000.0+HitRate/10000.0+DamBackPer/10000.0+PerLVMaxHP+DropEquipPer/10000.0+DropMoneyPer/10000.0+IgnoreDefRateReduce/10000.0+DamChanceDef/10000.0+SuperHitReduce/10000.0+SkillAtkRate/10000.0+SpeedPer/10000.0+(((AtkSpeed+10000.0)/10000.0&)-1)*AtkSpeedC+OnlyFinalHurt*5.0/2.0+PVPAtkBackHP*5.0)#)	[67,68,6,8,11,20,19,23]	0	0	0
+EquipPartLength	148|400	58|80	0	0	0
+WingsPartLength	100|219				
+EquipWinArea	1|2|3|4|5|6|7|8|9|10	主手|副手|帽子|衣袍|腰带|下装|鞋履|龙牙|如意|如意			
+HorseUpItem	181	20	0	0	0
+VIPCard	1_978|2_979|3_980				
+VIPLV	1_0|2_500|3_1000|4_2000|5_5000|6_10000|7_20000|8_50000|9_100000|10_200000	5			
+VIPPrice	1_1288|2_788|3_288	1_4320|2_2160|3_720	1_至尊VIP（半年卡）|2_白金VIP（季度卡）|3_黄金VIP（包月卡）	1_增加180天VIP时长，赠送200点VIP经验，实力首选|2_增加90天VIP时长，赠送100点VIP经验|3_增加30天VIP时长	1_VipCard1|2_VipCard2|3_VipCard3
+VIPTitle	1_1|2_1|3_1|4_2|5_3|6_5|7_6|8_7|9_8|10_9				
+VIPLimit	1095	["VIPAwardMail",30]	259200	1_200|2_100|3_5	
+VIPExperience	6_2|10_1|5_1	1800			
+VIPAddAtkEXP	(npcLV/5.0#)+1	303	0	0	0
+RebornArguments	5|60|20|20	31160			
+DuplicatesRebornTime	0_10|31090_5				
+BuffType	3|4|5|6|9|14|16|17|18|21|22	20021|20020|20022			
+BuffCPInterface	20040_BOSSAscription	20021_RedName	20020_YellowName		
+AutoBuyDrug	251|252|253|254				
+RunTaskCnt	7_20|12_70	7_10|12_10			
+MoneyPray	10+((cnt-2@0)!1)*5+((cnt-4@0)!1)*5+((cnt-6@0)!1)*10+((cnt-8@0)!1)*10+((cnt-10@0)!1)*10+((cnt-12@0)!1)*10+((cnt-14@0)!1)*10+((cnt-16@0)!1)*10	400000	28800	[1,400000]	
+ExpPray	(10+((cnt-2@0)!2)*5+((cnt-4@0)!1)*10+((cnt-6@0)!9)*10!120)	(exp!(21600*reExp))			
+FreeExpPrayItem	986	1127			
+PrayRedPoint	50				
+MozhuTaskID	4000_201|4001_202|4002_203|4003_204|4004_205|4005_206|4006_207|4007_208|4008_209|4009_210|4010_211|4011_212|4012_213|4013_214|4200_101|4201_102|4202_103|4203_104|4204_105|4205_106|4206_107|4207_108|4208_109|4209_110|20511_301|20512_301|20513_301|20514_301|20515_301|20516_301|20004_105				
+RenzhuTaskID	101070|102030|102120|103070|103170|104150|105090|106050|107030				
+TaskExpend	10				
+MissionType	0	1|2|3|4			
+MainlineTaskType	0	Z1805			
+SideQuestsType	1|2|4|5|17|18|19|20|21	Z1806|Task1|Z1806|Task2|Z1806|Z1806|Task3|Z1806|Z1806			
+BountyMissionsType	6|7|8|9|10	Z1807|Z1807|Z1807|Z1807|Z1807			
+FairyAuMissionType	11|12	Z1808|Z1808|Z1808			
+DemonMissionType	3	Demon_Text			
+ArcaneMissionType	15	Z1800			
+TaskTypeReplacement	6|7|8|11|12	13			
+TaskContinue	106	30	5		
+TaskTypeColor	0|1|-5	feed28|feed28|109d06			
+FBTaskColor	2001|2002|2003|2004|2005|2006|3001|3002|3003|3004|3005|3006	ec4bf6			
+ConversationDistanc	4	1			
+ActionTime	[12,0]|[16,0]|[20,0]|[20,30]|[21,0]				
+DailyQuestRedPoint	1				
+FBEnterCD	31080_300	31080_50			
+InspireNum	10				
+BuyExpLiquidCondition	2|3|4	1|2	911|912|913		
+XjmjGuardian	4101|4105				
+RefreshText	1_StoreWin102|2_StoreWin104|3_StoreWin105|4_StoreWin106				
+MallCurrency	1_1|2_1|3_1|4_1|5_2				
+MallPush	100				
+BlastFurnaceLV	6				
+TreasureUpRateItem	101|105|106|107|104|102|109|110	4601|4602|4603|4604|4605			
+TeamReadyTime	30				
+ClientFightEnable	1	0	0	0	0
+AngryAdd	60	1	20	100	0
+ElderGodBigBoss	31503008				
+ElderGodTalkingTime	10				
+BossHomeCost	1_0|2_100|3_200|4_200|5_200|6_200|7_200|8_200	0	0	0	0
+BossShunt	10030|10040|10050|10060|21070	4	3		
+MapLine	10030_5|10040_5|10050_5|10060_5|21070_1				
+DungeonDeliver	31020|31030|31150				
+BuyFBCntCost	{"31080":"50","31140":"20","52010":"20+((hasBuyCnt-1@0)!1)*10+((hasBuyCnt-3@0)!1)*10+((hasBuyCnt-5@0)!1)*10+((hasBuyCnt-7@0)!1)*10+((hasBuyCnt-9@0)!1)*20","31190":"30+hasBuyCnt*10"}				
+DropRecordValue	3802|983|982|3803|3804|9051|9062|3805|3806|9073|9074|9075|9077|9078				
+PKText	0_不能攻击任何人|1_可以攻击任何人|5_不能攻击队友和盟友|2_不能攻击同服玩家				
+KillBossCntLimit	{(10403001,10503001,10603001,10703001,10803001,20103001,20103002,20103003,20103004,20103005,20103006,20103007,20203001,20203002,20203003,20203004,20203005,20203006,20203007):0,(30303001,30303002,30303003,30303004,30303005,30303006,30303007,30303008,30303009,30303010,30303011,30303012):1}	0_3|1_0	{0:'WB_Limit',1:'BossHome_Limit'}	{1:27}	{0:[21,'WorldBossNoHarm']}
+FamilyInvadeCfg	[180,1500,10,31170, [84,85,86,87], [101,31704003], {102:31704002,103:31704001}]	{1:0.5,3:0.6,4:0.8,5:1}	(48000*reExp*starPer*(passWheel/8.0!1)#)	[21010,21011]	[31704001,31704002,31704003]
+MuneKadoTrialBossHead	{"31003001":"TraiHead1"}				
+MunekadoMapID	60010|60020|60030|60040|60050|60060				
+MunekadoLockLimit	5				
+SingleIntoFB	160				
+PetRandomSpeak	20				
+ElderBattlefieldMapID	31160				
+MoneyDisplayModel	3_2102|2_2104|1_2105|15_3903|16_2109|23_2106|14_4307|6_3902	2103	0	0	0
+RoleNameLength	15				
+RandomJob	40|100|0				
+TransportPay	954	1			
+ItemPush	1|2|3|4|5|8|10|13|20|21|22|23|25|26|27|28|29|41|76|58|80|81|83|58				
+AutoOnHookMap	10010|10020|10030|10040|10050|10060|10070|10080				
+DialoguesTime	4	4			
+SpRewardMapID	51010				
+GuardFBCageNPCID	32502001	32504001	3		
+AutoRideHorseTime	20000				
+SealDemonNewbieLine	0|1|2				
+DemonJarFirstRemin	200	8			
+DemonJarRedPoint	90				
+DemonJarLevelLimit	179				
+TreasureOpen	102000				
+TreasureExitLimit	100				
+PropertyIcon	{"6":"XT_FB_TB5","7":"XT_FB_TB4"}				
+TreasureGetVipLv	302_1|303_3|304_6				
+DiceReward	{"0":{"exp":"180*reExp","gold":0,"item":[2211,0]},"1":{"exp":"360*reExp","gold":0,"item":[2211,0]},"2":{"exp":"360*reExp","gold":100000,"item":[2211,1]},"3":{"exp":"360*reExp","gold":100000,"item":[2211,2]},"4":{"exp":"360*reExp","gold":500000,"item":[2211,3]},"5":{"exp":"360*reExp","gold":500000,"item":[2211,4]},"6":{"exp":"720*reExp","gold":1000000,"item":[2211,8]}}				
+DiceFreeNum	5				
+StoryTaskIcon	1|2	Body_N000|Body_N997			
+TJG	((((((aMinAtk+aMaxAtk)/2.0*(1-aLuckyHitRate/10000.0+aLuckyHitRate/10000.0*(1.2+aLuckyHit/10000.0))+aSuperHitRate*aSuperHit/10000.0+aIceAtk)*(1+aDamagePer/10000.0)*(attackEff/10000.0)/(npcMaxHP*1.0)!1)*2.8*0.320833333333333+(((aMinAtk+aMaxAtk)/2.0*(1-aLuckyHitRate/10000.0+aLuckyHitRate/10000.0*(1.2+aLuckyHit/10000.0))+aSuperHitRate*aSuperHit/10000.0+aIceAtk)*(1+aDamagePer/10000.0)*(150000/10000.0)/(npcMaxHP*1.0)!1)*15*0.0166666666666667+skill2*(((aMinAtk+aMaxAtk)/2.0*(1-aLuckyHitRate/10000.0+aLuckyHitRate/10000.0*(1.2+aLuckyHit/10000.0))+aSuperHitRate*aSuperHit/10000.0+aIceAtk)*(1+aDamagePer/10000.0)*(50000/10000.0)/(npcMaxHP*1.0)!1)*2.1*0.041667+((((aMinAtk+aMaxAtk)/2.0*(1-aLuckyHitRate/10000.0+aLuckyHitRate/10000.0*(1.2+aLuckyHit/10000.0))+aSuperHitRate*aSuperHit/10000.0+aIceAtk)*(1+aDamagePer/10000.0)*(10000.0/10000.0)+(petMinAtk+petMaxAtk)/2.0*(1+petDamPer/10000.0)*(petSkillPer/10000.0+PetSkill1*0.1+PetSkill2*0.15+PetSkill3*0.15+PetSkill4*0.2+PetSkill5*0.2+PetSkill6*0.2+PetSkill7*0.25))/(npcMaxHP*1.0)!0.78)*2.09*(60*(atkSpeed/10000&)-(4+60/8+60/12+60/16+60/20))/60*1)+(((petMinAtk+petMaxAtk)/2.0*(1+petDamPer/10000.0)*(petSkillPer/10000.0+PetSkill1*0.1+PetSkill2*0.15+PetSkill3*0.15+PetSkill4*0.2+PetSkill5*0.2+PetSkill6*0.2+PetSkill7*0.25)/(npcMaxHP*1.0)!1)-0.5@0)*0.47*(atkSpeed/10000&)!5*(atkSpeed/10000.0&))*npcExp+(0.1*aFightPower/(aReFightPower*2+aFightPower))*npcExp#)*times	300	72000	{1:[50900, 50902],2:[55900,55902]}	48215|48235|48245|48260|48275|48320|48290
+TJGLevelLimit	90				
+ItemTimeOut	{"4101":[4101,380,688],"4102":[4102,288,0],"4105":[4101,380,688]}				
+ItemRepayButton	4101|4102|4105				
+GuardianOverDueImg	4101_LongImg|4102_FengImg|4105_LongImg				
+OutOfPrintValue	(maxOOPValue*(1!(0.001+0.05*(lv/350.0)+0.1*((lv/350.0)^2)+0.15*((lv/350.0)^3)+0.699*((lv/350.0)^4)))#)				
+GuideConfig	0	180			
+PreFight_Skill1_HpPer	9900				
+PreFight_Skill2_HpPer	98				
+PreFight_Skill3_HpPer	9800				
+PreFight_Fabao_HpPer	9700	5000			
+PreFight_Finish_HpPer	2500				
+PreFight_Fabao	1300				
+DogzAssist	3	{"3511":2}			
+DogzPack	100				
+XMZZBetCfg	{}				
+XMZZAward	{"3":[[104,1,1]],"6":[[104,2,1]],"9":[[104,3,1]],"12":[[105,1,1]],"15":[[105,1,1]]}	[[56,1,1]]	[[105,2,1],[992,1,1]]	[[105,1,1],[993,1,1]]	500
+XMZZRobot	[30403002,30403003]	30403001			
+BuyItemHinit	3				
+SpecialCollectNpcs	10000				
+PayRMB	10				
+OSCBillRankTypePromote	{"2":[36,8],"1":[25,2,17],"3":[1,29],"4":[2,14,18,5],"5":[33],"6":[25,21,33,95]}				
+OSCBillboardOpen	{"2":[15,1,2],"1":[200,3,3],"3":[30,4,4],"4":[200,5,5],"5":[6,6,6],"6":[1200000,7,7]}	10			
+SevenOnlineReaward	7	3			
+PetDanceInterval	8000				
+AudioSound	0.5				
+AllRoundSkills	48579|48580|48581|48582|48583|48584|48585|48586|48587|48588|48589|48590|48591|48592|48593|48594|48595|48596	7|9			
+EarlierGetTreasure	101|102|103|104				
+BossSound	5	3			
+XpNoUseDungeon	0				
+RandomWord	RandomWordA1|RandomWordA2|RandomWordA3|RandomWordA4|RandomWordA5	RandomWordB1|RandomWordB2|RandomWordB3|RandomWordB4|RandomWordB5			
+InvestCost	{"1":[300],"2":[300],"3":[680,1280,1880]}				
+InvestMaxDay	{"1":31,"2":28}				
+VIPInvest	{"1":[1,280],"2":[281,350],"3":[351,1000]}	4			
+GoldInvestLVLimit	300				
+JadeInvest	2|3|5|8|10				
+PassiveSkillShow	50902|50904|50905|50906|50907|50909|50911|50912|50913|55902|55904|55905|55906|55907|55909|55911|55912|55913|				
+NpcPosOffset	{"30909005":[28.16,9.14],"30909002":[28.22,65.79],"30909004":[55.87,37.31],"30909001":[85.27,9.25],"30909003":[85.47,66.02]}				
+TaskSortType	0|19|18|17|3|6|7|8|9|10|2|5|4|20|21|11|12	19|18|17|3|6|7|8|9|10|0|2|5|4|20|21|11|12			
+LeagueTable	31210	Map121_Xmyh/Default/Xmyh_table_00			
+OfflinePostItem	181|4151|4002|4003|4008|4009|4005|4006|951|956|4501|4502				
+TreasureSet11	[1, 10]	[10, 880]	[1000, 1001]	[60, 0]	[10, 120]
+TreasureSet21	(baseRate+curLuck/300.0*baseRate#)	[1, 12]	300		
+TreasureSet12	[1, 10]	[10, 880]	[1003, 1004]	[60, 0]	[10, 120]
+TreasureSet22	(baseRate+curLuck/300.0*baseRate#)	[1, 12]	300		
+OpenServerRedPacketType	5				
+OpenServerRedPacketCfg	3	10	3600	50	
+OpenServerRedPacketRain	200				
+RedEnvelopeVoiceCd	5000				
+MaininterfaceAniTime	0|0.1|0.1|0.1|0.1|0.1|0.1				
+GuideMission	101080|101120|102060|102100|102160|103030	103|104			
+ItemMaskEffect	99999				
+ItemEquipmentEffectItem	{"200":[3801,[4606,4615]],"1000":[[3802,3806],[4606,4610],[994,1006],[4184,4190],2320,5202,5206,181,4151,5207,5006,5007]}				
+ItemEquipmentEffect	{"80":[1,2,0],"150":[2,3,1],"999":[3,4,2]}	{"60":[1,2,0],"80":[1,2,0]}	{"1000":[1,1,0]}		
+IeemEquipmentEffectQuality	{"2":1134,"3":1133,"4":1131,"5":1132}				
+BuffToHitEffect	10015	52002			
+BuyItemPrice	956	10			
+PotentialSkillLearn	{"50065":[15,47000],"50165":[15,47010],"50265":[15,47020],"1065":[15,47030],"50365":[15,47040],"50465":[15,47050],"50565":[15,47060],"50665":[15,47070],"50765":[15,47080],"50865":[15,47090],"55065":[15,47200],"55165":[15,47210],"55265":[15,47220],"2065":[15,47230],"55365":[15,47240],"55465":[15,47250],"55565":[15,47260],"55665":[15,47270],"55765":[15,47280],"55865":[15,47290]}				
+FirstGold	{"1":[[6619,1,1],[221,1,1],[912,1,1],[4151,5,1],[3,1,1]],"2":[[6620,1,1],[221,1,1],[912,1,1],[4151,5,1],[3,1,1]]}	{"1":388,"2":388}	1800		
+ChargeDelayTime	60				
+FirstGoldTimeOut	130				
+FirstGoldMobs	1_6619|2_6620				
+FirstGoldTryItem	1_6621|2_6622	1_10331|2_20331	9	100	
+VipGiftTreasureEffect	304				
+FaBaoNPCID	10104008|10204002|10204011|10304004|10304014|10404012|10504008|10604004|10704002				
+BossDelayTime	0				
+IntroductionItem	181|4151	21001			
+TreasureSkip	150	0.2			
+EquipDevourCount	1	0			
+EquipDecomposeAward	10	[4611,4612,4613,4614,4615]			
+LoadLV	LoadingBackGround_1				
+ModeDefault	mob/prefab_race_n015|Prefab_Race_N015	mob/prefab_race_m011|Prefab_Race_M011	mob/prefab_race_b_cw01|Prefab_Race_B_Cw01	mob/prefab_horse_zq00|Prefab_Horse_Zq00	
+NpcHalfLength	(0.25,0.05,0)	(-2,-15,2)	0.77		
+ElderBattleTarget	901|902|903|904|905|906|907|908|909|910|911|912	921|922|923|924|925|926|927|928|929|930			
+MountPetDan	0|1000|2000|4000|6000|10000|14000|18000|24000|40000|150000|300000	1|1|2|3|4|6|8|12|16|20|40|60			
+SpecialGuide41	103030	73			
+FreeGoodsOpenTime	259200				
+SupremeCTGVipLimit	5				
+FirstPayRedPoint	160				
+BossRebornTotalPoint	500|600|700|800	200|300|400|9999			

@@ -1,0 +1,8 @@
+int	int	int[]	int[]	int[]	int[]	string
+id	Liveness	StageLV	ItemID	ItemCount	ItemBind	Description
+活跃ID	所需活跃度	阶段境界	奖励ID	奖励数量	是否绑定	奖励描述
+1	30	0|4|8|13	2|2|2|2	1|1|1|1	1|1|1|1	StageReward_Describe1
+2	60	0|4|8|13	952|952|952|952	1|1|1|1	1|1|1|1	StageReward_Describe2
+3	90	0|4|8|13	952|952|952|952	1|1|1|1	1|1|1|1	StageReward_Describe3
+4	115	0|4|8|13	4501|4501|4501|4502	1|3|5|1	1|1|1|1	StageReward_Describe4
+5	150	0|4|8|13	4151|4151|4151|4151	2|3|4|5	1|1|1|1	StageReward_Describe5

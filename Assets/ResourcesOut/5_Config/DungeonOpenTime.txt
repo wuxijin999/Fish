@@ -1,0 +1,25 @@
+int	string	int	int	int	int	int	int	int	int[]	int	int	int	int	int	int	int	int	int	int	string	string	int[]	
+DataMapID	FBName	OpenServerDay	CanEnterTime	DayTimes	DayReKind	WeekTimes	WeekReKind	FBType	RewardRate	BuyTimesID	ExtraTimesID	DeathTime	GuardPick	DoFight	HelpPoint	DelayTime	Movable	Skillable	SelectPlayerable	ExitDescription	PanelImg	ElixirHint	
+数据地图ID	副本名称	开服X天后开放	可进场分钟数	每日可挑战次数	每日重置类型	每周可挑战次数	每周重置类型	副本类型	评价奖励百分比	购买次数VIP权限ID	额外次数VIP权限ID	死亡是否显示倒计时	该地图守护是否能拾取	进入副本是否自动战斗	助战积分(0代表不可助战)	结算界面延迟出现时间（毫秒）	可移动的	可释放技能的	可否选择玩家	退出副本的语言提示	进入副本界面的背景图	副本专用的丹药ID	
+31020	BOSS之家一层	0	0	0	0	0	0	1	0	0	0	0	1	0	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31040	师门悬赏	0	0	0	0	0	0	1	0	0	0	1	0	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31090	新手剧情	0	0	0	0	0	0	1	0	0	0	0	0	0	0	4000	1	1	1	LeaveToConfirm1	HunLuanBG		
+41110	法宝副本	0	0	0	0	0	0	1	0	0	0	0	0	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31080	仙界秘境	0	0	2	2	0	0	2	75|60|45|30|21	21	0	1	1	1	0	2000	1	1	1	MJQuitRemind	XianJieBG	4670|4685	
+31110	渡劫	0	0	0	0	0	0	1	75|60|45|30|17	0	0	1	1	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG	4668	
+31130	符印塔	0	0	0	0	0	0	1	75|60|45|30|16	0	0	0	1	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31140	冰晶矿脉	0	0	2	2	0	0	1	75|60|45|30|15	18	0	1	1	1	0	2000	1	1	1	BJQuitRemind	BingJingBG		
+31150	古神禁地	0	0	5	2	0	0	1	0	0	19	1	1	0	0	2000	1	1	1	ElderGodQuitRemind	HunLuanBG	4665	
+31170	守卫人皇	0	30	1	2	0	0	1	75|60|45|30|20	0	0	1	1	1	0	2000	1	1	1	DungeonGuardSkyText3	RenHuangBG	4662|4686	
+31180	混乱妖域	0	30	1	2	0	0	3	100|90|80|70|60	0	0	1	1	1	80	2000	1	1	1	HLQuitRemind	HunLuanBG	4667	
+31190	麒麟之府	0	0	2	2	0	0	1	75|60|45|30|18	17	0	0	1	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31210	仙盟BOSS	0	0	0	0	0	0	1	0	0	0	1	0	1	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31220	仙盟联赛	0	20	1	2	0	0	1	0	0	0	1	0	0	0	2000	1	1	1	XMLSQuitRemind	HunLuanBG	4664|4671|4674	
+31230	仙盟宴会	0	15	1	2	0	0	1	0	0	0	1	0	0	0	2000	1	1	1	LeaveToConfirm1	HunLuanBG		
+31240	VIP Boss	0	0	0	2	0	0	1	0	0	15	1	1	1	0	2000	1	1	1	PersonalQuitRemind	HunLuanBG		
+51010	娲皇遗迹	0	0	2	2	0	0	3	100|70|50|30|20	0	0	1	1	1	120	2000	1	1	1	LeaveToConfirm1	WaHuangBG	4666	
+60010	宗门试炼	0	0	3	2	0	0	3	75|60|45|30|21	0	0	1	1	1	80	2000	1	1	1	ZMSLLeaveToConfirm	ZongMengBG		
+31160	上古战场	0	30	1	2	0	0	1	0	0	0	1	1	1	0	2000	1	1	1	LeaveToConfirm1	ShangGuBG	4669|4675	
+31250	守护副本	0	0	0	0	0	0	1	0	0	0	0	0	0	0	5000	1	1	1	LeaveToConfirm1	HunLuanBG		
+52010	封魔坛	0	0	5	2	0	0	1	0	25	0	1	1	1	0	2000	1	1	0	LeaveToConfirm2	HunLuanBG		
+31010	仙魔之争	0	0	3	2	0	0	1	0	0	0	0	0	1	0	1000	1	1	1	XMZZQuitRemind	HunLuanBG	4663|4672|4673	

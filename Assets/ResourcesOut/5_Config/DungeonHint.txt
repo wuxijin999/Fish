@@ -1,0 +1,42 @@
+int	int	int	int	string[]	int	int[]	int[]	string[]	int	int[]	int[]	string[]	int	int[]	int[]	string[]	string
+ID	dataMapId	LineId	targetNum	targetDescription1	targetType1	NPC1ID	targetValue1	targetDescription2	targetType2	NPC2ID	targetValue2	targetDescription3	targetType3	NPC3ID	targetValue3	Info	mark
+唯一标识	地图Id	功能线路ID	目标数量	目标1描述	目标类型1（0.通用；1.击败指定怪物 2.获取经验；3.积分；4.金钱，5.波数 6.击败所有类型的怪物 7.阶段）	目标1ID	目标1值	目标2描述	目标类型2（0.通用；1.击败怪物 2.获取经验；3.积分；4.金钱，5.波数）	目标2ID	目标2值	目标3描述		目标3ID	目标3值	界面提示	提示
+1	31040	0	1	获得积分: 	3		1200		3				3			击败<color=#44e863FF><Word info=npc id=30102003/>: 300分</color></r>击败<color=#44e863FF><Word info=npc id=30102002/>: 50分</color></r>击败<color=#44e863FF><Word info=npc id=30102001/>: 20分</color>	击败稀有的<color=#44e863FF><Word info=npc id=30102003/></color>可获得<color=#44e863FF>300分</color>
+2	31040	1	1	击败: <color=#44e863FF>@NPCName@</color>	1	30102004	1		1				1			及时躲避高伤害的预警技能！	及时躲避高伤害的预警技能！
+3	31040	2	1	击败: <color=#44e863FF>@NPCName@</color>	1	30102005	1		1				1			请及时躲避会自爆的<color=#44e863FF><Word info=npc id=30102006/></color>	请及时躲避会自爆的<color=#44e863FF><Word info=npc id=30102006/></color>
+4	31040	3	2	击败: <color=#44e863FF>@NPCName@</color>	1	30102008	1	击败: <color=#44e863FF>@NPCName@</color>	1	30102007	10		1			优先击败<color=#44e863FF><Word info=npc id=30102008/></color>,可削弱小怪属性	优先击败<color=#44e863FF><Word info=npc id=30102008/></color>,可削弱小怪属性
+5	31040	4	3	击败: <color=#44e863FF>@NPCName@</color>	1	30102009	9	击败: <color=#44e863FF>@NPCName@</color>	1	30102010	9	击败: <color=#44e863FF>@NPCName@</color>	1	30102011	9	优先击败会治疗的 <color=#44e863FF><Word info=npc id=30102011/></color>	优先击败会治疗的 <color=#44e863FF><Word info=npc id=30102011/></color>
+6	31040	5	1	击败: <color=#44e863FF>@NPCName@</color>	1	30102012	20		1				1			装备<color=#44e863FF>被动技能：乾元雷</color>可迅速通关!	<color=#44e863FF>使用法宝技能</color>可迅速通关!
+7	31090	0	1	击败: <color=#44e863FF>@NPCName@</color>	1	30902001	12		1				1			装备<color=#44e863FF>被动技能：乾元雷</color>可迅速通关!	<color=#44e863FF>使用法宝技能</color>可迅速通关!
+8	31190	0	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+9	31190	1	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+10	31190	2	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+11	31190	3	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+12	31190	4	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+13	31190	5	1	第1阶段：击败小怪数量|第2阶段：击败BOSS	6		30|1		5				5			击败终极BOSS给予奖励	
+14	31230	0	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+15	31230	1	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+16	31230	2	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+17	31230	3	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+18	31230	4	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+19	31230	5	2	经验：	2	0	0	仙盟贡献：	3		0		2			盟贡获取：</r>1.前往宴会品尝宴席</r>2.仙盟聊天频道抢答题目	
+20	60010	0	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601001|30601002|30603001	8|12|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+21	60010	1	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601003|30601004|30601005|30603002	8|10|2|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+22	60010	2	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601006|30601007|30601008|30603003	8|12|2|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+23	60010	3	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601009|30601010|30603004	8|12|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+24	60010	4	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601011|30601012|30601013|30603005	12|12|12|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+25	60010	5	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|决战！击败BOSS<color=#44e863FF>@NPCName@</color>|	6	30601014|30601015|30603006	12|12|1									将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|将小怪聚集到一处快速击败</r>副本评价越高，BOSS掉落越好|BOSS会释放范围眩晕技能，注意闪避</r>BOSS血量低于<color=#fa0101FF>50%</color>后会增加一个高伤范围技能	
+26	31180	0	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>	6	31801001|31801004|31803001	10|10|1						1			把怪聚集在一起击败|把怪聚集在一起击败|在尽量短的时间内击败Boss，评价越高奖励越好	
+27	31170	0	3	当前进度：	5		8	仙盟杀怪：	6			获得经验：	2			击退来犯敌人获得<color=#109d06FF>海量经验</color>。（推荐服用<color=#109d06FF>经验药水</color>哦）	
+28	31160	0	3	当前阶段：	7		6|6|6|6|6|6	积分目标：	3		200|600|1200|2000|3200|4800	阶段经验：	2		0|0|0|0|0|0	击败玩家：<color=#35e122FF>300分</color>  击败魔兵：<color=#35e122FF>200分</color></r>击败魔物：<color=#35e122FF>10分</color></r>魔兵在攻击时有几率触发一击必杀BUFF	
+29	51010	0	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>|第4阶段，击败<color=#44e863FF>@NPCName@</color>	1	31001001|31001002|31001003|31003001	16|16|16|1									小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败	
+30	51010	1	1	第1阶段，击败<color=#44e863FF>@NPCName@</color>|第2阶段，击败<color=#44e863FF>@NPCName@</color>|第3阶段，击败<color=#44e863FF>@NPCName@</color>|第4阶段，击败<color=#44e863FF>@NPCName@</color>	1	31001004|31001005|31001006|31001007	16|16|16|16									小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败|小怪受到伤害后，攻击降低，将小怪聚集到一处快速击败	
+31	51010	2	2	击败: <color=#44e863FF>@NPCName@</color>●追命	1	31003002	1	击败: <color=#44e863FF>@NPCName@</color>●暴烈	1	31003003	1					任意boss死亡，存活boss会暴怒，同时击败掉两只boss	
+32	51010	3	1	击败: Boss<color=#44e863FF>@NPCName@</color>	1	31003004	1				4					小怪死亡后给BOSS恢复10%血量，只击杀BOSS，注意不要击败小怪。	
+33	51010	4	1	击败: <color=#44e863FF>@NPCName@</color>真身	1	31003005	1									只有一只boss是真实的哦，击败真实boss快速过关	
+34	51010	5	1	击败: Boss<color=#44e863FF>@NPCName@</color>	1	31003007	1									雕像会为boss增加大量攻击和防御，优先打破雕像	
+35	51010	6	1	击败: <color=#44e863FF>@NPCName@</color>真身	1	31001009	3									真真假假，假假真真，寻找到隐藏在怪物里的boss击败哦	
+36	51010	7	1	击败: <color=#44e863FF>@NPCName@</color>	1	31003008	1									注意躲避boss的大招，英勇的击溃boss	
+37	31250	0	3	第1阶段，击败所有怪物	6	6	13	第2阶段，破坏<color=#44e863FF>@NPCName@</color>	1	32502001	1	第3阶段，与<color=#44e863FF>@NPCName@</color>对话	8	32504001	1	使用<color=#44e863FF>龙雀环</color>技能迅速清除小怪	
+38	31010	0	2	活动总胜场：	9		0	当前胜场：	10		0					胜利场次越多，可领取的奖励就越丰厚	
+39	31140	0	1	怒气：	3		1500									注意四处逃窜的<color=#35e122FF>霜冻巨石</color>，击败它可获得<color=#35e122FF>更多洗炼石</color></r><color=#35e122FF>怒气值满</color>后冰晶矿脉将会坍塌，<color=#35e122FF>副本关闭</color>	

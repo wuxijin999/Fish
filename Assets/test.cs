@@ -16,7 +16,6 @@ public class test : MonoBehaviour
 
     private void OnEnable()
     {
-        var config = ItemConfig.Get(30301002);
 
     }
 

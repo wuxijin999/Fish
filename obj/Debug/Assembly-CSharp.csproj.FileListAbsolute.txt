@@ -49,11 +49,9 @@ H:\Fish\Temp\bin\Debug\UnityEngine.ParticleSystemModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.PerformanceReportingModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.Physics2DModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.PhysicsModule.dll
-H:\Fish\Temp\bin\Debug\UnityEngine.Purchasing.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.ScreenCaptureModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.SharedInternalsModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.SpatialTracking.dll
-H:\Fish\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.SpriteMaskModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.SpriteShapeModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.StandardEvents.dll
@@ -67,7 +65,6 @@ H:\Fish\Temp\bin\Debug\UnityEngine.Timeline.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.TimelineModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.TLSModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.UI.dll
-H:\Fish\Temp\bin\Debug\UnityEngine.UIAutomation.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.UIElementsModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.UIModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.UmbraModule.dll
@@ -82,7 +79,6 @@ H:\Fish\Temp\bin\Debug\UnityEngine.UnityWebRequestWWWModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.VehiclesModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.VideoModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.VRModule.dll
-H:\Fish\Temp\bin\Debug\UnityEngine.WebModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.WindModule.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.XRModule.dll
 H:\Fish\Temp\bin\Debug\UnityScript.dll
@@ -94,13 +90,10 @@ H:\Fish\Temp\bin\Debug\ExCSS.Unity.dll
 H:\Fish\Temp\bin\Debug\Unity.Legacy.NRefactory.dll
 H:\Fish\Temp\bin\Debug\Boo.Lang.Parser.dll
 H:\Fish\Temp\bin\Debug\Boo.Lang.Compiler.dll
-H:\Fish\Temp\bin\Debug\Unity.UNetWeaver.dll
 H:\Fish\Temp\bin\Debug\Unity.IvyParser.dll
 H:\Fish\Temp\bin\Debug\Boo.Lang.PatternMatching.dll
 H:\Fish\Temp\bin\Debug\Boo.Lang.Useful.dll
 H:\Fish\Temp\bin\Debug\Unity.CecilTools.dll
-H:\Fish\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-H:\Fish\Temp\bin\Debug\Unity.Cecil.Mdb.dll
 H:\Fish\Temp\bin\Debug\UnityEngine.xml
 H:\Fish\Temp\bin\Debug\UnityEditor.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.AIModule.xml
@@ -132,7 +125,6 @@ H:\Fish\Temp\bin\Debug\UnityEngine.PhysicsModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.Physics2DModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.ScreenCaptureModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.SharedInternalsModule.xml
-H:\Fish\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.SpriteMaskModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.SpriteShapeModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.StyleSheetsModule.xml
@@ -157,13 +149,11 @@ H:\Fish\Temp\bin\Debug\UnityEngine.UnityWebRequestWWWModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.VRModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.VehiclesModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.VideoModule.xml
-H:\Fish\Temp\bin\Debug\UnityEngine.WebModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.WindModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.XRModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.UI.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.Networking.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.Timeline.xml
-H:\Fish\Temp\bin\Debug\UnityEngine.UIAutomation.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.GoogleAudioSpatializer.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.HoloLens.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
@@ -376,3 +366,11 @@ E:\Fish\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.xml
 E:\Fish\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
 E:\Fish\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
 E:\Fish\Temp\bin\Debug\UnityEngine.StreamingModule.xml
+H:\Fish\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.dll
+H:\Fish\Temp\bin\Debug\UnityEngine.LocalizationModule.dll
+H:\Fish\Temp\bin\Debug\UnityEngine.ProfilerModule.dll
+H:\Fish\Temp\bin\Debug\UnityEngine.StreamingModule.dll
+H:\Fish\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.xml
+H:\Fish\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
+H:\Fish\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
+H:\Fish\Temp\bin\Debug\UnityEngine.StreamingModule.xml

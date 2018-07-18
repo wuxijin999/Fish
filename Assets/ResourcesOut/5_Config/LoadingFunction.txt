@@ -1,0 +1,15 @@
+int	string	int
+ID	Icon	Level
+唯一标识	功能图片	等级
+1	Lv5	5
+2	Lv20	20
+3	Lv80	80
+4	Lv85	85
+5	Lv105	105
+6	Lv95	115
+7	Lv150	120
+8	FaBaoZH	150
+9	Lv180	180
+10	Lv200	200
+11	Lv190	220
+12	Lv240	240

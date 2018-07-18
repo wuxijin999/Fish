@@ -1,0 +1,744 @@
+string	string	string	int[]	string	int
+key	sound	effect	type	richText	order
+查找key	音效	特效	类型：控制位置和显示方式	富文本	优先级(值越高优先级越高,固定提示以及聊天频道不受此规则约束)
+VipLevel	0	0	1	Vip等级不足	0
+PrayerWin_1	0	0	1	Vip已过期，请续费	0
+VipCardHint1	0	0	1	恭喜您激活<color=#ff6701ff>VIP体验卡</color>，获得免费传送、免费私人提醒等多项特权	0
+VipCardHint2	0	0	1	您已经购买过VIP，无法使用VIP体验卡	0
+PassEquipLimitVip	0	0	1	玩家达到<color=#fa1010>VIP%s0</color>开启	0
+PassEquipLimitVipPast	0	0	1	玩家Vip已过期，请激活Vip重新开启	0
+PassEquipLimitMountLevel	0	0	1	坐骑总等级达到<color=#fa1010>%s0</color>开启	0
+VipTiyan_Timeout	0	0	1	Vip体验已过期，续费以获得更好的特权享受	0
+Vip_Timeout	0	0	1	Vip已过期，续费继续享受Vip特权	0
+VipCardHint3	0	0	1	<Word info=item ID=%s0/>使用成功！	0
+FuncNoOpen_BossHome	0	0	1	<color=#ff0303>%s0级</color>开启Vip特权Boss之家	0
+AchemyGreatSuccess	0	0	4|20	恭喜<color=#109d06>%s0</color>在<color=#006be3>八卦炉</color>里炼成极品<a><Word info=item ID=%s1/>|showitem=%s1</a>	0
+BuyItemHinit	0	0	1	您消耗%s0<Word info=RichTextMsgReplace Name=MONEY id=%s1/>购买了%s2	0
+BoxOpenCostMoney	0	0	1	消费<Word info=RichTextMsgReplace Name=MONEY id=%s0/>不足，无法打开宝箱	0
+OpenBoxToolNoEnough	0	0	1	%s0不足无法开启宝箱	0
+GeRen_chenxin_609765	0	0	1	您携带的铜钱已达上限	0
+GeRen_chenxin_749572	0	0	1	物品在冷却时间，无法使用	0
+BagFull	0	0	1	您的<color=#ff0303>背包</color>已满，请清理背包	0
+GeRen_chenxin_644055	0	0	1	该物品已锁定	0
+FuncNoOpen_WorldBoss	0	0	1	<color=#ff0303>%s0级</color>开启世界Boss	0
+WingWash_1	0	0	1	当前未佩戴翅膀，只能精炼佩戴在身上的翅膀	0
+WingWash_2	0	0	1	请先选择精炼材料	0
+CreatSuccess	0	0	1|20	角色已经创建！	0
+NameError	0	0	1|20	角色名称错误，请重新命名	0
+CreatingCharacter	0	0	1|20	角色创建中，请稍后…	0
+CreatUnusual	0	0	1|20	角色创建异常！	0
+RepeatName	0	0	1	角色名已存在！	0
+LoginSuccess	0	0	1	登录成功	0
+LoginFaile	0	0	1	登录失败	0
+RegisterSuccess	0	0	1	注册成功	0
+RegisterFaile	0	0	1	注册失败	0
+GeRen_lhs_31379	0	0	1	您的职业不符合	0
+04BBF813-7A30-47A8-927DE1ACCC4F378E	0	0	1	对不起，目标地点为障碍点！	0
+ObjectMapNonentity	0	0	1	该地图未开启！	0
+GeRen_liubo_279029	0	0	1	当前地图无法使用自动战斗	0
+CJ_DT_LoadMost	0	0	1	人数已达上限！请前往其他分线进入！	0
+Carry_lhs_844170	0	0	1	副本地图内无法进行传送	0
+Carry_lhs_697674	0	0	1	您当前所处的状态不能进行传送	0
+Carry_lhs_202580	0	0	1	很抱歉，您当前正处于战斗状态中，不能进行传送	0
+NearbyHint	0	0	1	距离太近，请不要浪费<Word info=Item ID=954 col=0/>	0
+DropRecord	0	0	2|20	<color=#109d06FF><a>%s0|showplayer=%s1</a></color>在<Word info=Map ID=%s2/>和<color=#12a199ff><Word info=NPC ID=%s3/></color>大战三百回合，获得了极品<a><Word info=item ID=%s4/>|showitem=%s4 userdata=%s5</a>	0
+GeRen_admin_671654	0	0	2|20	<color=#109d06FF><a>%s0|showplayer=%s1</a></color>在<Word info=Map ID=%s2/>和<color=#12a199ff><Word info=NPC ID=%s3/></color>大战三百回合，获得了极品<a><Word info=item ID=%s4/>|showitem=%s4 userdata=%s5</a>	0
+KirinHomeWheel	0	0	1	第%s0波麒麟守卫发起攻击	0
+Multiple_Finish	0	0	1	本日挑战次数已使用完，明天再来吧！	0
+Multiple_UpLV	0	0	1	挑战本难度需要角色达到%s0级	0
+NotChallengeMultiple	0	0	1	挑战本难度副本需要先通关<color=#ff0101FF>%s0级</color>副本	0
+MoppingUpLV	0	0	1	<color=#ff0303>%s0级</color>开启麒麟之府扫荡功能	0
+MoppingUpPass	0	0	1	扫荡该难度副本需要先通关<color=#ff0303>%s0级副本</color>	0
+UnopenedFunction	0	0	1	功能暂未开放	0
+FuncNoOpen_Strengthen	0	0	1	法宝<color=#ff0303>皓月枪</color>觉醒装备强化功能	0
+FuncNoOpen_Gem	0	0	1	<color=#ff0303>%s0级</color>任务开启宝石镶嵌功能	0
+FuncNoOpen_PersonBoss	0	0	1	<color=#ff0303>%s0级</color>开启Vip专属VIP Boss	0
+FuncNoOpen_DailyQuest	0	0	1	<color=#ff0303>%s0级</color>主线开启日常	0
+FuncNoOpen_Suit	0	0	1	<color=#ff0303>%s0级</color>开启套装锻造功能	0
+FuncNoOpen_Pray	0	0	1	<color=#ff0303>%s0级</color>开启铜钱祈愿功能	0
+FuncNoOpen_RankPanel	0	0	1	<color=#ff0303>%s0级</color>开启排行榜功能，看看自己是否金榜题名	0
+FuncNoOpen_He	0	0	1	<color=#ff0303>%s0级</color>开启合成功能，<color=#ff0303>180级</color>开启翅膀合成	0
+FuncNoOpen_DaBao	0	0	1	法宝<color=#ff0303>鬼牙刃</color>觉醒封魔坛打宝	0
+FuncNoOpen_WingsRefine	0	0	1	<color=#ff0303>%s0级</color>开启翅膀精炼，提升翅膀品质	0
+FuncNoOpen_Sp	0	0	1	<color=#ff0303>%s0级</color>开启技能潜力提升	0
+FuncNoOpen_Wash	0	0	1	<color=#ff0303>%s0级</color>开启装备洗练功能	0
+FuncNoOpen_GuShen	0	0	1	<color=#ff0303>%s0级</color>开启古神禁地，夺取套装石	0
+FuncNoOpen_AutoZhan	0	0	1	<color=#ff0303>%s0级</color>开启装备合成，红三星装备降世	0
+FuncNoOpen_WingsHe	0	0	1	<color=#ff0303>%s0级</color>开启翅膀合成，酷炫翅膀翱翔天际	0
+FuncNoOpen_FreePoint	0	0	1	<color=#ff0303>%s0级</color>开启自由加点	0
+FuncNoOpen_ChatLimit	0	0	1	<color=#ff0303>%s0级</color>开启聊天对话	0
+FuncNoOpen_Friend	0	0	1	<color=#ff0303>%s0级</color>开启仙缘	0
+FuncNoOpen_Market	0	0	1	<color=#ff0303>%s0级</color>开启集市	0
+FuncNoOpen_RuneTower	0	0	1	<color=#ff0303>%s0级</color>开启符印塔	0
+FuncNoOpen_LianDanLu	0	0	1	激活法宝<color=#ff0303>八卦炉</color>开启炼丹	0
+FuncNoOpen_Rune	0	0	1	法宝<color=#ff0303>龙雀环</color>觉醒符印	0
+FuncNoOpen_SignIn	0	0	1	<color=#ff0303>%s0级</color>开启签到	0
+FuncNoOpen_Task	0	0	1	<color=#ff0303>%s0级</color>开启仙盟任务	0
+FuncNoOpen_UnionMatch	0	0	1	<color=#ff0303>%s0级</color>且加入仙盟后开启仙盟联赛	0
+FuncNoOpen_Mount	0	0	1	法宝<color=#ff0303>杏黄旗</color>觉醒至<color=#ff0303>坐骑</color>开启该功能。	0
+FuncNoOpen_Magic	0	0	1	<color=#ff0303>%s0级</color>开启神兵	0
+FuncNoOpen_Pet	0	0	1	法宝<color=#ff0303>磐龙印</color>觉醒至<color=#ff0303>灵宠</color>开启该功能。	0
+FuncNoOpen_MoZu	0	0	1	<color=#ff0303>%s0级</color>开启魔族法宝	0
+FuncNoOpen_Realm	0	0	1	<color=#ff0303>%s0级</color>开启境界	0
+FuncNoOpen_Fairy	0	0	1	<color=#ff0303>%s0级</color>开启仙盟	0
+FuncNoOpen_XMZZ	0	0	1	<color=#ff0303>%s0级</color>开启仙魔之争	0
+FuncNoOpen_XMYH	0	0	1	<color=#ff0303>%s0级</color>开启仙盟宴会	0
+FuncNoOpen_SGZC	0	0	1	<color=#ff0303>%s0级</color>开启上古战场	0
+FuncNoOpen_PassSkill	0	0	1	<color=#ff0303>%s0级</color>开启被动技能	0
+ElderGod_SomeIn	0	0	1	玩家<color=#109d06FF>%s0</color>进入了古神禁地	0
+FuncNoOpen_EquipDevour	0	0	1	<color=#ff0303>%s0级</color>开启装备分解功能	0
+FuncNoOpen_XBXZ	0	0	1	<color=#ff0303>%s0级</color>开启仙宝寻主功能	
+Guardian_ContinuePay	0	0	1	续费成功	0
+Friend_OffLine	0	0	1	对方玩家不在线	0
+Friend_OffChat	0	0	1	无法与黑名单的玩家私聊	0
+Friend_OffTeam	0	0	1	无法邀请黑名单内的玩家	0
+Friend_NoExist	0	0	1	很遗憾，没有搜索到玩家	0
+Friend_RemoveBlacklist	0	0	1	请先将目标移出黑名单	0
+Friend_Blacklist	0	0	1	您已被对方列入黑名单	0
+Friend_FullList	0	0	1	好友列表已满	0
+Friend_OtherFullList	0	0	1	目标好友已满	0
+Friend_ApplyFriend	0	0	1	已向对方提交好友申请	0
+Friend_YetFriend	0	0	1	对方已经是您的好友	0
+Friend_RejectFriend	0	0	1	对方拒绝了您的好友请求	0
+Friend_MakeFriend	0	0	1	<color=#109d06FF>%s0</color>成为你的好友	0
+Friend_DeleteFriend	0	0	1	您解除了和对方的好友关系	0
+Friend_DeleteFriend2	0	0	1	<color=#109d06FF>%s0</color>解除了和您的好友关系	0
+BlacklistFull	0	0	1	黑名单人数已满，无法继续添加	0
+AddBlackList	0	0	1	已将<color=#109d06FF>%s0</color>加入黑名单	0
+MarketNoPutaway1	0	0	1	绑定物品不能上架	0
+MarketNoPutaway2	0	0	1	镶嵌宝石的装备不能上架	0
+MarketNoPutaway3	0	0	1	套装化的装备不能上架	0
+MarketNoPutaway4	0	0	1	物品最多上架%s0个	0
+UseSkillCDLimit	0	0	1	技能CD中	0
+Skill1Btn_Unlock	0	0	1	法宝<color=#006be3FF>定海神珍</color>觉醒获得	0
+Skill2Btn_Unlock	0	0	1	法宝<color=#006be3FF>皓月枪</color>觉醒获得	0
+Skill3Btn_Unlock	0	0	1	法宝<color=#006be3FF>鬼牙刃</color>觉醒获得	0
+Skill4Btn_Unlock	0	0	1	法宝<color=#006be3FF>磐龙印</color>觉醒获得	0
+Skill5Btn_Unlock	0	0	1	法宝<color=#006be3FF>杏黄旗</color>觉醒获得	0
+Skill6Btn_Unlock	0	0	1	法宝<color=#006be3FF>东皇钟</color>觉醒获得	0
+Skill7Btn_Unlock	0	0	1	法宝<color=#006be3FF>紫金葫芦</color>觉醒获得	0
+SkillXpBtn_Unlock	0	0	1	法宝<color=#006be3FF>龙雀环</color>觉醒获得	0
+SkillPanel_Unlock	0	0	1	法宝<color=#006be3FF>%s0</color>觉醒开启技能页划动	0
+GoldErr	0	0	1	<color=#109d06FF>您的仙玉数量不足！</color>	0
+Protect_1	0	0	1	护法成功，玩家挑战成功后将获得护法奖励	0
+Protect_2	0	0	1	护法无效，对方加成已达上限	0
+Protect_3	0	0	1	护法无效，玩家已离开副本	0
+Protect_4	0	0	1|20	每日最多护法<color=#109d06FF>%s0</color>次，已达护法奖励次数上限，护法成功将不再获得护法礼包	0
+InterruptPlayer	0	0	100	<color=#109d06FF>%s0</color>正在打断您打坐	0
+MeditationNews	0	0	1|20	<color=#109d06FF>%s0</color>正在<color=#12a199FF><Word info=Map ID=%s1/></color>打坐挑战心魔<color=#109d06><a>前往观摩|FindPlayer=1 mapId=%s1 x=%s2 y=%s3 line=%s4</a></color>	0
+RealmUpSuccess	0	0	1|20	恭喜<color=#109d06FF>%s0</color>境界晋升至<Word info=realm ID=%s1/>	0
+RealmSitTimeNoEnough	0	0	1	已达最大可缩短时间，无法继续增加	0
+MeditationFailed	0	0	3	打坐中断，剩余打坐时间：<color=#109d06FF>%s0</color>	0
+RealmNoEnoughTreasure	0	0	1	法宝激活数量不足	0
+WB_Limit	0	0	1	今日世界Boss疲劳值已达上限，无法再对世界Boss造成伤害	0
+BossHome_Limit	0	0	1	今日Boss之家疲劳值已达上限，无法再对Boss之家的Boss造成伤害	0
+CanootTalk02	0	0	1	发送的聊天信息过于频繁	0
+CanootTalk08	0	0	1	您已被禁言，聊天信息发送失败	0
+CanootTalk09	0	0	1	请勿发送内容重复的聊天信息	0
+CanootTalk10	0	0	1	私聊对象不存在或未上线	0
+CanootTalk13	0	0	1	输入的聊天信息过长	0
+CanootTalk14	0	0	1	发送的聊天信息不能为空	0
+CanootTalk04	0	0	1	聊天信息中带有非法字符	0
+NoChatTarget	0	0	1	无法发送消息，没有聊天对象	0
+GeRen_lwh_272921	0	0	1	请先激活该灵宠	0
+GeRen_liubo_148706	0	0	1	天道酬勤，万人敬仰的等级榜第一<color=#109d06FF>%s0</color>上线了！	0
+GeRen_liubo_232930	0	0	1	气拔山河，霸者无双的第一高手<color=#109d06FF>%s0</color>上线了	0
+ViewPlayer_OffLine	0	0	1	抱歉，无法查看离线玩家信息	0
+SeePlayer_Cannot	0	0	1	无法查看自己的信息	0
+PrayerWin_2	0	0	1	祈愿次数已达上限，请提升Vip等级	0
+MoneyPray_HowMuch	0	0	2	摇钱神树显灵啦，获得%s0铜钱	0
+ExpPray_HowMuch	0	0	2	知识之书显灵啦，获得%s0经验	0
+SwitchEquip_Strengthen	0	0	1	强化等级已自动继承，超出部分保留为熟练度	0
+SwitchEquip_Strengthen2	0	0	2	强化等级已自动继承	0
+Task_cannot_Perfection	0	0	1	任务异常，奖励错误	0
+ElderBattlefieldBest	0	0	1|20	<color=#109d06FF>%s0</color>玩家，在上古战场中总积分最多，奖励<a><Word info=item ID=%s1/>|showitem=%s1</a>	0
+Guardian_Timeout	0	0	1	<Word info=item ID=%s0/>已过期，去商城里挑选守护继续陪伴吧	0
+SwitchEquip_SuitPanel	0	0	2	已自动转移全部套装石	0
+GeRen_admin_272921	0	0	1|20	<color=#109d06FF>%s0</color>在<color=#12a119FF><Word info=Map ID=%s1/></color>击败了<color=#12a119FF><Word info=NPC ID=%s2/></color>掉落出<a><Word info=item ID=%s3/>|showitem=%s3</a>	0
+SwitchEquip_Wash	0	0	2	装备洗练属性已自动继承	0
+Wash_NoEquip1	0	0	1	穿戴装备后才可进行洗练	0
+GeRen_chenxin_628920	0	0	1	您获得伤害鼓舞状态，伤害增加%s00%	0
+GeRen_chenxin_93643	0	0	1	鼓舞效果已达上限	0
+Xjmj_CopperInspireFull	0	0	1	当前铜钱鼓舞效果已达上限，可使用仙玉鼓舞继续提升伤害	0
+TeamNoExist	0	0	1	队伍不存在！	0
+Xjmj_InspireNoEnoughFairy	0	0	1	您的绑定仙玉和仙玉不足，无法进行仙玉鼓舞	0
+Xjmj_InspireNoEnoughGold	0	0	1	您的铜钱不足，无法进行铜钱鼓舞	0
+Xjmj_InspireMaxLevel	0	0	1	鼓舞次数已达上限	0
+Friend_OpenAliance	0	0	1	50级开启仙盟	0
+Friend_OtherHaveAlliance	0	0	1	目标已有仙盟	0
+Friend_NotAliance	0	0	1	目标没有仙盟	0
+Friend_OtherLessLv	0	0	1	目标等级不足	0
+Friend_RejectAlliance	0	0	1	目标拒绝了您的邀请入盟请求	0
+Friend_JoinAlliance	0	0	1	您的入盟申请被通过	0
+jiazu_xyj_31379	0	0	1	您的盟主已经离线超过2天，盟主之位已自动转让	0
+8A51A214-9410-42DA-ABD8884CE3CB81C8	0	0	1	当前名称已有其他仙盟使用，请重新输入！	0
+jiazu_xyj_671654	0	0	1	您今天至少退出过一次仙盟，暂时不能参加该仙盟活动	0
+GeRen_liubo_644055	0	0	1	你已不在获胜仙盟，无法领取仙盟胜利奖	0
+XW_JZ_LeaguerOnline	0	0		<color=#109d06FF>%s0</color>上线了	0
+XW_JZ_LeaguerLeaveline	0	0		<color=#109d06FF>%s0</color>下线了	0
+XW_JZ_InviteErr_Repeat	0	0	1	该玩家已有仙盟！	0
+XW_JZ_InviteErr_Refuse	0	0	1	目标拒绝了您发出的邀请加入仙盟请求	0
+XW_JZ_InviteErr_Popedom	0	0	1	您没有邀请加入仙盟的权限	0
+XW_JZ_InviteErr_OutLine	0	0	1	该玩家不在线	0
+XW_JZ_InviteErr_NoName	0	0	1	您还没有输入要邀请的玩家名称	0
+XW_JZ_InviteErr_Lv	0	0	1	目标等级低于<color=#ff0303FF>%s0</color>，邀请仙盟失败	0
+XW_JZ_InviteEnter	0	0	1	邀请消息已发送，等待对方应答！	0
+jiazu_liubo_671654	0	0	1|20	广纳天下志士，共证修仙长生道，<color=#109d06FF>%s0</color>建立了<color=#ff6701FF> %s1</color>仙盟！<color=#109d06FF><a>前往入盟|ApplyFairy=%s2</a></color>	0
+XW_JZ_EstablishSud	0	0	1	恭喜您，仙盟建立成功！	0
+XW_JZ_LeaveFamily	0	0	32	<color=#109d06FF>%s0</color>退出了仙盟	0
+XW_JZ_EnterFamily	0	0	32	<color=#109d06FF>%s0</color>加入了仙盟	0
+XW_JZ_EnterFamilyInfo	0	0	1|20	恭喜您成功加入仙盟<color=#109d06FF>%s0</color>	0
+XW_JZ_EstablishErr_Lv	0	0	1	您的等级低于了50级，无法建立仙盟！	0
+XW_JZ_EstablishErr_Money	0	0	1	您的金钱不足，建立仙盟失败！	0
+XW_JZ_EstablishErr_Name	0	0	1	您输入的仙盟名已存在，建立仙盟失败！	0
+XW_JZ_EstablishErr_Nonlicet	0	0	1	您输入的仙盟名含有非法字符，建立仙盟失败！	0
+GeRen_liubo_980181	0	0	1	仙盟名称的字数不能超过%s0个中文或%s1个英文	0
+jiazu_andyshao_0	0	0	1	您尚未加入仙盟！	0
+jiazu_hwj35_425673	0	0	1	对方仙盟不存在！	0
+jiazu_hwj35_917284	0	0	1	您输入的玩家名字不存在，邀请失败！	0
+jiazu_lhs_161795	0	0	1|20	建立仙盟需要<Word info=RichTextMsgReplace Name=MONEY id=%s0/><Word info=RichTextMsgReplace Name=MONEY id=%s1/>	0
+jiazu_lhs_202580	0	0	1	仙盟人数已达上限，无法招收新成员！	0
+jiazu_lhs_861048	0	0	1	您邀请的玩家不存在！	0
+jiazu_pan_141056	0	0	1	对不起，目标仙盟申请加入列表已满，申请加入仙盟失败！	0
+jiazu_pan_243780	0	0	32	仙盟成员<color=#109d06FF>%s0</color>已经更名为<color=#109d06FF>%s1</color>	0
+jiazu_pan_500807	0	0	1	申请加入仙盟成功！请等待仙盟管理人员审批！	0
+jiazu_pan_592934	0	0	1	<color=#109d06FF>%s0</color>拒绝了您加入仙盟的申请！	0
+CanootTalk07	0	0	1	您尚未加入仙盟，仙盟频道聊天信息发送失败	0
+GeRen_hwj35_717982	0	0	1|20	您的等级不足,到达%s0级可创建仙盟	0
+GeRen_admin_425673	0	0	1	您获得了<color=#109d06FF>%s0</color>点仙盟积分!	0
+GeRen_chenxin_85890	0	0	1	您已经加入仙盟了	0
+jiazu_lhs_0	0	0	1	您没有加入仙盟！	0
+FamilyNameChangeNoNull	0	0	1	仙盟新名称不可为空	0
+FamilyNameChangeOnluZhu	0	0	1	只有盟主才能更改仙盟名	0
+FamilyNameChangeUsed	0	0	1	当前名称已有其他仙盟使用，请重新输入！	0
+FamilyNameChangeNo	0	0	1	仙盟名称未发生改变	0
+FamilyNameChangeUnlegal	0	0	1	仙盟名称存在不合法字符	0
+FamilyNameChangeError	0	0	1	修改仙盟名称异常	0
+TreasuryDonation	0	0	32	<color=#109d06FF>%s0</color>捐献了<a><Word info=item id=%s1/>|showitem=%s1 userdata=%s2</a>	0
+TreasuryExchange	0	0	32	<color=#109d06FF>%s0</color>使用<color=#109d06FF>%s1点</color>仓库积分兑换<a><Word info=item id=%s2/>|showitem=%s2 userdata=%s3</a>	0
+FamilyMatchTime	0	0	5|20	仙盟联赛对战列表已分配，打开仙盟联赛界面可查看详情	0
+FamilyMatchBeforeStart	0	0	5|20	仙盟联赛将于<color=#109d06FF>%s0</color>分钟后开始，请各仙友提前做好准备	0
+FamilyMatchStart	0	0	5|20	仙盟联赛已经开始，请仙友们通过仙盟联赛界面及时进入战场	0
+FamilyMatchFirstSessionEnd	0	0	5	本场仙盟联赛已结束，下一场将于<color=#109d06FF>周五21：00</color>举行	0
+FamilyMatchSecondSessionEnd	0	0	5	本轮仙盟联赛已结束，<color=#ff6701FF>%s0</color>仙盟拔得头筹，成为王者仙盟	0
+FamilyMatchRankNoOne	0	0	5|20	<color=#109d06FF>%s0</color>在仙盟联赛中表现优异，获得额外<Word info=item id=%s1/>奖励	0
+FamilyMatchOccupied	0	0	1|20	有一个资源水晶被敌方占领了，快去抢夺回来	0
+FamilyMatchEnimeyResources	0	0	1|20	敌方资源点已达<color=#109d06FF>%s0</color>点	0
+FamilyMatchOwnResources	0	0	1|20	己方资源点已达<color=#109d06FF>%s0</color>点	0
+FamilyMatchLianWinReward	0	0	5|20	<color=#ff6701FF>%s0</color>仙盟盟主将连胜奖励<Word info=item id=%s1/>分配给<color=#109d06FF>%s2</color>，神兵降世	0
+FamilyMatchBuff	0	0	1|20	强力BUFF生成在战场内，快快去争夺	0
+FamilyMatchBuffOccupied	0	0	1|20	<color=#006be3FF><Word info=Skill ID=%s0/></color>BUFF已被己方仙盟获得，士气大涨	0
+FamilyMatchBuffOccupiedEnimy	0	0	1|20	<color=#006be3FF><Word info=Skill ID=%s0/></color>BUFF已被敌方仙盟获得，努力争夺下一个，不要气馁	0
+PlayerWarFamilyIDIsChange	0	0	1	您在本轮联赛中退出了原仙盟，无法在原仙盟以外的仙盟参与仙盟联赛	0
+FamilyWarFightingLeaveLimiit	0	0	1	您的仙盟正处于联赛对战中，此时无法退出仙盟	0
+FamilyWarFightingDeleteMemLimiit	0	0	1	您的仙盟正处于联赛对战中，此时无法踢出成员	0
+PlayerFamilyWarIsOver	0	0	1	您的仙盟已结束本场对战，无法进入战场	0
+FBIsNotOpen	0	0	1	当前时间副本未开放	0
+NoFamilyWarLine	0	0	1	您的仙盟当前无联赛对战，无法进入战场	0
+GeRen_liubo_976459	0	0	1	您的仙盟已占领该资源，无需重复占领	0
+GeRen_liubo_660051	0	0	1|32	您的仙盟心法<Word info=RichTextMsgReplace Name=HEART id=%s0/>提升到了<color=#109d06ff>%s1</color>级	0
+UseMagicLost16	0	0	2	该技能已经是最高等级	0
+Party_TopThree	0	0	20	仙盟宴会答题排名前三仙盟，<color=#ff0303FF>第一名：</color><color=#ff6701ff><Word show=%s0/></color>；第二名：<color=#ff6701FF><Word show=%s1/></color>；第三名：<color=#ff6701FF><Word show=%s2/></color>	0
+Party_TopPlayer	0	0	20	获得本次宴会“答题王”的玩家：<color=#109d06ff><Word show=%s0/></color>	0
+Party_Topic	0	0	31	<Word info=fairyquestion id=%s0/>	0
+Party_Answer	0	0	31	“<color=#109d06ff>%s0</color>聪慧过人，回答正确”	0
+FamilyNoIntoParty	0	0	1|20	您不在宴会中无法答题，请前往参加宴会答题。	0
+Party_OverTime	0	0	32	活动将在<color=#109d06ff>%s0</color>秒后结束	0
+Party_HadCollected	0	0	1	已获得采集奖励，快到仙盟频道参与答题吧	0
+Party_CollectSuccess	0	0	1	采集成功，获得<color=#109d06ff>%s0</color>点仙盟贡献	0
+XMZZ_Streak	0	0		<color=#109d06ff>%s0</color>击败<color=#109d06ff>%s1</color>，</r>已达到<color=#109d06ff>%s2</color>连胜，获得<color=#109d06ff>%s3</color>积分	0
+XMZZ_ShutDown	0	0		<color=#109d06ff>%s0</color>终结了<color=#109d06ff>%s1</color>的<color=#109d06ff>%s2</color>连胜	0
+XMZZ_LeadingStage	0	0	4	第%s0阶段的仙魔之争，<color=#109d06ff><Word info=RichTextMsgReplace Name=XMZZFaction id=%s1/>阵营</color>积分领先，继续加油	0
+XMZZ_DrawStage	0	0	4	第%s0阶段的仙魔之争，双方阵营积分相同	0
+XMZZ_Victory	0	0	4	本次仙魔之争，<Word info=RichTextMsgReplace Name=XMZZFaction id=%s0/>阵营获得胜利	0
+XMZZ_Draw	0	0	4	本次仙魔之争，双方阵营积分相同，结果平局，恭喜所有参与者获得平局大奖	0
+XMZZ_FirstPlace	0	0	4	本次活动%s0获得%s1积分，获得积分第一名奖励	0
+XMZZ_BettingOver	0	0	2	第%s0阶段的投注剩余投注时间1分钟	0
+XMZZ_FinalBettingOver	0	0	2	最终阵营胜负与第1阶段投注剩余投注时间1分钟	0
+GeRen_chenxin_197707	0	0	1	镶嵌成功！	0
+SwitchEquip_Gem	0	0	2	已自动转移全部宝石	0
+GemFullLevelError	0	0	1	宝石已达最大等级，无法继续升级	0
+GeRen_chenxin_573322	0	0	1	您当前属性点不足，无法装备！	0
+itemuse_andyshao_671654	0	0	1	角色属性不足，无法穿戴装备	0
+GeRen_chenxin_960792	0	0	1	属性点不足，无法装备	0
+Friend_FullTeam	0	0	1	队伍人数已满	0
+Friend_OtherFullTeam	0	0	1	目标队伍人数已满	0
+Friend_HaveTeam	0	0	1	您已有队伍，请先退出再申请	0
+Friend_JoinFailed	0	0	1	对方拒绝了您的入队申请	0
+Friend_RejectTeam	0	0	1	对方拒绝了您的组队邀请	0
+GeRen_liubo_986912	0	0	1	该地图无法进行组队或退出队伍	0
+InviteEnterLost01	0	0	1	该玩家拒绝了您的邀请，邀请入队失败！	0
+InviteEnterLost02	0	0	1	该玩家已在他人队伍中，邀请入队失败！	0
+GeRen_chenxin_570355	0	0	1	我方队伍已满员	0
+GeRen_lwh_0	0	0	1	对方玩家所在地图无法组队	0
+ApplyEnterLost02	0	0	1	对方拒绝了您的入队请求	0
+GeRen_chenxin_227479	0	0	1	队伍已满员	0
+GeRen_chenxin_543685	0	0	2|41	<color=#109d06FF>%s0</color>加入了队伍	0
+LeaveProcession	0	0	2|41	<color=#109d06FF>%s0</color>离开了队伍	0
+InsteadHeader	0	0	2|41	<color=#109d06FF>%s0</color>成为了队长	0
+Team_Header_TransferLost	0	0	1|20	该玩家已经离线	0
+GeRen_chenxin_498155	0	0	1|20	您已经离开了队伍	0
+PK_hwj35_21675	0	0	1|20	该玩家已经离线	0
+GeRen_hwj35_500807	0	0	1|20	该玩家已经离线	0
+CanootTalk06	0	0	1	您还没有队伍，队伍频道聊天信息发送失败	0
+NoMatchingTeam	0	0	1	当前地图无适合匹配队伍！	0
+NoMatchingPlayer	0	0	1	当前地图无适合匹配玩家！	0
+TeamMatchingTimeMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的次数不足	0
+TeamMatchingTimeAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06FF>%s1</color>的次数不足	0
+TeamEnterTimeMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的次数不足	0
+TeamEnterTimeAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06FF>%s1</color>的次数不足	0
+GeRen_chenxin_268121	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，次数不足	0
+TeamMatchingCDMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的副本进入冷却中	0
+TeamMatchingCDAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06FF>%s1</color>的副本进入冷却中	0
+TeamEnterCDMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的副本进入冷却中	0
+TeamEnterCDAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的副本进入冷却中	0
+SingleEnterCD	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，副本进入冷却中	0
+TeamMatchingLVMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的等级不符	0
+TeamMatchingLVAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的等级不符	0
+TeamEnterLVMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的等级不符	0
+TeamEnterLVAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#ff0303ff>%s1</color>的等级不符	0
+FbLV	0	0	1	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您的等级不符	0
+TeamMatchingJobMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的职业阶级不符	0
+TeamMatchingJobAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的职业阶级不符	0
+TeamEnterJobMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的职业阶级不符	0
+TeamEnterJobAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的职业阶级不符	0
+SingleEnterJob	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您的职业阶级不符	0
+TeamMatchingTicketMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的通行证不足	0
+TeamMatchingTicketAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的通行证不足	0
+TeamEnterTicketMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您的通行证不足	0
+TeamEnterTicketAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>的通行证不足	0
+GeRen_chenxin_157069	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您的通行证不足	0
+TeamMatchingDeadMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您已经死亡	0
+TeamMatchingDeadAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>已经死亡	0
+TeamEnterDeadMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您已经死亡	0
+TeamEnterDeadAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>已经死亡	0
+SingleEnterDead	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您已经死亡	0
+TeamMatchingBossMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在打BOSS	0
+TeamMatchingBossAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在打BOSS	0
+TeamEnterBossMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在打BOSS	0
+TeamEnterBossAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在打BOSS	0
+SingleEnterBoss	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您正在打BOSS	0
+TeamMatchingPKMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在PK中	0
+TeamMatchingPKAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在PK中	0
+TeamEnterPKMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在PK中	0
+TeamEnterPKAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在PK中	0
+TeamMatchingSITMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在打坐中	0
+TeamMatchingSITAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在打坐中	0
+TeamEnterSITMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在打坐中	0
+TeamEnterSITAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在打坐中	0
+SingleEnterPK	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在PK中	0
+TeamMatchingGatherMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在采集中	0
+TeamMatchingGatherAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在采集中	0
+TeamEnterGatherMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您正在采集中	0
+TeamEnterGatherAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>正在采集中	0
+SingleEnterGather	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您正在采集中	0
+TeamMatchingDungeonMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您处于副本中	0
+TeamMatchingDungeonAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>处于副本中	0
+TeamEnterDungeonMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您处于副本中	0
+TeamEnterDungeonAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>处于副本中	0
+SingleEnterDungeon	0	0	1|20	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您处于副本中	0
+TeamMatchingDefaultMe	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您不满足副本进入条件	0
+TeamMatchingDefaultAll	0	0	1|20	自动匹配<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>不满足副本进入条件	0
+TeamEnterDefaultMe	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为您不满足副本进入条件	0
+TeamEnterDefaultAll	0	0	1|41	队长发起进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，因为<color=#109d06ff>%s1</color>不满足副本进入条件	0
+SingleEnterDefaul	0	0	1	进入<color=#12a199ff><Word info=Map ID=%s0/></color>副本失败，您不满足副本进入条件	0
+TeamMatchingSucceed	0	0	1	匹配成功！	0
+TeamEnterForbid	0	0	1	副本准备中无法执行其他操作！	0
+TeamEnterFailed	0	0	1|20	<color=#109d06FF>%s0</color>拒绝了副本请求，进入副本失败	0
+DungeonGroupOnlyTeamLeader	0	0	2	只有队长才可发起组队进入	0
+DungeonGroupAutoOnlyLeader	0	0	2	当前在队伍中，只有队长才可以发起自动匹配	0
+DungeonGroupNoSingleIn	0	0	2	当前在队伍中，无法单人进入副本	0
+TeamInviteSuccess	0	0	1	已成功发送组队邀请	0
+TeamAskSuccess	0	0	1	已成功发送入队申请	0
+AutoMatchingNoTarget	0	0	1	未选择队伍目标，无法进行自动匹配	0
+AutoMatchingCannotChangeTarget	0	0	1	自动匹配中，无法变更组队伍目标	0
+AutoMatchingCannotJoinTeam	0	0	1	队伍人数已满，无法进行自动匹配	0
+AcceptTeamLost	0	0	2|41	该玩家已有队伍	0
+SendWorldMessage	0	0	2|41	已发送世界喊话	0
+BeginAutoMatching	0	0	2|41	开始自动匹配	0
+TeamAskLost	0	0	1	发送申请失败，您的等级与目标队伍等级不符	0
+TeamKick	0	0	1|20	您已被踢出队伍	0
+hwj_20170807_1	0	0	1|20	分解成功，获得<color=#109d06FF>%s0</color><Word info=RichTextMsgReplace Name=MONEY id=%s1/>	0
+LostRes	0	0	1	您失去了<Word info=item id=%s0/></color><color=#00ADE0FF>%s1个	0
+LostMoney	0	0	2	您失去了<color=#109d06FF><Word info=RichTextMsgReplace Name=MONEY id=%s0/>%s1</color>	0
+GetMoney	0	0	11	您得到了<color=#109d06FF><Word info=RichTextMsgReplace Name=MONEY id=%s0/>%s1</color>	0
+GetSP	0	0	11	您得到了<color=#109d06FF>%s0</color>潜力值！	0
+GeRen_lhs_0	0	0	11	您得到了经验<color=#109d06FF>%s0</color>点！	0
+LvErr	0	0	1	您的等级不足	0
+GeRen_chenxin_143504	0	0	1	您没有<Word info=item id=%s0/>	0
+GeRen_chenxin_676165	0	0	1	您的<color=#ff0303FF><Word info=RichTextMsgReplace Name=Packet id=%s0/></color>空间不足！	0
+GeRen_chenxin_279029	0	0	1	您被<color=#12a199ff><Word info=NPC id=%s0/></color>击倒了！	0
+GoldPaperErr	0	0	1	您的绑定仙玉数量不足！	0
+ObtainRes01	0	0	1	您获得了<Word info=item ID=%s0/>%s1个！	0
+SilverErr	0	0	1	您的铜钱数量不足！	0
+NoOpen_Item	0	0	1	暂未开放<Word info=item id=%s0/>道具	0
+GeRen_chenxin_21675	0	0	1	您当前生命充盈，无需补充！	0
+GeRen_chenxin_913598	0	0	1	很抱歉，该物品不属于你！	0
+Z_NoFlyItem	0	0	1	很抱歉,您的<Word info=Item ID=954 col=0/>不足,无法进行传送	0
+GeRen_chenxin_774045	0	0	1	该物品不可使用	0
+GeRen_chenxin_988937	0	0	1	恭喜%s0成为了获得了属性加成VIP专属特权！	0
+GeRen_chenxin_509966	0	0	1	由于您做了其他的加点操作，本次智能加点失败！	0
+GetMoney01	0	0	1|20	出售成功，获得<color=#109d06FF><Word info=RichTextMsgReplace Name=MONEY id=%s0/>%s1</color>	0
+E1B111AE-6A1D-4823-A5016B3ADFF9FC10	0	0	1	您真的要退出活动吗？（中途退出将视为放弃奖励）	0
+5AA6955A-9BCE-4AE2-894B3463048320EC	0	0	1	您确定要退出吗？（中途退出将视为闯关失败）	0
+Z_LackOfMoney	0	0	1	仙玉不足无法领取双倍奖励	0
+RideLimit_lhs_0	0	0	1	本地图不允许骑乘！	0
+GeRen_liubo_671654	0	0	1	增加背包成功	0
+GeRen_mx_697674	0	0	1	您当前所处的地图无法使用传送功能，传送失败	0
+PK_liubo_827276	0	0	1	与目标之间存在障碍,无法进行攻击	0
+Market_Price_Null	0	0	1	物品售价不能为空	0
+NoEnoughMoney1	0	0	1	仙玉不足	0
+MarketCannotSell	0	0	1	该物品不可交易	0
+HaveBody	0	0	1	这个地方有人了不能坐，你换个地方吧！	0
+NotAttackable	0	0	1|20	不可攻击正在打坐的玩家	0
+GeRen_lhs_272921	0	0	1	该物品无法出售！	0
+GeRen_wjr_717982	0	0	1|20	需要前置技能<color=#006be3FF><Word info=Skill ID=%s0/></color>达到<color=#ff0303FF>%s1级</color>	0
+BourseBagfull	0	0	1	背包空位不足、无法购买	0
+BoursePasswordError	0	0	1|20	密码错误无法购买	0
+LvUp_Get_Task	0	0	1	等级提升，您有新的任务可接受	0
+GeRen_liubo_309847	0	0	1	没有可一键出售的装备	0
+XW_JZ_AppointFamily	0	0	1	<color=#109d06FF>%s0</color>被任命为<color=#ff6701FF><Word info=RichTextMsgReplace Name=FAMILY id=%s1/></color>！	0
+VipCard	0	0	1	购买的Vip时长超过最大天数限制	0
+LackMoney	0	0	1	您的<color=#fa1010><Word info=RichTextMsgReplace Name=MONEY id=%s0/>不足</color>,无法购买此物品！	0
+LackXBMoney	0	0	1	您的<color=#fa1010><Word info=RichTextMsgReplace Name=MONEY id=%s0/>不足</color>,无法兑换此物品！	0
+HookPrompt_Automatic	0	0	1	恢复挂机	0
+HookPrompt_Manual	0	0	1	暂停挂机，进入手动模式	0
+NoFighting	0	0	1	安全区内禁止战斗	0
+MapInfo1	0	0	1	当前地图，无法打开区域地图功能！	0
+GeRen_chenxin_436832	0	0	1	当前状态无法更换装备！	0
+WingWash_3	0	0	1	当前翅膀已精炼到完美属性！	0
+Join_Space_Lost	0	0	1	现在不是活动时间唷	0
+FuncLimit_Level	0	0	1	等级不足，无法开启功能	0
+FuncLimit_Treasure	0	0	1	功能对应的法宝未收集	0
+UnLock_TreasureLimit	0	0	1	激活<color=#fa1010>%s0</color>可查看	0
+FuncLimit_Realm	0	0	1	境界等级不足，无法开启功能	0
+Map_Delivery	0	0	1	当前地图未解锁，无法传送！	0
+MapType_ATK1	0	0	1	进入中立区域，自动切换为<color=#FF0303FF>强制模式</color>	0
+MapType_ATK2	0	0	1	进入本服高危防守区域，自动切换为<color=#FF0303FF>防守模式</color>	0
+GuardianHuang0	0	0	32	魔族大军已到达战场，开始进攻。	0
+GuardianHuang1	0	0	32	<color=#12a199ff><Word info=NPC ID=%s0/></color>进攻,该怪物会对护卫及人皇造成大量伤害，请迅速击杀。	0
+GuardianHuang2	0	0	32	Boss<color=#12a199ff><Word info=NPC ID=%s0/></color>欲打扰人皇炼丹，请火速回防！	0
+GuardianHuang3	0	0	32	<color=#12a199ff><Word info=NPC ID=%s0/></color>突袭,该怪物会对人皇造成爆炸伤害，请火速击杀。	0
+PersonalBoss_LevelLimit	0	0	2|20	达到<color=#ff0303ff>%s0</color>级才可挑战该Boss	0
+NoReceiveMessage	0	0	1	目标: %s0 死亡后1秒内客户端没有收到死亡包.	0
+RuneBagFull	0	0	1	您的<color=#ff0303ff>符印背包</color>已满，请及时清理	0
+SkillBtn_CD	0	0	1	<color=#FF0303FF>技能正处于冷却中</color>	0
+PK_admin_0	0	0	1	<color=#FF0303FF>注意:您正在遭受攻击!</color>	0
+PK_lhs_318691	0	0	1|20	您被玩家<color=#109d06ff>%s0</color>击倒了！	0
+GeRen_chenxin_740826	0	0	1	您当前的状态无法进行此操作	0
+KaiQi_Map	0	0	1	法宝<color=#006be3FF>鬼牙刃</color>未解封，无法开启功能	0
+FB_liubo_54470	0	0	4|20	<color=#109d06FF>%s0分钟</color>后可进入<color=#12a199><Word info=Map ID=%s1/></color>，请做好准备！	0
+GeRen_chenxin_998371	0	0	1	您的<color=#ff0303ff>背包</color>已满，请清理背包	0
+GeRen_chenxin_805889	0	0	0	目标距离过远，拾取物品失败	0
+PassSkillSameError	0	0	1	当前技能页已存在该技能	0
+SetPassEquipPageSuccess	0	0	1	已装备技能页%s0	0
+PassEquipLimitLevel	0	0	1	玩家达到<color=#fa1010>%s0级</color>开启	0
+WingTiyan_Timeout	0	0	1	180级开启翅膀合成，快快升级吧~	0
+Item_Effect_Max	0	0	1|20	无法使用物品，效果叠加上限为%s小时!	0
+OfflinePluginTime	0	0	1	使用失败，离线挂机时间已达到上限	0
+PK_liubo_500807	0	0	1	对不起，您切换游戏线路过于频繁，请稍后重试!	0
+GeRen_admin_31379	0	0	1|20	恭喜您将<color=#006be3FF><Word info=Skill ID=%s0/></color>升到<color=#109d06FF>%s1级</color>！	0
+GeRen_liubo_471172	0	0	4|20	恭喜<color=#109d06FF>%s0</color>通关<Word info=runetower id=%s1/>，解锁新符印<color=#109d06FF><Word info=towernewrune id=%s1/></color>，前往挑战新的符印塔吧！	0
+RuneTowerInfo_1	0	0	4|20	恭喜<color=#109d06FF>%s0</color>通关<Word info=runetower id=%s1/>，解锁新符印合成类型<color=#109d06FF><Word info=towernewrune id=%s1/></color>，通关全部符印塔！	0
+RuneTowerInfo_2	0	0	4|20	恭喜%s0在<color=#109d06FF><Word info=runetowerfloor id=%s1/></color>，获得<Word info=coloritem id=%s2/>符印	0
+RuneTowerInfo_3	0	0	4|20	恭喜%s0在扫荡<color=#109d06FF><Word info=runetower id=%s1/></color>时，获得<Word info=coloritem id=%s2/>符印	0
+Map_AtkType	0	0	1	当前地图禁止切换战斗模式	0
+DemonJar_Text1	0	0	1	Boss暂未复活，无法进入	0
+DemonJar_Text2	0	0	1	等级不足，无法挑战	0
+DemonJar_Text3	0	0	1	挑战次数不足，等待次数恢复或购买次数	0
+DemonJar_Text4	0	0	1	战场清理中···	0
+DemonJar_Text5	0	0	1	副本人数已满	0
+GeRen_admin_327925	0	0	1	已经领取过该奖励	0
+GeRen_lhs_202580	0	0	1	您的背包空间不足，请先清理背包	0
+Family_ChangeName	0	0	5|32	仙盟<color=#ff6701ff>%s0</color>改名为<color=#ff6701ff>%s1</color>	0
+GeRen_liubo_827276	0	0	1|20	使用<Word info=item ID=957/>成功，减少<color=#109d06FF>%s0</color>小时的红名时间！	0
+PK_Leave	0	0	1	在PK状态下，无法进行传送	0
+Boss_Leave	0	0	1	与Boss战斗时，无法进行传送或参与活动	0
+MoneyIsFull	0	0	1|20	您的<color=#ff0303FF><Word info=RichTextMsgReplace Name=MONEY id=%s0/></color>已超过持有上限，无法继续增加	0
+InDungeon_CantGo	0	0	1	您已在副本中，无法前往	0
+GeRen_admin_825676	0	0	20|2	您当前等级累积经验值已达上限,无法获得经验!	0
+jiazu_hwj35_367906	0	0	1|32	对不起,您邀请加入战盟的玩家已经下线!	0
+XW_ZZ_ResInvalidation	0	0	1	目标身上已携带了一个更加强大的效果,物品使用无效!	0
+StrengthenLevelBroadCast	0	0	1	恭喜玩家<color=#109d06ff>%s0</color>将<a><Word info=item ID=%s1/>|showitem=%s1</a></color>强化到<color=#109d06ff>%s2</color>级	0
+AtkModeErr	0	0	2	当前模式不可PK	0
+PK_lhs_861048	0	0	2	无法攻击队友！	0
+TodayNoDungeonReward	0	0	2	今日副本次数已用完，无常规副本奖励	0
+AssistantIntegral	0	0	2|41	助战副本，获得%s0助战积分	0
+AssistantIntegralFull	0	0	2|41	今日可获得助战积分已达上限	0
+PK_pan_31379	0	0	4|20	<color=#109d06ff>%s0</color>小试身手，在<color=#12a199ff><Word info=Map ID=%s1/></color>击败了【<color=#ff6701ff>%s2</color>】<Word info=RichTextMsgReplace Name=FAMILY id=%s3/><color=#109d06>%s4</color>	0
+PK_pan_861048	0	0	4|20	<color=#109d06>%s0</color>一鼓作气，在<color=#12a199ff><Word info=Map ID=%s1/></color>再次击败了【<color=#ff6701ff>%s2</color>】<Word info=RichTextMsgReplace Name=FAMILY id=%s3/><color=#109d06>%s4</color>	0
+PK_pan_202580	0	0	4|20	<color=#109d06>%s0</color>势如破竹，在<color=#12a199ff><Word info=Map ID=%s1/></color>又双叒叕击败了【<color=#ff6701ff>%s2</color>】<Word info=RichTextMsgReplace Name=FAMILY id=%s3/><color=#109d06>%s4</color>	0
+PK_pan_272921	0	0	4|20	<color=#109d06>%s0</color>大显神通，在<color=#12a199ff><Word info=Map ID=%s1/></color>累积十次击败了【<color=#ff6701ff>%s2</color>】<Word info=RichTextMsgReplace Name=FAMILY id=%s3/><color=#109d06>%s4</color>	0
+PK_pan_671654	0	0	1|32	<Word info=RichTextMsgReplace Name=FAMILY id=%s0/><color=#109d06>%s1</color>在<color=#12a199ff><Word info=Map ID=%s2/></color>被【<color=#ff6701ff>%s3</color>】<Word info=RichTextMsgReplace Name=FAMILY id=%s4/><color=#109d06>%s5</color>击败了，兄弟们快来支援！<color=#109d06><a>前往支援|FindPlayer=1 mapId=%s2 x=%s6 y=%s7 line=%s8</a></color>	0
+PK_pan_318691	0	0	1|32	<Word info=RichTextMsgReplace Name=FAMILY id=%s0/><color=#109d06>%s1</color>在<color=#12a199ff><Word info=Map ID=%s2/></color>被<color=#ff6701ff>%s3</color>击败了，兄弟们快来支援！<color=#109d06><a>前往支援|FindPlayer=1 mapId=%s2 x=%s4 y=%s5 line=%s6</a></color>	0
+jiazu_chenxin_272921	0	0	1|32	仙盟升级成功，消耗贡献<color=#109d06ff>%s0</color>	0
+AlreadyInTeam	0	0	2|41	您已在该队伍中！	0
+PK_lhs_202580	0	0	2	您杀孽过重，您将不能继续攻击他人！	0
+MakerDrug101	0	0	1	炼丹材料不足，无法炼丹	0
+MakerDrug102	0	0	1	炼丹特殊材料不足，无法炼丹	0
+WingComposeSuccess1	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成一代翅膀<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+WingComposeSuccess2	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成二代翅膀<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+WingComposeSuccess3	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成三代翅膀<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+WingComposeSuccess4	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成四代翅膀<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+WingComposeSuccess5	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成五代翅膀<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+EquipComposeSuccess1	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成红色二星<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+EquipComposeSuccess2	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成红色三星<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+XianComposeSucces1	0	0	1|20	恭喜<color=#109d06FF>%s0</color>成功合成橙色二星<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>
+	0
+FuncNoOpen_Recharge	0	0	2	<color=#ff0303>%s0级</color>开启充值	0
+ServerDown	0	0	2	服务器维护中	0
+ServerOpen	0	0	2	服务器将于<color=#109d06FF>%s0</color>开启	0
+WingRefineisFull	0	0	2	精炼值已满，无法选择精炼材料	0
+NotFightStepCanNotCollect	0	0	1	非战斗期间不能采集	0
+CoinTaskReward	0	0	1|20	恭喜玩家<color=#109d06FF>%s0</color>在师门悬赏时获得999万铜钱	0
+FunctionNotOpen	0	0	2	<color=#ff0303FF>%s0</color>活动开启后才能查看排行榜	0
+GetMount	0	0	1|20	恭喜<color=#109d06FF>%s0</color>激活坐骑<Word info=item ID=%s1/>，修仙之路，快人一步！	0
+GetPet	0	0	1|20	恭喜<color=#109d06FF>%s0</color>获得灵宠<Word info=pet ID=%s1/>，萌宠相伴，笑傲三界！	0
+OfflinePlugSuccess	0	0	1|20	领取成功，获得<color=#109d06FF>%s0小时</color>离线挂机时间	0
+LVRewardFirst	0	0	4|20	恭喜玩家<color=#109d06FF>%s0</color>一马当先，成功领取<color=#109d06FF>%s1</color>级限量礼包！	0
+LVReward	0	0	4|20	恭喜玩家<color=#109d06FF>%s0</color>冲级神速，成功领取<color=#109d06FF>%s1</color>级限量礼包！	0
+ChooseMessage	0	0	1|20	恭喜玩家<color=#109d06FF>%s0</color>开启<Word info=item ID=%s1/>获得了<a><Word info=item id=%s2/>|showitem=%s2 isbind=%s3 itemcnt=%s4 userdata=%s5</a>	0
+AvoidSink01	0	0	20	您是未成年用户，为了您的身心健康，请注意控制游戏时间。累计在线时间<color=#ff0303FF>低于3小时</color>，则为健康游戏时间；累计在线时间达<color=#FF0303FF>3小时以上</color>，则为<color=#FF0303FF>不健康游戏时间</color>	0
+AvoidSink02	0	0	20	您是未成年用户，目前累计在线时间已达<color=#ff0303FF>%s0小时</color>，为健康游戏时间，为了您的身心健康，请注意控制游戏时间！	0
+AvoidSink03	0	0	20	您目前累计在线时间已达<color=#FF0303FF>%s0小时</color>，为不健康游戏时间，您的游戏收益将降为<color=#FF0303FF>0</color>。为了您的身心健康，请尽快下线休息，做适当身体活动，合理安排学习生活。	0
+AvoidSink05	0	0	20	您目前累计在线时间已超过<color=#FF0303FF>%s0小时</color>，已进入<color=#FF0303FF>不健康游戏时间</color>。为了您的健康，请您立即下线休息。如不下线，您的身体将受到损害；您的收益已降为零，直到您的累计下线时间满5小时后，才能恢复正常。	0
+AvoidSink09	0	0	20	您是未成年用户，目前处于防沉迷时间阶段，游戏内收益降低为<color=#FF0303FF>0</color>	0
+BUGSubmit	0	0	1	提交成功,感谢您提供的宝贵意见!	0
+BUGSubmitCoolTime	0	0	1	对不起,1分钟内无法再次提交！	0
+TreasureUnsealed	0	0	1	解封当前法宝，即可开启法宝技能提升！	0
+ElderBattlefieldGetBuff	0	0	1	获得<color=#006be3FF>%s0</color>buff加成	0
+DelBlackSuccess	0	0	2	移除黑名单成功	0
+PlayerInDaZuo	0	0	1	当前正处于打坐状态中，无法前往！	0
+EquipSuit5	0	0	1|20	恭喜<color=#109d06FF>%s0</color>玩家激活%s1件<color=#109d06FF>%s2阶</color><Word info=RichTextMsgReplace Name=GroupType id=%s3/><Word info=RichTextMsgReplace Name=SuiteType id=%s4/>套装	0
+PKFuHuo	0	0	1	对方正处于无敌保护期间,攻击无效!	0
+NoEnoughRealmSitItem	0	0	1	心魔灯不足，无法打坐！	0
+NocturnalProtection	0	0	1	夜间保护中,无法对目标造成伤害！	0
+DailyQuestwinUnionLimit	0	0	1	您尚未加入仙盟！	0
+WingsRefinePerfect	0	0	1|20	恭喜玩家<color=#109d06>%s0</color>将<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>精炼至完美，神翼降世	0
+ElixirUsedMax	0	0	2	<Word info=item ID=%s1/>已达使用上限，无法继续使用	0
+WashCongratulation	0	0	1|20	恭喜玩家<color=#109d06FF><a>%s0|showplayer=%s1</a></color>将<color=#109d06ff><Word info=RichTextMsgReplace Name=EquipType id=%s2/></color>部位洗炼等级提升至<color=#109d06ff>%s3</color>级	0
+WashMasterCongratulation	0	0	1|20	恭喜玩家<color=#109d06FF><a>%s0|showplayer=%s1</a></color>将全部<color=#109d06ff><Word info=RichTextMsgReplace Name=WashSuitType id=%s2/></color>部位洗炼等级提升至<color=#109d06ff>%s3</color>级激活洗炼大师属性	0
+PersonalBoss_VipLimit	0	0	1	Vip4开启私人专属VIP Boss	0
+FairyRequested	0	0	1	该仙盟已申请过，请耐心等待	0
+StrengthenCongratulation	0	0	1|20	恭喜玩家<color=#109d06ff>%s0</color>将<a><Word info=item id=%s1/>|showitem=%s1 isbind=%s2 itemcnt=%s3 stone=%s4 userdata=%s5 place=%s6 equippartsuite=%s7 strengthenlv=%s8 equipwash=%s9 equipitems=%s10</a>强化至<color=#109d06ff>%s11级</color>
+	0
+EverydayUseLimit	0	0	2	已达到今日使用上限	0
+SignInText	0	0	1|20	签到成功，根据Vip等级获得对应的奖励。	0
+SignInText1	0	0	2	签到成功，根据法宝：<color=#109d06ff><Word info=treasure id=%s0/></color>的特殊效果增加<color=#109d06ff><Word info=Property id=%s1/> %s2点</color>。	0
+SignInText2	0	0	2	签到成功，根据灵宠技能：<color=#109d06ff><Word info=skill id=%s0/></color>的特殊效果增加<color=#109d06ff><Word info=Property id=%s1/>%s2点</color>。	0
+AchievementLVLimit	0	0	1	等级不足%s0级，无法触发秘闻任务	0
+FurnaceLVUp	0	0	4|20	恭喜玩家<color=#109d06FF>%s0</color>将八卦炉等级提升到<color=#109d06FF>%s1</color>级，解锁<color=#006be3FF><Word info=Alchemy id=%s2/></color>	0
+UseCntLimit	0	0	1	使用次数已超过最大上限	0
+UseElixirHint	0	0	1	使用<Word info=item ID=%s0/>成功，获得<color=#109d06FF><Word exp=%s1/></color>经验	0
+UseLVLimit	0	0	2	超出等级限制，无法使用物品	0
+UseItem1	0	0	1	使用<Word info=item ID=%s0/>成功，<Word info=buffDesc id=%s1/>,增加<Word Time=%s2/>	0
+UseItem2	0	0	1	使用<Word info=item ID=%s0/>成功，获得<color=#109d06FF>%s1</color>小时离线挂机时长	0
+FuncNoOpen_Nowaday	0	0	1	当前版本不开放充值功能	0
+FuncNoOpen_VIP	0	0	1	当前版本不开放Vip功能	0
+DungeonNoGO	0	0	1	您已在在副本中，无法前往其他地图	0
+WashPoint	0	0	1	该属性没有可重置的属性点	0
+WashPoint2	0	0	1	使用<Word info=item ID=%s0/>成功，重置<color=#109d06FF><Word info=Property id=%s1/> %s2点</color>，剩余可重置<color=#109d06FF>%s3点</color>	0
+TheEmperor1	0	0	1	无法进入，您的仙盟已通关该副本。	0
+Carry_lhs_306641	0	0	1	目标地点为副本地图，无法传送！	0
+Carry_hwj35_0	0	0	1	您未达到该地图的进入等级，无法传送	0
+Cmwd_CompleteMark	0	0	1	上仙，今日师门悬赏已全部完成，明日可再来接取	0
+UnblockTreasure	0	0	20	恭喜<color=#109d06ff>%s0</color>获得法宝<color=#fa1010ff><Word info=treasure id=%s1/></color>	0
+WytjReward	0	0	1|20	恭喜玩家<color=#109d06FF>%s0</color>在我要天机活动中投掷出六个天机骰子获得最高奖励	0
+NOGreatBourn	0	0	2	当前非大境界渡劫状态，无法将大境界渡劫设为队伍目标	0
+GemComposeFail	0	0	1	同等级宝石数量不足，无法合成	0
+DemonJarDoubleVip	0	0	1	<size=22><color=#fa1010>VIP %s0 </color></size>开启封魔坛双倍挑战	0
+DemonJarDoubleUnEnough	0	0	1	剩余次数不足双倍挑战，请购买次数	0
+HLYYBeforeStart	0	0	5|20	混乱妖域将于<color=#109d06FF>%s0</color>分钟后开始，请各仙友提前做好准备	0
+HLYYStart	0	0	5|20	混乱妖域活动开始，前方凶险，各位仙友最好组队前往	0
+XMZZBeforeStart	0	0	5|20	仙魔之争将于<color=#109d06FF>%s0</color>分钟后开始，请各仙友提前做好准备	0
+XMZZStart	0	0	5|20	仙魔之争活动开始，请各位仙友前去一较高下	0
+GetGodWeapon	0	0	1|20	恭喜<color=#109d06ff>%s0</color>解封<color=#109d06ff><Word info=GodWeapon type=%s1/></color>	0
+GodWeaponLv	0	0	1|20	恭喜<color=#109d06ff>%s0</color>将<color=#109d06ff><Word info=GodWeapon type=%s1/></color>升至<color=#109d06ff>%s2</color>阶	0
+PetUpLv	0	0	1|20	恭喜<color=#109d06ff>%s0</color>将灵宠<color=#109d06ff><Word info=Pet id=%s1/></color>驯养至<color=#109d06ff>%s2</color>级，解锁技能<color=#109d06ff><Word info=Skill ID=%s3/></color>，战斗力大幅度提升！	0
+PetUpLvMax	0	0	1|20	恭喜<color=#109d06ff>%s0</color>将灵宠<color=#109d06ff><Word info=Pet id=%s1/></color>驯养至满级，战斗力大幅度提升了！	
+MountUpLv	0	0	1|20	恭喜<color=#109d06ff>%s0</color>将<color=#109d06ff><Word info=mount id=%s1/></color>驯养至<color=#109d06ff>%s2</color>级，解锁技能<color=#109d06ff><Word info=Skill ID=%s3/></color>，战斗力大幅度提升！	0
+MountUpLvMax	0	0	1|20	恭喜<color=#109d06ff>%s0</color>将坐骑<color=#109d06ff><Word info=mount id=%s1/></color>驯养至满级，战斗力大幅度提升了！	
+GetMountSkill	0	0	1|20	恭喜<color=#109d06ff>%s0</color>习得坐骑技能<color=#109d06ff><Word info=Skill ID=%s1/></color>	0
+DungeoninCoolTime	0	0	1	副本正处于<color=#fa1010>冷却中</color>，<color=#fa1010>等待</color>冷却时间结束或者花费<color=#fa1010>绑玉/仙玉消除</color>冷却才可继续挑战	0
+RuneTowerNoChalleng	0	0	1	你还<color=#fa1010>未挑战</color>通过任一层，无法进行扫荡	0
+LeagueCannotGo1	0	0	1	您的仙盟<color=#fa1010>已结束</color>此场战斗，下一场比赛开始于%s0，早点来哦	0
+LeagueCannotGo2	0	0	1	您的仙盟<color=#fa1010>已结束</color>此轮战斗，下一轮仙盟联赛将于%s0开启	0
+LeagueCannotGo3	0	0	1	您的仙盟本周<color=#fa1010>没有资格</color>参与本轮仙盟联赛，还请继续努力	0
+LeagueCannotGo4	0	0	1	您的仙盟在本场<color=#fa1010>轮空</color>，无法进入仙盟联赛战场	0
+LeagueCannotGo5	0	0	1	您还没有仙盟，请先<color=#fa1010>加入仙盟</color>才有机会参与仙盟联赛	0
+LeagueNoFL1	0	0	1	今日已领取过俸禄	0
+LeagueNoFL2	0	0	1	不是王者仙盟成员，无法领取俸禄	0
+FamilyWarFamilyChanged	0	0	1	您在本轮联赛中退出了原仙盟，无法在原仙盟以外的仙盟参与仙盟联赛	0
+BagNoItem	0	0	1	暂无<Word info=item id=%s0/>	0
+Achievement_8	0	0	1	暂无可锤炼神兵石	0
+Achievement_16	0	0	1	本日已签到，明日再来	0
+Achievement_21	0	0	1	暂无可上架道具	0
+Achievement_36_1	0	0	1	Boss暂未复活，无法进入	0
+Achievement_36_2	0	0	1	冰晶矿脉次数不足，请购买次数	0
+Achievement_44	0	0	1	符印不足，挑战符印塔、每日扫荡获得海量符印	0
+Achievement_45	0	0	1	符印精华不足，挑战符印塔、每日扫荡获得海量符印精华	0
+Achievement_46	0	0	1	仙界秘境次数不足，VIP4可增加购买次数	0
+Achievement_49	0	0	1	麒麟之府次数不足，请购买次数	0
+Achievement_51	0	0	1	炼丹材料不足，无法炼丹	0
+Achievement_52	0	0	1	活跃值不足无法领取，完成日常任务、限时活动可获得大量活跃值	0
+Achievement_54	0	0	1	宗门试炼次数不足	0
+Achievement_60	0	0	1	宝石孔不足，6阶装备或VIP6可增加宝石孔	0
+Achievement_63	0	0	1	本日娲皇遗迹次数已完成，上仙明日再战	0
+Achievement_63_2	0	0	1	东皇钟觉醒开启娲皇遗迹	0
+Achievement_79	0	0	1	尚未开启本阶段大境界渡劫，继续修行或者助战仙友	0
+Achievement_81_1	0	0	1	仙界秘境次数不足，VIP4可增加购买次数	0
+Achievement_81_2	0	0	1	Boss暂未复活，无法进入	0
+Achievement_91	0	0	1	潜力值不足，挑战娲皇遗迹获得大量SP值	0
+Achievement_99	0	0	1	可购买次数不足，VIP4可增加购买次数	0
+Achievement_103	0	0	1	上仙修行未满，请继续潜修	0
+Achievement_104	0	0	1	上仙完成当前境界渡劫，才可进行心魔打坐	0
+Achievement_109	0	0	1	请填充该技能到技能栏	0
+Achievement_113	0	0	1	本日仙盟福利已领取，上仙可明日再来	0
+Achievement_125	0	0	1	冰晶矿脉次数不足，请购买次数	0
+AchievementDungeonCompleted	0	0	1	本日副本次数已用完，上仙请明日再战	0
+RuneUnlock	0	0	1	通关<color=#fa1010>%s0</color>开启	0
+RuneGridUnEnough	0	0	1	当前最多可镶嵌<color=#109d06ff>{0}</color>个双属性符印	
+GetSkillInfo	0	0	20	恭喜您成功解锁法宝技能<color=#109d06ff><Word info=Skill ID=%s0/></color>	0
+TreasureItemUnenough	0	0	1	八卦炉所需解封材料不足，请收集足够的材料	0
+TreasureLvUnenough	0	0	1	角色等级不足，无法解封法宝	0
+FunNoOpen	0	0	2	当前版本暂不开启该功能！	0
+SkillSelectedTarget	0	0	1	释放该技能需要选中一个目标	0
+DemonJarLvChallenge	0	0	1	等级达到<color=#fa1010>%s0</color>级，可挑战Boss	0
+NoPlayerName	0	0	2	请输入玩家名称	0
+NoneFairy	0	0	1	当前暂无仙盟，创建自己的仙盟，招揽仙友吧~	0
+AncientBattlefield_1	0	0	1|20	恭喜玩家<color=#109d06ff>%s0</color>，达成上古成就<color=#109d06ff><Word info=Success id=%s1/></color>	0
+AncientBattlefield_2	0	0	1|20	玩家<color=#109d06ff>%s0</color>，突破极限，连续击杀<color=#109d06ff>%s1</color>人！	0
+AncientBattlefield_3	0	0	1|20	玩家<color=#109d06ff>%s0</color>，开始暴走了，连续击杀<color=#109d06ff>%s1</color>人！	0
+AncientBattlefield_4	0	0	1|20	玩家<color=#109d06ff>%s0</color>，已经无人能挡了，连续击杀<color=#109d06ff>%s1</color>人！	0
+AncientBattlefield_5	0	0	1|20	玩家<color=#109d06ff>%s0</color>，马上就要超神了，连续击杀<color=#109d06ff>%s1</color>人！	0
+AncientBattlefield_6	0	0	1|20	玩家<color=#109d06ff>%s0</color>，已经超越神了，连续击杀<color=#109d06ff>%s1</color>人！	0
+AncientBattlefield_7	0	0	1|20	<color=#109d06ff>%s0玩家</color>终结了<color=#109d06ff>%s1</color>玩家的<color=#109d06ff>%s2</color>连杀！	0
+TaskTip4107	0	0	1	只有在仙盟成员进行<color=#109d06ff>单人渡劫</color>时才可以对仙盟成就进行护法！	0
+NowWorldMap	0	0	1	您已在当前地图	0
+NoEquipDonate	0	0	1	暂无可捐献装备	0
+CantChangeInDemon	0	0	1	在封魔坛副本中无法改变双倍挑战勾选状态	0
+CancelEnterFB	0	0	1	队伍未全员准备，取消进入副本	0
+Task_Transfer1	0	0	1	您正在打Boss中，无法寻路	0
+PetStone_1	0	0	1	暂无可使用灵宠兽魂	0
+MountStone_1	0	0	1	暂无可使用坐骑精魄	0
+HappyXB	0	0	1|20	恭喜<color=#109d06ff>%s0</color>，在寻宝活动中获得<a><Word info=item ID=%s1 userdata=%s2/>|showitem=%s1 userdata=%s2</a>	0
+OpenRedBag1	0	0	5|20	恭喜<color=#109d06ff>%s0</color>，在让红包飞活动中抢红包累积达到<color=#109d06ff>%s1绑玉</color>，<color=#109d06><a>我也要抢|openui=142</a></color>	0
+OpenRedBag2	0	0	5|20	恭喜<color=#109d06ff>%s0</color>一马当先，达成开服成就<color=#109d06ff><Word info=OSRedEnvelope id=%s1/></color> ，发放<color=#109d06ff>%s2绑玉</color>红包，<color=#109d06><a>前往抢红包|openui=142</a></color>	0
+OpenRedBag3	0	0	5|20	恭喜<color=#109d06ff>%s0</color>达成开服成就<color=#109d06ff><Word info=OSRedEnvelope id=%s1/></color> ，发放<color=#109d06ff>%s2绑玉</color>红包，<color=#109d06><a>前往抢红包|openui=142</a></color>	0
+ActiveOutTime	0	0	2	活动已结束	0
+ShopBuyBroadcast_1	0	0	1|20	恭喜<color=#109d06FF>%s0</color>购买了<a><Word info=item id=%s1/>|showitem=%s1 userdata=%s2</a>，战力飞涨！<color=#109d06><a>我也要买|openui=153</a></color>	0
+RuneEssenceLack	0	0	1	<color=#fa1010>符印精华不足</color>，<color=#109d06>分解符印</color>可获得符印精华	0
+FirstPayReward1	0	0	5|20	恭喜<color=#109d06ff>%s0</color>成功领取首充豪礼<a><Word info=item ID=%s1/>|showitem=%s1</a>，<a><Word info=item ID=%s2/>|showitem=%s2 </a>，<color=#109d06><a>我也要领|openui=143</a></color>	0
+FirstPayReward2	0	0	2	您已参加过活动	
+TreasureFindHost1	0	0	1	领取成功，完成进度+1	
+TreasureFindHost2	0	0	1	您已领取全部奖励，快前往解封法宝吧	
+OpenRedBag4	0	0	1	抢红包次数不足，<color=#109d06>%s0</color>后恢复1次	
+AddActivityCount_1	0	0	1	使用<color=#109d06><Word info=item ID=%s0/></color>，<color=#109d06><Word info=Map ID=%s1/></color>增加%s2次通关次数	
+PetShowTipAchievement1	0	0	1	未获得该灵宠	
+PetShowTipAchievement2	0	0	1	暂无可培养灵宠丹	
+HorseShowTipAchievement1	0	0	1	未获得改坐骑	
+HorseShowTipAchievement2	0	0	1	暂无可培养坐骑丹	
+DailyquestNothingToGet	0	0	1	<color=#fa0101>完成日常修行和限时活动可获取修行点</color>	
+EquipDevour_Text_1	0	0	1	未选择需要分解的装备，无法分解	
+FabaoAwaken	0	0	2	当前法宝可觉醒，请先觉醒	
+FairyStoreOpenLimit	0	0	1	仙盟等级达到<color=#fa1010>%s0级</color>开启	
+JumpPrompt	0	0	1	还未开启该功能，<color=#109d06>充值后</color>可开启	
+FirstPayAlreadyGet	0	0	2	您已领取过首充奖励	
+itemuse_chenxin_31379	0	0	1	任务物品无法出售	
+VoiceOutTime	0	0	1	该条语音已失效	
+TicketComposeUnlock	0	0	1	<color=#ff0303>%s0级</color>开启<color=#ff0303>%s1</color>合成	
+Unlock_BJMopUp1	0	0	1	通关过冰晶矿脉一次后开启扫荡	
+Unlock_BJMopUp2	0	0	1	通关过冰晶矿脉且达到%s0级后开启扫荡	
+Unlock_BJMopUp3	0	0	1	达到%s0级后开启扫荡	
+WorldBossCountItem	0	0	1	使用<color=#109d06><Word info=item ID=%s0/></color>，减少<color=#109d06>%s1</color>点已使用的<Word info=RichTextMsgReplace Name=BossTpye id=%s2/>疲劳	
+WorldBossCountItem1	0	0	1	您已使用的<Word info=RichTextMsgReplace Name=BossTpye id=%s0/>疲劳为0，无法减少已使用疲劳	
+FuncNoOpen_XMZZ1	0	0	1	%s0开启仙魔之争	
+FuncNoOpen_XMYH1	0	0	1	%s0开启仙盟宴会	
+FuncNoOpen_XBXZ1	0	0	1	%s0开启仙宝寻主功能	
+FuncNoOpen_WorldBoss1	0	0	1	%s0开启世界Boss	
+FuncNoOpen_WingsRefine1	0	0	1	%s0开启翅膀精炼，提升翅膀品质	
+FuncNoOpen_WingsHe1	0	0	1	%s0开启翅膀合成，酷炫翅膀翱翔天际	
+FuncNoOpen_Wash1	0	0	1	%s0开启装备洗练功能	
+FuncNoOpen_UnionMatch1	0	0	1	%s0且加入仙盟后开启仙盟联赛	
+FuncNoOpen_Task1	0	0	1	%s0开启仙盟任务	
+FuncNoOpen_Suit1	0	0	1	%s0开启套装锻造功能	
+FuncNoOpen_Sp1	0	0	1	%s0开启技能潜力提升	
+FuncNoOpen_SignIn1	0	0	1	%s0开启签到	
+FuncNoOpen_SGZC1	0	0	1	%s0开启上古战场	
+FuncNoOpen_RuneTower1	0	0	1	%s0开启符印塔	
+FuncNoOpen_Recharge1	0	0	2	%s0开启充值	
+FuncNoOpen_Realm1	0	0	1	%s0开启境界	
+FuncNoOpen_RankPanel1	0	0	1	%s0开启排行榜功能，看看自己是否金榜题名	
+FuncNoOpen_Pray2	0	0	1	%s0开启铜钱祈愿功能	
+FuncNoOpen_Pray1	0	0	1	%s0开启经验祈愿功能	
+FuncNoOpen_PersonBoss1	0	0	1	%s0开启Vip专属VIP Boss	
+FuncNoOpen_PassSkill1	0	0	1	%s0开启被动技能	
+FuncNoOpen_MoZu1	0	0	1	%s0开启魔族法宝	
+FuncNoOpen_Market1	0	0	1	%s0开启集市	
+FuncNoOpen_Magic1	0	0	1	%s0开启神兵	
+FuncNoOpen_He1	0	0	1	%s0开启合成功能，<color=#ff0303>180级</color>开启翅膀合成	
+FuncNoOpen_GuShen1	0	0	1	%s0开启古神禁地，夺取套装石	
+FuncNoOpen_Gem1	0	0	1	%s0开启宝石镶嵌功能	
+FuncNoOpen_Friend1	0	0	1	%s0开启仙缘	
+FuncNoOpen_FreePoint1	0	0	1	%s0开启自由加点	
+FuncNoOpen_Fairy1	0	0	1	%s0开启仙盟	
+FuncNoOpen_EquipDevour1	0	0	1	%s0开启装备分解功能	
+FuncNoOpen_DailyQuest1	0	0	1	%s0开启日常	
+FuncNoOpen_ChatLimit1	0	0	1	%s0开启聊天对话	
+FuncNoOpen_BossHome1	0	0	1	%s0开启Vip特权Boss之家	
+FuncNoOpen_AutoZhan1	0	0	1	%s0开启装备合成，红三星装备降世	
+RoleTitle_1	0	0	1	还未接取<color=#109d06>%s0</color>任务	
+TreasureSoulWakeUp	0	0	4|20	恭喜<color=#109d06FF>%s0</color>成功觉醒<color=#109d06FF><Word info=treasureprivilege id=%s1/></color>	
+RepeatChat	0	0	1	发送重复消息过于频繁，<color=#109d06FF>10秒</color>后可重新发送	
+OnChatCD	0	0	1	发送失败，消息发送过快，10秒后可发送消息	
+SweepFB_1	0	0	1	您已在该副本当中，无法进行扫荡	
+GiftAlreadyBuy	0	0	1	您已购买过该礼包	
+GiftNoOpen	0	0	1	领取首充礼包后开通超值礼包购买	
+FuncNoOpen_Title1	0	0	1	%s0开启称号功能	
+FuncNoOpen_SevenOnLine	0	0	1	%s0开启七天登录功能	
+FuncNoOpen_LVGift	0	0	1	%s0开启等级礼包功能	
+OpenBoxItem	0	0	1	<Word info=RichTextMsgReplace Name=Packet id=%s0/>空间不足，开启<color=#109d06><Word info=item ID=%s1/></color>，还需<color=#ff0303>%s2个</color>空闲格子	
+FuncNoOpen_TreasureSoul	0	0	1	%s0开启法宝之魂功能	
+WorldBossNoHarm	0	0	1	世界Boss功能未开启，无法对世界Boss造成伤害	
+ComposeNothingToAdd	0	0	1	无合适材料可自动放入，请手动选择成功率材料	
+ComposeFullToAdd	0	0	1	<color=#ff0101FF>已达最大成功率</color>	
+OSRedpackSfx	0	0			
+SideQuest_None	0	0	1	暂未可执行的支线任务	
+FuncNoOpen_DaBao1	0	0	1	%s0开启封魔坛打宝	
+VoiceSendSuccess	0	0	1	语音发送成功	
+VoiceSendFail	0	0	1	取消语音发送	
+VoiceToolack	0	0	1	消息过短，无法发送	
+WeaPonOverDue	0	0	1	试用首充武器已过期	
+SPSuccessHint	0	0	1	当前成功率100%，不需要添加材料	
+SPItemNotEnough	0	0	1	材料不足，无法添加	
+GeRen_liubo_403656	0	0	1	不存在该物品	
+VipInvestmentLimit	0	0	1	达到<color=#109d06>VIP4</color>才能进行投资	
+FirstGoldWPOver	0	0	1	首充试用武器已过期，进行首充来续费吧	
+Bugle_Lost_InputOverlong	0	0	1	文字输入过长，不能超过50个字符	
+ConsumptionRebate1	0	0	5|20	<color=#FF109D06>消费返利</color>活动已开启，当日内若<color=#FF109D06>消费仙玉</color>到达指定额度，即可在福利-消费返利的活动界面领取丰厚的<color=#FF109D06>大礼包</color>！	
+ConsumptionRebate2	0	0	5|20	恭喜<color=#109d06FF>%s0</color>累计消费到达{1}领取了消费返利活动最高档次的豪华大礼包！	
+ExpActivity_Ready	0	0	5	<color=#109d06ff>%s0倍经验活</color>动将在%s1开启，在线杀怪获得双倍经验，感受飞速升级的快感！	
+ExpActivity_Goahead	0	0	5	<color=#109d06ff>%s0倍经验活动</color>已经开启，在线杀怪获得双倍经验，感受飞速升级的快感！	
+ExpActivity_Start	0	0	5	<color=#109d06ff><Word info=EXPActivity type=%s0/></color>活动已经开启，请各位玩家火速参与！	
+ExpActivity_End	0	0	5	<color=#109d06ff><Word info=EXPActivity type=%s0/></color>活动还有5分钟就要结束啦，感谢各位玩家参与本次活动！	
+ExpActivity_Close	0	0	5	<color=#109d06ff><Word info=EXPActivity type=%s0/></color>活动已经结束，感谢各位玩家参与本次活动！	
+Waiting_For_Prompt	0	0	1	倒计时结束后可领取返还的仙玉，请耐心等待噢	
+Pick_Up_Tips	0	0	1	已领取过返还仙玉	
+Missing_Tips	0	0	1	已错过白拿极品的机会，下次请早噢	
+BuyVIPGift	0	0	5|20	恭喜<color=#109d06ff>%s0</color>购买了<color=#109d06ff>VIP%s1礼包</color>，获得了<a><Word info=item ID=%s2/>|showitem=%s2</a>，战力飙升！<color=#109d06><a>我也要买|openui=%s3</a></color>	
+InputExchangeCode	0	0	1	请输入兑换码才可领取奖励	
+ConsumptionRebate3	0	0	20	恭喜<color=#109d06FF>%s0</color>累计消费到达{1}，成功领取消费返利活动的豪华大礼包！	
+BossFHOpen	0	0	2	Boss复活活动已开启，打开福利界面即可参与	
+DungeonGuardSkyText1	0	0	1	正处于守卫人皇的活动时间，暂时无法退出仙盟。	
+DungeonGuardSkyText2	0	0	1	正处于守卫人皇的活动时间，暂时无法踢出成员。	
+RecyclingElixir	0	0	2	回收丹药成功，获得<color=#109d06FF>%s0</color>点八卦炉经验	
+FairylandCermonyRecharge1	0	0	1	充值任意金额，即可领取礼包	
+FairylandCermonyRecharge2	0	0	1	您已领取过礼包，请前往背包查看	
+FairylandCermonyRecharge3	0	0	1	领取成功，背包中查看奖励	

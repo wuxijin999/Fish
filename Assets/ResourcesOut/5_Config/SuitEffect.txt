@@ -1,0 +1,17 @@
+int	string[]	int[]
+ID	bindbones	effectIds
+套装特效ID	套装特效绑定节点列表	特效表
+1101		
+1102		
+1103	Bip001 L UpperArm|Bip001 R UpperArm|Bip001 Spine|Bip001 Spine1	3123|3124|3125|3126
+1104	Bip001 L UpperArm|Bip001 R UpperArm|Bip001 Spine	3100|3102|3101
+1105	Bip001 L UpperArm|Bip001 R UpperArm|Bip001 Head|Bip001 Spine	3103|3105|3104|3106
+1106	Bip001 L UpperArm|Bip001 R UpperArm|Bip001 Head|Bip001 Spine	3107|3109|3108|3110
+1107	Bip001 Head|Bone011|Bip001 R Forearm|Bip001 L Forearm	3127|3128|3130|3130
+1201		
+1202		
+1203	Bip001 Head|Bip001 Pelvis	3122|3121
+1204	Bip001 Head|Bip001 Pelvis	3112|3113
+1205	Bip001 L UpperArm|Bip001 R UpperArm|Bip001 Spine|Bip001 Neck	3114|3115|3116|3117
+1206	Bip001 Neck|Bip001 Pelvis	3119|3120
+1207	Bip001 Spine	3129

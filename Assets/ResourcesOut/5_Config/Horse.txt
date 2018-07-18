@@ -1,0 +1,12 @@
+int	int	string	int	int	int	int	int	int	string	int	int	int	int	int
+HorseID	ItemID	Name	UnlockItemID	UnlockItemCnt	InitLV	MaxLV	UseNeedRank	Model	IconKey	ActionType	Quality	InitFightPower	ShowFightPower	Sort
+坐骑编号	坐骑物品ID	坐骑名	解锁坐骑物品编号	解锁所需物品数量	坐骑初始等级	坐骑最高等级	多少级可切换外观	坐骑模型名	名称图标Key	行为类型	坐骑品质	初始战力	模型展示战力	坐骑排序
+100	289	追风	259	1	1	15	1	3002	W_MountName_10	0	2	1036	12892	1
+101	280	觉灵鹿	250	1	1	20	1	3000	W_MountName_1	0	2	1396	43595	2
+201	281	皓月狼	251	1	1	30	1	3001	W_MountName_2	0	3	2116	102526	100
+301	282	雷霆战熊	252	1	1	40	1	3003	W_MountName_3	0	4	3600	309928	201
+302	284	泰坦巨猿	254	1	1	40	1	3004	W_MountName_3	0	4	2476	231753	202
+303	285	龙驹	255	1	1	40	1	3005	W_MountName_3	0	4	3492	249847	203
+401	283	火炎兽	253	1	1	50	1	3010	W_MountName_3	0	5	13996	617490	301
+304	286	深海之王	256	1	1	40	1	3009	W_MountName_3	1	4	5716	316498	204
+402	287	百鸟之主	257	1	1	50	1	3007	W_MountName_3	0	5	31996	822183	302

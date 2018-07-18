@@ -1,0 +1,119 @@
+int	string	string	string	string	int	int
+ID	name	Icon	Text	SelectActive	OpenpanelId	FuncOpenId
+获取途径Id	名称	获取途径ICON	文字说明	选中控件	跳转界面	等级开启功能ID
+1	商城	Shopping	每周限购		72	79
+2	日常	DailyIcon_a	师门悬赏	1	175	34
+3	日常	DailyIcon_a	麒麟之府	5	171	85
+4	日常	DailyIcon_a	冰晶矿脉	2	176	83
+5	日常	DailyIcon_a	仙界秘境	6	178	86
+6	日常	DailyIcon_a	守卫人皇	7	179	89
+7	日常	DailyIcon_a	混乱妖域	8	180	98
+8	日常	DailyIcon_a	宗门试炼	9	177	88
+9	符印塔	RuneTowerIcon	挑战符印塔		99	80
+10	寻宝	FuLiIcon_a	寻宝			
+11	福利	FuLiIcon_a	签到		102	81
+12	集市	MarketIcon_a	集市购买		87	
+13	日常	DailyIcon_a	限时活动		45	114
+14	挂机	TY_GN_36	野外挂机		61	
+15	充值	MoneyIcon_a	暴击神兵宝箱		77	113
+16	打宝	DabaoIcon_a	180级以上</r>世界Boss		82	21
+17	祈愿	TY_GN_27	祈愿富有		103	
+18	祈愿	TY_GN_27	祈愿成长		103	60
+19	日常	DailyIcon_a	活跃度奖励		44	78
+20	合成	HeChengIcon_a	门票合成		18	75
+21	商城	Shopping	成长变强		74	79
+22	商城	Shopping	绑玉商城		75	79
+23	打宝	ElderGodIcon	古神禁地		85	92
+24	商城	Shopping	常用道具		73	79
+25	强化	QianghuaIcon_a	装备强化		116	1
+26	日常	DailyIcon_a	上古战场	10	182	101
+27	日常	DailyIcon_a	娲皇遗迹	11	183	103
+28	日常	DailyIcon_a	我要天机	12	45	114
+29	合成	HeChengIcon_a	宝石合成		21	75
+30	商城	sh_yl	穿戴幼龙		73	79
+31	商城	wp_jld1	使用经验药水		75	79
+32	VIP	VIP_GetWayIcon	成为VIP		80	117
+33	境界	TY_GN_7	渡劫		48	12
+34	法宝	M_Renzu_108	获得人族法宝		121	106
+35	法宝	M_Mozu_201	获得魔族法宝		122	10
+36	商城	Shopping	购买坐骑丹		75	79
+37	境界	TY_GN_7	组队渡劫		48	12
+38	仙盟	MengIcon_a	仙盟宝库		123	15
+39	打宝	DabaoIcon_a	200级以上</r>世界Boss		82	21
+40	打宝	DabaoIcon_a	300级以上</r>世界Boss		82	21
+41	封魔坛	TY_GN_16	180级以上</r>封魔坛Boss		104	76
+42	封魔坛	TY_GN_16	200级以上</r>封魔坛Boss		104	76
+43	封魔坛	TY_GN_16	300级以上</r>封魔坛Boss		104	76
+44	日常	DailyIcon_a	仙魔之争	14	45	74
+45	仙盟	MengIcon_a	仙盟商店		26	15
+46	打宝	PersonBossIcon	VIP Boss		84	22
+47	封魔坛	TY_GN_16	封魔坛Boss		104	76
+48	打宝	DabaoIcon_a	世界Boss		82	21
+49	商城	Shopping	积分商店		76	79
+50	法宝	TY_GN_25	获得仙族法宝			121
+51	打宝	DabaoIcon_a	150级以上</r>世界Boss		82	21
+52	打宝	BossHomeIcon	Boss之家</r>所有Boss		83	21
+53	打宝	ElderGodIcon	古神禁地</r>360级Boss		85	92
+54	打宝	ElderGodIcon	古神禁地</r>400级Boss		85	92
+55	挂机	TY_GN_36	野外挂机		61	
+56	主线怪物	TaskIcon	主线怪物		56	
+57	主线任务	TaskIcon	主线任务		56	
+58	封魔坛	TY_GN_16	175级以上</r>封魔坛Boss		104	76
+59	合成	HeChengIcon_a	道具合成		21	75
+60	打宝	ElderGodIcon	250级以上</r>古神禁地Boss		85	92
+61	日常	DailyIcon_a	仙盟任务	18	187	16
+62	日常	DailyIcon_a	仙盟宴会	3	45	84
+63	日常	DailyIcon_a	仙盟联赛	13	45	111
+64	仙盟	MengIcon_a	仙盟活跃		130	15
+65	充值	MoneyIcon_a	充值赠送		77	113
+66	法宝	Renzu_101	法宝集魂		119	
+67	商城	Shopping	商城兑换		76	79
+68	福利	FuLiIcon_a	七天登录		101	115
+69	八卦炉	Shopping	十全秘方		92	87
+70	充值	VIP_GetWayIcon	VIP2礼包	2	80	117
+71	首冲	Shopping	超值礼包		143	110
+72	境界	TY_GN_7	境界		48	12
+73	每周限购	Shopping	每周限购		72	79
+74	日常	DailyIcon_a	仙魔之争	14	45	74
+75	充值	VIP_GetWayIcon	VIP3礼包	3	80	117
+76	挂机	TY_GN_36	65级以上</r>野外怪物		61	
+77	挂机	TY_GN_36	180级以上</r>野外怪物		61	
+78	挂机	TY_GN_36	220级以上</r>野外怪物		61	
+79	活动	TY_GN_26	活动产出			
+80	打宝	ElderGodIcon	古神禁地</r>精英怪物		85	92
+81	打宝	PersonBossIcon	200级以上</r>VIP Boss		84	22
+82	打宝	BossHomeIcon	200级以上</r>Boss之家		83	23
+83	打宝	PersonBossIcon	300级以上</r>VIP Boss		84	22
+84	打宝	BossHomeIcon	300级以上</r>Boss之家		83	23
+85	仙宝寻主	TreasureFindHost	仙宝寻主		147	124
+86	主界面任务	TaskIcon	主线任务		56	
+87	福利界面	FuLiIcon_a	七天登录</r>第二天		154	
+88	炼丹界面	FuLiIcon_a	八卦炉</r>十全秘方		155	
+89	炼丹界面	FuLiIcon_a	八卦炉</r>三元秘方		156	
+90	vip界面	VIP_GetWayIcon	Vip界面</r>Vip3礼包		157	
+91	vip界面	VIP_GetWayIcon	Vip界面</r>Vip2礼包		158	
+92	福利界面	FuLiIcon_a	七天登录</r>第三天		154	
+93	超值礼包	FuLiIcon_a	超值礼包</r>坐骑礼包		153	
+94	超值礼包	FuLiIcon_a	超值礼包</r>灵宠礼包		153	
+95	符印	FuYinIcon_a	符印镶嵌		22	9
+96	符印	FuYinIcon_a	符印分解		23	9
+97	符印	FuYinIcon_a	符印合成		25	9
+98	任务	TaskIcon	支线任务		166	
+99	开服活动	TY_GN_19	开服活动		167	
+100	vip界面	VIP_GetWayIcon	Vip界面</r>Vip1礼包		159	117
+101	vip界面	VIP_GetWayIcon	Vip界面</r>Vip4礼包		159	117
+102	vip界面	VIP_GetWayIcon	Vip界面</r>Vip5礼包		160	117
+103	vip界面	VIP_GetWayIcon	Vip界面</r>Vip6礼包		161	117
+104	vip界面	VIP_GetWayIcon	Vip界面</r>Vip7礼包		162	117
+105	vip界面	VIP_GetWayIcon	Vip界面</r>Vip8礼包		163	117
+106	vip界面	VIP_GetWayIcon	Vip界面</r>Vip9礼包		164	117
+107	vip界面	VIP_GetWayIcon	Vip界面</r>Vip10礼包		165	117
+108	vip界面	VIP_GetWayIcon	Vip界面</r>Vip投资		81	120
+109	挂机	TY_GN_36	80级以上</r>野外怪物		61	
+110	挂机	TY_GN_36	60级以上</r>野外怪物		61	
+111	日常	DailyIcon_a	师门悬赏</r>额外奖励		40	34
+112	装备分解	TY_GN_37	装备分解		146	123
+113	日常	DailyIcon_a	麒麟之府	5	171	
+114	日常	DailyIcon_a	宗门试炼	9	177	
+115	封魔坛	TY_GN_16	350级以上</r>封魔坛Boss		104	76
+116	封魔坛	TY_GN_16	150级以上</r>封魔坛Boss		104	76

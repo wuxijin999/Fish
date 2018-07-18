@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Launch : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class Launch : MonoBehaviour
         ModelUtility.Init();
         ActorEngine.Instance.Launch();
 
-        ItemConfig.Init();
+        DebugEx.LogFormat("配置加载开始：{0}",DateTime.Now);
+        ConfigInitiator.Init();
+
     }
 
 }
