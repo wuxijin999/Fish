@@ -1,0 +1,65 @@
+﻿//--------------------------------------------------------
+//    [Author]:           Fish
+//    [  Date ]:           #DateTime#
+//--------------------------------------------------------
+
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System;
+
+public class #ClassName#
+{
+
+    #Field#
+
+    public #ClassName#(string _content)
+    {
+        var tables = _content.Split('\t');
+		#Read#
+    }
+
+    static Dictionary<int, #ClassName#> configs = new Dictionary<int, #ClassName#>();
+    public static #ClassName# Get(int _id)
+    {
+        if (configs.ContainsKey(_id))
+        {
+            return configs[_id];
+        }
+
+        #ClassName# config = null;
+        if (rawDatas.ContainsKey(_id))
+        {
+            config = configs[_id] = new #ClassName#(rawDatas[_id]);
+            rawDatas.Remove(_id);
+        }
+
+        return config;
+    }
+
+
+    protected static Dictionary<int, string> rawDatas = null;
+    public static void Init()
+    {
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "#ClassName#.txt";
+        ThreadPool.QueueUserWorkItem((object _object) =>
+        {
+            var lines = File.ReadAllLines(path);
+            rawDatas = new Dictionary<int, string>(lines.Length - 3);
+            for (int i = 3; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                var index = line.IndexOf("\t");
+                var idString = line.Substring(0, index);
+                var id = int.Parse(idString);
+
+                rawDatas[id] = line;
+            }
+        });
+    }
+
+}
+
+
+
+

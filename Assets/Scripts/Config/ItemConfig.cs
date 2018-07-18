@@ -1,20 +1,40 @@
-﻿using System.Collections;
+﻿//--------------------------------------------------------
+//    [Author]:           Fish
+//    [  Date ]:           Wednesday, July 18, 2018
+//--------------------------------------------------------
+
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Threading;
+using System;
 
 public class ItemConfig
 {
 
-    public readonly int id;
-    public readonly int price;
+    public readonly int NPCID;
+    public readonly int FloorNum;
+    public readonly int MonsterType;
+    public readonly int[] RareItemID;
+    public readonly string PortraitID;
 
     public ItemConfig(string _content)
     {
         var tables = _content.Split('\t');
-    }
+        int.TryParse(tables[0], out NPCID);
 
+        int.TryParse(tables[1], out FloorNum);
+
+        int.TryParse(tables[2], out MonsterType);
+
+        string[] RareItemIDStringArray = tables[3].Trim().Split(StringUtility.splitSeparator, StringSplitOptions.RemoveEmptyEntries);
+        RareItemID = new int[RareItemIDStringArray.Length];
+        for (int i = 0; i < RareItemIDStringArray.Length; i++)
+        {
+            int.TryParse(RareItemIDStringArray[i], out RareItemID[i]);
+        }
+
+        PortraitID = tables[4];
+    }
 
     static Dictionary<int, ItemConfig> configs = new Dictionary<int, ItemConfig>();
     public static ItemConfig Get(int _id)
@@ -56,3 +76,7 @@ public class ItemConfig
     }
 
 }
+
+
+
+

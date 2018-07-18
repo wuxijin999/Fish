@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\TweenEditor.cs" />
+    <Compile Include="Assets\Editor\Tool\ConfigClassGenerate.cs" />
     <Compile Include="Assets\Editor\Tool\CreateClass.cs" />
     <Compile Include="Assets\Editor\Tool\ExtensionalTools.cs" />
     <Compile Include="Assets\Editor\Tool\FileOpenEx.cs" />
@@ -73,6 +74,7 @@
     <None Include="Assets\Editor\ScriptTemplate\ModelTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\WindowTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\PresenterTemplate.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\ConfigDataTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\UIMonobehaviorScriptTemplate.txt" />
     <Reference Include="com.unity.render-pipelines.core.Editor">
       <HintPath>E:/Fish/Library/ScriptAssemblies/com.unity.render-pipelines.core.Editor.dll</HintPath>
