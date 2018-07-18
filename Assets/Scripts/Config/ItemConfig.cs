@@ -8,32 +8,40 @@ using System.IO;
 using System.Threading;
 using System;
 
-public class ItemConfig
+public partial class ItemConfig
 {
 
     public readonly int NPCID;
-    public readonly int FloorNum;
-    public readonly int MonsterType;
-    public readonly int[] RareItemID;
-    public readonly string PortraitID;
+	public readonly int FloorNum;
+	public readonly int MonsterType;
+	public readonly int[] RareItemID;
+	public readonly string PortraitID;
 
     public ItemConfig(string _content)
     {
-        var tables = _content.Split('\t');
-        int.TryParse(tables[0], out NPCID);
-
-        int.TryParse(tables[1], out FloorNum);
-
-        int.TryParse(tables[2], out MonsterType);
-
-        string[] RareItemIDStringArray = tables[3].Trim().Split(StringUtility.splitSeparator, StringSplitOptions.RemoveEmptyEntries);
-        RareItemID = new int[RareItemIDStringArray.Length];
-        for (int i = 0; i < RareItemIDStringArray.Length; i++)
+        try
         {
-            int.TryParse(RareItemIDStringArray[i], out RareItemID[i]);
-        }
+            var tables = _content.Split('\t');
 
-        PortraitID = tables[4];
+            int.TryParse(tables[0],out NPCID); 
+
+			int.TryParse(tables[1],out FloorNum); 
+
+			int.TryParse(tables[2],out MonsterType); 
+
+			string[] RareItemIDStringArray = tables[3].Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);
+			RareItemID = new int[RareItemIDStringArray.Length];
+			for (int i=0;i<RareItemIDStringArray.Length;i++)
+			{
+				 int.TryParse(RareItemIDStringArray[i],out RareItemID[i]);
+			}
+
+			PortraitID = tables[4];
+        }
+        catch (Exception ex)
+        {
+            DebugEx.Log(ex);
+        }
     }
 
     static Dictionary<int, ItemConfig> configs = new Dictionary<int, ItemConfig>();

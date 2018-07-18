@@ -12,6 +12,12 @@ using UnityEngine.Events;
 public class CreateConfigClassFile
 {
 
+    const string retract1 = "\t";
+    const string retract2 = "\t\t";
+    const string retract3 = "\t\t\t";
+    const string retract4 = "\t\t\t\t";
+    const string retract5 = "\t\t\t\t\t";
+
     public static event UnityAction FileCreateEvent;
 
     public static string filedContent = string.Empty;
@@ -69,8 +75,8 @@ public class CreateConfigClassFile
                 }
             }
 
-            filedContent = string.Join("\r\n\t\t", fieldFulls.ToArray());
-            readContent = string.Join("\r\n\t\t\t\r\n\t\t\t\t", readFulls.ToArray());
+            filedContent = string.Join("\r\n\t", fieldFulls.ToArray());
+            readContent = string.Join("\r\n\r\n\t\t\t", readFulls.ToArray());
             CreatNewConfigClass(fileInfo.Name.Substring(0, fileInfo.Name.IndexOf('.')));
         }
 
@@ -127,22 +133,22 @@ public class CreateConfigClassFile
         if (_type.Contains("int[]"))
         {
             var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact("\t\t\t\t", _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
-            var line3 = StringUtility.Contact("\t\t\t\t", "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = "\t\t\t\t{\n";
-            var line5 = StringUtility.Contact("\t\t\t\t\t", " int.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
-            var line6 = "\t\t\t\t}";
+            var line2 = StringUtility.Contact(retract3, _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
+            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtility.Contact(retract3, "{\n");
+            var line5 = StringUtility.Contact(retract4, " int.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line6 = StringUtility.Contact(retract3, "}");
 
             return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
         }
         else if (_type.Contains("float[]"))
         {
             var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact("\t\t\t\t", _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtility.Contact("\t\t\t\t", "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = "\t\t\t\t{\n";
-            var line5 = StringUtility.Contact("\t\t\t\t\t", " float.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
-            var line6 = "\t\t\t\t}";
+            var line2 = StringUtility.Contact(retract3, _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtility.Contact(retract3, "{\n");
+            var line5 = StringUtility.Contact(retract4, " float.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line6 = StringUtility.Contact(retract3, "}");
 
             return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
         }
@@ -154,11 +160,11 @@ public class CreateConfigClassFile
         else if (_type.Contains("Vector3[]"))
         {
             var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact("\t\t\t\t", _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtility.Contact("\t\t\t\t", "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = "\t\t\t\t{\n";
-            var line5 = StringUtility.Contact("\t\t\t\t\t", _field, "[i]", "=", _field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
-            var line6 = "\t\t\t\t}";
+            var line2 = StringUtility.Contact(retract3, _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtility.Contact(retract3, "{\n");
+            var line5 = StringUtility.Contact(retract4, _field, "[i]", "=", _field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
+            var line6 = StringUtility.Contact(retract3, "}");
 
             return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
         }

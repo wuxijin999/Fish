@@ -8,15 +8,23 @@ using System.IO;
 using System.Threading;
 using System;
 
-public class #ClassName#
+public partial class #ClassName#
 {
 
     #Field#
 
     public #ClassName#(string _content)
     {
-        var tables = _content.Split('\t');
-		#Read#
+        try
+        {
+            var tables = _content.Split('\t');
+
+            #Read#
+        }
+        catch (Exception ex)
+        {
+            DebugEx.Log(ex);
+        }
     }
 
     static Dictionary<int, #ClassName#> configs = new Dictionary<int, #ClassName#>();
