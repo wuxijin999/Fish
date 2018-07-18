@@ -1,3 +1,0 @@
-int	int[]	string
-RewardID	Time	Reward
-天数ID	阶段所需时间(分钟)	阶段奖励物品ID

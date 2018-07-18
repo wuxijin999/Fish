@@ -121,6 +121,18 @@ public class CreateConfigClassFile
         {
             return StringUtility.Contact("public readonly Vector3 ", _field.Trim(), ";");
         }
+        else if (_type.Contains("bool"))
+        {
+            return StringUtility.Contact("public readonly bool ", _field.Trim(), ";");
+        }
+        else if (_type.Contains("Int2"))
+        {
+            return StringUtility.Contact("public readonly Int2 ", _field.Trim(), ";");
+        }
+        else if (_type.Contains("Int3"))
+        {
+            return StringUtility.Contact("public readonly Int3 ", _field.Trim(), ";");
+        }
         else
         {
             return string.Empty;
@@ -183,6 +195,21 @@ public class CreateConfigClassFile
         else if (_type.Contains("Vector3"))
         {
             return StringUtility.Contact(_field, "=", "tables", "[", _index, "]", ".Vector3Parse()", ";");
+        }
+        else if (_type.Contains("bool"))
+        {
+            var line1 = StringUtility.Contact("var ", _field, "Temp", " = 0", ";", "\n");
+            var line2 = StringUtility.Contact(retract3, "int.TryParse(tables", "[", _index, "]", ",", "out ", _field, "Temp", ")", "; ", "\n");
+            var line3 = StringUtility.Contact(retract3, _field, "=", _field, "Temp", "!=0", ";");
+            return StringUtility.Contact(line1, line2, line3);
+        }
+        else if (_type.Contains("Int2"))
+        {
+            return StringUtility.Contact("Int2.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+        }
+        else if (_type.Contains("Int3"))
+        {
+            return StringUtility.Contact("Int3.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
         }
         else
         {

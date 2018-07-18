@@ -1,6 +1,0 @@
-int	string	int	int[]	string
-id	image	jump	condition	gotoIcon
-广告id	背景	跳转id	关闭触发条件	前往按钮的Icon
-1	XT_GG_08	79	0|1	XT_GG_02
-2	XT_GG_07	81	1	XT_GG_02
-3	XT_GG_09	174	2	XT_GG_01

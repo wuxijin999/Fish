@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           #DateTime#
+//    [  Date ]:           Wednesday, July 18, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -9,18 +9,32 @@ using System.Threading;
 using System;
 using UnityEngine;
 
-public partial class #ClassName#
+public partial class TestConfig
 {
 
-    #Field#
+    public readonly int ID;
+	public readonly bool LV;
+	public readonly Int2 ItemName;
+	public readonly Int3 Type;
+	public readonly Vector3 EquipPlace;
 
-    public #ClassName#(string _content)
+    public TestConfig(string _content)
     {
         try
         {
             var tables = _content.Split('\t');
 
-            #Read#
+            int.TryParse(tables[0],out ID); 
+
+			var LVTemp = 0;
+			int.TryParse(tables[1],out LVTemp); 
+			LV=LVTemp!=0;
+
+			Int2.TryParse(tables[2],out ItemName); 
+
+			Int3.TryParse(tables[3],out Type); 
+
+			EquipPlace=tables[4].Vector3Parse();
         }
         catch (Exception ex)
         {
@@ -28,18 +42,18 @@ public partial class #ClassName#
         }
     }
 
-    static Dictionary<int, #ClassName#> configs = new Dictionary<int, #ClassName#>();
-    public static #ClassName# Get(int _id)
+    static Dictionary<int, TestConfig> configs = new Dictionary<int, TestConfig>();
+    public static TestConfig Get(int _id)
     {
         if (configs.ContainsKey(_id))
         {
             return configs[_id];
         }
 
-        #ClassName# config = null;
+        TestConfig config = null;
         if (rawDatas.ContainsKey(_id))
         {
-            config = configs[_id] = new #ClassName#(rawDatas[_id]);
+            config = configs[_id] = new TestConfig(rawDatas[_id]);
             rawDatas.Remove(_id);
         }
 
@@ -50,7 +64,7 @@ public partial class #ClassName#
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "#FileName#.txt";
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Test.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
             var lines = File.ReadAllLines(path);

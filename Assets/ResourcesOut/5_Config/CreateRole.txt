@@ -1,6 +1,0 @@
-﻿int	string	string	int	string
-job	selectIcon	unselectIcon	skillid	desc
-职业	选中Icon	未选中Icon	技能id	职业描述
-1	CreateRole_ChoosenBottom_a	CreateRole_UnChoosenBottom_a	50700	W_QiangHao_a
-2	CreateRole_ChoosenBottom_a	CreateRole_UnChoosenBottom_a	60600	W_DaoShi_a
-3	CreateRole_ChoosenBottom_a	CreateRole_UnChoosenBottom_a	60600	W_JianXiu_a

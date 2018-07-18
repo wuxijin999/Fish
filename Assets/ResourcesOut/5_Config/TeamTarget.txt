@@ -1,8 +1,0 @@
-int	string	int[]	int	int
-DataMapID	FBName	TeamTargetUseLineID	AutoMatchType	TeamPrepareType
-数据地图ID	副本名称	组队目标使用线路ID	自动匹配进入副本类型	副本准备界面倒计时结束类型：0为自动进入副本；1为取消进入副本
-31080	仙界秘境	0	0	1
-60010	宗门试炼	0|1|2	0	1
-51010	娲皇遗迹	0	1	1
-31110	大境界渡劫	1	0	0
-31180	混乱妖域	0	0	1

@@ -267,8 +267,6 @@ public partial class ItemConfig
 
                 rawDatas[id] = line;
             }
-
-			DebugEx.LogFormat("加载结束ItemConfig：{0}",   DateTime.Now);
         });
     }
 

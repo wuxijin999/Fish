@@ -1,7 +1,0 @@
-int	string	int	int[]	int[]	string[]	int[]	int[]	int[]	string[]	string[]
-type	name	limitLv	queryType	ChooseType	ChooseName	ChooseItem1	ChooseItem2	ChooseItem3	itemTypeName	itemTypeIcon
-页签类型	页签名称	限制等级	查询类型	筛选类型	筛选名称	筛选条目1	筛选条目2	筛选条目3	物品类型名称	物品类型图标
-1	龙魂装备	1	101|102|103|104|105|106|107|108|109|110	1|2|3	密码|品质|阶数	0|1|2	0|1|2|3|4|5	1|2|3|4|5|6|7|8	全部|武器|副手|帽子|衣服|腰带|下装|鞋子|项链|仙器	TB_ZS_1_YF|TB_ZS_1_WQ|TB_ZS_1_FS|TB_ZS_1_MZ|TB_ZS_1_YF|TB_ZS_1_YD|TB_ZS_1_KZ|TB_ZS_1_XZ|xq_ly|xq_sl
-2	灵瑶装备	1	111|112|113|114|115|116|117|118|119|120	1|2|3	密码|品质|阶数	0|1|2	0|1|2|3|4|5	1|2|3|4|5|6|7|8	全部|武器|副手|帽子|衣服|腰带|下装|鞋子|项链|仙器	TB_FS_1_YF|TB_FS_1_WQ|TB_FS_1_FS|TB_FS_1_MZ|TB_FS_1_YF|TB_FS_1_YD|TB_FS_1_KZ|TB_FS_1_XZ|xq_ly|xq_sl
-3	翅膀	1	121|122|123|124|125|133	1|3	密码|阶数	0|1|2	1|2|3|4|5|6	0	龙魂翅膀|灵瑶翅膀|一级材料|二级材料|三级材料|翅膀精炼材料	TB_DJ_3711|TB_DJ_3721|cl_cb_1|cl_cb_2|cl_cb_3|wp_cp_cjjls
-5	其他	1	130|131|135|136|137	1	密码	0|1|2	0	0	杂物|套装石|宝石|炼丹材料|丹药	JZ_LL|TB_DJ_5202|icon_HP_gems9|TB_DJ_4606|TB_DJ_4681

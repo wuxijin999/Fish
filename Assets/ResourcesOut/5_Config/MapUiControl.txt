@@ -1,7 +1,0 @@
-﻿int	int	string
-ID	Level	UiTag
-编号	地图ID	默认显示的UI标识
-1	10001	ActivityBtnArea,DayliBtnArea
-2	10002	E
-3	10003	E
-4	10004	E

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public struct Int2
 {
@@ -29,6 +30,31 @@ public struct Int2
         }
     }
 
+    public static Int2 zero = new Int2(0, 0);
+
+    public static bool TryParse(string _input, out Int2 _value)
+    {
+        if (string.IsNullOrEmpty(_input))
+        {
+            _value = Int2.zero;
+            return false;
+        }
+        else
+        {
+            var matches = Regex.Matches(_input.Trim(), "[-]{0,1}\\d+");
+            if (matches.Count == 2)
+            {
+                _value = new Int2(int.Parse(matches[0].Value), int.Parse(matches[1].Value));
+                return true;
+            }
+            else
+            {
+                _value = Int2.zero;
+                return false;
+            }
+        }
+    }
+
     public override bool Equals(object other)
     {
         if (other == null)
@@ -47,6 +73,11 @@ public struct Int2
     public override int GetHashCode()
     {
         return this.x.GetHashCode() + this.y.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return string.Format("({0},{1})", x, y);
     }
 
     public static bool operator ==(Int2 lhs, Int2 rhs)
@@ -111,6 +142,36 @@ public struct Int3
         }
     }
 
+    public static Int3 zero = new Int3(0, 0, 0);
+
+    public static bool TryParse(string _input, out Int3 _value)
+    {
+        if (string.IsNullOrEmpty(_input))
+        {
+            _value = Int3.zero;
+            return false;
+        }
+        else
+        {
+            var matches = Regex.Matches(_input.Trim(), "[-]{0,1}\\d+");
+            if (matches.Count == 2)
+            {
+                _value = new Int3(int.Parse(matches[0].Value), int.Parse(matches[1].Value), 0);
+                return true;
+            }
+            else if (matches.Count == 3)
+            {
+                _value = new Int3(int.Parse(matches[0].Value), int.Parse(matches[1].Value), int.Parse(matches[2].Value));
+                return true;
+            }
+            else
+            {
+                _value = Int3.zero;
+                return false;
+            }
+        }
+    }
+
     public override bool Equals(object other)
     {
         if (other == null)
@@ -129,6 +190,11 @@ public struct Int3
     public override int GetHashCode()
     {
         return this.x.GetHashCode() + this.y.GetHashCode() + this.z.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return string.Format("({0},{1},{2})", x, y, z);
     }
 
     public static bool operator ==(Int3 lhs, Int3 rhs)

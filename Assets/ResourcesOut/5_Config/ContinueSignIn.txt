@@ -1,7 +1,0 @@
-int	int[]	int	int[]	int[]
-ContineDay	ItemID	IsBind	ItemNum	JobItemList
-连续天数	物品ID	物品是否绑定	物品数量	职业物品
-7	103	1	2	
-14	4203|15	1	1|4	
-21	103	1	6	
-28	3799|15	1	1|1	3799|3798

@@ -10,13 +10,23 @@ using System.Threading;
 
 public class test : MonoBehaviour
 {
-
-
-    [SerializeField] SpriteAtlas m_Atlas;
+    [SerializeField] string m_input;
 
     private void OnEnable()
     {
 
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            var testConfig1 = TestConfig.Get(1);
+            var testConfig2 = TestConfig.Get(2);
+            var testConfig3 = TestConfig.Get(3);
+
+            DebugEx.Log("aaaa");
+        }
     }
 
 

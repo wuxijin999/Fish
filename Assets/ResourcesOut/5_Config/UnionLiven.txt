@@ -1,8 +1,0 @@
-int	string	int	int	int	string	string
-ID	Name	UnLockFuncID	OnceActivityTime	TotalActiveValue	RewardDes	IconName
-编号	名称	解锁功能ID	增加活跃所需次数	总活跃积分	奖励描述	任务图标
-1	仙盟任务{0}次	34	70	40	{0}活跃积分	wp_xmsl
-2	仙盟宴会{0}次	84	4	40	{0}活跃积分	wp_xmgx
-3	仙盟BOSS{0}次	15	1	20	{0}活跃积分	wp_xmgx
-4	仙盟联赛{0}次	111	2	50	{0}活跃积分	UnionMao_a
-5	同盟护法{0}次	12	10	20	{0}活跃积分	wp_bx_1

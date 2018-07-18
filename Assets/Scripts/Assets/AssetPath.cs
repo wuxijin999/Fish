@@ -23,16 +23,16 @@ public class AssetPath
 
     #region 具体asset资源读取路径
 
-    public static readonly string UI_ROOT_PATH = AssetRootPath + "/1_UI";
+    public static readonly string UI_ROOT_PATH = AssetRootRelativePath + "/1_UI";
     public static readonly string UI_PREFAB_PATH = UI_ROOT_PATH + "/Prefab";
     public static readonly string UI_WINDOW_PATH = UI_ROOT_PATH + "/Window";
     public static readonly string UI_SPRITE_ROOT_PATH = UI_ROOT_PATH + "/Sprite";
 
-    public static readonly string MOB_ROOT_PATH = AssetRootPath + "/2_Mob";
-    public static readonly string SHADER_ROOT_PATH = AssetRootPath + "/3_Shader";
-    public static readonly string SCENE_ROOT_PATH = AssetRootPath + "/4_Scenes";
-    public static readonly string CONFIG_ROOT_PATH = AssetRootPath + "/5_Config";
-    public static readonly string AUDIO_ROOT_PATH = AssetRootPath + "/6_Audio";
+    public static readonly string MOB_ROOT_PATH = AssetRootRelativePath + "/2_Mob";
+    public static readonly string SHADER_ROOT_PATH = AssetRootRelativePath + "/3_Shader";
+    public static readonly string SCENE_ROOT_PATH = AssetRootRelativePath + "/4_Scene";
+    public static readonly string CONFIG_ROOT_PATH = AssetRootRelativePath + "/5_Config";
+    public static readonly string AUDIO_ROOT_PATH = AssetRootRelativePath + "/6_Audio";
 
     #endregion
 
