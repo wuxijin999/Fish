@@ -73,6 +73,9 @@
     <Compile Include="Assets\Scripts\Assets\UILoader.cs" />
     <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
+    <Compile Include="Assets\Scripts\Effect\EffectBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Effect\EffectUtility.cs" />
+    <Compile Include="Assets\Scripts\Effect\UIEffectPlay.cs" />
     <Compile Include="Assets\Scripts\Fight\Action.cs" />
     <Compile Include="Assets\Scripts\Fight\ActionController.cs" />
     <Compile Include="Assets\Scripts\Fight\ActiveAction.cs" />
