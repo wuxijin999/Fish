@@ -76,23 +76,6 @@ public class FileExtersion
         }
     }
 
-    public static string RemoveVersionFromFileFullName(string _fullName)
-    {
-        var fileName = Path.GetFileName(_fullName);
-        var index = fileName.IndexOf("_version_");
-
-        if (index != -1)
-        {
-            var startIndex = index + 9;
-            fileName = fileName.Substring(startIndex, fileName.Length - startIndex);
-            return StringUtility.Contact(Path.GetDirectoryName(_fullName), Path.DirectorySeparatorChar, fileName);
-        }
-        else
-        {
-            return _fullName;
-        }
-    }
-
     public static string AddVersionToFileFullName(string _fullName, int _version)
     {
         var fileName = Path.GetFileName(_fullName);

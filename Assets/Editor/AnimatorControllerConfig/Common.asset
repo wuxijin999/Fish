@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9e5cf9b1296e8b4e80a479f37261136, type: 3}
+  m_Name: Common
+  m_EditorClassIdentifier: 
+  stateClips:
+  - state: Idle
+    clip: Idle
+  - state: Move
+    clip: Move
+  - state: Turn
+    clip: Turn
+  - state: DownToIdle
+    clip: DownToIdle
+  - state: Attack_1
+    clip: Attack_1
+  - state: Attack_2
+    clip: Attack_2
+  - state: Attack_3
+    clip: Attack_3
+  - state: Attack_4
+    clip: Attack_4
+  - state: Skill_1
+    clip: Skill_1
+  - state: Skill_2
+    clip: Skill_2
+  - state: Skill_3
+    clip: Skill_3
+  - state: Skill_4
+    clip: Skill_4
+  - state: Hurt
+    clip: Hurt
+  - state: Stun
+    clip: Stun
+  - state: Down
+    clip: Down

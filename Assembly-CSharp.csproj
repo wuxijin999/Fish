@@ -115,6 +115,7 @@
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
+    <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\Clock.cs" />
@@ -151,7 +152,6 @@
     <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
     <Compile Include="Assets\Scripts\Version\VersionUtility.cs" />
     <Compile Include="Assets\test.cs" />
-    <Compile Include="Assets\tipTest.cs" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
