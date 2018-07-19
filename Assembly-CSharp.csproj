@@ -141,6 +141,7 @@
     <Compile Include="Assets\Scripts\Utility\MathUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\QualityUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ResolutionUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\RichTextUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ShaderUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\Scripts\Utility\SingletonMonobehaviour.cs" />

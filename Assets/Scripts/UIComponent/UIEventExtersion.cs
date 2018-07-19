@@ -69,7 +69,6 @@ public class BizEvent {
         return _event;
     }
 
-
 }
 
 public class BizEvent<T> {

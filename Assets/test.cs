@@ -7,10 +7,15 @@ using UnityEngine.U2D;
 using System;
 using System.Timers;
 using System.Threading;
+using UnityEngine.Jobs;
 
 public class test : MonoBehaviour
 {
-    [SerializeField] string m_input;
+    [SerializeField] int m_Quality;
+    [SerializeField] Color m_Color;
+    [SerializeField] Text m_Text;
+
+
 
     private void OnEnable()
     {
@@ -21,9 +26,9 @@ public class test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            var testConfig1 = TestConfig.Get(1);
-            var testConfig2 = TestConfig.Get(2);
-            var testConfig3 = TestConfig.Get(3);
+            m_Color = ColorUtility.QualityColor(m_Quality);
+
+            m_Text.text = ColorUtility.QualityColorString(m_Quality, "aaaa");
 
             DebugEx.Log("aaaa");
         }
