@@ -9,17 +9,12 @@ using System.Timers;
 using System.Threading;
 using UnityEngine.Jobs;
 
-
-
-
 public class test 
 
 {
     [SerializeField] int m_Quality;
     [SerializeField] Color m_Color;
     [SerializeField] Text m_Text;
-
-
 
     private void OnEnable()
     {
