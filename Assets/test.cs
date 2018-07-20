@@ -9,7 +9,11 @@ using System.Timers;
 using System.Threading;
 using UnityEngine.Jobs;
 
-public class test : MonoBehaviour
+
+
+
+public class test 
+
 {
     [SerializeField] int m_Quality;
     [SerializeField] Color m_Color;
