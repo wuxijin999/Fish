@@ -9,12 +9,13 @@ using System.Timers;
 using System.Threading;
 using UnityEngine.Jobs;
 
-public class test 
-
+public class test : MonoBehaviour
 {
     [SerializeField] int m_Quality;
     [SerializeField] Color m_Color;
     [SerializeField] Text m_Text;
+    [TextArea] [SerializeField] string m_Input;
+
 
     private void OnEnable()
     {
@@ -26,7 +27,6 @@ public class test
         if (Input.GetKeyDown(KeyCode.F))
         {
             m_Color = ColorUtility.QualityColor(m_Quality);
-
             m_Text.text = ColorUtility.QualityColorString(m_Quality, "aaaa");
 
             DebugEx.Log("aaaa");

@@ -128,6 +128,8 @@
     <Compile Include="Assets\Scripts\Utility\Constants.cs" />
     <Compile Include="Assets\Scripts\Utility\CoroutineUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\DeviceUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\DownLoadTask.cs" />
+    <Compile Include="Assets\Scripts\Utility\DownLoadTaskUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\EditorHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\FileExtersion.cs" />
     <Compile Include="Assets\Scripts\Utility\FontUtility.cs" />
@@ -155,6 +157,7 @@
     <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
     <Compile Include="Assets\Scripts\Version\VersionUtility.cs" />
     <Compile Include="Assets\test.cs" />
+    <Compile Include="Assets\testBiz.cs" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
