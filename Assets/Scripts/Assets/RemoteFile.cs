@@ -174,7 +174,6 @@ public class RemoteFile
     bool Move(string sourceFile, string destFile)
     {
         bool ret = true;
-#if !UNITY_WEBPLAYER
         try
         {
             File.Move(sourceFile, destFile);
@@ -184,7 +183,6 @@ public class RemoteFile
             DebugEx.LogError(ex.Message);
             ret = false;
         }
-#endif
         return ret;
     }
 
@@ -210,11 +208,10 @@ public class RemoteFile
         mLocalFileTemp = localFile + ".tmp";  //先下载为临时文件
 
         MakeSureDirectory(mLocalFileTemp);   //确保文件写入目录存在
+
         mLocalLastModified = DateTime.MinValue;
         long localFileSize = 0L;
-#if !UNITY_WEBPLAYER
         mLocalLastModified = File.GetLastWriteTime(mLocalFileTemp);
-#endif
         HttpWebRequest headRequest = (HttpWebRequest)System.Net.WebRequest.Create(mRemoteFile);
         if (headRequest.ServicePoint.ConnectionLimit < RemoteFile.MaxConnectLimit)
         {
@@ -247,7 +244,6 @@ public class RemoteFile
                             }
                         }
                         System.Threading.Interlocked.Add(ref RemoteFile.TotalRemoteFileSize, mRemoteFileSize);
-                        //RemoteFile.TotalRemoteFileSize += mRemoteFileSize;
                         headRequestOk = true;
                     }
                     catch (Exception ex)
@@ -303,6 +299,7 @@ public class RemoteFile
             }
             yield return null;
         }
+
         if (mHadError)
         {
             DebugEx.LogWarningFormat("获取远程文件{0} 信息失败!", mRemoteFile);
@@ -316,13 +313,10 @@ public class RemoteFile
         if (File.Exists(mLocalFileTemp))
         { // This will not work in web player!
             //判断是否断点续传, 依据临时文件是否存在,以及修改时间是否小于服务器文件时间
-#if !UNITY_WEBPLAYER
             localFileSize = (File.Exists(mLocalFileTemp)) ? (new FileInfo(mLocalFileTemp)).Length : 0L;
-#endif
             bool outDated = IsOutdated;
             if (localFileSize == mRemoteFileSize && !outDated)
             {
-                //Log("File already cacled, not downloading: " + mLocalFileTemp);
                 gDownloadIsRunningCount--;
                 done = true;
                 mHadError = !Move(mLocalFileTemp, localFile);//把临时文件改名为正式文件
@@ -380,17 +374,6 @@ public class RemoteFile
             }
         }
 
-#if UseWebClient //|| UNITY_IOS
-		using (WebClient client = new WebClient()) {
-			client.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleted);
-			client.DownloadFileAsync(new Uri(mRemoteFile), mLocalFileTemp);
-		}
-		
-		while (!done) {
-			yield return null;
-        }
-        mHadError = !Move(mLocalFileTemp, localFile);//把临时文件改名为正式文件
-#else
         HttpWebRequest request = null;
         try
         {
@@ -406,12 +389,9 @@ public class RemoteFile
                 //CatDebugger.Log("文件{0} 开始断点续传 from {1} to {2}", mRemoteFile, localFileSize, mRemoteFileSize);
                 request.AddRange((int)localFileSize, (int)mRemoteFileSize - 1);
             }
-#if !UNITY_WEBPLAYER
             request.Method = WebRequestMethods.Http.Get;
-#endif
             request.BeginGetResponse(AsynchCallback, request);
             tick1 = System.Environment.TickCount;
-            //CatDebugger.Log("开始下载[{0}]", mRemoteFile);
         }
         catch (System.Exception ex)
         {
@@ -472,7 +452,6 @@ public class RemoteFile
                 buff = new byte[bufferSize];
             }
             fileWriteState = FileWriteState.Writting;
-            //IAsyncResult asyncResult = 
             inStream.BeginRead(buff, 0, bufferSize, ReadDataCallback, null);
             read_Stream_startTickcount = System.Environment.TickCount;
         }
@@ -519,22 +498,16 @@ public class RemoteFile
 
             yield return null;
         }
+
         if (request != null)
         {
             request.Abort();
             request = null;
         }
+
         if (fileWriteState == FileWriteState.Error || fileWriteState == FileWriteState.Timeout)
         {
             DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", localFile);
-            //if (inStream != null) {
-            //    inStream.Close();
-            //    inStream = null;
-            //}
-            //if (fs != null) {
-            //    fs.Close();
-            //    fs = null;
-            //}
             if (mAsynchResponse != null)
             {
                 mAsynchResponse.Close();
@@ -551,7 +524,6 @@ public class RemoteFile
             if (localTempFileInfo.Exists)
             { //临时文件存在,需要判断大小是否一致
               //判断临时文件和远程文件size是否一致
-#if !UNITY_WEBPLAYER
                 if (localTempFileInfo.Length != mRemoteFileSize && mRemoteFileSize != 0L)
                 {
                     mHadError = true;
@@ -563,7 +535,6 @@ public class RemoteFile
                 }
                 gDownloadIsRunningCount--;
                 done = true;
-#endif
             }
             else
             { //临时文件不存在
@@ -571,17 +542,12 @@ public class RemoteFile
                 gDownloadIsRunningCount--;
                 done = true;
             }
-#endif
         }
         catch (Exception ex)
         {
             DebugEx.LogError(ex);
             mHadError = true;
         }
-        //if (!mHadError) {
-        //    tick1 = System.Environment.TickCount - tick1;
-        //    CatDebugger.Log("完成下载{0} 用时:{1}", mRemoteFile, tick1);
-        //}
     }
 
     bool IsOutdated {
@@ -600,6 +566,7 @@ public class RemoteFile
         Error,
         Timeout,
     }
+
     Stream inStream;
     FileStream fs;
     FileWriteState fileWriteState = FileWriteState.None;  //下载文件写入状态
@@ -607,20 +574,11 @@ public class RemoteFile
     {
         try
         {
-            //int duration_tickcount = System.Environment.TickCount - read_Stream_startTickcount;
-            //if (duration_tickcount > 5000) {
-            //    CatDebugger.LogWarning("[RemoteFile] 远程文件{0} 读取超时 {1}ms! ", mRemoteFile, duration_tickcount);
-            //    fileWriteState = FileWriteState.Timeout;
-            //}
-            //else {
-            //CatDebugger.LogWarning("[RemoteFile] 远程文件{0} 响应时间 {1}ms! ", mRemoteFile, duration_tickcount);
             int read = inStream.EndRead(ar);
             lock (lockObj)
             {
                 gTotalDownloadSize += read;
             }
-            //System.Threading.Interlocked.Add(ref gTotalDownloadSize, read);
-            //System.Threading.Interlocked.Add(ref gTotalDownloadSize_2, read);
             if (read > 0)
             {
                 fs.Write(buff, 0, read);
@@ -638,7 +596,6 @@ public class RemoteFile
                 mAsynchResponse = null;
                 fileWriteState = FileWriteState.Completed;
             }
-            //}
         }
         catch (Exception ex)
         {
@@ -661,12 +618,6 @@ public class RemoteFile
         }
     }
 
-#if UseWebClient //|| UNITY_IOS
-	protected void DownloadCompleted(System.Object sender, AsyncCompletedEventArgs e) {
-		done = true;
-	}
-#else
-    // Throwind an exception here will not propogate to unity!
     protected void AsynchCallback(IAsyncResult result)
     {
         try
@@ -690,13 +641,6 @@ public class RemoteFile
                 DebugEx.LogError("Asynch response is null!");
                 mHadError = true;
             }
-            //if (mAsynchResponse.StatusCode == HttpStatusCode.OK || mAsynchResponse.StatusCode == HttpStatusCode.Moved
-            //    || mAsynchResponse.StatusCode == HttpStatusCode.Redirect
-            //CatDebugger.Log("{0} 成功建立连接 StatusCode:{1}", Path.GetFileName(mRemoteFile), mAsynchResponse.StatusCode);
-            //if (mAsynchResponse.StatusCode != HttpStatusCode.OK) {
-            //    mHadError = true;
-            //}
-            //Log("Download compleate");
         }
         catch (Exception ex)
         {
@@ -705,6 +649,5 @@ public class RemoteFile
             DebugEx.LogWarning("[RemoteFile] AsynchCallback 异常: " + ex.Message);
         }
     }
-#endif
 }
 

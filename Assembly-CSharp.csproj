@@ -69,10 +69,14 @@
     <Compile Include="Assets\Scripts\Assets\AssetVersion.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetVersionUtility.cs" />
     <Compile Include="Assets\Scripts\Assets\DownLoadAndDiscompressTask.cs" />
+    <Compile Include="Assets\Scripts\Assets\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Assets\RemoteFile.cs" />
     <Compile Include="Assets\Scripts\Assets\UILoader.cs" />
     <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
+    <Compile Include="Assets\Scripts\Effect\EffectBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Effect\EffectUtility.cs" />
+    <Compile Include="Assets\Scripts\Effect\UIEffectPlay.cs" />
     <Compile Include="Assets\Scripts\Fight\Action.cs" />
     <Compile Include="Assets\Scripts\Fight\ActionController.cs" />
     <Compile Include="Assets\Scripts\Fight\ActiveAction.cs" />
@@ -84,7 +88,6 @@
     <Compile Include="Assets\Scripts\Fight\PassiveAction.cs" />
     <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
-    <Compile Include="Assets\Scripts\Job\JobProperty.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
     <Compile Include="Assets\Scripts\Stage\StageUtility.cs" />
@@ -112,15 +115,8 @@
     <Compile Include="Assets\Scripts\System\Tip\TipsPresenter.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ButtonEx.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ImageEx.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ScrollRectEx.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\TextEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\TestBehaviour.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\TestBiz.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\UIComponentBase.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\UIEngine.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
@@ -134,6 +130,8 @@
     <Compile Include="Assets\Scripts\Utility\Constants.cs" />
     <Compile Include="Assets\Scripts\Utility\CoroutineUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\DeviceUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\DownLoadTask.cs" />
+    <Compile Include="Assets\Scripts\Utility\DownLoadTaskUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\EditorHelper.cs" />
     <Compile Include="Assets\Scripts\Utility\FileExtersion.cs" />
     <Compile Include="Assets\Scripts\Utility\FontUtility.cs" />
@@ -146,6 +144,7 @@
     <Compile Include="Assets\Scripts\Utility\MathUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\QualityUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ResolutionUtility.cs" />
+    <Compile Include="Assets\Scripts\Utility\RichTextUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\ShaderUtility.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\Scripts\Utility\SingletonMonobehaviour.cs" />
@@ -160,6 +159,7 @@
     <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
     <Compile Include="Assets\Scripts\Version\VersionUtility.cs" />
     <Compile Include="Assets\test.cs" />
+    <Compile Include="Assets\testBiz.cs" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />

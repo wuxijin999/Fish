@@ -7,6 +7,7 @@
     "com.unity.postprocessing": "2.0.5-preview",
     "com.unity.purchasing": "2.0.3",
     "com.unity.render-pipelines.core": "1.1.11-preview",
+    "com.unity.render-pipelines.lightweight": "3.0.0-preview",
     "com.unity.shadergraph": "1.1.9-preview",
     "com.unity.textmeshpro": "1.2.4",
     "com.unity.modules.ai": "1.0.0",
@@ -40,12 +41,10 @@
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
   },
-
-    "registry": "https://packages.unity.com", 
-    "testables": [
-        "com.unity.collections", 
-        "com.unity.entities", 
-        "com.unity.jobs"
-    ]
+  "registry": "https://packages.unity.com",
+  "testables": [
+    "com.unity.collections",
+    "com.unity.entities",
+    "com.unity.jobs"
+  ]
 }
-
