@@ -138,4 +138,14 @@ public class FileExtersion
             throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
         }
     }
+
+    public static void CreateDirectory(string _path)
+    {
+        var directoryPath = Path.GetDirectoryName(_path);
+        if (!Directory.Exists(directoryPath))
+        {
+            Directory.CreateDirectory(directoryPath);
+        }
+    }
+
 }
