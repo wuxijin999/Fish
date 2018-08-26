@@ -40,6 +40,7 @@ public abstract class Window : MonoBehaviour
     }
 
     public bool playAnimation { get; set; }
+    public int order = 1000;
 
     internal Window Open(int _function)
     {

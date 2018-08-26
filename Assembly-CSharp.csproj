@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\System\Base\WindowAsyncLoad.cs" />
     <Compile Include="Assets\Scripts\System\Base\WindowCenter.cs" />
     <Compile Include="Assets\Scripts\System\Base\WindowInfo.cs" />
+    <Compile Include="Assets\Scripts\System\Base\Windows.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancelPresenter.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancelWin.cs" />
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
