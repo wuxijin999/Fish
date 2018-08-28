@@ -69,7 +69,7 @@ public class WindowAsyncLoad : MonoBehaviour
             currentTask = taskQueue[0];
             taskQueue.RemoveAt(0);
 
-            UILoader.LoadWindowAsync(currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
+            UIAssets.LoadWindowAsync(currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
             {
                 try
                 {

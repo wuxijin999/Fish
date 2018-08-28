@@ -11,19 +11,23 @@ public abstract class Window : MonoBehaviour
     [SerializeField] protected RectTransform m_Content;
 
     int m_Function = 0;
-    public int function {
+    public int function
+    {
         get { return m_Function; }
         private set { m_Function = value; }
     }
 
     WindowInfo m_WindowInfo = null;
-    public WindowInfo windowInfo {
-        get {
+    public WindowInfo windowInfo
+    {
+        get
+        {
             return m_WindowInfo ?? (m_WindowInfo = this.GetComponent<WindowInfo>());
         }
     }
 
-    public WindowState windowState {
+    public WindowState windowState
+    {
         get; private set;
     }
 
@@ -32,12 +36,6 @@ public abstract class Window : MonoBehaviour
     ButtonEx emptyCloseButton;
     bool initialized = false;
     float windowTimer = 0f;
-
-    int m_FunctionOrder = 0;
-    public int functionOrder {
-        get { return m_FunctionOrder; }
-        private set { m_FunctionOrder = value; }
-    }
 
     public bool playAnimation { get; set; }
     public int order = 1000;

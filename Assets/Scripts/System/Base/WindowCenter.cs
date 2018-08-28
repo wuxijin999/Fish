@@ -12,8 +12,10 @@ public class WindowCenter : Singleton<WindowCenter>
     List<string> closeAllIgnoreWindows = new List<string>() { };
 
     UIRoot m_UIRoot;
-    public UIRoot uiRoot {
-        get {
+    public UIRoot uiRoot
+    {
+        get
+        {
             if (m_UIRoot == null)
             {
                 var prefab = Resources.Load<GameObject>("UI/Prefabs/UIRoot");
@@ -30,8 +32,10 @@ public class WindowCenter : Singleton<WindowCenter>
     }
 
     WindowAsyncLoad m_AnyncLoad;
-    public WindowAsyncLoad asyncLoad {
-        get {
+    public WindowAsyncLoad asyncLoad
+    {
+        get
+        {
             if (m_AnyncLoad == null)
             {
                 var gameObject = new GameObject("WindowAnyncLoad");
@@ -353,7 +357,7 @@ public class WindowCenter : Singleton<WindowCenter>
         else
         {
             var prefab = _fromLocal ? Resources.Load<GameObject>(StringUtility.Contact("UI/Prefabs/", prefabName))
-                : UILoader.LoadWindow(prefabName);
+                : UIAssets.LoadWindow(prefabName);
 
             prefab.SetActive(false);
             var instance = GameObject.Instantiate(prefab);
@@ -362,7 +366,7 @@ public class WindowCenter : Singleton<WindowCenter>
                 prefab.SetActive(true);
             }
 
-            UILoader.UnLoadWindowAsset(prefabName);
+            UIAssets.UnLoadWindowAsset(prefabName);
             instance.name = prefabName;
             var window = instance.GetComponent<T>();
             if (window != null)
@@ -402,7 +406,7 @@ public class WindowCenter : Singleton<WindowCenter>
                     prefab.SetActive(true);
                 }
 
-                UILoader.UnLoadWindowAsset(prefabName);
+                UIAssets.UnLoadWindowAsset(prefabName);
                 instance.name = _windowName;
                 window = (Window)instance.GetComponent(_windowName);
                 if (window != null)

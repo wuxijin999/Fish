@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.IO;
 
-public class UILoader
+public class UIAssets
 {
 
     public static GameObject LoadWindow(string _name)

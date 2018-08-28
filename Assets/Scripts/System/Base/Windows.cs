@@ -6,22 +6,33 @@ public class Windows : SingletonMonobehaviour<Window>
 {
 
     Dictionary<WindowType, Window> windows = new Dictionary<WindowType, Window>();
-    List<WindowType> openTasks = new List<WindowType>();
+    List<WindowType> openCmds = new List<WindowType>();
+    List<WindowType> closeCmds = new List<WindowType>();
     OrderAdminister orderAdminister = new OrderAdminister();
 
     public void Open(WindowType _type)
     {
-        if (!openTasks.Contains(_type))
+        if (!openCmds.Contains(_type))
         {
-            openTasks.Add(_type);
+            openCmds.Add(_type);
+        }
+
+        if (closeCmds.Contains(_type))
+        {
+            closeCmds.Remove(_type);
         }
     }
 
     public void Close(WindowType _type)
     {
-        if (openTasks.Contains(_type))
+        if (!closeCmds.Contains(_type))
         {
-            openTasks.Remove(_type);
+            closeCmds.Add(_type);
+        }
+
+        if (openCmds.Contains(_type))
+        {
+            openCmds.Remove(_type);
         }
     }
 
@@ -54,9 +65,9 @@ public class Windows : SingletonMonobehaviour<Window>
 
     private void LateUpdate()
     {
-        for (int i = 0; i < openTasks.Count; i++)
+        for (int i = 0; i < openCmds.Count; i++)
         {
-            var task = openTasks[i];
+            var task = openCmds[i];
             GetInstance(task);
             var window = windows[task];
             if (window != null)
@@ -65,13 +76,43 @@ public class Windows : SingletonMonobehaviour<Window>
                 window.Open(order);
             }
         }
+
+        for (int i = 0; i < closeCmds.Count; i++)
+        {
+            var task = closeCmds[i];
+            if (windows.ContainsKey(task))
+            {
+                var window = windows[task];
+                if (window != null)
+                {
+                    window.Close(true);
+                }
+
+                orderAdminister.ResetHightestOrder(GetHighestOrder());
+            }
+        }
+
+    }
+
+    private int GetHighestOrder()
+    {
+        var highestOrder = 1000;
+        foreach (var window in windows.Values)
+        {
+            if (window.order > highestOrder)
+            {
+                highestOrder = window.order;
+            }
+        }
+
+        return highestOrder;
     }
 
     private void GetInstance(WindowType _type)
     {
         if (!windows.ContainsKey(_type))
         {
-            var prefab = UILoader.LoadWindow(_type.ToString());
+            var prefab = UIAssets.LoadWindow(_type.ToString());
             var instance = GameObject.Instantiate(prefab);
             var window = instance.GetComponent<Window>();
             if (window != null)
@@ -95,9 +136,9 @@ public class Windows : SingletonMonobehaviour<Window>
             return hightestOrder = hightestOrder + 10;
         }
 
-        public void ResetHightestOrher(int _order)
+        public void ResetHightestOrder(int _order)
         {
-            hightestOrder = _order;
+            hightestOrder = Mathf.Clamp(_order, dynamicMin, dynamicMax);
         }
 
     }

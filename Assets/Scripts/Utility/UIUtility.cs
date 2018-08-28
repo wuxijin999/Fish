@@ -8,7 +8,7 @@ public static class UIUtility
 {
     public static GameObject CreateWidget(string _sourceName, string _name)
     {
-        var prefab = UILoader.LoadPrefab(_sourceName);
+        var prefab = UIAssets.LoadPrefab(_sourceName);
         if (prefab == null)
         {
             return null;
