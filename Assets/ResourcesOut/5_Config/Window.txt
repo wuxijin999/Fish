@@ -1,0 +1,6 @@
+﻿int	bool	int	bool
+id	fullScreen	depth	emptyToClose
+窗口id	是否全屏	深度，如果0则是动态深度	点击空白处关闭
+1	0	0	0
+2	0	0	0
+3	1	0	0

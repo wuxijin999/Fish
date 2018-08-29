@@ -10,7 +10,8 @@ public class ConfigInitiator
 
         ItemConfig.Init();
         TestConfig.Init();
-        //初始化结束
+        WindowConfig.Init();
+		//初始化结束
     }
 
 }

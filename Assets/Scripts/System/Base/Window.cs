@@ -2,51 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(WindowInfo))]
+[RequireComponent(typeof(Canvas))]
+[RequireComponent(typeof(GraphicRaycaster))]
 public abstract class Window : MonoBehaviour
 {
+
+    [SerializeField] int m_Id;
+    public int id { get { return m_Id; } }
+
+    [SerializeField] Tween m_Tween;
     [SerializeField] protected RectTransform m_BackGround;
     [SerializeField] protected RectTransform m_Content;
 
-    int m_Function = 0;
-    public int function
-    {
-        get { return m_Function; }
-        private set { m_Function = value; }
-    }
+    Canvas m_Canvas;
+    GraphicRaycaster m_Raycaster;
 
-    WindowInfo m_WindowInfo = null;
-    public WindowInfo windowInfo
+    public WindowState windowState { get; private set; }
+    public int order = 1000;
+    bool m_Interactable = false;
+    public bool interactable
     {
-        get
+        get { return m_Interactable; }
+        set
         {
-            return m_WindowInfo ?? (m_WindowInfo = this.GetComponent<WindowInfo>());
+            m_Interactable = value;
+            m_Raycaster.enabled = m_Interactable;
         }
     }
 
-    public WindowState windowState
-    {
-        get; private set;
-    }
-
-    RectTransform rectTransform { get { return this.transform.AddMissingComponent<RectTransform>(); } }
-
     ButtonEx emptyCloseButton;
     bool initialized = false;
-    float windowTimer = 0f;
+    WindowConfig config { get { return WindowConfig.Get(m_Id); } }
+    RectTransform rectTransform { get { return this.transform.AddMissingComponent<RectTransform>(); } }
 
-    public bool playAnimation { get; set; }
-    public int order = 1000;
-
-    internal Window Open(int _function)
+    internal Window Open(int _order)
     {
+        order = _order;
         try
         {
             if (!initialized)
             {
-                if (windowInfo.clickEmptyToClose && emptyCloseButton == null)
+                m_Canvas = this.GetComponent<Canvas>();
+                m_Raycaster = this.GetComponent<GraphicRaycaster>();
+                if (config.emptyToClose && emptyCloseButton == null)
                 {
                     AddEmptyCloseResponser();
                 }
@@ -61,11 +62,11 @@ public abstract class Window : MonoBehaviour
             Debug.Log(ex.StackTrace);
         }
 
+        m_Canvas.sortingOrder = order;
+
         try
         {
-            windowTimer = 0f;
             OnPreOpen();
-            WindowCenter.Instance.NotifyBeforeOpen(this);
         }
         catch (System.Exception ex)
         {
@@ -81,7 +82,7 @@ public abstract class Window : MonoBehaviour
         return this;
     }
 
-    internal Window Close(bool _immediately)
+    internal Window Close()
     {
         try
         {
@@ -94,8 +95,7 @@ public abstract class Window : MonoBehaviour
 
         try
         {
-            windowInfo.interactable = false;
-            WindowCenter.Instance.NotifyBeforeClose(this);
+            interactable = false;
         }
         catch (System.Exception ex)
         {
@@ -116,21 +116,7 @@ public abstract class Window : MonoBehaviour
             Debug.Log(ex.StackTrace);
         }
 
-        try
-        {
-            WindowCenter.Instance.NotifyAfterClose(this);
-        }
-        catch (System.Exception ex)
-        {
-            Debug.Log(ex.StackTrace);
-        }
-
         return this;
-    }
-
-    public virtual void CloseClick()
-    {
-        Close(true);
     }
 
     protected virtual void LateUpdate()
@@ -173,10 +159,22 @@ public abstract class Window : MonoBehaviour
             Debug.Log(ex.StackTrace);
         }
 
-        if (playAnimation && windowInfo.tween != null)
+        try
         {
-            windowInfo.tween.Play(true);
+            if (m_Tween != null)
+            {
+                m_Tween.Play(true).OnComplete(OnAfterOpen);
+            }
+            else
+            {
+                OnAfterOpen();
+            }
         }
+        catch (System.Exception ex)
+        {
+            Debug.Log(ex);
+        }
+
     }
 
     private void AddEmptyCloseResponser()
@@ -187,14 +185,14 @@ public abstract class Window : MonoBehaviour
         rectTransform.SetAsFirstSibling();
         rectTransform.MatchWhith(this.transform as RectTransform);
         emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
-        emptyCloseButton.AddListener(CloseClick);
+        emptyCloseButton.AddListener(() => { Close(); });
     }
 
-    public enum WindowState
-    {
-        Closed,
-        Opened,
-    }
+}
 
+public enum WindowState
+{
+    Closed,
+    Opened,
 }
 

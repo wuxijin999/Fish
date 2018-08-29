@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PleaseWaitPresenter : Presenter<PleaseWaitPresenter>
+public class PleaseWait : Presenter<PleaseWait>
 {
 
     List<WaitType> waitings = new List<WaitType>();
@@ -31,9 +31,9 @@ public class PleaseWaitPresenter : Presenter<PleaseWaitPresenter>
             waitings.Add(_waitType);
         }
 
-        if (!WindowCenter.Instance.CheckOpen<PleaseWaitWin>())
+        if (!Windows.Instance.IsOpen(WindowType.PleaseWait))
         {
-            WindowCenter.Instance.Open<PleaseWaitWin>(true);
+            Windows.Instance.Open(WindowType.PleaseWait);
         }
     }
 
@@ -44,13 +44,11 @@ public class PleaseWaitPresenter : Presenter<PleaseWaitPresenter>
             waitings.Remove(_waitType);
         }
 
-        if (waitings.Count == 0 && WindowCenter.Instance.CheckOpen<PleaseWaitWin>())
+        if (waitings.Count == 0 && Windows.Instance.IsOpen(WindowType.PleaseWait))
         {
-            WindowCenter.Instance.Close<PleaseWaitWin>(true);
+            Windows.Instance.Close(WindowType.PleaseWait);
         }
     }
-
-
 
     public enum WaitType
     {

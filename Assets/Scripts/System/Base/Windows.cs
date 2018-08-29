@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Windows : SingletonMonobehaviour<Window>
+public class Windows : SingletonMonobehaviour<Windows>
 {
 
     Dictionary<WindowType, Window> windows = new Dictionary<WindowType, Window>();
@@ -36,13 +36,25 @@ public class Windows : SingletonMonobehaviour<Window>
         }
     }
 
+    public bool IsOpen(WindowType _type)
+    {
+        if (windows.ContainsKey(_type))
+        {
+            return windows[_type].windowState == WindowState.Opened;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void CloseAll()
     {
         foreach (var window in windows.Values)
         {
-            if (window != null && window.windowState == Window.WindowState.Opened)
+            if (window != null && window.windowState == WindowState.Opened)
             {
-                window.Close(true);
+                window.Close();
             }
         }
     }
@@ -56,15 +68,30 @@ public class Windows : SingletonMonobehaviour<Window>
                 continue;
             }
 
-            if (keyValue.Value != null && keyValue.Value.windowState == Window.WindowState.Opened)
+            if (keyValue.Value != null && keyValue.Value.windowState == WindowState.Opened)
             {
-                keyValue.Value.Close(true);
+                keyValue.Value.Close();
             }
         }
     }
 
     private void LateUpdate()
     {
+        for (int i = 0; i < closeCmds.Count; i++)
+        {
+            var task = closeCmds[i];
+            if (windows.ContainsKey(task))
+            {
+                var window = windows[task];
+                if (window != null)
+                {
+                    window.Close();
+                }
+            }
+        }
+
+        orderAdminister.ResetHightestOrder(GetHighestOrder());
+
         for (int i = 0; i < openCmds.Count; i++)
         {
             var task = openCmds[i];
@@ -76,22 +103,6 @@ public class Windows : SingletonMonobehaviour<Window>
                 window.Open(order);
             }
         }
-
-        for (int i = 0; i < closeCmds.Count; i++)
-        {
-            var task = closeCmds[i];
-            if (windows.ContainsKey(task))
-            {
-                var window = windows[task];
-                if (window != null)
-                {
-                    window.Close(true);
-                }
-
-                orderAdminister.ResetHightestOrder(GetHighestOrder());
-            }
-        }
-
     }
 
     private int GetHighestOrder()
@@ -143,7 +154,6 @@ public class Windows : SingletonMonobehaviour<Window>
 
     }
 
-
 }
 
 public enum WindowType
@@ -152,4 +162,6 @@ public enum WindowType
     Role,
     Backpack,
     Setting,
+    ConfirmCancel,
+    PleaseWait,
 }
