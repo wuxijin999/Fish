@@ -142,5 +142,9 @@ public static class TransformExtension
         return false;
     }
 
+    public static Transform GetRoot(this Transform transform)
+    {
+        return transform && transform.parent ? GetRoot(transform.parent) : transform;
+    }
 
 }
