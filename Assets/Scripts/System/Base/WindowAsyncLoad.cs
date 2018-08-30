@@ -51,15 +51,19 @@ public class WindowAsyncLoad : MonoBehaviour
         {
             currentTask.Dispose();
             currentTask = null;
-            PleaseWaitPresenter.Instance.Hide(PleaseWaitPresenter.WaitType.WindowLoad);
+            PleaseWait.Instance.Hide(PleaseWait.WaitType.WindowLoad);
         }
     }
 
     public void StopAllTasks()
     {
+        if (currentTask != null)
+        {
+            currentTask.Dispose();
+        }
         currentTask = null;
         taskQueue.Clear();
-        PleaseWaitPresenter.Instance.Hide(PleaseWaitPresenter.WaitType.WindowLoad);
+        PleaseWait.Instance.Hide(PleaseWait.WaitType.WindowLoad);
     }
 
     private void LateUpdate()
@@ -69,13 +73,13 @@ public class WindowAsyncLoad : MonoBehaviour
             currentTask = taskQueue[0];
             taskQueue.RemoveAt(0);
 
-            UILoader.LoadWindowAsync(currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
+            UIAssets.LoadWindowAsync(currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
             {
                 try
                 {
                     if (currentTask != null)
                     {
-                        currentTask.Report(ok, _resource);
+                        currentTask.Done(ok, _resource);
                         currentTask = null;
                     }
                 }
@@ -85,51 +89,15 @@ public class WindowAsyncLoad : MonoBehaviour
                 }
                 finally
                 {
-                    PleaseWaitPresenter.Instance.Hide(PleaseWaitPresenter.WaitType.WindowLoad);
+                    PleaseWait.Instance.Hide(PleaseWait.WaitType.WindowLoad);
                 }
             });
         }
 
     }
 
-    public class TaskGroup
-    {
-        List<Task> tasks = new List<Task>();
-
-        public void AddTask(Task _task)
-        {
-            if (!tasks.Contains(_task))
-            {
-                tasks.Add(_task);
-            }
-        }
-
-        public void NotifyTaskState(Task _task)
-        {
-            bool allReady = true;
-            for (int i = 0; i < tasks.Count; i++)
-            {
-                if (!tasks[i].ready)
-                {
-                    allReady = false;
-                    break;
-                }
-            }
-
-            if (allReady)
-            {
-                for (int i = 0; i < tasks.Count; i++)
-                {
-                    tasks[i].Done();
-                }
-            }
-        }
-
-    }
-
     public class Task
     {
-        public TaskGroup taskGroup { get; private set; }
         public string windowName { get; private set; }
         public bool ready = false;
 
@@ -143,39 +111,20 @@ public class WindowAsyncLoad : MonoBehaviour
             callBack = _callBack;
         }
 
-        public void Bind(TaskGroup _task)
-        {
-            taskGroup = _task;
-        }
-
-        public void Report(bool _ok, UnityEngine.Object _object)
+        public void Done(bool _ok, UnityEngine.Object _object)
         {
             result = _ok;
             asset = _object;
-
-            if (taskGroup != null)
+            if (callBack != null)
             {
-                ready = true;
-                taskGroup.NotifyTaskState(this);
-            }
-            else
-            {
-                Done();
+                callBack(result, asset);
+                callBack = null;
             }
         }
 
         public void Dispose()
         {
             callBack = null;
-        }
-
-        public void Done()
-        {
-            if (callBack != null)
-            {
-                callBack(result, asset);
-                callBack = null;
-            }
         }
 
 

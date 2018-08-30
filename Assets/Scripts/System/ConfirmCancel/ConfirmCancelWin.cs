@@ -24,20 +24,19 @@ public class ConfirmCancelWin : Window
 
     protected override void OnPreOpen()
     {
-        if (!string.IsNullOrEmpty(ConfirmCancelPresenter.Instance.title))
+        if (!string.IsNullOrEmpty(ConfirmCancel.Instance.title))
         {
-            m_Title.text = ConfirmCancelPresenter.Instance.title;
+            m_Title.text = ConfirmCancel.Instance.title;
         }
 
-        if (!string.IsNullOrEmpty(ConfirmCancelPresenter.Instance.content))
+        if (!string.IsNullOrEmpty(ConfirmCancel.Instance.content))
         {
-            m_Description.text = ConfirmCancelPresenter.Instance.content;
+            m_Description.text = ConfirmCancel.Instance.content;
         }
     }
 
     protected override void OnAfterOpen()
     {
-
     }
 
     protected override void OnPreClose()
@@ -50,21 +49,13 @@ public class ConfirmCancelWin : Window
 
     private void OnConfirm()
     {
-        if (ConfirmCancelPresenter.Instance.confirmAction != null)
-        {
-            ConfirmCancelPresenter.Instance.confirmAction.Invoke();
-        }
-
-        this.Close(true);
+        ConfirmCancel.Instance.Confirm();
+        this.Close();
     }
 
     private void OnCancel()
     {
-        if (ConfirmCancelPresenter.Instance.cancelAction != null)
-        {
-            ConfirmCancelPresenter.Instance.cancelAction.Invoke();
-        }
-
-        this.Close(true);
+        ConfirmCancel.Instance.Cancel();
+        this.Close();
     }
 }

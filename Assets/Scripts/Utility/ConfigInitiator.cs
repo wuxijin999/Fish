@@ -8,8 +8,9 @@ public class ConfigInitiator
     public static void Init()
     {
 
-		ItemConfig.Init();
-		TestConfig.Init();
+        ItemConfig.Init();
+        TestConfig.Init();
+        WindowConfig.Init();
 		//初始化结束
     }
 
