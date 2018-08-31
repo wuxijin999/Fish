@@ -55,25 +55,29 @@ public class VersionConfig : ScriptableObject
     public string appleDeveloperTeamID { get { return m_AppleDeveloperTeamID; } }
 
     [SerializeField] bool m_DebugVersion = false;
-    public bool debugVersion {
+    public bool debugVersion
+    {
         get { return m_DebugVersion; }
         set { m_DebugVersion = value; }
     }
 
     [SerializeField] bool m_IsBanShu = false;
-    public bool isBanShu {
+    public bool isBanShu
+    {
         get { return m_IsBanShu; }
         set { m_IsBanShu = value; }
     }
 
     [SerializeField] string m_BuildTime;
-    public string buildTime {
+    public string buildTime
+    {
         get { return m_BuildTime; }
         set { m_BuildTime = value; }
     }
 
     [SerializeField] int m_BuildIndex;
-    public int buildIndex {
+    public int buildIndex
+    {
         get { return m_BuildIndex; }
         set { m_BuildIndex = value; }
     }
@@ -103,7 +107,7 @@ public class VersionConfig : ScriptableObject
     [ContextMenu("Apply")]
     public void Apply()
     {
-        var newVersionConfigPath = StringUtility.Contact("Assets/Resources/ScriptableObject/Config/VersionConfig", ".asset");
+        var newVersionConfigPath = StringUtil.Contact("Assets/Resources/ScriptableObject/Config/VersionConfig", ".asset");
 
         var fromVersionConfig = this;
         var newVersionConfig = ScriptableObject.CreateInstance<VersionConfig>();
@@ -178,7 +182,7 @@ public class VersionConfig : ScriptableObject
                 var input = lhsStrings[i];
                 var intTemp = 0;
                 int.TryParse(input, out intTemp);
-                version1 += intTemp * MathUtility.Power(100, lhsStrings.Length - i);
+                version1 += intTemp * MathUtil.Power(100, lhsStrings.Length - i);
             }
 
             var version2 = 0;
@@ -187,7 +191,7 @@ public class VersionConfig : ScriptableObject
                 var input = rhsStrings[i];
                 var intTemp = 0;
                 int.TryParse(input, out intTemp);
-                version2 += intTemp * MathUtility.Power(100, rhsStrings.Length - i);
+                version2 += intTemp * MathUtil.Power(100, rhsStrings.Length - i);
             }
 
             return version1 > version2 ? _lhs : _rhs;

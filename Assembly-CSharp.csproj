@@ -108,51 +108,55 @@
      <Compile Include="Assets\Scripts\System\Tip\TipsPresenter.cs" />
      <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
      <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ButtonEx.cs" />
+     <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ImageEx.cs" />
+     <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\TextEx.cs" />
      <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
      <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
      <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
      <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
      <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
      <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
-     <Compile Include="Assets\Scripts\Utility\CameraUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\CameraUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\Clock.cs" />
      <Compile Include="Assets\Scripts\Utility\ColorPattern.cs" />
-     <Compile Include="Assets\Scripts\Utility\ColorUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\ColorUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\ComponentExtersion.cs" />
      <Compile Include="Assets\Scripts\Utility\ConfigInitiator.cs" />
      <Compile Include="Assets\Scripts\Utility\Constants.cs" />
-     <Compile Include="Assets\Scripts\Utility\CoroutineUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\DeviceUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\CoroutineUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\DeviceUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\DownLoadTask.cs" />
-     <Compile Include="Assets\Scripts\Utility\DownLoadTaskUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\DownLoadTaskUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\EditorHelper.cs" />
      <Compile Include="Assets\Scripts\Utility\FileExtersion.cs" />
-     <Compile Include="Assets\Scripts\Utility\FontUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\FontUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\GlobalTimeEvent.cs" />
      <Compile Include="Assets\Scripts\Utility\HttpAsyncHandle.cs" />
      <Compile Include="Assets\Scripts\Utility\HttpRequest.cs" />
-     <Compile Include="Assets\Scripts\Utility\LayerUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\LayerUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\LocalSave.cs" />
-     <Compile Include="Assets\Scripts\Utility\MaterialUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\MathUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\QualityUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\ResolutionUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\RichTextUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\ShaderUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\MaterialUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\MathUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\QualityUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\ResolutionUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\RichTextUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\ShaderUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
      <Compile Include="Assets\Scripts\Utility\SingletonMonobehaviour.cs" />
-     <Compile Include="Assets\Scripts\Utility\StringUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\StringUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\StructEx.cs" />
+     <Compile Include="Assets\Scripts\Utility\TimeUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\TransformExtension.cs" />
      <Compile Include="Assets\Scripts\Utility\UIGameObjectPool.cs" />
-     <Compile Include="Assets\Scripts\Utility\UIGameObjectPoolUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\UIUtility.cs" />
-     <Compile Include="Assets\Scripts\Utility\VectorUtility.cs" />
+     <Compile Include="Assets\Scripts\Utility\UIGameObjectPoolUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\UIUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\VectorUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\WaitingForSecondConst.cs" />
      <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
      <Compile Include="Assets\Scripts\Version\VersionUtility.cs" />
      <Compile Include="Assets\test.cs" />
      <Compile Include="Assets\testBiz.cs" />
+     <Compile Include="Assets\TimeTest.cs" />
      <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
      <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
      <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
@@ -179,6 +183,18 @@
  </Reference>
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.ShaderGraph.Editor">
+ <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Editor">
+ <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.Runtime">
+ <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.RenderPipelines.Core.IncludePaths">
+ <HintPath>E:/Fish/Library/ScriptAssemblies/Unity.RenderPipelines.Core.IncludePaths.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity 2018/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

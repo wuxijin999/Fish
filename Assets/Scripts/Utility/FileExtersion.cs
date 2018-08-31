@@ -86,7 +86,7 @@ public class FileExtersion
             fileName = fileName.Substring(0, index);
         }
 
-        return StringUtility.Contact(Path.GetDirectoryName(_fullName), Path.DirectorySeparatorChar, _version, "_version_", fileName);
+        return StringUtil.Contact(Path.GetDirectoryName(_fullName), Path.DirectorySeparatorChar, _version, "_version_", fileName);
     }
 
     public static void DirectoryCopy(string _from, string _to)

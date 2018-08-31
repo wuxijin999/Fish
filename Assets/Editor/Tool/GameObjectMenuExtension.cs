@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections;
-using Snxxz.UI;
 
 public class GameObjectMenuExtension
 {
@@ -32,7 +31,7 @@ public class GameObjectMenuExtension
     static void OnHierarchyGUI(int instanceID, Rect selectionRect)
     {
         if (Event.current != null && selectionRect.Contains(Event.current.mousePosition)
-            && Event.current.button == 1 && Event.current.type <= EventType.mouseUp)
+            && Event.current.button == 1 && Event.current.type <= EventType.MouseUp)
         {
             var selectedGameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
             //这里可以判断selectedGameObject的条件

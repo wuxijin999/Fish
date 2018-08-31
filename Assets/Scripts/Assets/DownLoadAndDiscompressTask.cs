@@ -8,8 +8,10 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     public const int BYTE_PER_KILOBYTE = 1024;
     public const int BYTE_PER_MILLIONBYTE = 1048576;
 
-    public float progress {
-        get {
+    public float progress
+    {
+        get
+        {
             return Mathf.Clamp01((float)RemoteFile.TotalDownloadSize / totalSize);
         }
     }
@@ -26,9 +28,11 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     System.Action downLoadOkCallBack;
 
     Step m_Step = Step.None;
-    public Step step {
+    public Step step
+    {
         get { return m_Step; }
-        set {
+        set
+        {
             if (m_Step != value)
             {
                 m_Step = value;
@@ -70,7 +74,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     public void StartDownLoad()
     {
         step = Step.DownLoad;
-        CoroutineUtility.Instance.Coroutine(Co_StartDownLoad());
+        CoroutineUtil.Instance.Coroutine(Co_StartDownLoad());
     }
 
     IEnumerator Co_StartDownLoad()
@@ -81,11 +85,11 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         {
             var assetVersion = tasks[i];
 
-            var remoteURL = StringUtility.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
-            var localURL = StringUtility.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
+            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
+            var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            CoroutineUtility.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
         }
 
         while (okCount < totalCount)
@@ -115,11 +119,11 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
         else
         {
-            var remoteURL = StringUtility.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", _assetVersion.relativePath);
-            var localURL = StringUtility.Contact(AssetPath.ExternalStorePath, _assetVersion.relativePath);
+            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", _assetVersion.relativePath);
+            var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, _assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, _assetVersion);
-            CoroutineUtility.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
         }
     }
 

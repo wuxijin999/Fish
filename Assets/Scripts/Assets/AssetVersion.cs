@@ -24,7 +24,8 @@ public class AssetVersion
     public StorageLocation fileLocation { get { return m_FileLocation; } }
 
     bool m_LocalValid = false;
-    public bool localValid {
+    public bool localValid
+    {
         get { return m_LocalValid; }
         set { m_LocalValid = value; }
     }
@@ -96,7 +97,7 @@ public class AssetVersion
     {
         if (extersion == ".manifest" || extersion == ".bytes" || extersion == ".txt" || extersion == ".dll")
         {
-            var path = StringUtility.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
             var fileInfo = new FileInfo(path);
 
             if (!fileInfo.Exists || fileInfo.Length != size || md5 != FileExtersion.GetMD5HashFromFile(path))
@@ -106,10 +107,10 @@ public class AssetVersion
         }
         else if (string.IsNullOrEmpty(extersion) || extersion.Length == 0)
         {
-            var path = StringUtility.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
             var fileInfo = new FileInfo(path);
 
-            var manifestAssetVersion = AssetVersionUtility.GetAssetVersion(StringUtility.Contact(m_RelativePath, ".manifest"));
+            var manifestAssetVersion = AssetVersionUtility.GetAssetVersion(StringUtil.Contact(m_RelativePath, ".manifest"));
             if (!fileInfo.Exists || fileInfo.Length != size || manifestAssetVersion == null || !manifestAssetVersion.CheckLocalFileValid())
             {
                 return false;
@@ -117,7 +118,7 @@ public class AssetVersion
         }
         else
         {
-            var path = StringUtility.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
             var fileInfo = new FileInfo(path);
             if (!fileInfo.Exists || fileInfo.Length != size)
             {

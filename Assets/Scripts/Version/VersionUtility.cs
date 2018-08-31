@@ -17,7 +17,8 @@ public class VersionUtility : Singleton<VersionUtility>
 
     public string androidRoot { get { return VersionConfig.Get().bundleIdentifier; } }
 
-    public float progress {
+    public float progress
+    {
         get { return RemoteFile.TotalDownloadSize / ((float)versionInfo.GetLatestVersion().file_size * 1024); }
     }
 
@@ -26,9 +27,11 @@ public class VersionUtility : Singleton<VersionUtility>
     public bool completed { get { return step == Step.Completed; } }
 
     Step m_Step = Step.None;
-    public Step step {
+    public Step step
+    {
         get { return m_Step; }
-        private set {
+        private set
+        {
             if (m_Step != value)
             {
                 m_Step = value;
@@ -51,7 +54,7 @@ public class VersionUtility : Singleton<VersionUtility>
             tables["branch"] = VersionConfig.Get().branch.ToString();
         }
 
-        var url = StringUtility.Contact(VERSION_URL, HttpRequest.HashTableToString(tables));
+        var url = StringUtil.Contact(VERSION_URL, HttpRequest.HashTableToString(tables));
         HttpRequest.Instance.RequestHttpGet(url, OnVersionCheckResult);
     }
 
@@ -69,7 +72,7 @@ public class VersionUtility : Singleton<VersionUtility>
                 {
                     case RuntimePlatform.Android:
                         var fileName = Path.GetFileName(remoteURL);
-                        apkLocalURL = StringUtility.Contact(androidRoot, "/", fileName);
+                        apkLocalURL = StringUtil.Contact(androidRoot, "/", fileName);
                         if (File.Exists(apkLocalURL))
                         {
                             step = Step.ApkExist;
@@ -111,10 +114,10 @@ public class VersionUtility : Singleton<VersionUtility>
         var version = versionInfo.GetLatestVersion();
         var remoteURL = version.download_url;
         var fileName = Path.GetFileName(remoteURL);
-        apkLocalURL = StringUtility.Contact(androidRoot, "/", fileName);
+        apkLocalURL = StringUtil.Contact(androidRoot, "/", fileName);
         var remoteFile = new RemoteFile(remoteURL, apkLocalURL, null);
         RemoteFile.Prepare();
-        CoroutineUtility.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnDownLoadApkCompleted));
+        CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnDownLoadApkCompleted));
     }
 
     private void OnDownLoadApkCompleted(bool _ok, AssetVersion _assetVersion)

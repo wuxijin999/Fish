@@ -14,9 +14,9 @@ public class UIGameObjectPool
 
     public UIGameObjectPool(int _instanceId, GameObject _prefab)
     {
-        root = new GameObject(StringUtility.Contact("UIPool_", _instanceId));
+        root = new GameObject(StringUtil.Contact("UIPool_", _instanceId));
         Object.DontDestroyOnLoad(root);
-        root.transform.position = UIGameObjectPoolUtility.HIDE_POINT;
+        root.transform.position = UIGameObjectPoolUtil.HIDE_POINT;
 
         instanceId = _instanceId;
         m_Prefab = _prefab;

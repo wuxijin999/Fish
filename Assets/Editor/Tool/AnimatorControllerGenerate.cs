@@ -15,7 +15,7 @@ public class AnimatorControllerGenerate
             return;
         }
 
-        var templatePath = StringUtility.Contact("Assets/Editor/AnimatorControllerTemplate/", _config.controllerTemplate, ".controller");
+        var templatePath = StringUtil.Contact("Assets/Editor/AnimatorControllerTemplate/", _config.controllerTemplate, ".controller");
         AssetDatabase.CopyAsset(templatePath, _newControllerPath);
         var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(_newControllerPath);
 

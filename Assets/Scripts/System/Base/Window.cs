@@ -179,7 +179,7 @@ public abstract class Window : MonoBehaviour
 
     private void AddEmptyCloseResponser()
     {
-        var emptyClose = UIUtility.CreateWidget("InvisibleButton", "EmptyClose");
+        var emptyClose = UIUtil.CreateWidget("InvisibleButton", "EmptyClose");
         var rectTransform = emptyClose.transform as RectTransform;
         rectTransform.SetParentEx(this.transform, Vector3.zero, Quaternion.identity, Vector3.one);
         rectTransform.SetAsFirstSibling();

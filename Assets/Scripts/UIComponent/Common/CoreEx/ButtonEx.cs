@@ -2,44 +2,87 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
+using TMPro;
 
 public class ButtonEx : Button
 {
 
-    public event System.Action ableTimeChangeEvent;
+    [SerializeField] float interval;
+    [SerializeField] int positiveSound = 0;
+    [SerializeField] int negativeSound = 0;
+    [SerializeField] TextMeshProUGUI m_TitleMesh;
+    [SerializeField] Color m_NormalColor;
+    [SerializeField] Color m_DisableColor;
+    [SerializeField] TextMeshProUGUI m_CoolDownText;
+    [SerializeField] ImageEx m_Image;
 
-    public float interval;
-    public bool customPositiveSound = false;
-    public bool customNegativeSound = false;
-    public int positiveSound = 0;
-    public int negativeSound = 0;
+
+    float coolDownTimer = 0f;
 
     float m_AbleTime = 0f;
     public float ableTime
     {
         get { return m_AbleTime; }
-        private set
+        private set { m_AbleTime = value; }
+    }
+
+    string m_Title;
+    public string title
+    {
+        get { return m_Title; }
+        set
         {
-            m_AbleTime = value;
-            if (ableTimeChangeEvent != null)
+            if (m_Title != value)
             {
-                ableTimeChangeEvent();
+                m_Title = value;
+                m_TitleMesh.text = m_Title;
             }
+        }
+    }
+
+    State m_State;
+    public State state
+    {
+        get { return m_State; }
+        set
+        {
+            m_State = value;
+        }
+    }
+
+    public void SetState(State state)
+    {
+        this.state = state;
+        switch (state)
+        {
+            case State.CoolDown:
+                m_Image.gray = true;
+                break;
+            case State.Disable:
+                m_Image.gray = true;
+                break;
+            case State.Normal:
+                m_Image.gray = false;
+                break;
         }
     }
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        if (Time.realtimeSinceStartup < ableTime)
+        switch (this.state)
         {
-            PlayNegativeSound();
-            return;
+            case State.CoolDown:
+                PlayNegativeSound();
+                return;
+            case State.Disable:
+                return;
+            case State.Normal:
+                base.OnPointerClick(eventData);
+                PlayPositiveSound();
+                ableTime = Time.realtimeSinceStartup + Mathf.Clamp(interval, 0, float.MaxValue);
+                SetState(State.CoolDown);
+                break;
         }
-
-        base.OnPointerClick(eventData);
-
-        PlayPositiveSound();
-        ableTime = Time.realtimeSinceStartup + Mathf.Clamp(interval, 0, float.MaxValue);
     }
 
     protected override void Awake()
@@ -49,26 +92,49 @@ public class ButtonEx : Button
 
     private void PlayPositiveSound()
     {
-        if (customPositiveSound)
-        {
-            //   SoundPlayer.Instance.PlayUIAudio(positiveSound);
-        }
-        else
-        {
-            // SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickPositiveAudio);
-        }
     }
 
     private void PlayNegativeSound()
     {
-        if (customNegativeSound)
+    }
+
+    private void LateUpdate()
+    {
+        if (state == State.CoolDown)
         {
-            // SoundPlayer.Instance.PlayUIAudio(negativeSound);
+            coolDownTimer += Time.deltaTime;
+
+            if (coolDownTimer > 1f)
+            {
+                coolDownTimer = 0f;
+                DisplayCoolDown();
+            }
+        }
+
+    }
+
+    private void DisplayCoolDown()
+    {
+        var surplusTime = ableTime - Time.realtimeSinceStartup;
+        if (surplusTime >= 1f)
+        {
+            m_TitleMesh.gameObject.SetActive(false);
+            m_CoolDownText.gameObject.SetActive(true);
+            m_CoolDownText.text = "";
         }
         else
         {
-            //SoundPlayer.Instance.PlayUIAudio(SoundPlayer.defaultClickNegativeAudio);
+            m_TitleMesh.gameObject.SetActive(true);
+            m_CoolDownText.gameObject.SetActive(false);
         }
     }
+
+    public enum State
+    {
+        Normal = 0,
+        CoolDown = 1,
+        Disable = 2,
+    }
+
 
 }

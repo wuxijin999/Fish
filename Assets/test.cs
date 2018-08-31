@@ -26,8 +26,8 @@ public class test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            m_Color = ColorUtility.QualityColor(m_Quality);
-            m_Text.text = ColorUtility.QualityColorString(m_Quality, "aaaa");
+            m_Color = ColorUtil.QualityColor(m_Quality);
+            m_Text.text = ColorUtil.QualityColorString(m_Quality, "aaaa");
 
             DebugEx.Log("aaaa");
         }

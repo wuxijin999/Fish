@@ -29,7 +29,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     private IEnumerator Co_LoadMainfestFile(string _category)
     {
-        var path = AssetVersionUtility.GetAssetFilePath(StringUtility.Contact(_category, "_assetbundle"));
+        var path = AssetVersionUtility.GetAssetFilePath(StringUtil.Contact(_category, "_assetbundle"));
         var _assetBundle = AssetBundle.LoadFromFile(path);
 
         if (_assetBundle == null)
@@ -325,7 +325,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     public void UnloadAsset(string assetBundleName, string assetName)
     {
-        string _assembleName = StringUtility.Contact(assetBundleName, "@", assetName);
+        string _assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
 
         if (JudgeExistAsset(assetBundleName, assetName) == false)
         {
@@ -498,7 +498,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
         m_AssetDict[assetBundleName][assetName] = asset;
 
-        string _assembleName = StringUtility.Contact(assetBundleName, "@", assetName);
+        string _assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
         if (m_AssetInfoDict.ContainsKey(_assembleName) == false)
         {
             AssetInfo _assetInfo = new AssetInfo(assetBundleName, assetName);

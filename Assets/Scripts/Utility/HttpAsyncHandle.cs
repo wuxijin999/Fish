@@ -22,13 +22,15 @@ public class HttpAsyncHandle : MonoBehaviour
     string message = string.Empty;
 
     static UIGameObjectPool m_Pool;
-    static UIGameObjectPool pool {
-        get {
+    static UIGameObjectPool pool
+    {
+        get
+        {
             if (m_Pool == null)
             {
                 var carrier = new GameObject();
                 var behaviour = carrier.AddComponent<HttpAsyncHandle>();
-                m_Pool = UIGameObjectPoolUtility.Create(carrier);
+                m_Pool = UIGameObjectPoolUtil.Create(carrier);
             }
 
             return m_Pool;

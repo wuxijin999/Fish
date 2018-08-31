@@ -113,6 +113,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39042246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39042247}
+  - component: {fileID: 39042248}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39042247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39042246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 525.60284, y: 419.7753, z: -10.6136265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &39042248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 39042246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 364760cf6a684ad4abb81c333603ddc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  second: 9999
 --- !u!1 &179864512
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,8 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ea95c182050b6489050e08a001ef1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Text1: {fileID: 285560222}
-  m_Text2: {fileID: 509940549}
 --- !u!222 &179864515
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -332,7 +371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &345834352
 AudioListener:
   m_ObjectHideFlags: 0
@@ -456,7 +495,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 184492, guid: 8d11cb314173cd8498378555b078de4e, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d11cb314173cd8498378555b078de4e, type: 2}
@@ -571,7 +610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &936664660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,7 +749,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1165864940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -857,7 +896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1715302625
 Transform:
   m_ObjectHideFlags: 0

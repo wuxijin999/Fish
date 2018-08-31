@@ -87,51 +87,51 @@ public class CreateConfigClassFile
         _field = _field.Replace(" ", "");
         if (_type.Contains("int[]"))
         {
-            return StringUtility.Contact("public readonly int[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly int[] ", _field.Trim(), ";");
         }
         else if (_type.Contains("float[]"))
         {
-            return StringUtility.Contact("public readonly float[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly float[] ", _field.Trim(), ";");
         }
         else if (_type.Contains("string[]"))
         {
-            return StringUtility.Contact("public readonly string[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly string[] ", _field.Trim(), ";");
         }
         else if (_type.Contains("Vector3[]"))
         {
-            return StringUtility.Contact("public readonly Vector3[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Vector3[] ", _field.Trim(), ";");
         }
         else if (_type.Contains("int"))
         {
-            return StringUtility.Contact("public readonly int ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly int ", _field.Trim(), ";");
         }
         else if (_type.Contains("long"))
         {
-            return StringUtility.Contact("public readonly long ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly long ", _field.Trim(), ";");
         }
         else if (_type.Contains("float"))
         {
-            return StringUtility.Contact("public readonly float ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly float ", _field.Trim(), ";");
         }
         else if (_type.Contains("string"))
         {
-            return StringUtility.Contact("public readonly string ", _field, ";");
+            return StringUtil.Contact("public readonly string ", _field, ";");
         }
         else if (_type.Contains("Vector3"))
         {
-            return StringUtility.Contact("public readonly Vector3 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Vector3 ", _field.Trim(), ";");
         }
         else if (_type.Contains("bool"))
         {
-            return StringUtility.Contact("public readonly bool ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly bool ", _field.Trim(), ";");
         }
         else if (_type.Contains("Int2"))
         {
-            return StringUtility.Contact("public readonly Int2 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Int2 ", _field.Trim(), ";");
         }
         else if (_type.Contains("Int3"))
         {
-            return StringUtility.Contact("public readonly Int3 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Int3 ", _field.Trim(), ";");
         }
         else
         {
@@ -144,72 +144,72 @@ public class CreateConfigClassFile
         _field = _field.Replace(" ", "");
         if (_type.Contains("int[]"))
         {
-            var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact(retract3, _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
-            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = StringUtility.Contact(retract3, "{\n");
-            var line5 = StringUtility.Contact(retract4, " int.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
-            var line6 = StringUtility.Contact(retract3, "}");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtil.Contact(retract3, "{\n");
+            var line5 = StringUtil.Contact(retract4, " int.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line6 = StringUtil.Contact(retract3, "}");
 
-            return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
+            return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
         else if (_type.Contains("float[]"))
         {
-            var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact(retract3, _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = StringUtility.Contact(retract3, "{\n");
-            var line5 = StringUtility.Contact(retract4, " float.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
-            var line6 = StringUtility.Contact(retract3, "}");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtil.Contact(retract3, "{\n");
+            var line5 = StringUtil.Contact(retract4, " float.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line6 = StringUtil.Contact(retract3, "}");
 
-            return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
+            return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
         else if (_type.Contains("string[]"))
         {
-            var line1 = StringUtility.Contact(_field, " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
+            var line1 = StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
             return line1;
         }
         else if (_type.Contains("Vector3[]"))
         {
-            var line1 = StringUtility.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtility.Contact(retract3, _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtility.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
-            var line4 = StringUtility.Contact(retract3, "{\n");
-            var line5 = StringUtility.Contact(retract4, _field, "[i]", "=", _field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
-            var line6 = StringUtility.Contact(retract3, "}");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtil.Contact(retract3, "{\n");
+            var line5 = StringUtil.Contact(retract4, _field, "[i]", "=", _field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
+            var line6 = StringUtil.Contact(retract3, "}");
 
-            return StringUtility.Contact(line1, line2, line3, line4, line5, line6);
+            return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
         else if (_type.Contains("int"))
         {
-            return StringUtility.Contact("int.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("int.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
         }
         else if (_type.Contains("float"))
         {
-            return StringUtility.Contact("float.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("float.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
         }
         else if (_type.Contains("string"))
         {
-            return StringUtility.Contact(_field, " = ", "tables", "[", _index, "]", ";");
+            return StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ";");
         }
         else if (_type.Contains("Vector3"))
         {
-            return StringUtility.Contact(_field, "=", "tables", "[", _index, "]", ".Vector3Parse()", ";");
+            return StringUtil.Contact(_field, "=", "tables", "[", _index, "]", ".Vector3Parse()", ";");
         }
         else if (_type.Contains("bool"))
         {
-            var line1 = StringUtility.Contact("var ", _field, "Temp", " = 0", ";", "\n");
-            var line2 = StringUtility.Contact(retract3, "int.TryParse(tables", "[", _index, "]", ",", "out ", _field, "Temp", ")", "; ", "\n");
-            var line3 = StringUtility.Contact(retract3, _field, "=", _field, "Temp", "!=0", ";");
-            return StringUtility.Contact(line1, line2, line3);
+            var line1 = StringUtil.Contact("var ", _field, "Temp", " = 0", ";", "\n");
+            var line2 = StringUtil.Contact(retract3, "int.TryParse(tables", "[", _index, "]", ",", "out ", _field, "Temp", ")", "; ", "\n");
+            var line3 = StringUtil.Contact(retract3, _field, "=", _field, "Temp", "!=0", ";");
+            return StringUtil.Contact(line1, line2, line3);
         }
         else if (_type.Contains("Int2"))
         {
-            return StringUtility.Contact("Int2.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("Int2.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
         }
         else if (_type.Contains("Int3"))
         {
-            return StringUtility.Contact("Int3.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("Int3.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
         }
         else
         {

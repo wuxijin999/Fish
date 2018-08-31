@@ -30,8 +30,10 @@ public class HandShank : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
     HandShankState state;
 
-    public Vector3 center {
-        get {
+    public Vector3 center
+    {
+        get
+        {
             if (m_BackGround != null)
             {
                 return m_BackGround.transform.position.SetZ(this.transform.position.z);
@@ -74,8 +76,8 @@ public class HandShank : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
 
         if (m_ClampRectTransform != null)
         {
-            var min = UIUtility.GetMinWorldPosition(m_ClampRectTransform);
-            var max = UIUtility.GetMaxWorldPosition(m_ClampRectTransform);
+            var min = UIUtil.GetMinWorldPosition(m_ClampRectTransform);
+            var max = UIUtil.GetMaxWorldPosition(m_ClampRectTransform);
             mousePosition = mousePosition.SetX(Mathf.Clamp(mousePosition.x, min[0], max[0]));
             mousePosition = mousePosition.SetY(Mathf.Clamp(mousePosition.y, min[1], max[1]));
             m_BackGround.position = mousePosition;

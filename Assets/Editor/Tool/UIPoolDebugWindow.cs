@@ -32,7 +32,7 @@ public class UIPoolDebugWindow : EditorWindow
     private void DrawPool(UIGameObjectPool _pool)
     {
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField(StringUtility.Contact("ID:", _pool.instanceId), GUILayout.MaxWidth(100));
+        EditorGUILayout.LabelField(StringUtil.Contact("ID:", _pool.instanceId), GUILayout.MaxWidth(100));
         EditorGUILayout.ObjectField("Root", _pool.root, typeof(GameObject), true, GUILayout.MaxWidth(300));
         EditorGUILayout.EndHorizontal();
 
@@ -58,7 +58,7 @@ public class UIPoolDebugWindow : EditorWindow
             for (int i = 0; i < freeList.Count; i++)
             {
                 var element = freeList[i];
-                EditorGUILayout.ObjectField(StringUtility.Contact("Element", i + 1), element, typeof(GameObject), true);
+                EditorGUILayout.ObjectField(StringUtil.Contact("Element", i + 1), element, typeof(GameObject), true);
             }
             EditorGUI.indentLevel--;
         }
@@ -75,7 +75,7 @@ public class UIPoolDebugWindow : EditorWindow
             {
                 var element = poolList[i];
                 EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.ObjectField(StringUtility.Contact("Element", i + 1), element, typeof(GameObject), true);
+                EditorGUILayout.ObjectField(StringUtil.Contact("Element", i + 1), element, typeof(GameObject), true);
                 EditorGUILayout.LabelField(element == null || element.transform.parent != _pool.root.transform ? "Error" : "");
                 EditorGUILayout.EndHorizontal();
             }
@@ -100,7 +100,7 @@ public class UIPoolDebugWindow : EditorWindow
     [MenuItem("Tools/UI 对象池")]
     public static void CreatePoolDebugWindow()
     {
-        UIGameObjectPoolUtility.CreatePoolDebugWindow();
+        UIGameObjectPoolUtil.CreatePoolDebugWindow();
         var window = GetWindow(typeof(UIPoolDebugWindow), false, "对象池Debug") as UIPoolDebugWindow;
         window.Show();
         window.pools = EditorHelper.uiGameObjectPools;

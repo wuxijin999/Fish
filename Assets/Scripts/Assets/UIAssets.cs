@@ -23,7 +23,7 @@ public class UIAssets
         if (AssetSource.uiFromEditor)
         {
 #if UNITY_EDITOR
-            var path = StringUtility.Contact(AssetPath.UI_PREFAB_PATH, "/", _name, ".prefab");
+            var path = StringUtil.Contact(AssetPath.UI_PREFAB_PATH, "/", _name, ".prefab");
             prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
 #endif
         }

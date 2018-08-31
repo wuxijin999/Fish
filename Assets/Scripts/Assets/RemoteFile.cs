@@ -10,24 +10,29 @@ using System;
 public class RemoteFile
 {
     static bool m_ProcessErroring = false;
-    public static bool processErroring {
+    public static bool processErroring
+    {
         get { return m_ProcessErroring; }
     }
 
     public static int MaxConnectLimit = 48;
     static int gDownloadIsRunningCount;
-    public static int DownloadIsRunningCount {
+    public static int DownloadIsRunningCount
+    {
         get { return gDownloadIsRunningCount; }
     }
 
     public static int gStartTickcount = 0;
     static long gTotalDownloadSize = 0L;  //已下载的字节数
     static object lockObj = new object();
-    public static long TotalDownloadSize {
-        get {
+    public static long TotalDownloadSize
+    {
+        get
+        {
             return System.Threading.Interlocked.Read(ref gTotalDownloadSize);
         }
-        set {
+        set
+        {
             gTotalDownloadSize = value;
         }
     }
@@ -35,8 +40,10 @@ public class RemoteFile
     static float downloadSpeedRef = 0f; //字节/秒
     static long downloadSizeRef = 0L;
 
-    public static string DownloadSpeed {
-        get {
+    public static string DownloadSpeed
+    {
+        get
+        {
             float speed = downloadSpeedRef;
             if (RemoteFile.gStartTickcount != 0)
             {
@@ -57,15 +64,15 @@ public class RemoteFile
 
             if (speed > 1048576f)
             {
-                return StringUtility.Contact((speed / 1048576f).ToString("f1"), " M/S");
+                return StringUtil.Contact((speed / 1048576f).ToString("f1"), " M/S");
             }
             else if (speed > 1024f)
             {
-                return StringUtility.Contact((speed / 1024f).ToString("f1"), " KB/S");
+                return StringUtil.Contact((speed / 1024f).ToString("f1"), " KB/S");
             }
             else
             {
-                return StringUtility.Contact(speed.ToString("f1"), " B/S");
+                return StringUtil.Contact(speed.ToString("f1"), " B/S");
             }
         }
     }
@@ -89,14 +96,17 @@ public class RemoteFile
     Action<bool, AssetVersion> onCompleted;
 
     protected bool mHadError = false;
-    public bool HaveError {
+    public bool HaveError
+    {
         get { return mHadError; }
     }
 
     bool m_Done = false;
-    public bool done {
+    public bool done
+    {
         get { return m_Done; }
-        private set {
+        private set
+        {
             m_Done = value;
             if (value)
             {
@@ -550,8 +560,10 @@ public class RemoteFile
         }
     }
 
-    bool IsOutdated {
-        get {
+    bool IsOutdated
+    {
+        get
+        {
             if (File.Exists(mLocalFileTemp))
                 return mRemoteLastModified > mLocalLastModified;
             return false;

@@ -7,14 +7,17 @@ using System.IO;
 public class AssetVersionUtility
 {
 
-    public static bool hasDownLoadFullAsset {
+    public static bool hasDownLoadFullAsset
+    {
         get { return LocalSave.GetBool("HasDownLoadFullAsset"); }
         set { LocalSave.SetBool("HasDownLoadFullAsset", value); }
     }
 
     static bool m_PriorAssetDownLoadDone = false;
-    public static bool priorAssetDownLoadDone {
-        get {
+    public static bool priorAssetDownLoadDone
+    {
+        get
+        {
             switch (VersionConfig.Get().assetAccess)
             {
                 case InstalledAsset.NullAsset:
@@ -30,8 +33,10 @@ public class AssetVersionUtility
     }
 
     static bool m_UnPriorAssetDownLoadDone = false;
-    public static bool unPriorAssetDownLoadDone {
-        get {
+    public static bool unPriorAssetDownLoadDone
+    {
+        get
+        {
             switch (VersionConfig.Get().assetAccess)
             {
                 case InstalledAsset.NullAsset:
@@ -53,7 +58,7 @@ public class AssetVersionUtility
     public static void GetAssetVersionFile()
     {
         Debug.LogFormat("开始获取资源版本文件：时间 {0}", DateTime.Now);
-        var assetVersionUrl = StringUtility.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", "AssetsVersion.txt");
+        var assetVersionUrl = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", "AssetsVersion.txt");
         HttpRequest.Instance.RequestHttpGet(assetVersionUrl, OnGetAssetVersionFile);
     }
 
@@ -143,16 +148,16 @@ public class AssetVersionUtility
             switch (assetVersion.fileLocation)
             {
                 case AssetVersion.StorageLocation.StreamingAsset:
-                    path = StringUtility.Contact(AssetPath.StreamingAssetPath, _assetKey);
+                    path = StringUtil.Contact(AssetPath.StreamingAssetPath, _assetKey);
                     break;
                 case AssetVersion.StorageLocation.ExternalStore:
-                    path = StringUtility.Contact(AssetPath.ExternalStorePath, _assetKey);
+                    path = StringUtil.Contact(AssetPath.ExternalStorePath, _assetKey);
                     break;
             }
         }
         else
         {
-            path = StringUtility.Contact(AssetPath.StreamingAssetPath, _assetKey);
+            path = StringUtil.Contact(AssetPath.StreamingAssetPath, _assetKey);
         }
 
         return path;
