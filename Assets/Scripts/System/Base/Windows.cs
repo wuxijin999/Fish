@@ -10,37 +10,37 @@ public class Windows : SingletonMonobehaviour<Windows>
     List<WindowType> closeCmds = new List<WindowType>();
     OrderAdminister orderAdminister = new OrderAdminister();
 
-    public void Open(WindowType _type)
+    public void Open(WindowType type)
     {
-        if (!openCmds.Contains(_type))
+        if (!openCmds.Contains(type))
         {
-            openCmds.Add(_type);
+            openCmds.Add(type);
         }
 
-        if (closeCmds.Contains(_type))
+        if (closeCmds.Contains(type))
         {
-            closeCmds.Remove(_type);
+            closeCmds.Remove(type);
         }
     }
 
-    public void Close(WindowType _type)
+    public void Close(WindowType type)
     {
-        if (!closeCmds.Contains(_type))
+        if (!closeCmds.Contains(type))
         {
-            closeCmds.Add(_type);
+            closeCmds.Add(type);
         }
 
-        if (openCmds.Contains(_type))
+        if (openCmds.Contains(type))
         {
-            openCmds.Remove(_type);
+            openCmds.Remove(type);
         }
     }
 
-    public bool IsOpen(WindowType _type)
+    public bool IsOpen(WindowType type)
     {
-        if (windows.ContainsKey(_type))
+        if (windows.ContainsKey(type))
         {
-            return windows[_type].windowState == WindowState.Opened;
+            return windows[type].windowState == WindowState.Opened;
         }
         else
         {
@@ -59,11 +59,11 @@ public class Windows : SingletonMonobehaviour<Windows>
         }
     }
 
-    public void CloseOthers(WindowType _type)
+    public void CloseOthers(WindowType type)
     {
         foreach (var keyValue in windows)
         {
-            if (keyValue.Key == _type)
+            if (keyValue.Key == type)
             {
                 continue;
             }
@@ -119,16 +119,16 @@ public class Windows : SingletonMonobehaviour<Windows>
         return highestOrder;
     }
 
-    private void GetInstance(WindowType _type)
+    private void GetInstance(WindowType type)
     {
-        if (!windows.ContainsKey(_type))
+        if (!windows.ContainsKey(type))
         {
-            var prefab = UIAssets.LoadWindow(_type.ToString());
+            var prefab = UIAssets.LoadWindow(type.ToString());
             var instance = GameObject.Instantiate(prefab);
             var window = instance.GetComponent<Window>();
             if (window != null)
             {
-                windows[_type] = window;
+                windows[type] = window;
             }
         }
     }
@@ -147,9 +147,9 @@ public class Windows : SingletonMonobehaviour<Windows>
             return hightestOrder = hightestOrder + 10;
         }
 
-        public void ResetHightestOrder(int _order)
+        public void ResetHightestOrder(int order)
         {
-            hightestOrder = Mathf.Clamp(_order, dynamicMin, dynamicMax);
+            hightestOrder = Mathf.Clamp(order, dynamicMin, dynamicMax);
         }
 
     }

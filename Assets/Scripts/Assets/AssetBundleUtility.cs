@@ -27,18 +27,18 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         initialized = true;
     }
 
-    private IEnumerator Co_LoadMainfestFile(string _category)
+    private IEnumerator Co_LoadMainfestFile(string category)
     {
-        var path = AssetVersionUtility.GetAssetFilePath(StringUtil.Contact(_category, "_assetbundle"));
-        var _assetBundle = AssetBundle.LoadFromFile(path);
+        var path = AssetVersionUtility.GetAssetFilePath(StringUtil.Contact(category, "_assetbundle"));
+        var assetBundle = AssetBundle.LoadFromFile(path);
 
-        if (_assetBundle == null)
+        if (assetBundle == null)
         {
             DebugEx.LogError("AssetBundleManifest的包文件为空或者加载出错.");
             yield break;
         }
 
-        var manifest = _assetBundle.LoadAsset<AssetBundleManifest>(AssetPath.AssetDependentFileAssetName);
+        var manifest = assetBundle.LoadAsset<AssetBundleManifest>(AssetPath.AssetDependentFileAssetName);
         if (manifest == null)
         {
             DebugEx.LogError("AssetBundleManifest文件为空或者加载出错.");
@@ -46,16 +46,16 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         }
 
         var assetBundleNames = manifest.GetAllAssetBundles();
-        foreach (var _assetBundleName in assetBundleNames)
+        foreach (var assetBundleName in assetBundleNames)
         {
-            var _dependenices = manifest.GetAllDependencies(_assetBundleName);
-            var _hash = manifest.GetAssetBundleHash(_assetBundleName);
-            var _assetBundleInfo = new AssetBundleInfo(_assetBundleName, _hash, _dependenices);
+            var _dependenices = manifest.GetAllDependencies(assetBundleName);
+            var _hash = manifest.GetAssetBundleHash(assetBundleName);
+            var _assetBundleInfo = new AssetBundleInfo(assetBundleName, _hash, _dependenices);
             m_AssetBundleInfoList.Add(_assetBundleInfo);
         }
 
-        _assetBundle.Unload(true);
-        _assetBundle = null;
+        assetBundle.Unload(true);
+        assetBundle = null;
     }
 
     public AssetBundleInfo GetAssetBundleInfo(string assetBundleName)
@@ -199,12 +199,12 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     }
 
-    public UnityEngine.Object Sync_LoadAsset(AssetInfo assetInfo, Type _type = null)
+    public UnityEngine.Object Sync_LoadAsset(AssetInfo assetInfo, Type type = null)
     {
-        return Sync_LoadAsset(assetInfo.assetBundleName, assetInfo.name, _type);
+        return Sync_LoadAsset(assetInfo.assetBundleName, assetInfo.name, type);
     }
 
-    public UnityEngine.Object Sync_LoadAsset(string assetBundleName, string assetName, Type _type = null)
+    public UnityEngine.Object Sync_LoadAsset(string assetBundleName, string assetName, Type type = null)
     {
 
 #if UNITY_5
@@ -225,9 +225,9 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             Sync_LoadAssetBundle(assetBundleName);
             if (m_AssetBundleDict.ContainsKey(assetBundleName))
             {
-                if (_type != null)
+                if (type != null)
                 {
-                    _object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName, _type);
+                    _object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName, type);
                 }
                 else
                 {
@@ -325,34 +325,34 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     public void UnloadAsset(string assetBundleName, string assetName)
     {
-        string _assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
+        string assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
 
         if (JudgeExistAsset(assetBundleName, assetName) == false)
         {
-            DebugEx.LogWarningFormat("UnloadAsset(): 要卸载的资源不在缓存中 => {0}. ", _assembleName);
+            DebugEx.LogWarningFormat("UnloadAsset(): 要卸载的资源不在缓存中 => {0}. ", assembleName);
             return;
         }
 
-        UnityEngine.Object _assetObject = m_AssetDict[assetBundleName][assetName];
+        UnityEngine.Object assetObject = m_AssetDict[assetBundleName][assetName];
 
         m_AssetDict[assetBundleName].Remove(assetName);
 
-        if (_assetObject is GameObject)
+        if (assetObject is GameObject)
         {
-            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 不做其他处理. ", assetName, _assetObject.GetType().Name);
+            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 不做其他处理. ", assetName, assetObject.GetType().Name);
         }
         else
         {
-            Resources.UnloadAsset(_assetObject);
-            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 执行Resources.UnloadAsset(). ", assetName, _assetObject.GetType().Name);
+            Resources.UnloadAsset(assetObject);
+            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 执行Resources.UnloadAsset(). ", assetName, assetObject.GetType().Name);
         }
 
         if (Application.isEditor)
         {
-            Transform _asset = transform.Find(assetBundleName + "/Asset:" + assetName);
-            if (_asset)
+            Transform asset = transform.Find(assetBundleName + "/Asset:" + assetName);
+            if (asset)
             {
-                Destroy(_asset.gameObject);
+                Destroy(asset.gameObject);
             }
         }
     }

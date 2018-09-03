@@ -65,24 +65,24 @@ public static class TransformExtension
             }
         }
 
-        int _count = transform.childCount;
+        int count = transform.childCount;
 
-        Transform _tempChild = null;
+        Transform tempChild = null;
 
-        for (int i = 0; i < _count; ++i)
+        for (int i = 0; i < count; ++i)
         {
 
-            _tempChild = transform.GetChild(i);
+            tempChild = transform.GetChild(i);
 
-            if (_tempChild.name.Equals(childName))
+            if (tempChild.name.Equals(childName))
             {
-                return _tempChild;
+                return tempChild;
             }
 
-            _tempChild = transform.GetChild(i).GetChildTransformDeeply(childName, false);
-            if (_tempChild)
+            tempChild = transform.GetChild(i).GetChildTransformDeeply(childName, false);
+            if (tempChild)
             {
-                return _tempChild;
+                return tempChild;
             }
         }
 
@@ -93,22 +93,22 @@ public static class TransformExtension
     /// 以锚四个角的方式进行匹配
     /// 并且将对象设置为父对象
     /// </summary>
-    /// <param name="_child"></param>
-    /// <param name="_parent"></param>
-    public static void MatchWhith(this RectTransform _child, RectTransform _parent)
+    /// <param name="child"></param>
+    /// <param name="parent"></param>
+    public static void MatchWhith(this RectTransform child, RectTransform parent)
     {
 
-        if (_child.parent != _parent)
+        if (child.parent != parent)
         {
-            _child.SetParent(_parent);
+            child.SetParent(parent);
         }
-        _child.anchoredPosition3D = Vector3.zero;
-        _child.sizeDelta = Vector2.zero;
-        _child.anchorMin = Vector2.zero;
-        _child.anchorMax = Vector2.one;
-        _child.pivot = Vector2.one * 0.5f;
-        _child.localRotation = Quaternion.identity;
-        _child.localScale = Vector3.one;
+        child.anchoredPosition3D = Vector3.zero;
+        child.sizeDelta = Vector2.zero;
+        child.anchorMin = Vector2.zero;
+        child.anchorMax = Vector2.one;
+        child.pivot = Vector2.one * 0.5f;
+        child.localRotation = Quaternion.identity;
+        child.localScale = Vector3.one;
     }
 
 

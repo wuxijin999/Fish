@@ -11,6 +11,7 @@ public class ConfigInitiator
         ItemConfig.Init();
         TestConfig.Init();
         WindowConfig.Init();
+		EffectConfig.Init();
 		//初始化结束
     }
 

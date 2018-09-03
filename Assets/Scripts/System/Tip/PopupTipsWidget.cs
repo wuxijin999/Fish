@@ -19,8 +19,8 @@ public class PopupTipsWidget : Widget
     [SerializeField] RectTransform m_StartPoint;
     [SerializeField] RectTransform m_PriorPoint;
 
-    UIGameObjectPool m_Pool;
-    UIGameObjectPool pool { get { return m_Pool ?? (m_Pool = UIGameObjectPoolUtil.Create(UIAssets.LoadPrefab("PopupTipBehaviour"))); } }
+    GameObjectPool m_Pool;
+    GameObjectPool pool { get { return m_Pool ?? (m_Pool = GameObjectPoolUtil.Create(UIAssets.LoadPrefab("PopupTipBehaviour"))); } }
 
     Queue<string> tips = new Queue<string>();
     List<PopupTipBehaviour> activedBehaviours = new List<PopupTipBehaviour>();

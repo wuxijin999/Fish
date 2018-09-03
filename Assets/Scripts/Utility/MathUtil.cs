@@ -64,18 +64,18 @@ public class MathUtil
         return gesture;
     }
 
-    public static float FreeFall(float _startY, float _time)
+    public static float FreeFall(float startY, float time)
     {
 
-        float deltaY = 0.5f * GlobalDefine.GRAVITY_RATE * Mathf.Pow(_time, 2f);
+        float deltaY = 0.5f * GlobalDefine.GRAVITY_RATE * Mathf.Pow(time, 2f);
 
-        return _startY - deltaY;
+        return startY - deltaY;
     }
 
-    public static float CalculateRefrenceScale(Vector2 _designWH)
+    public static float CalculateRefrenceScale(Vector2 designWH)
     {
-        var width = _designWH.x;
-        var height = _designWH.y;
+        var width = designWH.x;
+        var height = designWH.y;
         var refrenceHeight = 0f;
 
         if (Screen.height / (float)Screen.width > height / (float)width)
@@ -132,7 +132,7 @@ public class MathUtil
         return bitValue ? (value | val) : (value & ~val);
     }
 
-    public static bool IsPointInsideRectangel(Vector3 point, Vector3 rectStart, Vector3 rectEnd)
+    public static bool IsPointInsideRectange(Vector3 point, Vector3 rectStart, Vector3 rectEnd)
     {
         return point.x > rectStart.x && point.x < rectEnd.x && point.z > rectStart.z && point.z < rectEnd.z;
     }

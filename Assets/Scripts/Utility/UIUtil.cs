@@ -6,16 +6,16 @@ using UnityEngine.EventSystems;
 
 public static class UIUtil
 {
-    public static GameObject CreateWidget(string _sourceName, string _name)
+    public static GameObject CreateWidget(string sourceName, string name)
     {
-        var prefab = UIAssets.LoadPrefab(_sourceName);
+        var prefab = UIAssets.LoadPrefab(sourceName);
         if (prefab == null)
         {
             return null;
         }
 
         var instance = GameObject.Instantiate(prefab);
-        instance.name = string.IsNullOrEmpty(_name) ? _sourceName : _name;
+        instance.name = string.IsNullOrEmpty(name) ? sourceName : name;
         return instance;
     }
 
@@ -73,43 +73,43 @@ public static class UIUtil
         }
     }
 
-    public static Vector2 GetMaxWorldPosition(this RectTransform _rectTransform)
+    public static Vector2 GetMaxWorldPosition(this RectTransform rectTransform)
     {
         Vector2 max;
-        var offsetY = (1 - _rectTransform.pivot.y) * _rectTransform.rect.height;
-        var offsetX = (1 - _rectTransform.pivot.x) * _rectTransform.rect.width;
-        max = _rectTransform.TransformPoint(offsetX, offsetY, 0);
+        var offsetY = (1 - rectTransform.pivot.y) * rectTransform.rect.height;
+        var offsetX = (1 - rectTransform.pivot.x) * rectTransform.rect.width;
+        max = rectTransform.TransformPoint(offsetX, offsetY, 0);
 
         return max;
     }
 
-    public static Vector2 GetMinWorldPosition(this RectTransform _rectTransform)
+    public static Vector2 GetMinWorldPosition(this RectTransform rectTransform)
     {
         Vector2 min;
-        var offsetY = -_rectTransform.pivot.y * _rectTransform.rect.height;
-        var offsetX = -_rectTransform.pivot.x * _rectTransform.rect.width;
-        min = _rectTransform.TransformPoint(offsetX, offsetY, 0);
+        var offsetY = -rectTransform.pivot.y * rectTransform.rect.height;
+        var offsetX = -rectTransform.pivot.x * rectTransform.rect.width;
+        min = rectTransform.TransformPoint(offsetX, offsetY, 0);
 
         return min;
     }
 
-    public static Vector2 GetMaxReferencePosition(this RectTransform _rectTransform, Transform _reference)
+    public static Vector2 GetMaxReferencePosition(this RectTransform rectTransform, Transform reference)
     {
         Vector2 max;
-        var offsetY = (1 - _rectTransform.pivot.y) * _rectTransform.rect.height;
-        var offsetX = (1 - _rectTransform.pivot.x) * _rectTransform.rect.width;
-        max = _rectTransform.TransformPoint(offsetX, offsetY, 0);
-        max = _reference.InverseTransformVector(max);
+        var offsetY = (1 - rectTransform.pivot.y) * rectTransform.rect.height;
+        var offsetX = (1 - rectTransform.pivot.x) * rectTransform.rect.width;
+        max = rectTransform.TransformPoint(offsetX, offsetY, 0);
+        max = reference.InverseTransformVector(max);
         return max;
     }
 
-    public static Vector2 GetMinReferencePosition(this RectTransform _rectTransform, Transform _reference)
+    public static Vector2 GetMinReferencePosition(this RectTransform rectTransform, Transform reference)
     {
         Vector2 min;
-        var offsetY = -_rectTransform.pivot.y * _rectTransform.rect.height;
-        var offsetX = -_rectTransform.pivot.x * _rectTransform.rect.width;
-        min = _rectTransform.TransformPoint(offsetX, offsetY, 0);
-        min = _reference.InverseTransformVector(min);
+        var offsetY = -rectTransform.pivot.y * rectTransform.rect.height;
+        var offsetX = -rectTransform.pivot.x * rectTransform.rect.width;
+        min = rectTransform.TransformPoint(offsetX, offsetY, 0);
+        min = reference.InverseTransformVector(min);
 
         return min;
     }
@@ -135,57 +135,57 @@ public static class UIUtil
         return crossNum;
     }
 
-    public static UIVertex PackageUIVertex(Vector3 _position, Vector2 _uv0, Color _color)
+    public static UIVertex PackageUIVertex(Vector3 position, Vector2 uv0, Color color)
     {
         var vertex = new UIVertex();
-        vertex.position = _position;
-        vertex.uv0 = _uv0;
-        vertex.color = _color;
+        vertex.position = position;
+        vertex.uv0 = uv0;
+        vertex.color = color;
 
         return vertex;
     }
 
-    public static UIVertex PackageUIVertexUV1(Vector3 _position, Vector2 _uv1, Color _color)
+    public static UIVertex PackageUIVertexUV1(Vector3 position, Vector2 uv1, Color color)
     {
         var vertex = new UIVertex();
-        vertex.position = _position;
-        vertex.uv1 = _uv1;
-        vertex.color = _color;
+        vertex.position = position;
+        vertex.uv1 = uv1;
+        vertex.color = color;
 
         return vertex;
     }
 
-    public static Vector3 ClampWorldPosition(RectTransform _area, PointerEventData _data)
+    public static Vector3 ClampWorldPosition(RectTransform area, PointerEventData data)
     {
-        if (_area == null || _data == null)
+        if (area == null || data == null)
         {
             return Vector3.zero;
         }
         else
         {
             var worldMousePos = Vector3.zero;
-            if (RectTransformUtility.ScreenPointToWorldPointInRectangle(_area, _data.position, _data.pressEventCamera, out worldMousePos))
+            if (RectTransformUtility.ScreenPointToWorldPointInRectangle(area, data.position, data.pressEventCamera, out worldMousePos))
             {
                 return worldMousePos;
             }
             else
             {
-                return _data.pointerCurrentRaycast.worldPosition;
+                return data.pointerCurrentRaycast.worldPosition;
             }
         }
     }
 
-    public static bool RectTransformContain(RectTransform _area, RectTransform _test)
+    public static bool RectTransformContain(RectTransform area, RectTransform test)
     {
-        if (_area == null || _test == null)
+        if (area == null || test == null)
         {
             return false;
         }
 
         var worldcornersA = new Vector3[4];
-        _area.GetWorldCorners(worldcornersA);
+        area.GetWorldCorners(worldcornersA);
         var worldcornersB = new Vector3[4];
-        _test.GetWorldCorners(worldcornersB);
+        test.GetWorldCorners(worldcornersB);
 
         var a = new Quadrangle(worldcornersA[0].x, worldcornersA[0].y, worldcornersA[2].x, worldcornersA[2].y);
         var b = new Quadrangle(worldcornersB[0].x, worldcornersB[0].y, worldcornersB[2].x, worldcornersB[2].y);
@@ -207,41 +207,41 @@ public static class UIUtil
         public float maxX;
         public float maxY;
 
-        public Quadrangle(float _minX, float _minY, float _maxX, float _maxY)
+        public Quadrangle(float minX, float minY, float maxX, float maxY)
         {
-            this.minX = _minX;
-            this.minY = _minY;
-            this.maxX = _maxX;
-            this.maxY = _maxY;
+            this.minX = minX;
+            this.minY = minY;
+            this.maxX = maxX;
+            this.maxY = maxY;
         }
     }
 
 
-    public static Vector2 GetEdge(List<UIVertex> _vertexs, int _axis)
+    public static Vector2 GetEdge(List<UIVertex> vertexs, int axis)
     {
-        if (_vertexs == null || _vertexs.Count == 0)
+        if (vertexs == null || vertexs.Count == 0)
         {
             return Vector2.zero;
         }
 
-        if (_axis != 0 && _axis != 1)
+        if (axis != 0 && axis != 1)
         {
             return Vector2.zero;
         }
 
-        var count = _vertexs.Count;
-        var min = _vertexs[0].position[_axis];
-        var max = _vertexs[0].position[_axis];
+        var count = vertexs.Count;
+        var min = vertexs[0].position[axis];
+        var max = vertexs[0].position[axis];
 
         for (int i = 1; i < count; i++)
         {
-            if (_vertexs[i].position[_axis] < min)
+            if (vertexs[i].position[axis] < min)
             {
-                min = _vertexs[i].position[_axis];
+                min = vertexs[i].position[axis];
             }
-            else if (_vertexs[i].position[_axis] > max)
+            else if (vertexs[i].position[axis] > max)
             {
-                max = _vertexs[i].position[_axis];
+                max = vertexs[i].position[axis];
             }
         }
 
@@ -289,14 +289,14 @@ public static class UIUtil
         vertexHelper.AddTriangle(currentVertCount, currentVertCount + 1, currentVertCount + 2);
     }
 
-    public static string GetUIElementRelativePath(UIRoot _root, Transform _transform)
+    public static string GetUIElementRelativePath(UIRoot root, Transform transform)
     {
-        List<Transform> parents = new List<Transform>() { _transform };
-        GetParents(_transform, ref parents);
+        List<Transform> parents = new List<Transform>() { transform };
+        GetParents(transform, ref parents);
 
-        if (parents.Contains(_root.transform))
+        if (parents.Contains(root.transform))
         {
-            parents.Remove(_root.transform);
+            parents.Remove(root.transform);
         }
 
         var names = new string[parents.Count];
@@ -308,18 +308,18 @@ public static class UIUtil
         return string.Join("/", names);
     }
 
-    public static void GetParents(Transform _transform, ref List<Transform> _parents)
+    public static void GetParents(Transform transform, ref List<Transform> parents)
     {
-        if (_transform == null || _parents == null)
+        if (transform == null || parents == null)
         {
             return;
         }
 
-        if (_transform.parent != null)
+        if (transform.parent != null)
         {
-            _parents.Insert(0, _transform.parent);
+            parents.Insert(0, transform.parent);
 
-            GetParents(_transform.parent, ref _parents);
+            GetParents(transform.parent, ref parents);
         }
     }
 

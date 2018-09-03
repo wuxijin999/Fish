@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIGameObjectPool
+public class GameObjectPool
 {
     private List<GameObject> m_FreeList = new List<GameObject>();
     private List<GameObject> m_ActiveList = new List<GameObject>();
@@ -12,11 +12,11 @@ public class UIGameObjectPool
     public readonly int instanceId = 0;
     string name;
 
-    public UIGameObjectPool(int _instanceId, GameObject _prefab)
+    public GameObjectPool(int _instanceId, GameObject _prefab)
     {
         root = new GameObject(StringUtil.Contact("UIPool_", _instanceId));
         Object.DontDestroyOnLoad(root);
-        root.transform.position = UIGameObjectPoolUtil.HIDE_POINT;
+        root.transform.position = GameObjectPoolUtil.HIDE_POINT;
 
         instanceId = _instanceId;
         m_Prefab = _prefab;

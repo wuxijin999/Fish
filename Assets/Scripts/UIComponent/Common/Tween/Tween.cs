@@ -84,21 +84,21 @@ public class Tween : MonoBehaviour
         this.transform.DOKill(false);
     }
 
-    public Tween Play(bool _forward = true)
+    public Tween Play(bool forward = true)
     {
         m_OnComplete.RemoveAllListeners();
 
         switch (m_Type)
         {
             case TweenType.Alpha:
-                alphaFrom = _forward ? m_AlphaFrom : m_AlphaTo;
-                alphaTo = _forward ? m_AlphaTo : m_AlphaFrom;
+                alphaFrom = forward ? m_AlphaFrom : m_AlphaTo;
+                alphaTo = forward ? m_AlphaTo : m_AlphaFrom;
                 break;
             case TweenType.Position:
             case TweenType.Rotation:
             case TweenType.Scale:
-                from = _forward ? m_From : m_To;
-                to = _forward ? m_To : m_From;
+                from = forward ? m_From : m_To;
+                to = forward ? m_To : m_From;
                 break;
         }
 
@@ -107,19 +107,19 @@ public class Tween : MonoBehaviour
         return this;
     }
 
-    public Tween Play(TweenType _type, Vector3 _from, Vector3 _to, float _duration)
+    public Tween Play(TweenType type, Vector3 from, Vector3 to, float duration)
     {
         m_OnComplete.RemoveAllListeners();
 
-        switch (_type)
+        switch (type)
         {
             case TweenType.Position:
             case TweenType.Rotation:
             case TweenType.Scale:
-                from = _from;
-                to = _to;
-                m_Duration = _duration;
-                Begin(_type);
+                this.from = from;
+                this.to = to;
+                m_Duration = duration;
+                Begin(type);
                 break;
             default:
                 return this;
@@ -128,32 +128,32 @@ public class Tween : MonoBehaviour
         return this;
     }
 
-    public Tween Play(TweenType _type, float _from, float _to, float _duration)
+    public Tween Play(TweenType type, float from, float to, float duration)
     {
         m_OnComplete.RemoveAllListeners();
 
-        switch (_type)
+        switch (type)
         {
             case TweenType.Alpha:
-                alphaFrom = Mathf.Clamp01(_from);
-                alphaTo = Mathf.Clamp01(_to);
-                m_Duration = _duration;
-                Begin(_type);
+                alphaFrom = Mathf.Clamp01(from);
+                alphaTo = Mathf.Clamp01(to);
+                m_Duration = duration;
+                Begin(type);
                 return this;
             default:
                 return this;
         }
     }
 
-    public Tween OnComplete(UnityAction _onComplete)
+    public Tween OnComplete(UnityAction onComplete)
     {
         m_OnComplete.RemoveAllListeners();
-        m_OnComplete.AddListener(_onComplete);
+        m_OnComplete.AddListener(onComplete);
 
         return this;
     }
 
-    void Begin(TweenType _type)
+    void Begin(TweenType type)
     {
         var delay = m_Delay;
         if (delay < 0f)
@@ -186,7 +186,7 @@ public class Tween : MonoBehaviour
                 break;
         }
 
-        switch (_type)
+        switch (type)
         {
             case TweenType.Position:
                 BeginPosition(delay, duration, loopTimes, loopType);
@@ -203,7 +203,7 @@ public class Tween : MonoBehaviour
         }
     }
 
-    private void BeginPosition(float _delay, float _duration, int _loopTimes, LoopType _loopType)
+    private void BeginPosition(float delay, float duration, int loopTimes, LoopType loopType)
     {
         if (m_IsLocal)
         {
@@ -211,45 +211,45 @@ public class Tween : MonoBehaviour
             {
                 var rectTransform = this.transform as RectTransform;
                 rectTransform.anchoredPosition = from;
-                rectTransform.DOLocalMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+                rectTransform.DOLocalMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
             }
             else
             {
                 this.transform.localPosition = from;
-                this.transform.DOLocalMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+                this.transform.DOLocalMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
             }
         }
         else
         {
             this.transform.position = from;
-            this.transform.DOMove(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DOMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
         }
     }
 
-    private void BeginRotation(float _delay, float _duration, int _loopTimes, LoopType _loopType)
+    private void BeginRotation(float delay, float duration, int loopTimes, LoopType loopType)
     {
         if (m_IsLocal)
         {
             this.transform.localEulerAngles = from;
-            this.transform.DOLocalRotate(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DOLocalRotate(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
         }
         else
         {
             this.transform.eulerAngles = from;
-            this.transform.DORotate(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+            this.transform.DORotate(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
         }
     }
 
-    private void BeginScale(float _delay, float _duration, int _loopTimes, LoopType _loopType)
+    private void BeginScale(float delay, float duration, int loopTimes, LoopType loopType)
     {
         this.transform.localScale = from;
-        this.transform.DOScale(to, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+        this.transform.DOScale(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
     }
 
-    private void BeginFade(float _delay, float _duration, int _loopTimes, LoopType _loopType)
+    private void BeginFade(float delay, float duration, int loopTimes, LoopType loopType)
     {
         canvasGroup.alpha = alphaFrom;
-        canvasGroup.DOFade(alphaTo, _duration).SetDelay(_delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(_loopTimes, _loopType);
+        canvasGroup.DOFade(alphaTo, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
     }
 
     private void OnComplete()

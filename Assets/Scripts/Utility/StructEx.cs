@@ -14,11 +14,14 @@ public struct Int2
         this.y = _y;
     }
 
-    public int this[int index] {
-        get {
+    public int this[int index]
+    {
+        get
+        {
             return index == 0 ? x : index == 1 ? y : 0;
         }
-        set {
+        set
+        {
             if (index == 0)
             {
                 this.x = value;
@@ -122,11 +125,14 @@ public struct Int3
         this.z = _z;
     }
 
-    public int this[int index] {
-        get {
+    public int this[int index]
+    {
+        get
+        {
             return index == 0 ? this.x : index == 1 ? this.y : index == 2 ? this.z : 0;
         }
-        set {
+        set
+        {
             if (index == 0)
             {
                 this.x = value;
@@ -144,16 +150,16 @@ public struct Int3
 
     public static Int3 zero = new Int3(0, 0, 0);
 
-    public static bool TryParse(string _input, out Int3 _value)
+    public static bool TryParse(string input, out Int3 _value)
     {
-        if (string.IsNullOrEmpty(_input))
+        if (string.IsNullOrEmpty(input))
         {
             _value = Int3.zero;
             return false;
         }
         else
         {
-            var matches = Regex.Matches(_input.Trim(), "[-]{0,1}\\d+");
+            var matches = Regex.Matches(input.Trim(), "[-]{0,1}\\d+");
             if (matches.Count == 2)
             {
                 _value = new Int3(int.Parse(matches[0].Value), int.Parse(matches[1].Value), 0);

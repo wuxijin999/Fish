@@ -7,14 +7,14 @@ public class HttpRequest : Singleton<HttpRequest>
 {
     public const string defaultHttpContentType = "application/x-www-form-urlencoded";
 
-    public void RequestHttpPost(string _url, string _content, Action<bool, string> _result = null)
+    public void RequestHttpPost(string url, string content, Action<bool, string> result = null)
     {
-        HttpAsyncHandle.Create(_url, WebRequestMethods.Http.Post, _content, _result);
+        HttpAsyncHandle.Create(url, WebRequestMethods.Http.Post, content, result);
     }
 
-    public void RequestHttpGet(string _url, Action<bool, string> _result = null)
+    public void RequestHttpGet(string url, Action<bool, string> result = null)
     {
-        HttpAsyncHandle.Create(_url, WebRequestMethods.Http.Get, "", _result);
+        HttpAsyncHandle.Create(url, WebRequestMethods.Http.Get, "", result);
     }
 
     static StringBuilder buffer = new StringBuilder();
