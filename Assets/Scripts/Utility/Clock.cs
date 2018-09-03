@@ -42,7 +42,7 @@ public class Clock
     static bool inited = false;
     static List<Clock> clocks = new List<Clock>();
 
-    public static void Create(DateTime _endTime, System.Action _callBack)
+    public static void Create(DateTime endTime, System.Action callBack)
     {
         if (!inited)
         {
@@ -50,10 +50,10 @@ public class Clock
             inited = true;
         }
 
-        clocks.Add(new Clock(_endTime, _callBack));
+        clocks.Add(new Clock(endTime, callBack));
     }
 
-    public static void Create(float _endTime, System.Action _callBack)
+    public static void Create(float endTime, System.Action callBack)
     {
         if (!inited)
         {
@@ -61,7 +61,7 @@ public class Clock
             inited = true;
         }
 
-        clocks.Add(new Clock(_endTime, _callBack));
+        clocks.Add(new Clock(endTime, callBack));
     }
 
     public static void Clear()

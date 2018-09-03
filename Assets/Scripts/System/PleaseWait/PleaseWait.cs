@@ -24,11 +24,11 @@ public class PleaseWait : Presenter<PleaseWait>
     {
     }
 
-    public void Show(WaitType _waitType, float _delay = 0f)
+    public void Show(WaitType waitType, float _delay = 0f)
     {
-        if (!waitings.Contains(_waitType))
+        if (!waitings.Contains(waitType))
         {
-            waitings.Add(_waitType);
+            waitings.Add(waitType);
         }
 
         if (!Windows.Instance.IsOpen(WindowType.PleaseWait))
@@ -37,11 +37,11 @@ public class PleaseWait : Presenter<PleaseWait>
         }
     }
 
-    public void Hide(WaitType _waitType)
+    public void Hide(WaitType waitType)
     {
-        if (waitings.Contains(_waitType))
+        if (waitings.Contains(waitType))
         {
-            waitings.Remove(_waitType);
+            waitings.Remove(waitType);
         }
 
         if (waitings.Count == 0 && Windows.Instance.IsOpen(WindowType.PleaseWait))

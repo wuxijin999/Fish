@@ -9,9 +9,9 @@ public abstract class Widget : MonoBehaviour
     public abstract void AddListeners();
     public abstract void BindControllers();
 
-    public void SetActive(bool _active)
+    public void SetActive(bool active)
     {
-        if (_active)
+        if (active)
         {
             if (instance == null)
             {
@@ -28,11 +28,11 @@ public abstract class Widget : MonoBehaviour
         }
     }
 
-    private void OnLoad(bool _ok, UnityEngine.Object _object)
+    private void OnLoad(bool ok, UnityEngine.Object @object)
     {
-        if (_ok && _object != null)
+        if (ok && @object != null)
         {
-            var prefab = _object as GameObject;
+            var prefab = @object as GameObject;
             instance = GameObject.Instantiate(prefab);
             UIAssets.UnLoadWindowAsset(this.name);
             BindControllers();

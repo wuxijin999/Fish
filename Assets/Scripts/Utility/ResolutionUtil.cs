@@ -12,9 +12,9 @@ public class ResolutionUtil
         Screen.SetResolution(Mathf.RoundToInt(currentResolution.x), Mathf.RoundToInt(currentResolution.y), true);
     }
 
-    public static void AdjustResolution(GameQuality _quality)
+    public static void AdjustResolution(GameQuality quality)
     {
-        switch (_quality)
+        switch (quality)
         {
             case GameQuality.Low:
                 currentResolution = ConvertResolution(new Vector2(960, 540));

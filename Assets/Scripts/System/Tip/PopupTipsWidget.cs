@@ -36,14 +36,14 @@ public class PopupTipsWidget : Widget
     {
     }
 
-    public void Popup(string _tip)
+    public void Popup(string tip)
     {
         while (tips.Count > maxCount)
         {
             tips.Dequeue();
         }
 
-        tips.Enqueue(_tip);
+        tips.Enqueue(tip);
     }
 
     private void OnDisable()
@@ -97,9 +97,9 @@ public class PopupTipsWidget : Widget
         }
     }
 
-    IEnumerator Co_DelayReArrange(float _delay)
+    IEnumerator Co_DelayReArrange(float delay)
     {
-        yield return new WaitForSeconds(_delay);
+        yield return new WaitForSeconds(delay);
 
         for (int i = 0; i < activedBehaviours.Count - 1; i++)
         {
@@ -110,9 +110,9 @@ public class PopupTipsWidget : Widget
         }
     }
 
-    private void OnFadeOut(PopupTipBehaviour _behaviour)
+    private void OnFadeOut(PopupTipBehaviour behaviour)
     {
-        pool.Release(_behaviour.gameObject);
+        pool.Release(behaviour.gameObject);
     }
 
 

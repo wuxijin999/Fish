@@ -5,7 +5,7 @@ using UnityEngine;
 public class Hero : ActorBase
 {
 
-    public Hero(Transform _model) : base(_model)
+    public Hero(Transform model) : base(model)
     {
 
     }

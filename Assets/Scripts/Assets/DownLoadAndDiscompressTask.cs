@@ -110,19 +110,19 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
     }
 
-    private void OnFileDownLoadCompleted(bool _ok, AssetVersion _assetVersion)
+    private void OnFileDownLoadCompleted(bool ok, AssetVersion assetVersion)
     {
-        if (_ok)
+        if (ok)
         {
             okCount++;
-            _assetVersion.localValid = true;
+            assetVersion.localValid = true;
         }
         else
         {
-            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", _assetVersion.relativePath);
-            var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, _assetVersion.relativePath);
+            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
+            var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
-            var remoteFile = new RemoteFile(remoteURL, localURL, _assetVersion);
+            var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
             CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
         }
     }

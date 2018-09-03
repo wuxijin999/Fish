@@ -35,16 +35,16 @@ public struct Int2
 
     public static Int2 zero = new Int2(0, 0);
 
-    public static bool TryParse(string _input, out Int2 _value)
+    public static bool TryParse(string input, out Int2 _value)
     {
-        if (string.IsNullOrEmpty(_input))
+        if (string.IsNullOrEmpty(input))
         {
             _value = Int2.zero;
             return false;
         }
         else
         {
-            var matches = Regex.Matches(_input.Trim(), "[-]{0,1}\\d+");
+            var matches = Regex.Matches(input.Trim(), "[-]{0,1}\\d+");
             if (matches.Count == 2)
             {
                 _value = new Int2(int.Parse(matches[0].Value), int.Parse(matches[1].Value));

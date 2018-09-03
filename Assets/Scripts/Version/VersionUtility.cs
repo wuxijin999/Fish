@@ -58,11 +58,11 @@ public class VersionUtility : Singleton<VersionUtility>
         HttpRequest.Instance.RequestHttpGet(url, OnVersionCheckResult);
     }
 
-    private void OnVersionCheckResult(bool _ok, string _result)
+    private void OnVersionCheckResult(bool ok, string result)
     {
-        if (_ok)
+        if (ok)
         {
-            versionInfo = JsonMapper.ToObject<VersionInfo>(_result);
+            versionInfo = JsonMapper.ToObject<VersionInfo>(result);
             if (versionInfo.VersionCount > 0)
             {
                 var version = versionInfo.GetLatestVersion();
@@ -120,9 +120,9 @@ public class VersionUtility : Singleton<VersionUtility>
         CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnDownLoadApkCompleted));
     }
 
-    private void OnDownLoadApkCompleted(bool _ok, AssetVersion _assetVersion)
+    private void OnDownLoadApkCompleted(bool ok, AssetVersion assetVersion)
     {
-        if (_ok)
+        if (ok)
         {
             step = Step.Completed;
         }

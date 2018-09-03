@@ -125,15 +125,15 @@ public static class TransformExtension
         return false;
     }
 
-    public static bool RectTransformContain(this RectTransform _rectTransform, RectTransform _target)
+    public static bool RectTransformContain(this RectTransform rectTransform, RectTransform target)
     {
         var targetWorldCorners = new Vector3[4];
-        _target.GetWorldCorners(targetWorldCorners);
+        target.GetWorldCorners(targetWorldCorners);
 
         for (int i = 0; i < targetWorldCorners.Length; i++)
         {
             var position = targetWorldCorners[i];
-            if (_rectTransform.ContainWorldPosition(position))
+            if (rectTransform.ContainWorldPosition(position))
             {
                 return true;
             }

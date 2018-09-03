@@ -19,16 +19,16 @@ public class PathFinder
         owner = _actor;
     }
 
-    public bool ReCalculatePath(Vector3 _startPosition, Vector3 _endPosition, int _mask = NavMesh.AllAreas)
+    public bool ReCalculatePath(Vector3 startPosition, Vector3 endPosition, int mask = NavMesh.AllAreas)
     {
-        return NavMesh.CalculatePath(_startPosition, _endPosition, _mask, m_NavMeshPath);
+        return NavMesh.CalculatePath(startPosition, endPosition, mask, m_NavMeshPath);
     }
 
-    public bool IsReach(Vector3 _currentPosition, float _measure)
+    public bool IsReach(Vector3 currentPosition, float measure)
     {
         if (corners != null && corners.Length > 0)
         {
-            return Vector3.Distance(corners[corners.Length - 1], _currentPosition) <= _measure;
+            return Vector3.Distance(corners[corners.Length - 1], currentPosition) <= measure;
         }
         else
         {
@@ -36,9 +36,9 @@ public class PathFinder
         }
     }
 
-    public void MoveTo(Vector3 _endPosition)
+    public void MoveTo(Vector3 endPosition)
     {
-        if (ReCalculatePath(this.transform.position, _endPosition, NavMesh.AllAreas))
+        if (ReCalculatePath(this.transform.position, endPosition, NavMesh.AllAreas))
         {
             cornerIndex = 0;
             state = State.Move;

@@ -16,13 +16,13 @@ public class WindowAsyncLoad : MonoBehaviour
 
     public bool busy { get { return currentTask != null; } }
 
-    public void PushTask(Task _task)
+    public void PushTask(Task task)
     {
         var exist = false;
         for (int i = taskQueue.Count - 1; i >= 0; i--)
         {
-            var task = taskQueue[i];
-            if (task.windowName == _task.windowName)
+            var temp = taskQueue[i];
+            if (task.windowName == temp.windowName)
             {
                 exist = true;
                 break;
@@ -31,23 +31,23 @@ public class WindowAsyncLoad : MonoBehaviour
 
         if (!exist)
         {
-            taskQueue.Add(_task);
+            taskQueue.Add(task);
         }
     }
 
-    public void StopTask(string _name)
+    public void StopTask(string name)
     {
         for (int i = taskQueue.Count - 1; i >= 0; i--)
         {
             var task = taskQueue[i];
-            if (task.windowName == _name)
+            if (task.windowName == name)
             {
                 taskQueue.Remove(task);
                 break;
             }
         }
 
-        if (currentTask != null && currentTask.windowName == _name)
+        if (currentTask != null && currentTask.windowName == name)
         {
             currentTask.Dispose();
             currentTask = null;

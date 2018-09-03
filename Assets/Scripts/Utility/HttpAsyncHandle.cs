@@ -37,13 +37,13 @@ public class HttpAsyncHandle : MonoBehaviour
         }
     }
 
-    public static void Create(string _url, string _method, string _content, Action<bool, string> _result = null)
+    public static void Create(string url, string method, string content, Action<bool, string> result = null)
     {
         var behaviour = pool.Get().GetComponent<HttpAsyncHandle>();
 
         behaviour.gameObject.SetActive(true);
         behaviour.Reinitialize();
-        behaviour.Begin(_url, _method, _content, _result);
+        behaviour.Begin(url, method, content, result);
     }
 
     public void Reinitialize()
@@ -61,18 +61,18 @@ public class HttpAsyncHandle : MonoBehaviour
         ok = false;
     }
 
-    public void Begin(string _url, string _method, string _content, Action<bool, string> _result = null)
+    public void Begin(string url, string method, string content, Action<bool, string> result = null)
     {
-        this.url = _url;
-        this.method = _method;
-        this.content = _content;
-        this.callBack = _result;
+        this.url = url;
+        this.method = method;
+        this.content = content;
+        this.callBack = result;
         this.timeOut = Time.time + DESIGN_TIME_OUT_SECOND;
 
         cookie = new CookieContainer();
-        request = (HttpWebRequest)WebRequest.Create(_url);
+        request = (HttpWebRequest)WebRequest.Create(url);
         request.ServicePoint.Expect100Continue = false;
-        request.Method = _method;
+        request.Method = method;
         request.ContentType = HttpRequest.defaultHttpContentType;
         request.CookieContainer = cookie;
         request.Proxy = null;
@@ -80,13 +80,13 @@ public class HttpAsyncHandle : MonoBehaviour
 
         try
         {
-            if (string.IsNullOrEmpty(_content))
+            if (string.IsNullOrEmpty(content))
             {
                 request.BeginGetResponse(OnHttpWebResponse, null);
             }
             else
             {
-                var data = Encoding.UTF8.GetBytes(_content);
+                var data = Encoding.UTF8.GetBytes(content);
                 request.ContentLength = data.Length;
                 request.BeginGetRequestStream(GetRequestStreamCallback, null);
             }
@@ -153,7 +153,7 @@ public class HttpAsyncHandle : MonoBehaviour
         }
     }
 
-    private void OnHttpWebResponse(IAsyncResult _result)
+    private void OnHttpWebResponse(IAsyncResult result)
     {
         HttpWebResponse response = null;
         Stream s = null;
@@ -161,7 +161,7 @@ public class HttpAsyncHandle : MonoBehaviour
 
         try
         {
-            response = request.EndGetResponse(_result) as HttpWebResponse;
+            response = request.EndGetResponse(result) as HttpWebResponse;
             response.Cookies = cookie.GetCookies(response.ResponseUri);
             s = response.GetResponseStream();
             sr = new StreamReader(s, Encoding.UTF8);

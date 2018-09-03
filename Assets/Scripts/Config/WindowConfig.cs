@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Wednesday, August 29, 2018
+//    [  Date ]:           Monday, September 03, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -13,27 +13,27 @@ public partial class WindowConfig
 {
 
     public readonly int id;
-    public readonly bool fullScreen;
-    public readonly int depth;
-    public readonly bool emptyToClose;
+	public readonly bool fullScreen;
+	public readonly int depth;
+	public readonly bool emptyToClose;
 
-    public WindowConfig(string _content)
+    public WindowConfig(string content)
     {
         try
         {
-            var tables = _content.Split('\t');
+            var tables = content.Split('\t');
 
-            int.TryParse(tables[0], out id);
+            int.TryParse(tables[0],out id); 
 
-            var fullScreenTemp = 0;
-            int.TryParse(tables[1], out fullScreenTemp);
-            fullScreen = fullScreenTemp != 0;
+			var fullScreenTemp = 0;
+			int.TryParse(tables[1],out fullScreenTemp); 
+			fullScreen=fullScreenTemp!=0;
 
-            int.TryParse(tables[2], out depth);
+			int.TryParse(tables[2],out depth); 
 
-            var emptyToCloseTemp = 0;
-            int.TryParse(tables[3], out emptyToCloseTemp);
-            emptyToClose = emptyToCloseTemp != 0;
+			var emptyToCloseTemp = 0;
+			int.TryParse(tables[3],out emptyToCloseTemp); 
+			emptyToClose=emptyToCloseTemp!=0;
         }
         catch (Exception ex)
         {

@@ -5,9 +5,9 @@ using UnityEngine;
 public class CoroutineUtil : SingletonMonobehaviour<CoroutineUtil>
 {
 
-    public void Coroutine(IEnumerator _coroutine)
+    public void Coroutine(IEnumerator coroutine)
     {
-        StartCoroutine(_coroutine);
+        StartCoroutine(coroutine);
     }
 
 

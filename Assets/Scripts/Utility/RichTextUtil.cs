@@ -11,18 +11,18 @@ public class RichTextUtil
 
 
 
-    public static string Convert(string _text)
+    public static string Convert(string text)
     {
 
         return "";
     }
 
-    public static string Convert(string _text, RichTextType _type)
+    public static string Convert(string text, RichTextType type)
     {
-        switch (_type)
+        switch (type)
         {
             case RichTextType.Item:
-                var matches = Regex.Matches(_text, itemPattern);
+                var matches = Regex.Matches(text, itemPattern);
                 for (int i = 0; i < matches.Count; i++)
                 {
                     var match = matches[i];

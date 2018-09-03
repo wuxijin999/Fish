@@ -173,22 +173,22 @@ public class MathUtil
         return value;
     }
 
-    public static bool CheckAdult(string _IDNumber)
+    public static bool CheckAdult(string IDNumber)
     {
-        if (string.IsNullOrEmpty(_IDNumber))
+        if (string.IsNullOrEmpty(IDNumber))
         {
             return false;
         }
 
-        if (_IDNumber.Length == 15)
+        if (IDNumber.Length == 15)
         {
             return true;
         }
-        else if (_IDNumber.Length == 18)
+        else if (IDNumber.Length == 18)
         {
-            var year = int.Parse(_IDNumber.Substring(6, 4));
-            var month = int.Parse(_IDNumber.Substring(10, 2));
-            var day = int.Parse(_IDNumber.Substring(12, 2));
+            var year = int.Parse(IDNumber.Substring(6, 4));
+            var month = int.Parse(IDNumber.Substring(10, 2));
+            var day = int.Parse(IDNumber.Substring(12, 2));
             var borth = new DateTime(year, month, day);
 
             return (DateTime.Now - borth).TotalDays >= (365 * 18 + 4);

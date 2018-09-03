@@ -9,16 +9,16 @@ public class StringUtil
 
     static object lockObject = new object();
 
-    public static string Contact(params object[] _objects)
+    public static string Contact(params object[] objects)
     {
         lock (lockObject)
         {
             m_StringBuilder.Remove(0, m_StringBuilder.Length);
-            for (int i = 0; i < _objects.Length; ++i)
+            for (int i = 0; i < objects.Length; ++i)
             {
-                if (_objects[i] != null)
+                if (objects[i] != null)
                 {
-                    m_StringBuilder.Append(_objects[i]);
+                    m_StringBuilder.Append(objects[i]);
                 }
             }
             return m_StringBuilder.ToString();

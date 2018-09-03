@@ -16,11 +16,11 @@ public partial class EffectConfig
 	public readonly string assetName;
 	public readonly bool bindParent;
 
-    public EffectConfig(string _content)
+    public EffectConfig(string content)
     {
         try
         {
-            var tables = _content.Split('\t');
+            var tables = content.Split('\t');
 
             int.TryParse(tables[0],out id); 
 
@@ -37,18 +37,18 @@ public partial class EffectConfig
     }
 
     static Dictionary<int, EffectConfig> configs = new Dictionary<int, EffectConfig>();
-    public static EffectConfig Get(int _id)
+    public static EffectConfig Get(int id)
     {
-        if (configs.ContainsKey(_id))
+        if (configs.ContainsKey(id))
         {
-            return configs[_id];
+            return configs[id];
         }
 
         EffectConfig config = null;
-        if (rawDatas.ContainsKey(_id))
+        if (rawDatas.ContainsKey(id))
         {
-            config = configs[_id] = new EffectConfig(rawDatas[_id]);
-            rawDatas.Remove(_id);
+            config = configs[id] = new EffectConfig(rawDatas[id]);
+            rawDatas.Remove(id);
         }
 
         return config;

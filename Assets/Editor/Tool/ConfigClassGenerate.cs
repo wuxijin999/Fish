@@ -144,7 +144,7 @@ public class CreateConfigClassFile
         _field = _field.Replace(" ", "");
         if (_type.Contains("int[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
             var line2 = StringUtil.Contact(retract3, _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
             var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
@@ -155,7 +155,7 @@ public class CreateConfigClassFile
         }
         else if (_type.Contains("float[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
             var line2 = StringUtil.Contact(retract3, _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
             var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
@@ -166,12 +166,12 @@ public class CreateConfigClassFile
         }
         else if (_type.Contains("string[]"))
         {
-            var line1 = StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
+            var line1 = StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
             return line1;
         }
         else if (_type.Contains("Vector3[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtility.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
             var line2 = StringUtil.Contact(retract3, _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
             var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");

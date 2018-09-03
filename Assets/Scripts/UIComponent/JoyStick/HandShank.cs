@@ -105,9 +105,9 @@ public class HandShank : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoin
         state = HandShankState.UnActive;
     }
 
-    private void UpdatePosition(Vector3 _pressPosition)
+    private void UpdatePosition(Vector3 pressPosition)
     {
-        var mousePosition = AmendMousePosition(_pressPosition);
+        var mousePosition = AmendMousePosition(pressPosition);
         var distance = Vector2.Distance(center, mousePosition);
         if (distance < 0.001f)
         {

@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Wednesday, July 18, 2018
+//    [  Date ]:           Monday, September 03, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -18,11 +18,11 @@ public partial class TestConfig
 	public readonly Int3 Type;
 	public readonly Vector3 EquipPlace;
 
-    public TestConfig(string _content)
+    public TestConfig(string content)
     {
         try
         {
-            var tables = _content.Split('\t');
+            var tables = content.Split('\t');
 
             int.TryParse(tables[0],out ID); 
 
@@ -43,18 +43,18 @@ public partial class TestConfig
     }
 
     static Dictionary<int, TestConfig> configs = new Dictionary<int, TestConfig>();
-    public static TestConfig Get(int _id)
+    public static TestConfig Get(int id)
     {
-        if (configs.ContainsKey(_id))
+        if (configs.ContainsKey(id))
         {
-            return configs[_id];
+            return configs[id];
         }
 
         TestConfig config = null;
-        if (rawDatas.ContainsKey(_id))
+        if (rawDatas.ContainsKey(id))
         {
-            config = configs[_id] = new TestConfig(rawDatas[_id]);
-            rawDatas.Remove(_id);
+            config = configs[id] = new TestConfig(rawDatas[id]);
+            rawDatas.Remove(id);
         }
 
         return config;

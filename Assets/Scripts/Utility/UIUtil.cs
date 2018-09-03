@@ -26,14 +26,14 @@ public static class UIUtil
             return null;
         }
 
-        var _child = transform.Find(path);
-        if (_child == null)
+        var child = transform.Find(path);
+        if (child == null)
         {
             return null;
         }
         else
         {
-            return _child.GetComponent<T>();
+            return child.GetComponent<T>();
         }
     }
 
@@ -44,14 +44,14 @@ public static class UIUtil
             return null;
         }
 
-        var _child = component.transform.Find(path);
-        if (_child == null)
+        var child = component.transform.Find(path);
+        if (child == null)
         {
             return null;
         }
         else
         {
-            return _child.GetComponent<T>();
+            return child.GetComponent<T>();
         }
     }
 
@@ -62,14 +62,14 @@ public static class UIUtil
             return null;
         }
 
-        var _child = gameObject.transform.Find(path);
-        if (_child == null)
+        var child = gameObject.transform.Find(path);
+        if (child == null)
         {
             return null;
         }
         else
         {
-            return _child.GetComponent<T>();
+            return child.GetComponent<T>();
         }
     }
 

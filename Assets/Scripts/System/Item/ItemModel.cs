@@ -22,20 +22,20 @@ public class ItemModel : Model<ItemModel>
     {
     }
 
-    public Item GetItemByInstanceId(int _instanceId)
+    public Item GetItemByInstanceId(int instanceId)
     {
         Item item;
-        itemDictionary.TryGetValue(_instanceId, out item);
+        itemDictionary.TryGetValue(instanceId, out item);
 
         return item;
     }
 
-    public List<Item> GetItemsById(int _id)
+    public List<Item> GetItemsById(int id)
     {
         var items = new List<Item>();
         foreach (var item in itemDictionary.Values)
         {
-            if (item.id == _id)
+            if (item.id == id)
             {
                 items.Add(item);
             }
@@ -44,12 +44,12 @@ public class ItemModel : Model<ItemModel>
         return items;
     }
 
-    public int GetItemCount(int _id)
+    public int GetItemCount(int id)
     {
         var sum = 0;
         foreach (var item in itemDictionary.Values)
         {
-            if (item.id == _id)
+            if (item.id == id)
             {
                 sum += item.count;
             }

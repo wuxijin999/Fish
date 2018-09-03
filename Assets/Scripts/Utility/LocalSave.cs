@@ -14,9 +14,9 @@ public static class LocalSave
         PlayerPrefs.DeleteAll();
     }
 
-    public static void DeleteKey(string _key)
+    public static void DeleteKey(string key)
     {
-        PlayerPrefs.DeleteKey(_key);
+        PlayerPrefs.DeleteKey(key);
     }
 
     public static void SetInt(string key, int value)
@@ -24,11 +24,11 @@ public static class LocalSave
         PlayerPrefs.SetInt(key, value);
     }
 
-    public static int GetInt(string key, int _default = 0)
+    public static int GetInt(string key, int @default = 0)
     {
         if (!PlayerPrefs.HasKey(key))
         {
-            return _default;
+            return @default;
         }
         else
         {

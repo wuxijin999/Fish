@@ -56,22 +56,22 @@ public static class LayerUtil
     public static readonly int MaskShowMask = 1 << MaskShow;
 
 
-    public static void SetLayer(this GameObject _gameObject, int _layer, bool _recursive)
+    public static void SetLayer(this GameObject gameObject, int layer, bool recursive)
     {
-        if (_gameObject == null)
+        if (gameObject == null)
         {
             return;
         }
 
-        _gameObject.layer = _layer;
+        gameObject.layer = layer;
 
-        if (_recursive && _gameObject.transform.childCount > 0)
+        if (recursive && gameObject.transform.childCount > 0)
         {
-            var childCount = _gameObject.transform.childCount;
+            var childCount = gameObject.transform.childCount;
             for (var i = 0; i < childCount; i++)
             {
-                var child = _gameObject.transform.GetChild(i);
-                SetLayer(child.gameObject, _layer, true);
+                var child = gameObject.transform.GetChild(i);
+                SetLayer(child.gameObject, layer, true);
             }
         }
 

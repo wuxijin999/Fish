@@ -83,13 +83,13 @@ public static class ComponentExtersion
         toggle.onValueChanged.AddListener(action);
     }
 
-    public static void RemoveAllListeners(this Toggle _toggle)
+    public static void RemoveAllListeners(this Toggle toggle)
     {
-        if (_toggle == null)
+        if (toggle == null)
         {
             return;
         }
-        _toggle.onValueChanged.RemoveAllListeners();
+        toggle.onValueChanged.RemoveAllListeners();
     }
 
     public static void AddListener(this Slider slider, UnityAction<float> action)
@@ -110,22 +110,22 @@ public static class ComponentExtersion
         slider.onValueChanged.RemoveAllListeners();
     }
 
-    public static void AddListener(this InputField _inputField, UnityAction<string> action)
+    public static void AddListener(this InputField inputField, UnityAction<string> action)
     {
-        if (_inputField == null)
+        if (inputField == null)
         {
             return;
         }
-        _inputField.onValueChanged.AddListener(action);
+        inputField.onValueChanged.AddListener(action);
     }
 
-    public static void RemoveAllListeners(this InputField _inputField)
+    public static void RemoveAllListeners(this InputField inputField)
     {
-        if (_inputField == null)
+        if (inputField == null)
         {
             return;
         }
-        _inputField.onValueChanged.RemoveAllListeners();
+        inputField.onValueChanged.RemoveAllListeners();
     }
 
 

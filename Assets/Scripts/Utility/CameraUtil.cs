@@ -7,19 +7,19 @@ using System;
 public static class CameraUtil
 {
 
-    public static void AddCullingMask(this Camera _camera, int _layer)
+    public static void AddCullingMask(this Camera camera, int layer)
     {
-        if (_camera != null)
+        if (camera != null)
         {
-            _camera.cullingMask |= (1 << _layer);
+            camera.cullingMask |= (1 << layer);
         }
     }
 
-    public static void RemoveCullingMask(this Camera _camera, int _layer)
+    public static void RemoveCullingMask(this Camera camera, int layer)
     {
-        if (_camera != null)
+        if (camera != null)
         {
-            _camera.cullingMask &= ~(1 << _layer);
+            camera.cullingMask &= ~(1 << layer);
         }
     }
 

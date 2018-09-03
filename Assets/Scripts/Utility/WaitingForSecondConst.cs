@@ -28,16 +28,16 @@ public class WaitingForSecondConst
     public static readonly WaitForSeconds WaitMS10000 = new WaitForSeconds(10f);
 
     private static Dictionary<float, WaitForSeconds> m_WaitDict = new Dictionary<float, WaitForSeconds>();
-    public static WaitForSeconds GetWaitForSeconds(float _t)
+    public static WaitForSeconds GetWaitForSeconds(float t)
     {
-        if (m_WaitDict.ContainsKey(_t))
+        if (m_WaitDict.ContainsKey(t))
         {
-            return m_WaitDict[_t];
+            return m_WaitDict[t];
         }
         else
         {
-            var _wait = new WaitForSeconds(_t);
-            m_WaitDict.Add(_t, _wait);
+            var _wait = new WaitForSeconds(t);
+            m_WaitDict.Add(t, _wait);
             return _wait;
         }
     }

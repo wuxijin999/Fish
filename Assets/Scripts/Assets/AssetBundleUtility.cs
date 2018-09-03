@@ -50,8 +50,8 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         {
             var _dependenices = manifest.GetAllDependencies(assetBundleName);
             var _hash = manifest.GetAssetBundleHash(assetBundleName);
-            var _assetBundleInfo = new AssetBundleInfo(assetBundleName, _hash, _dependenices);
-            m_AssetBundleInfoList.Add(_assetBundleInfo);
+            var assetBundleInfo = new AssetBundleInfo(assetBundleName, _hash, _dependenices);
+            m_AssetBundleInfoList.Add(assetBundleInfo);
         }
 
         assetBundle.Unload(true);
@@ -86,16 +86,16 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             yield break;
         }
 
-        var _assetBundleInfo = GetAssetBundleInfo(assetBundleName);
-        if (_assetBundleInfo == null)
+        var assetBundleInfo = GetAssetBundleInfo(assetBundleName);
+        if (assetBundleInfo == null)
         {
             DebugEx.LogErrorFormat("Co_LoadAssetBundle(): {0}出现错误 => 不存在AssetBundleInfo. ", assetBundleName);
             yield break;
         }
 
-        if (_assetBundleInfo.dependentBundles.Length > 0)
+        if (assetBundleInfo.dependentBundles.Length > 0)
         {
-            yield return Co_LoadAssetBundleDependenice(_assetBundleInfo);
+            yield return Co_LoadAssetBundleDependenice(assetBundleInfo);
         }
 
         var filePath = AssetVersionUtility.GetAssetFilePath(assetBundleName);
@@ -107,7 +107,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     private IEnumerator Co_LoadAssetBundleDependenice(AssetBundleInfo assetBundleInfo)
     {
-        AssetBundle _assetBundle = null;
+        AssetBundle assetBundle = null;
 
         if (assetBundleInfo.dependentBundles == null
          || assetBundleInfo.dependentBundles.Length == 0)
@@ -118,13 +118,13 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
         {
 
-            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out _assetBundle) == false)
+            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
             {
                 yield return Co_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
             }
             else
             {
-                if (_assetBundle == null)
+                if (assetBundle == null)
                 {
                     yield return Co_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
                 }
@@ -211,12 +211,12 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         assetBundleName = assetBundleName.ToLower();
 #endif
 
-        UnityEngine.Object _object = null;
+        UnityEngine.Object @object = null;
 
         if (JudgeExistAsset(assetBundleName, assetName))
         {
 
-            _object = m_AssetDict[assetBundleName][assetName];
+            @object = m_AssetDict[assetBundleName][assetName];
 
         }
         else
@@ -227,27 +227,27 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             {
                 if (type != null)
                 {
-                    _object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName, type);
+                    @object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName, type);
                 }
                 else
                 {
-                    _object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName);
+                    @object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName);
                 }
 
-                if (_object != null)
+                if (@object != null)
                 {
-                    CacheAsset(assetBundleName, assetName, _object);
+                    CacheAsset(assetBundleName, assetName, @object);
                 }
             }
 
         }
 
-        if (_object == null)
+        if (@object == null)
         {
             DebugEx.LogErrorFormat("Sync_LoadAsset(): {0} 出现错误 => null. ", assetName);
         }
 
-        return _object;
+        return @object;
     }
 
     private void Sync_LoadAssetBundle(string assetBundleName)
@@ -257,17 +257,17 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return;
         }
 
-        AssetBundleInfo _assetBundleInfo = GetAssetBundleInfo(assetBundleName);
-        if (_assetBundleInfo == null)
+        AssetBundleInfo assetBundleInfo = GetAssetBundleInfo(assetBundleName);
+        if (assetBundleInfo == null)
         {
             DebugEx.LogErrorFormat("Sync_LoadAssetBundle(): {0} 出现错误 => 不存在AssetBundleInfo. ", assetBundleName);
             return;
         }
 
-        Sync_LoadAssetBundleDependenice(_assetBundleInfo);
+        Sync_LoadAssetBundleDependenice(assetBundleInfo);
 
-        string _path = AssetVersionUtility.GetAssetFilePath(assetBundleName);
-        AssetBundle _assetBundle = AssetBundle.LoadFromFile(_path);
+        string path = AssetVersionUtility.GetAssetFilePath(assetBundleName);
+        AssetBundle _assetBundle = AssetBundle.LoadFromFile(path);
 
         CacheAssetBundle(assetBundleName, _assetBundle);
     }
@@ -280,17 +280,17 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return;
         }
 
-        AssetBundle _assetBundle = null;
+        AssetBundle assetBundle = null;
 
         for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
         {
-            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out _assetBundle) == false)
+            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
             {
                 Sync_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
             }
             else
             {
-                if (_assetBundle == null)
+                if (assetBundle == null)
                 {
                     Sync_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
                 }
@@ -318,9 +318,9 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return;
         }
 
-        AssetBundleInfo _assetBundleInfo = GetAssetBundleInfo(assetBundleName);
+        AssetBundleInfo assetBundleInfo = GetAssetBundleInfo(assetBundleName);
 
-        UnloadAssetBundle(_assetBundleInfo, unloadAllLoadedObjects, includeDependenice);
+        UnloadAssetBundle(assetBundleInfo, unloadAllLoadedObjects, includeDependenice);
     }
 
     public void UnloadAsset(string assetBundleName, string assetName)
@@ -365,11 +365,11 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
     public void UnloadAll()
     {
 
-        List<string> _assetBundleNameList = new List<string>(m_AssetBundleDict.Keys);
+        List<string> assetBundleNameList = new List<string>(m_AssetBundleDict.Keys);
 
-        foreach (var _assetBundleName in _assetBundleNameList)
+        foreach (var assetBundleName in assetBundleNameList)
         {
-            UnloadAssetBundle(_assetBundleName, true, true);
+            UnloadAssetBundle(assetBundleName, true, true);
         }
     }
 
@@ -421,17 +421,17 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         if (Application.isEditor)
         {
 
-            Transform _asset = transform.Find(assetBundleInfo.name);
-            Transform _parent = _asset.parent;
+            Transform asset = transform.Find(assetBundleInfo.name);
+            Transform parent = asset.parent;
 
-            if (_asset)
+            if (asset)
             {
-                DestroyImmediate(_asset.gameObject);
+                DestroyImmediate(asset.gameObject);
             }
 
-            if (_parent.childCount == 0 && _parent != transform)
+            if (parent.childCount == 0 && parent != transform)
             {
-                DestroyImmediate(_parent.gameObject);
+                DestroyImmediate(parent.gameObject);
             }
         }
     }
@@ -498,11 +498,11 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
         m_AssetDict[assetBundleName][assetName] = asset;
 
-        string _assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
-        if (m_AssetInfoDict.ContainsKey(_assembleName) == false)
+        string assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
+        if (m_AssetInfoDict.ContainsKey(assembleName) == false)
         {
             AssetInfo _assetInfo = new AssetInfo(assetBundleName, assetName);
-            m_AssetInfoDict[_assembleName] = _assetInfo;
+            m_AssetInfoDict[assembleName] = _assetInfo;
         }
 
         DebugEx.LogFormat("CacheAsset(): 成功缓存asset => {0}. ", assetName);
@@ -526,36 +526,36 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         m_AssetBundleDict[assetBundleName] = assetBundle;
         if (Application.isEditor)
         {
-            string[] _names = assetBundleName.Split('/');
-            string _selfPath = string.Empty;
-            string _parentPath = string.Empty;
-            for (int i = 0; i < _names.Length; ++i)
+            string[] names = assetBundleName.Split('/');
+            string selfPath = string.Empty;
+            string parentPath = string.Empty;
+            for (int i = 0; i < names.Length; ++i)
             {
-                _selfPath = _names[0];
+                selfPath = names[0];
                 for (int j = 1; j <= i; ++j)
                 {
-                    _selfPath = _selfPath + "/" + _names[j];
+                    selfPath = selfPath + "/" + names[j];
                 }
-                if (transform.Find(_selfPath))
+                if (transform.Find(selfPath))
                 {
                     continue;
                 }
-                GameObject _go = new GameObject(_names[i]);
+                GameObject _go = new GameObject(names[i]);
                 if (i == 0)
                 {
                     _go.transform.parent = transform;
                 }
                 else
                 {
-                    _parentPath = _names[0];
+                    parentPath = names[0];
                     for (int j = 1; j < i; ++j)
                     {
-                        _parentPath = _parentPath + "/" + _names[j];
+                        parentPath = parentPath + "/" + names[j];
                     }
-                    Transform _parent = transform.Find(_parentPath);
-                    if (_parent)
+                    Transform parent = transform.Find(parentPath);
+                    if (parent)
                     {
-                        _go.transform.parent = _parent;
+                        _go.transform.parent = parent;
                     }
                 }
             }

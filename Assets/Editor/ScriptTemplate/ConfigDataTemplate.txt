@@ -14,11 +14,11 @@ public partial class #ClassName#
 
     #Field#
 
-    public #ClassName#(string _content)
+    public #ClassName#(string content)
     {
         try
         {
-            var tables = _content.Split('\t');
+            var tables = content.Split('\t');
 
             #Read#
         }
@@ -29,18 +29,18 @@ public partial class #ClassName#
     }
 
     static Dictionary<int, #ClassName#> configs = new Dictionary<int, #ClassName#>();
-    public static #ClassName# Get(int _id)
+    public static #ClassName# Get(int id)
     {
-        if (configs.ContainsKey(_id))
+        if (configs.ContainsKey(id))
         {
-            return configs[_id];
+            return configs[id];
         }
 
         #ClassName# config = null;
-        if (rawDatas.ContainsKey(_id))
+        if (rawDatas.ContainsKey(id))
         {
-            config = configs[_id] = new #ClassName#(rawDatas[_id]);
-            rawDatas.Remove(_id);
+            config = configs[id] = new #ClassName#(rawDatas[id]);
+            rawDatas.Remove(id);
         }
 
         return config;
