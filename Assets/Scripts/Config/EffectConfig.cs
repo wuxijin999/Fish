@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Wednesday, August 29, 2018
+//    [  Date ]:           Monday, September 03, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -9,31 +9,26 @@ using System.Threading;
 using System;
 using UnityEngine;
 
-public partial class WindowConfig
+public partial class EffectConfig
 {
 
     public readonly int id;
-    public readonly bool fullScreen;
-    public readonly int depth;
-    public readonly bool emptyToClose;
+	public readonly string assetName;
+	public readonly bool bindParent;
 
-    public WindowConfig(string _content)
+    public EffectConfig(string _content)
     {
         try
         {
             var tables = _content.Split('\t');
 
-            int.TryParse(tables[0], out id);
+            int.TryParse(tables[0],out id); 
 
-            var fullScreenTemp = 0;
-            int.TryParse(tables[1], out fullScreenTemp);
-            fullScreen = fullScreenTemp != 0;
+			assetName = tables[1];
 
-            int.TryParse(tables[2], out depth);
-
-            var emptyToCloseTemp = 0;
-            int.TryParse(tables[3], out emptyToCloseTemp);
-            emptyToClose = emptyToCloseTemp != 0;
+			var bindParentTemp = 0;
+			int.TryParse(tables[2],out bindParentTemp); 
+			bindParent=bindParentTemp!=0;
         }
         catch (Exception ex)
         {
@@ -41,19 +36,19 @@ public partial class WindowConfig
         }
     }
 
-    static Dictionary<int, WindowConfig> configs = new Dictionary<int, WindowConfig>();
-    public static WindowConfig Get(int id)
+    static Dictionary<int, EffectConfig> configs = new Dictionary<int, EffectConfig>();
+    public static EffectConfig Get(int _id)
     {
-        if (configs.ContainsKey(id))
+        if (configs.ContainsKey(_id))
         {
-            return configs[id];
+            return configs[_id];
         }
 
-        WindowConfig config = null;
-        if (rawDatas.ContainsKey(id))
+        EffectConfig config = null;
+        if (rawDatas.ContainsKey(_id))
         {
-            config = configs[id] = new WindowConfig(rawDatas[id]);
-            rawDatas.Remove(id);
+            config = configs[_id] = new EffectConfig(rawDatas[_id]);
+            rawDatas.Remove(_id);
         }
 
         return config;
@@ -63,7 +58,7 @@ public partial class WindowConfig
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Window.txt";
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Effect.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
             var lines = File.ReadAllLines(path);

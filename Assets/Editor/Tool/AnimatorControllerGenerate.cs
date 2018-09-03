@@ -8,24 +8,24 @@ public class AnimatorControllerGenerate
 {
 
 
-    public static void GenerateAnimator(AnimatorGenerateConfig _config, string _newControllerPath)
+    public static void GenerateAnimator(AnimatorGenerateConfig config, string newControllerPath)
     {
-        if (_config == null)
+        if (config == null)
         {
             return;
         }
 
-        var templatePath = StringUtil.Contact("Assets/Editor/AnimatorControllerTemplate/", _config.controllerTemplate, ".controller");
-        AssetDatabase.CopyAsset(templatePath, _newControllerPath);
-        var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(_newControllerPath);
+        var templatePath = StringUtil.Contact("Assets/Editor/AnimatorControllerTemplate/", config.controllerTemplate, ".controller");
+        AssetDatabase.CopyAsset(templatePath, newControllerPath);
+        var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(newControllerPath);
 
         var stateMachine = controller.layers[0].stateMachine;
-        HandleStateMachine(string.Empty, stateMachine, _config);
+        HandleStateMachine(string.Empty, stateMachine, config);
 
         EditorUtility.SetDirty(controller);
     }
 
-    protected static void HandleStateMachine(string modelName, AnimatorStateMachine stateMachine, AnimatorGenerateConfig _config)
+    protected static void HandleStateMachine(string modelName, AnimatorStateMachine stateMachine, AnimatorGenerateConfig config)
     {
         if (stateMachine.states == null || stateMachine.states.Length == 0)
         {
@@ -39,10 +39,10 @@ public class AnimatorControllerGenerate
         {
             state = stateMachine.states[i].state;
 
-            var index = _config.stateClips.FindIndex((AnimatorGenerateConfig.StateToClip stateToClip) => { return stateToClip.state == state.name; });
+            var index = config.stateClips.FindIndex((AnimatorGenerateConfig.StateToClip stateToClip) => { return stateToClip.state == state.name; });
             if (index == -1)
             {
-                Debug.LogWarningFormat("没有找到状态机上名称为: {0}在{1}里的对应配置. ", state.name, _config.name);
+                Debug.LogWarningFormat("没有找到状态机上名称为: {0}在{1}里的对应配置. ", state.name, config.name);
                 continue;
             }
 
@@ -52,7 +52,7 @@ public class AnimatorControllerGenerate
             }
             else
             {
-                var clipName = _config.stateClips[index].clip;
+                var clipName = config.stateClips[index].clip;
                 state.motion = GetAnimationClip(modelName, clipName);
 
                 if (state.motion == null)
@@ -64,7 +64,7 @@ public class AnimatorControllerGenerate
 
         foreach (var childStateMachine in stateMachine.stateMachines)
         {
-            HandleStateMachine(modelName, childStateMachine.stateMachine, _config);
+            HandleStateMachine(modelName, childStateMachine.stateMachine, config);
         }
     }
 

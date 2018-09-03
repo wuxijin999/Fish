@@ -70,6 +70,7 @@ public class EffectBehaviour : MonoBehaviour
             if (Time.time >= stopTime)
             {
                 //回收
+                EffectUtil.Instance.Stop(this);
             }
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 #if UNITY_EDITOR
 public class EditorHelper
 {
-    public static Dictionary<int, UIGameObjectPool> uiGameObjectPools = new Dictionary<int, UIGameObjectPool>();
+    public static Dictionary<int, GameObjectPool> gameObjectPools = new Dictionary<int, GameObjectPool>();
 
 }
 #endif

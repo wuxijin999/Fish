@@ -3,170 +3,216 @@ using UnityEngine.Events;
 using System.Collections.Generic;
 
 [Serializable]
-public class UIEvent:UnityEvent {
-    public UIEvent() : base() {
+public class UIEvent : UnityEvent
+{
+    public UIEvent() : base()
+    {
 
     }
 }
 
 [Serializable]
-public class UIEventBool:UnityEvent<bool> {
-    public UIEventBool() : base() {
+public class UIEventBool : UnityEvent<bool>
+{
+    public UIEventBool() : base()
+    {
 
     }
 }
 
 [Serializable]
-public class UIEventInt:UnityEvent<int> {
-    public UIEventInt() : base() {
+public class UIEventInt : UnityEvent<int>
+{
+    public UIEventInt() : base()
+    {
 
     }
 }
 
 [Serializable]
-public class UIEventFloat:UnityEvent<float> {
-    public UIEventFloat() : base() {
+public class UIEventFloat : UnityEvent<float>
+{
+    public UIEventFloat() : base()
+    {
 
     }
 }
 
 [Serializable]
-public class UIEventString:UnityEvent<string> {
-    public UIEventString() : base() {
+public class UIEventString : UnityEvent<string>
+{
+    public UIEventString() : base()
+    {
 
     }
 }
 
 
-public class BizEvent {
+public class BizEvent
+{
 
     event System.Action bizEvent;
-    public BizEvent() {
+    public BizEvent()
+    {
 
     }
 
-    public void Invoke() {
-        if(bizEvent != null) {
+    public void Invoke()
+    {
+        if (bizEvent != null)
+        {
             bizEvent();
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         bizEvent = null;
     }
 
-    public static BizEvent operator +(BizEvent _event, System.Action _action) {
-        if(_event != null) {
-            _event.bizEvent += _action;
+    public static BizEvent operator +(BizEvent @event, System.Action action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent += action;
         }
-        return _event;
+        return @event;
     }
 
-    public static BizEvent operator -(BizEvent _event, System.Action _action) {
-        if(_event != null) {
-            _event.bizEvent -= _action;
+    public static BizEvent operator -(BizEvent @event, System.Action action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent -= action;
         }
-        return _event;
+        return @event;
     }
 
 }
 
-public class BizEvent<T> {
+public class BizEvent<T>
+{
 
     event Action<T> bizEvent;
-    public BizEvent() {
+    public BizEvent()
+    {
 
     }
 
-    public void Invoke(T _value) {
-        if(bizEvent != null) {
-            bizEvent(_value);
+    public void Invoke(T value)
+    {
+        if (bizEvent != null)
+        {
+            bizEvent(value);
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         bizEvent = null;
     }
 
-    public static BizEvent<T> operator +(BizEvent<T> _event,Action<T> _action) {
-        if(_event != null) {
-            _event.bizEvent += _action;
+    public static BizEvent<T> operator +(BizEvent<T> @event, Action<T> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent += action;
         }
-        return _event;
+        return @event;
     }
 
-    public static BizEvent<T> operator -(BizEvent<T> _event,Action<T> _action) {
-        if(_event != null) {
-            _event.bizEvent -= _action;
+    public static BizEvent<T> operator -(BizEvent<T> @event, Action<T> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent -= action;
         }
-        return _event;
+        return @event;
     }
 
 
 }
 
-public class BizEvent<T0, T1> {
+public class BizEvent<T0, T1>
+{
 
-    event Action<T0,T1> bizEvent;
-    public BizEvent() {
+    event Action<T0, T1> bizEvent;
+    public BizEvent()
+    {
 
     }
 
-    public void Invoke(T0 _value0,T1 _value1) {
-        if(bizEvent != null) {
-            bizEvent(_value0,_value1);
+    public void Invoke(T0 value0, T1 value1)
+    {
+        if (bizEvent != null)
+        {
+            bizEvent(value0, value1);
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         bizEvent = null;
     }
 
-    public static BizEvent<T0,T1> operator +(BizEvent<T0,T1> _event,Action<T0,T1> _action) {
-        if(_event != null) {
-            _event.bizEvent += _action;
+    public static BizEvent<T0, T1> operator +(BizEvent<T0, T1> @event, Action<T0, T1> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent += action;
         }
-        return _event;
+        return @event;
     }
 
-    public static BizEvent<T0,T1> operator -(BizEvent<T0,T1> _event,Action<T0,T1> _action) {
-        if(_event != null) {
-            _event.bizEvent -= _action;
+    public static BizEvent<T0, T1> operator -(BizEvent<T0, T1> @event, Action<T0, T1> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent -= action;
         }
-        return _event;
+        return @event;
     }
 
 }
 
-public class BizEvent<T0, T1, T2> {
+public class BizEvent<T0, T1, T2>
+{
 
-    event Action<T0,T1,T2> bizEvent;
-    public BizEvent() {
+    event Action<T0, T1, T2> bizEvent;
+    public BizEvent()
+    {
 
     }
 
-    public void Invoke(T0 _value0,T1 _value1,T2 _value2) {
-        if(bizEvent != null) {
-            bizEvent(_value0,_value1,_value2);
+    public void Invoke(T0 value0, T1 value1, T2 value2)
+    {
+        if (bizEvent != null)
+        {
+            bizEvent(value0, value1, value2);
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         bizEvent = null;
     }
 
-    public static BizEvent<T0,T1,T2> operator +(BizEvent<T0,T1,T2> _event,Action<T0,T1,T2> _action) {
-        if(_event != null) {
-            _event.bizEvent += _action;
+    public static BizEvent<T0, T1, T2> operator +(BizEvent<T0, T1, T2> @event, Action<T0, T1, T2> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent += action;
         }
-        return _event;
+        return @event;
     }
 
-    public static BizEvent<T0,T1,T2> operator -(BizEvent<T0,T1,T2> _event,Action<T0,T1,T2> _action) {
-        if(_event != null) {
-            _event.bizEvent -= _action;
+    public static BizEvent<T0, T1, T2> operator -(BizEvent<T0, T1, T2> @event, Action<T0, T1, T2> action)
+    {
+        if (@event != null)
+        {
+            @event.bizEvent -= action;
         }
-        return _event;
+        return @event;
     }
 
 

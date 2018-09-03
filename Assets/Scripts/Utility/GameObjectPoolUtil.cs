@@ -6,22 +6,22 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class UIGameObjectPoolUtil
+public class GameObjectPoolUtil
 {
     public static readonly Vector3 HIDE_POINT = new Vector3(0, 5000, 0);
 
     static int instanceId = 1000;
-    static Dictionary<int, UIGameObjectPool> pools = new Dictionary<int, UIGameObjectPool>();
+    static Dictionary<int, GameObjectPool> pools = new Dictionary<int, GameObjectPool>();
 
-    public static UIGameObjectPool Create(GameObject _prefab)
+    public static GameObjectPool Create(GameObject _prefab)
     {
         instanceId++;
-        var pool = new UIGameObjectPool(instanceId, _prefab);
+        var pool = new GameObjectPool(instanceId, _prefab);
         pools.Add(instanceId, pool);
         return pool;
     }
 
-    public static bool Destroy(UIGameObjectPool _pool)
+    public static bool Destroy(GameObjectPool _pool)
     {
         if (_pool == null)
         {
@@ -41,7 +41,7 @@ public class UIGameObjectPoolUtil
 #if UNITY_EDITOR
     public static void CreatePoolDebugWindow()
     {
-        EditorHelper.uiGameObjectPools = pools;
+        EditorHelper.gameObjectPools = pools;
     }
 #endif
 }

@@ -62,13 +62,13 @@ public class AssetVersionUtility
         HttpRequest.Instance.RequestHttpGet(assetVersionUrl, OnGetAssetVersionFile);
     }
 
-    private static void OnGetAssetVersionFile(bool _ok, string _result)
+    private static void OnGetAssetVersionFile(bool ok, string result)
     {
-        Debug.LogFormat("获取资源版本文件结果：时间 {0}，结果 {1}", DateTime.Now, _ok);
+        Debug.LogFormat("获取资源版本文件结果：时间 {0}，结果 {1}", DateTime.Now, ok);
 
-        if (_ok)
+        if (ok)
         {
-            var assetVersions = AssetVersionUtility.UpdateAssetVersions(_result);
+            var assetVersions = AssetVersionUtility.UpdateAssetVersions(result);
             foreach (var assetVersion in assetVersions.Values)
             {
                 if (!assetVersion.CheckLocalFileValid())
@@ -96,9 +96,9 @@ public class AssetVersionUtility
         }
     }
 
-    public static void BeginDownLoad(bool _prior)
+    public static void BeginDownLoad(bool prior)
     {
-        if (_prior)
+        if (prior)
         {
             m_PriorAssetDownLoadDone = false;
             DownLoadAndDiscompressTask.Instance.Prepare(priorDownLoadAssetVersions, true, () => { m_PriorAssetDownLoadDone = true; });
@@ -114,9 +114,9 @@ public class AssetVersionUtility
         }
     }
 
-    public static Dictionary<string, AssetVersion> UpdateAssetVersions(string _assetVersionFile)
+    public static Dictionary<string, AssetVersion> UpdateAssetVersions(string assetVersionFile)
     {
-        var lines = _assetVersionFile.Split(new string[] { FileExtersion.lineSplit }, StringSplitOptions.RemoveEmptyEntries);
+        var lines = assetVersionFile.Split(new string[] { FileExtersion.lineSplit }, StringSplitOptions.RemoveEmptyEntries);
         assetVersions.Clear();
         for (int i = 0; i < lines.Length; i++)
         {
@@ -127,11 +127,11 @@ public class AssetVersionUtility
         return assetVersions;
     }
 
-    public static AssetVersion GetAssetVersion(string _assetBundleName)
+    public static AssetVersion GetAssetVersion(string assetBundleName)
     {
-        if (assetVersions.ContainsKey(_assetBundleName))
+        if (assetVersions.ContainsKey(assetBundleName))
         {
-            return assetVersions[_assetBundleName];
+            return assetVersions[assetBundleName];
         }
         else
         {
@@ -139,25 +139,25 @@ public class AssetVersionUtility
         }
     }
 
-    public static string GetAssetFilePath(string _assetKey)
+    public static string GetAssetFilePath(string assetKey)
     {
         var path = string.Empty;
-        if (assetVersions.ContainsKey(_assetKey))
+        if (assetVersions.ContainsKey(assetKey))
         {
-            var assetVersion = assetVersions[_assetKey];
+            var assetVersion = assetVersions[assetKey];
             switch (assetVersion.fileLocation)
             {
                 case AssetVersion.StorageLocation.StreamingAsset:
-                    path = StringUtil.Contact(AssetPath.StreamingAssetPath, _assetKey);
+                    path = StringUtil.Contact(AssetPath.StreamingAssetPath, assetKey);
                     break;
                 case AssetVersion.StorageLocation.ExternalStore:
-                    path = StringUtil.Contact(AssetPath.ExternalStorePath, _assetKey);
+                    path = StringUtil.Contact(AssetPath.ExternalStorePath, assetKey);
                     break;
             }
         }
         else
         {
-            path = StringUtil.Contact(AssetPath.StreamingAssetPath, _assetKey);
+            path = StringUtil.Contact(AssetPath.StreamingAssetPath, assetKey);
         }
 
         return path;

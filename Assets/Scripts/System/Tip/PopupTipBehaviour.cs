@@ -21,27 +21,27 @@ public class PopupTipBehaviour : UIBehaviour
     RectTransform m_RecTransform;
     public RectTransform rectTransform { get { return m_RecTransform ?? (this.transform as RectTransform); } }
 
-    public void Popup(string _content, float _fromY, float _toY, float _duration)
+    public void Popup(string content, float fromY, float toY, float duration)
     {
         m_CanvasGroup.alpha = 1f;
-        m_Content.text = _content;
-        Move(_fromY, _toY, _duration);
+        m_Content.text = content;
+        Move(fromY, toY, duration);
     }
 
-    public void Move(float _fromY, float _toY, float _duration)
+    public void Move(float fromY, float toY, float duration)
     {
-        var from = rectTransform.anchoredPosition.SetY(_fromY);
-        var to = rectTransform.anchoredPosition.SetY(_toY);
-        m_Tween.Play(Tween.TweenType.Position, from, to, _duration);
+        var from = rectTransform.anchoredPosition.SetY(fromY);
+        var to = rectTransform.anchoredPosition.SetY(toY);
+        m_Tween.Play(Tween.TweenType.Position, from, to, duration);
     }
 
-    public void FadeOut(float _fromAlpha, float _toAlpha, float _duration, UnityAction<PopupTipBehaviour> _callBack)
+    public void FadeOut(float fromAlpha, float toAlpha, float duration, UnityAction<PopupTipBehaviour> callBack)
     {
-        m_Tween.Play(Tween.TweenType.Alpha, _fromAlpha, _toAlpha, _duration).OnComplete(() =>
+        m_Tween.Play(Tween.TweenType.Alpha, fromAlpha, toAlpha, duration).OnComplete(() =>
         {
-            if (_callBack != null)
+            if (callBack != null)
             {
-                _callBack(this);
+                callBack(this);
             }
         });
     }

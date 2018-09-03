@@ -21,8 +21,8 @@ public class HttpAsyncHandle : MonoBehaviour
     bool ok = false;
     string message = string.Empty;
 
-    static UIGameObjectPool m_Pool;
-    static UIGameObjectPool pool
+    static GameObjectPool m_Pool;
+    static GameObjectPool pool
     {
         get
         {
@@ -30,7 +30,7 @@ public class HttpAsyncHandle : MonoBehaviour
             {
                 var carrier = new GameObject();
                 var behaviour = carrier.AddComponent<HttpAsyncHandle>();
-                m_Pool = UIGameObjectPoolUtil.Create(carrier);
+                m_Pool = GameObjectPoolUtil.Create(carrier);
             }
 
             return m_Pool;

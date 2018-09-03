@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class UIPoolDebugWindow : EditorWindow
 {
-    public Dictionary<int, UIGameObjectPool> pools = null;
+    public Dictionary<int, GameObjectPool> pools = null;
 
     Vector2 scrollPosition;
 
@@ -29,23 +29,23 @@ public class UIPoolDebugWindow : EditorWindow
 
     Dictionary<int, ViewSwitch> switches = new Dictionary<int, ViewSwitch>();
 
-    private void DrawPool(UIGameObjectPool _pool)
+    private void DrawPool(GameObjectPool pool)
     {
         EditorGUILayout.BeginHorizontal();
-        EditorGUILayout.LabelField(StringUtil.Contact("ID:", _pool.instanceId), GUILayout.MaxWidth(100));
-        EditorGUILayout.ObjectField("Root", _pool.root, typeof(GameObject), true, GUILayout.MaxWidth(300));
+        EditorGUILayout.LabelField(StringUtil.Contact("ID:", pool.instanceId), GUILayout.MaxWidth(100));
+        EditorGUILayout.ObjectField("Root", pool.root, typeof(GameObject), true, GUILayout.MaxWidth(300));
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginHorizontal();
 
         ViewSwitch viewSwitch = null;
-        if (!switches.ContainsKey(_pool.instanceId))
+        if (!switches.ContainsKey(pool.instanceId))
         {
-            viewSwitch = switches[_pool.instanceId] = new ViewSwitch(_pool.instanceId);
+            viewSwitch = switches[pool.instanceId] = new ViewSwitch(pool.instanceId);
         }
         else
         {
-            viewSwitch = switches[_pool.instanceId];
+            viewSwitch = switches[pool.instanceId];
         }
 
         viewSwitch.active = EditorGUILayout.Toggle("使用的", viewSwitch.active);
@@ -53,7 +53,7 @@ public class UIPoolDebugWindow : EditorWindow
 
         if (viewSwitch.active)
         {
-            var freeList = _pool.GetActiveList();
+            var freeList = pool.GetActiveList();
             EditorGUI.indentLevel++;
             for (int i = 0; i < freeList.Count; i++)
             {
@@ -69,14 +69,14 @@ public class UIPoolDebugWindow : EditorWindow
 
         if (viewSwitch.free)
         {
-            var poolList = _pool.GetFreeList();
+            var poolList = pool.GetFreeList();
             EditorGUI.indentLevel++;
             for (int i = 0; i < poolList.Count; i++)
             {
                 var element = poolList[i];
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.ObjectField(StringUtil.Contact("Element", i + 1), element, typeof(GameObject), true);
-                EditorGUILayout.LabelField(element == null || element.transform.parent != _pool.root.transform ? "Error" : "");
+                EditorGUILayout.LabelField(element == null || element.transform.parent != pool.root.transform ? "Error" : "");
                 EditorGUILayout.EndHorizontal();
             }
             EditorGUI.indentLevel--;
@@ -100,10 +100,10 @@ public class UIPoolDebugWindow : EditorWindow
     [MenuItem("Tools/UI 对象池")]
     public static void CreatePoolDebugWindow()
     {
-        UIGameObjectPoolUtil.CreatePoolDebugWindow();
+        GameObjectPoolUtil.CreatePoolDebugWindow();
         var window = GetWindow(typeof(UIPoolDebugWindow), false, "对象池Debug") as UIPoolDebugWindow;
         window.Show();
-        window.pools = EditorHelper.uiGameObjectPools;
+        window.pools = EditorHelper.gameObjectPools;
         window.autoRepaintOnSceneChange = true;
     }
 #endif

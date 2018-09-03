@@ -2,15 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EffectPlay : MonoBehaviour {
+public class UIEffectPlay : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField] int m_Id;
+
+    EffectBehaviour effect;
+
+    public void Play()
+    {
+        if (effect != null)
+        {
+            EffectUtil.Instance.Stop(effect);
+        }
+
+        effect = EffectUtil.Instance.Play(m_Id);
+    }
+
+    public void Stop()
+    {
+        if (effect != null)
+        {
+            EffectUtil.Instance.Stop(effect);
+        }
+
+        effect = null;
+    }
+
 }

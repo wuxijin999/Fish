@@ -8,79 +8,79 @@ using System;
 public static class ComponentExtersion
 {
 
-    public static T AddMissingComponent<T>(this Component _compoent) where T : Component
+    public static T AddMissingComponent<T>(this Component compoent) where T : Component
     {
-        if (_compoent == null)
+        if (compoent == null)
         {
             return null;
         }
 
-        T component = _compoent.GetComponent<T>();
+        T component = compoent.GetComponent<T>();
         if (component == null)
         {
-            component = _compoent.gameObject.AddComponent<T>();
+            component = compoent.gameObject.AddComponent<T>();
         }
 
         return component;
     }
 
-    public static T AddMissingComponent<T>(this Transform _transform) where T : Component
+    public static T AddMissingComponent<T>(this Transform transform) where T : Component
     {
-        if (_transform == null)
+        if (transform == null)
         {
             return null;
         }
 
-        T component = _transform.GetComponent<T>();
+        T component = transform.GetComponent<T>();
         if (component == null)
         {
-            component = _transform.gameObject.AddComponent<T>();
+            component = transform.gameObject.AddComponent<T>();
         }
 
         return component;
     }
 
-    public static T AddMissingComponent<T>(this GameObject _gameObject) where T : Component
+    public static T AddMissingComponent<T>(this GameObject gameObject) where T : Component
     {
-        if (_gameObject == null)
+        if (gameObject == null)
         {
             return null;
         }
 
-        T component = _gameObject.GetComponent<T>();
+        T component = gameObject.GetComponent<T>();
         if (component == null)
         {
-            component = _gameObject.AddComponent<T>();
+            component = gameObject.AddComponent<T>();
         }
 
         return component;
     }
 
-    public static void AddListener(this Button _button, UnityAction _action)
+    public static void AddListener(this Button button, UnityAction action)
     {
-        if (_button == null)
+        if (button == null)
         {
             return;
         }
-        _button.onClick.AddListener(_action);
+        button.onClick.AddListener(action);
     }
 
-    public static void RemoveAllListeners(this Button _button)
+    public static void RemoveAllListeners(this Button button)
     {
-        if (_button == null)
+        if (button == null)
         {
             return;
         }
-        _button.onClick.RemoveAllListeners();
+        button.onClick.RemoveAllListeners();
     }
 
-    public static void AddListener(this Toggle _toggle, UnityAction<bool> _action)
+    public static void AddListener(this Toggle toggle, UnityAction<bool> action)
     {
-        if (_toggle == null)
+        if (toggle == null)
         {
             return;
         }
-        _toggle.onValueChanged.AddListener(_action);
+        toggle.onValueChanged.AddListener(action);
     }
 
     public static void RemoveAllListeners(this Toggle _toggle)
@@ -92,31 +92,31 @@ public static class ComponentExtersion
         _toggle.onValueChanged.RemoveAllListeners();
     }
 
-    public static void AddListener(this Slider _slider, UnityAction<float> _action)
+    public static void AddListener(this Slider slider, UnityAction<float> action)
     {
-        if (_slider == null)
+        if (slider == null)
         {
             return;
         }
-        _slider.onValueChanged.AddListener(_action);
+        slider.onValueChanged.AddListener(action);
     }
 
-    public static void RemoveAllListeners(this Slider _slider)
+    public static void RemoveAllListeners(this Slider slider)
     {
-        if (_slider == null)
+        if (slider == null)
         {
             return;
         }
-        _slider.onValueChanged.RemoveAllListeners();
+        slider.onValueChanged.RemoveAllListeners();
     }
 
-    public static void AddListener(this InputField _inputField, UnityAction<string> _action)
+    public static void AddListener(this InputField _inputField, UnityAction<string> action)
     {
         if (_inputField == null)
         {
             return;
         }
-        _inputField.onValueChanged.AddListener(_action);
+        _inputField.onValueChanged.AddListener(action);
     }
 
     public static void RemoveAllListeners(this InputField _inputField)

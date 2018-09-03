@@ -7,21 +7,21 @@ public class ActorBrain
     const int commandMaxCount = 2;
     List<Command> commands = new List<Command>();
 
-    public void PushCommand(CommandType _type)
+    public void PushCommand(CommandType type)
     {
-        PushCommand(_type, 0);
+        PushCommand(type, 0);
     }
 
-    public void PushCommand(CommandType _type, int _value)
+    public void PushCommand(CommandType type, int value)
     {
-        switch (_type)
+        switch (type)
         {
             case CommandType.Stop:
                 commands.Clear();
-                commands.Add(new Command(_type, _value));
+                commands.Add(new Command(type, value));
                 break;
             default:
-                var priority = GetPriority(_type);
+                var priority = GetPriority(type);
                 for (int i = commands.Count - 1; i >= 0; i--)
                 {
                     var command = commands[i];
@@ -34,24 +34,24 @@ public class ActorBrain
         }
     }
 
-    public bool GetCommand(out Command _command)
+    public bool GetCommand(out Command command)
     {
         if (commands.Count > 0)
         {
-            _command = commands[0];
+            command = commands[0];
             commands.RemoveAt(0);
             return true;
         }
         else
         {
-            _command = default(Command);
+            command = default(Command);
             return false;
         }
     }
 
-    public static int GetPriority(CommandType _type)
+    public static int GetPriority(CommandType type)
     {
-        return ((int)_type) / 10;
+        return ((int)type) / 10;
     }
 
     public struct Command
@@ -59,16 +59,16 @@ public class ActorBrain
         public readonly CommandType type;
         public readonly int value;
 
-        public Command(CommandType _type)
+        public Command(CommandType type)
         {
-            this.type = _type;
+            this.type = type;
             this.value = 0;
         }
 
-        public Command(CommandType _type, int _value)
+        public Command(CommandType type, int value)
         {
-            this.type = _type;
-            this.value = _value;
+            this.type = type;
+            this.value = value;
         }
     }
 

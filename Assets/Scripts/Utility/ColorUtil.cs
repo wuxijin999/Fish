@@ -61,9 +61,9 @@ public static class ColorUtil
     }
 
 
-    public static Color QualityColor(int _quality)
+    public static Color QualityColor(int quality)
     {
-        var quality = Mathf.Clamp(_quality - 1, 0, 6);
+        quality = Mathf.Clamp(quality - 1, 0, 6);
         switch (quality)
         {
             case 0:
@@ -85,27 +85,27 @@ public static class ColorUtil
         }
     }
 
-    public static string QualityColorString(int _quality, string _input)
+    public static string QualityColorString(int quality, string input)
     {
-        var quality = Mathf.Clamp(_quality - 1, 0, 6);
-        return string.Format(qualityColors[quality], _input);
+        quality = Mathf.Clamp(quality - 1, 0, 6);
+        return string.Format(qualityColors[quality], input);
     }
 
-    static string ColorToInt16String(Color _color)
+    static string ColorToInt16String(Color color)
     {
-        var rInt = Mathf.RoundToInt(_color.r * 255);
+        var rInt = Mathf.RoundToInt(color.r * 255);
         var r1 = System.Convert.ToString(rInt / 16, 16);
         var r2 = System.Convert.ToString(rInt % 16, 16);
 
-        var gInt = Mathf.RoundToInt(_color.g * 255);
+        var gInt = Mathf.RoundToInt(color.g * 255);
         var g1 = System.Convert.ToString(gInt / 16, 16);
         var g2 = System.Convert.ToString(gInt % 16, 16);
 
-        var bInt = Mathf.RoundToInt(_color.b * 255);
+        var bInt = Mathf.RoundToInt(color.b * 255);
         var b1 = System.Convert.ToString(bInt / 16, 16);
         var b2 = System.Convert.ToString(bInt % 16, 16);
 
-        var aInt = Mathf.RoundToInt(_color.a * 255);
+        var aInt = Mathf.RoundToInt(color.a * 255);
         var a1 = System.Convert.ToString(aInt / 16, 16);
         var a2 = System.Convert.ToString(aInt % 16, 16);
 
