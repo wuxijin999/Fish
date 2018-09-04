@@ -58,7 +58,7 @@ public class AssetVersionUtility
     public static void GetAssetVersionFile()
     {
         Debug.LogFormat("开始获取资源版本文件：时间 {0}", DateTime.Now);
-        var assetVersionUrl = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", "AssetsVersion.txt");
+        var assetVersionUrl = StringUtil.Contact(VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", "AssetsVersion.txt");
         HttpRequest.Instance.RequestHttpGet(assetVersionUrl, OnGetAssetVersionFile);
     }
 

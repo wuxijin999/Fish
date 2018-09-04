@@ -10,7 +10,7 @@ using System;
 using LitJson;
 using System.IO;
 
-public class VersionUtility : Singleton<VersionUtility>
+public class VersionUtil : Singleton<VersionUtil>
 {
     public const string VERSION_URL = "http://pub.game.secondworld.net.cn:11000/appversion/?";
     const string VERSION_URL_PURE = "http://pub.game.secondworld.net.cn:11000/purge/appversion/?";

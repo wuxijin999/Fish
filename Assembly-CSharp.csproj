@@ -84,7 +84,7 @@
      <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
      <Compile Include="Assets\Scripts\Stage\Launch.cs" />
      <Compile Include="Assets\Scripts\Stage\Stage.cs" />
-     <Compile Include="Assets\Scripts\Stage\StageUtility.cs" />
+     <Compile Include="Assets\Scripts\Stage\StageUtil.cs" />
      <Compile Include="Assets\Scripts\System\Base\Model.cs" />
      <Compile Include="Assets\Scripts\System\Base\ModelUtility.cs" />
      <Compile Include="Assets\Scripts\System\Base\Presenter.cs" />
@@ -121,9 +121,8 @@
      <Compile Include="Assets\Scripts\Utility\Clock.cs" />
      <Compile Include="Assets\Scripts\Utility\ColorPattern.cs" />
      <Compile Include="Assets\Scripts\Utility\ColorUtil.cs" />
-     <Compile Include="Assets\Scripts\Utility\ComponentExtersion.cs" />
+     <Compile Include="Assets\Scripts\Utility\ComponentExtension.cs" />
      <Compile Include="Assets\Scripts\Utility\ConfigInitiator.cs" />
-     <Compile Include="Assets\Scripts\Utility\Constants.cs" />
      <Compile Include="Assets\Scripts\Utility\CoroutineUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\DeviceUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\DownLoadTask.cs" />
@@ -133,6 +132,7 @@
      <Compile Include="Assets\Scripts\Utility\FontUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\GameObjectPool.cs" />
      <Compile Include="Assets\Scripts\Utility\GameObjectPoolUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\GlobalDefine.cs" />
      <Compile Include="Assets\Scripts\Utility\GlobalTimeEvent.cs" />
      <Compile Include="Assets\Scripts\Utility\HttpAsyncHandle.cs" />
      <Compile Include="Assets\Scripts\Utility\HttpRequest.cs" />
@@ -152,9 +152,9 @@
      <Compile Include="Assets\Scripts\Utility\TransformExtension.cs" />
      <Compile Include="Assets\Scripts\Utility\UIUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\VectorUtil.cs" />
-     <Compile Include="Assets\Scripts\Utility\WaitingForSecondConst.cs" />
+     <Compile Include="Assets\Scripts\Utility\WaitingForConst.cs" />
      <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
-     <Compile Include="Assets\Scripts\Version\VersionUtility.cs" />
+     <Compile Include="Assets\Scripts\Version\VersionUtil.cs" />
      <Compile Include="Assets\test.cs" />
      <Compile Include="Assets\testBiz.cs" />
      <Compile Include="Assets\TimeTest.cs" />

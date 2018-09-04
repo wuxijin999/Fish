@@ -85,7 +85,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         {
             var assetVersion = tasks[i];
 
-            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
+            var remoteURL = StringUtil.Contact(VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
@@ -119,7 +119,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
         else
         {
-            var remoteURL = StringUtil.Contact(VersionUtility.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
+            var remoteURL = StringUtil.Contact(VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
