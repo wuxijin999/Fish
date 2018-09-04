@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
 
-public static class ComponentExtersion
+public static class ComponentExtension
 {
 
     public static T AddMissingComponent<T>(this Component compoent) where T : Component

@@ -5,7 +5,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-public class FileExtersion
+public class FileExtension
 {
     public readonly static string lineSplit = "\r\n"; //行间隔体
 

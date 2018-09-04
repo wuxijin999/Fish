@@ -7,12 +7,11 @@ public class ConfigInitiator
 
     public static void Init()
     {
-
         ItemConfig.Init();
         TestConfig.Init();
         WindowConfig.Init();
-		EffectConfig.Init();
-		//初始化结束
+        EffectConfig.Init();
+        //初始化结束
     }
 
 }

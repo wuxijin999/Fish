@@ -207,7 +207,7 @@ public class RemoteFile
             yield return null;
         }
 
-        while (assetVersion.extersion == ".manifest" && !AssetVersionUtility.GetAssetVersion(assetVersion.relativePath.Replace(".manifest", "")).localValid)
+        while (assetVersion.extension == ".manifest" && !AssetVersionUtility.GetAssetVersion(assetVersion.relativePath.Replace(".manifest", "")).localValid)
         {
             yield return null;
         }

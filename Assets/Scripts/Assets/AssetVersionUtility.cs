@@ -116,7 +116,7 @@ public class AssetVersionUtility
 
     public static Dictionary<string, AssetVersion> UpdateAssetVersions(string assetVersionFile)
     {
-        var lines = assetVersionFile.Split(new string[] { FileExtersion.lineSplit }, StringSplitOptions.RemoveEmptyEntries);
+        var lines = assetVersionFile.Split(new string[] { FileExtension.lineSplit }, StringSplitOptions.RemoveEmptyEntries);
         assetVersions.Clear();
         for (int i = 0; i < lines.Length; i++)
         {

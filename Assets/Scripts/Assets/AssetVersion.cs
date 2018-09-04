@@ -11,8 +11,8 @@ public class AssetVersion
     string m_FileName;
     public string fileName { get { return m_FileName; } }
 
-    string m_Extersion = string.Empty;
-    public string extersion { get { return m_Extersion; } }
+    string m_Extension = string.Empty;
+    public string extension { get { return m_Extension; } }
 
     string m_Md5 = string.Empty;
     public string md5 { get { return m_Md5; } }
@@ -35,7 +35,7 @@ public class AssetVersion
         var strings = versionString.Split('\t');
 
         m_RelativePath = strings[0];
-        m_Extersion = strings[1];
+        m_Extension = strings[1];
         int.TryParse(strings[2], out m_Size);
         m_Md5 = strings[3];
 
@@ -55,7 +55,7 @@ public class AssetVersion
 
     public AssetCategory GetAssetCategory()
     {
-        if (extersion == ".dll")
+        if (extension == ".dll")
         {
             return AssetCategory.Dll;
         }
@@ -95,17 +95,17 @@ public class AssetVersion
 
     public bool CheckLocalFileValid()
     {
-        if (extersion == ".manifest" || extersion == ".bytes" || extersion == ".txt" || extersion == ".dll")
+        if (extension == ".manifest" || extension == ".bytes" || extension == ".txt" || extension == ".dll")
         {
             var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
             var fileInfo = new FileInfo(path);
 
-            if (!fileInfo.Exists || fileInfo.Length != size || md5 != FileExtersion.GetMD5HashFromFile(path))
+            if (!fileInfo.Exists || fileInfo.Length != size || md5 != FileExtension.GetMD5HashFromFile(path))
             {
                 return false;
             }
         }
-        else if (string.IsNullOrEmpty(extersion) || extersion.Length == 0)
+        else if (string.IsNullOrEmpty(extension) || extension.Length == 0)
         {
             var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
             var fileInfo = new FileInfo(path);

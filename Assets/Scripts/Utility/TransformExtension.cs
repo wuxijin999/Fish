@@ -7,7 +7,6 @@ public static class TransformExtension
 
     public static void SetParentEx(this Transform transform, Transform parent, Vector3 localPosition, Quaternion rotation, Vector3 scale)
     {
-
         if (transform != null && parent != null)
         {
             transform.SetParent(parent);
@@ -31,7 +30,6 @@ public static class TransformExtension
 
     public static T[] GetComponentsInChildren<T>(this Transform transform, bool includeInactive, bool includeSelf) where T : Component
     {
-
         if (includeSelf)
         {
             return transform.GetComponentsInChildren<T>(includeInactive);
