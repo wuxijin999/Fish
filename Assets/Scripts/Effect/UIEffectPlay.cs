@@ -16,7 +16,7 @@ public class UIEffectPlay : MonoBehaviour
             EffectUtil.Instance.Stop(effect);
         }
 
-        effect = EffectUtil.Instance.Play(m_Id);
+        effect = EffectUtil.Instance.Play(m_Id, this.transform);
     }
 
     public void Stop()
