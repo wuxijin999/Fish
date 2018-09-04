@@ -44,7 +44,7 @@ public class EffectUtil : Singleton<EffectUtil>
         var effect = Play(id);
         if (parent != null)
         {
-            effect.transform.SetParentEx(parent, Vector3.zero, Vector3.zero, Vector3.one);
+            effect.transform.SetParentEx(parent).SetLocalPosition(Vector3.zero).SetLocalEulerAngles(Vector3.zero).SetScale(Vector3.one);
         }
 
         return effect;

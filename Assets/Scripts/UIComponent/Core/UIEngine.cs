@@ -1,0 +1,15 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIEngine : SingletonMonobehaviour<UIEngine>
+{
+
+
+    public void Register()
+    {
+
+    }
+
+
+}

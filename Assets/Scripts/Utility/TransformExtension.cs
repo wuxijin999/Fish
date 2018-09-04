@@ -16,15 +16,63 @@ public static class TransformExtension
         }
     }
 
-    public static void SetParentEx(this Transform transform, Transform parent, Vector3 localPosition, Vector3 eulerAngles, Vector3 scale)
+    public static Transform SetParentEx(this Transform transform, Transform parent)
     {
         if (transform != null && parent != null)
         {
             transform.SetParent(parent);
-            transform.localPosition = localPosition;
-            transform.localEulerAngles = eulerAngles;
+        }
+        return transform;
+    }
+
+    public static Transform SetPosition(this Transform transform, Vector3 position)
+    {
+        if (transform != null)
+        {
+            transform.position = position;
+        }
+
+        return transform;
+    }
+
+    public static Transform SetLocalPosition(this Transform transform, Vector3 position)
+    {
+        if (transform != null)
+        {
+            transform.localPosition = position;
+        }
+
+        return transform;
+    }
+
+    public static Transform SetEulerAngles(this Transform transform, Vector3 eulerAngles)
+    {
+        if (transform != null)
+        {
+            transform.eulerAngles = eulerAngles;
+        }
+
+        return transform;
+    }
+
+    public static Transform SetLocalEulerAngles(this Transform transform, Vector3 localEulerAngles)
+    {
+        if (transform != null)
+        {
+            transform.localEulerAngles = localEulerAngles;
+        }
+
+        return transform;
+    }
+
+    public static Transform SetScale(this Transform transform, Vector3 scale)
+    {
+        if (transform != null)
+        {
             transform.localScale = scale;
         }
+
+        return transform;
     }
 
 
@@ -93,13 +141,19 @@ public static class TransformExtension
     /// </summary>
     /// <param name="child"></param>
     /// <param name="parent"></param>
-    public static void MatchWhith(this RectTransform child, RectTransform parent)
+    public static Transform MatchWhith(this RectTransform child, RectTransform parent)
     {
+        if (child == null)
+        {
+            return null;
+        }
 
-        if (child.parent != parent)
+
+        if (parent != null && child.parent != parent)
         {
             child.SetParent(parent);
         }
+
         child.anchoredPosition3D = Vector3.zero;
         child.sizeDelta = Vector2.zero;
         child.anchorMin = Vector2.zero;
@@ -107,6 +161,8 @@ public static class TransformExtension
         child.pivot = Vector2.one * 0.5f;
         child.localRotation = Quaternion.identity;
         child.localScale = Vector3.one;
+
+        return child;
     }
 
 
@@ -140,9 +196,5 @@ public static class TransformExtension
         return false;
     }
 
-    public static Transform GetRoot(this Transform transform)
-    {
-        return transform && transform.parent ? GetRoot(transform.parent) : transform;
-    }
 
 }

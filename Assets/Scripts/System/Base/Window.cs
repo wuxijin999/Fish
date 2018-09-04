@@ -181,9 +181,7 @@ public abstract class Window : MonoBehaviour
     {
         var emptyClose = UIUtil.CreateWidget("InvisibleButton", "EmptyClose");
         var rectTransform = emptyClose.transform as RectTransform;
-        rectTransform.SetParentEx(this.transform, Vector3.zero, Quaternion.identity, Vector3.one);
-        rectTransform.SetAsFirstSibling();
-        rectTransform.MatchWhith(this.transform as RectTransform);
+        rectTransform.MatchWhith(this.transform as RectTransform).SetAsFirstSibling();
         emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
         emptyCloseButton.AddListener(() => { Close(); });
     }

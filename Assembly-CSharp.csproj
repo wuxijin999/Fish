@@ -112,6 +112,8 @@
      <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ImageEx.cs" />
      <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\TextEx.cs" />
      <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
+     <Compile Include="Assets\Scripts\UIComponent\Core\UIBase.cs" />
+     <Compile Include="Assets\Scripts\UIComponent\Core\UIEngine.cs" />
      <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
      <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
      <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
@@ -130,6 +132,7 @@
      <Compile Include="Assets\Scripts\Utility\EditorHelper.cs" />
      <Compile Include="Assets\Scripts\Utility\FileExtersion.cs" />
      <Compile Include="Assets\Scripts\Utility\FontUtil.cs" />
+     <Compile Include="Assets\Scripts\Utility\GameObjectExtension.cs" />
      <Compile Include="Assets\Scripts\Utility\GameObjectPool.cs" />
      <Compile Include="Assets\Scripts\Utility\GameObjectPoolUtil.cs" />
      <Compile Include="Assets\Scripts\Utility\GlobalDefine.cs" />

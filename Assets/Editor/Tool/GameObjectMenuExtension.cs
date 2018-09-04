@@ -37,7 +37,7 @@ public class GameObjectMenuExtension
             //这里可以判断selectedGameObject的条件
             if (selectedGameObject)
             {
-                var root = selectedGameObject.transform.GetRoot();
+                var root = selectedGameObject.transform.root;
                 if (root.GetComponent<UIRoot>())
                 {
                     Vector2 mousePosition = Event.current.mousePosition;
