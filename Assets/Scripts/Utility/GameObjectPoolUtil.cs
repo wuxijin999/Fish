@@ -13,27 +13,27 @@ public class GameObjectPoolUtil
     static int instanceId = 1000;
     static Dictionary<int, GameObjectPool> pools = new Dictionary<int, GameObjectPool>();
 
-    public static GameObjectPool Create(GameObject _prefab)
+    public static GameObjectPool Create(GameObject prefab)
     {
         instanceId++;
-        var pool = new GameObjectPool(instanceId, _prefab);
+        var pool = new GameObjectPool(instanceId, prefab);
         pools.Add(instanceId, pool);
         return pool;
     }
 
-    public static bool Destroy(GameObjectPool _pool)
+    public static bool Destroy(GameObjectPool pool)
     {
-        if (_pool == null)
+        if (pool == null)
         {
             return false;
         }
 
-        if (pools.ContainsKey(_pool.instanceId))
+        if (pools.ContainsKey(pool.instanceId))
         {
-            pools.Remove(_pool.instanceId);
+            pools.Remove(pool.instanceId);
         }
 
-        _pool.Destroy();
+        pool.Destroy();
 
         return true;
     }

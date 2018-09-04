@@ -82,56 +82,56 @@ public class CreateConfigClassFile
 
     }
 
-    public static string GetField(string _type, string _field)
+    public static string GetField(string type, string field)
     {
-        _field = _field.Replace(" ", "");
-        if (_type.Contains("int[]"))
+        field = field.Replace(" ", "");
+        if (type.Contains("int[]"))
         {
-            return StringUtil.Contact("public readonly int[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly int[] ", field.Trim(), ";");
         }
-        else if (_type.Contains("float[]"))
+        else if (type.Contains("float[]"))
         {
-            return StringUtil.Contact("public readonly float[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly float[] ", field.Trim(), ";");
         }
-        else if (_type.Contains("string[]"))
+        else if (type.Contains("string[]"))
         {
-            return StringUtil.Contact("public readonly string[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly string[] ", field.Trim(), ";");
         }
-        else if (_type.Contains("Vector3[]"))
+        else if (type.Contains("Vector3[]"))
         {
-            return StringUtil.Contact("public readonly Vector3[] ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Vector3[] ", field.Trim(), ";");
         }
-        else if (_type.Contains("int"))
+        else if (type.Contains("int"))
         {
-            return StringUtil.Contact("public readonly int ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly int ", field.Trim(), ";");
         }
-        else if (_type.Contains("long"))
+        else if (type.Contains("long"))
         {
-            return StringUtil.Contact("public readonly long ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly long ", field.Trim(), ";");
         }
-        else if (_type.Contains("float"))
+        else if (type.Contains("float"))
         {
-            return StringUtil.Contact("public readonly float ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly float ", field.Trim(), ";");
         }
-        else if (_type.Contains("string"))
+        else if (type.Contains("string"))
         {
-            return StringUtil.Contact("public readonly string ", _field, ";");
+            return StringUtil.Contact("public readonly string ", field, ";");
         }
-        else if (_type.Contains("Vector3"))
+        else if (type.Contains("Vector3"))
         {
-            return StringUtil.Contact("public readonly Vector3 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Vector3 ", field.Trim(), ";");
         }
-        else if (_type.Contains("bool"))
+        else if (type.Contains("bool"))
         {
-            return StringUtil.Contact("public readonly bool ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly bool ", field.Trim(), ";");
         }
-        else if (_type.Contains("Int2"))
+        else if (type.Contains("Int2"))
         {
-            return StringUtil.Contact("public readonly Int2 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Int2 ", field.Trim(), ";");
         }
-        else if (_type.Contains("Int3"))
+        else if (type.Contains("Int3"))
         {
-            return StringUtil.Contact("public readonly Int3 ", _field.Trim(), ";");
+            return StringUtil.Contact("public readonly Int3 ", field.Trim(), ";");
         }
         else
         {
@@ -139,77 +139,77 @@ public class CreateConfigClassFile
         }
     }
 
-    public static string GetRead(string _type, string _field, int _index)
+    public static string GetRead(string type, string field, int index)
     {
-        _field = _field.Replace(" ", "");
-        if (_type.Contains("int[]"))
+        field = field.Replace(" ", "");
+        if (type.Contains("int[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtil.Contact(retract3, _field, " = ", "new int", "[", _field, "StringArray.Length]", ";", "\n");
-            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line1 = StringUtil.Contact("string[] ", field, "StringArray", " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, field, " = ", "new int", "[", field, "StringArray.Length]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
-            var line5 = StringUtil.Contact(retract4, " int.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line5 = StringUtil.Contact(retract4, " int.TryParse(", field, "StringArray", "[i]", ",", "out ", field, "[i]", ")", ";", "\n");
             var line6 = StringUtil.Contact(retract3, "}");
 
             return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
-        else if (_type.Contains("float[]"))
+        else if (type.Contains("float[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtil.Contact(retract3, _field, " = ", "new float", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line1 = StringUtil.Contact("string[] ", field, "StringArray", " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, field, " = ", "new float", "[", field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
-            var line5 = StringUtil.Contact(retract4, " float.TryParse(", _field, "StringArray", "[i]", ",", "out ", _field, "[i]", ")", ";", "\n");
+            var line5 = StringUtil.Contact(retract4, " float.TryParse(", field, "StringArray", "[i]", ",", "out ", field, "[i]", ")", ";", "\n");
             var line6 = StringUtil.Contact(retract3, "}");
 
             return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
-        else if (_type.Contains("string[]"))
+        else if (type.Contains("string[]"))
         {
-            var line1 = StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
+            var line1 = StringUtil.Contact(field, " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);");
             return line1;
         }
-        else if (_type.Contains("Vector3[]"))
+        else if (type.Contains("Vector3[]"))
         {
-            var line1 = StringUtil.Contact("string[] ", _field, "StringArray", " = ", "tables", "[", _index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
-            var line2 = StringUtil.Contact(retract3, _field, " = ", "new Vector3", "[", _field, "StringArray.Length", "]", ";", "\n");
-            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", _field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line1 = StringUtil.Contact("string[] ", field, "StringArray", " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, field, " = ", "new Vector3", "[", field, "StringArray.Length", "]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
-            var line5 = StringUtil.Contact(retract4, _field, "[i]", "=", _field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
+            var line5 = StringUtil.Contact(retract4, field, "[i]", "=", field, "StringArray", "[i]", ".Vector3Parse()", ";", "\n");
             var line6 = StringUtil.Contact(retract3, "}");
 
             return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
         }
-        else if (_type.Contains("int"))
+        else if (type.Contains("int"))
         {
-            return StringUtil.Contact("int.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("int.TryParse(tables", "[", index, "]", ",", "out ", field, ")", "; ");
         }
-        else if (_type.Contains("float"))
+        else if (type.Contains("float"))
         {
-            return StringUtil.Contact("float.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("float.TryParse(tables", "[", index, "]", ",", "out ", field, ")", "; ");
         }
-        else if (_type.Contains("string"))
+        else if (type.Contains("string"))
         {
-            return StringUtil.Contact(_field, " = ", "tables", "[", _index, "]", ";");
+            return StringUtil.Contact(field, " = ", "tables", "[", index, "]", ";");
         }
-        else if (_type.Contains("Vector3"))
+        else if (type.Contains("Vector3"))
         {
-            return StringUtil.Contact(_field, "=", "tables", "[", _index, "]", ".Vector3Parse()", ";");
+            return StringUtil.Contact(field, "=", "tables", "[", index, "]", ".Vector3Parse()", ";");
         }
-        else if (_type.Contains("bool"))
+        else if (type.Contains("bool"))
         {
-            var line1 = StringUtil.Contact("var ", _field, "Temp", " = 0", ";", "\n");
-            var line2 = StringUtil.Contact(retract3, "int.TryParse(tables", "[", _index, "]", ",", "out ", _field, "Temp", ")", "; ", "\n");
-            var line3 = StringUtil.Contact(retract3, _field, "=", _field, "Temp", "!=0", ";");
+            var line1 = StringUtil.Contact("var ", field, "Temp", " = 0", ";", "\n");
+            var line2 = StringUtil.Contact(retract3, "int.TryParse(tables", "[", index, "]", ",", "out ", field, "Temp", ")", "; ", "\n");
+            var line3 = StringUtil.Contact(retract3, field, "=", field, "Temp", "!=0", ";");
             return StringUtil.Contact(line1, line2, line3);
         }
-        else if (_type.Contains("Int2"))
+        else if (type.Contains("Int2"))
         {
-            return StringUtil.Contact("Int2.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("Int2.TryParse(tables", "[", index, "]", ",", "out ", field, ")", "; ");
         }
-        else if (_type.Contains("Int3"))
+        else if (type.Contains("Int3"))
         {
-            return StringUtil.Contact("Int3.TryParse(tables", "[", _index, "]", ",", "out ", _field, ")", "; ");
+            return StringUtil.Contact("Int3.TryParse(tables", "[", index, "]", ",", "out ", field, ")", "; ");
         }
         else
         {
@@ -259,9 +259,9 @@ public class CreateConfigClassFile
         return AssetDatabase.LoadAssetAtPath(pathName, typeof(UnityEngine.Object));
     }
 
-    internal static void AddConfigInit(string _pathName)
+    internal static void AddConfigInit(string pathName)
     {
-        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(_pathName);
+        string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(pathName);
         string add = string.Format("{0}.Init();", fileNameWithoutExtension);
 
         string path = Application.dataPath + "/Scripts/Utility/ConfigInitiator.cs";

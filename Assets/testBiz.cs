@@ -13,12 +13,7 @@ public class testBiz
         testString.value = "aaaa";
     }
 
-
-
-
-
 }
-
 
 
 public class BizProperty<T>

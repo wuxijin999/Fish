@@ -45,10 +45,10 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
         }
     }
 
-    public void Prepare(List<AssetVersion> _downLoadTasks, bool _prior, System.Action _downLoadOkCallBack)
+    public void Prepare(List<AssetVersion> downLoadTasks, bool prior, System.Action downLoadOkCallBack)
     {
-        tasks = _downLoadTasks;
-        downLoadOkCallBack = _downLoadOkCallBack;
+        tasks = downLoadTasks;
+        this.downLoadOkCallBack = downLoadOkCallBack;
 
         totalCount = tasks.Count;
         okCount = 0;

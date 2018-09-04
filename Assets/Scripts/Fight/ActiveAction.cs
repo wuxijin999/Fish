@@ -10,7 +10,7 @@ public class ActiveAction : Action
 
     }
 
-    public virtual void OnAttack(int _attackId)
+    public virtual void OnAttack(int attackId)
     {
 
     }

@@ -30,9 +30,9 @@ public class AssetVersion
         set { m_LocalValid = value; }
     }
 
-    public AssetVersion(string _versionString)
+    public AssetVersion(string versionString)
     {
-        var strings = _versionString.Split('\t');
+        var strings = versionString.Split('\t');
 
         m_RelativePath = strings[0];
         m_Extersion = strings[1];

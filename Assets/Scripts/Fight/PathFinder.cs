@@ -14,9 +14,9 @@ public class PathFinder
     Transform transform { get { return owner.transform; } }
     ActorBase owner;
 
-    public PathFinder(ActorBase _actor)
+    public PathFinder(ActorBase actor)
     {
-        owner = _actor;
+        owner = actor;
     }
 
     public bool ReCalculatePath(Vector3 startPosition, Vector3 endPosition, int mask = NavMesh.AllAreas)

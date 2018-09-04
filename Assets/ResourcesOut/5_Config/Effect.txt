@@ -3,3 +3,4 @@ id	assetName	bindParent
 唯一标识	资源名	绑定父对象
 1	Effect1	1
 2	Effect2	1
+

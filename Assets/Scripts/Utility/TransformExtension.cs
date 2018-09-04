@@ -112,12 +112,12 @@ public static class TransformExtension
     }
 
 
-    public static bool ContainWorldPosition(this RectTransform _rectTransform, Vector3 _worldPosition)
+    public static bool ContainWorldPosition(this RectTransform rectTransform, Vector3 worldPosition)
     {
         var worldCorners = new Vector3[4];
-        _rectTransform.GetWorldCorners(worldCorners);
-        if (_worldPosition.x >= worldCorners[0].x && _worldPosition.x <= worldCorners[2].x
-            && _worldPosition.y >= worldCorners[0].y && _worldPosition.y <= worldCorners[2].y)
+        rectTransform.GetWorldCorners(worldCorners);
+        if (worldPosition.x >= worldCorners[0].x && worldPosition.x <= worldCorners[2].x
+            && worldPosition.y >= worldCorners[0].y && worldPosition.y <= worldCorners[2].y)
         {
             return true;
         }

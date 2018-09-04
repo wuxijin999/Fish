@@ -92,26 +92,6 @@ public static class MaterialUtil
 
     public static void SwitchXrayShader(Material _material, bool _isHero)
     {
-        //         if (_material==null)
-        //         {
-        //             return;
-        //         }
-        // 
-        //         if (_isHero)
-        //         {
-        //             if (_material.shader.name == "Character/Character, Emission,Flow")
-        //             {
-        //                 _material.shader = heroShader;
-        //                 _material.SetColor("_XRayColor", new Color32(0, 107, 255, 255));
-        //             }
-        //         }
-        //         else
-        //         {
-        //             if (_material.shader.name == "Character/Character, Emission,Flow_Hero")
-        //             {
-        //                 _material.shader = playerShader;
-        //             }
-        //         }
     }
 
 }

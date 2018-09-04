@@ -7,23 +7,23 @@ using System.IO;
 public class UIAssets
 {
 
-    public static GameObject LoadWindow(string _name)
+    public static GameObject LoadWindow(string name)
     {
 
         return null;
     }
 
-    public static void LoadWindowAsync(string _name, UnityAction<bool, UnityEngine.Object> _callBack)
+    public static void LoadWindowAsync(string name, UnityAction<bool, UnityEngine.Object> callBack)
     {
     }
 
-    public static GameObject LoadPrefab(string _name)
+    public static GameObject LoadPrefab(string name)
     {
         GameObject prefab = null;
         if (AssetSource.uiFromEditor)
         {
 #if UNITY_EDITOR
-            var path = StringUtil.Contact(AssetPath.UI_PREFAB_PATH, "/", _name, ".prefab");
+            var path = StringUtil.Contact(AssetPath.UI_PREFAB_PATH, "/", name, ".prefab");
             prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
 #endif
         }
@@ -35,7 +35,7 @@ public class UIAssets
         return prefab;
     }
 
-    public static void UnLoadWindowAsset(string _name)
+    public static void UnLoadWindowAsset(string name)
     {
 
     }

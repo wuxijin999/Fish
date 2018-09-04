@@ -52,9 +52,9 @@ public class ActorBase
     public readonly PathFinder pathFinder;
     public readonly Transform transform;
 
-    public ActorBase(Transform _transform)
+    public ActorBase(Transform transform)
     {
-        transform = _transform;
+        this.transform = transform;
         pathFinder = new PathFinder(this);
     }
 
