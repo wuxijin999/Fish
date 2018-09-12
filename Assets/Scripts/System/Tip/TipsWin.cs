@@ -17,7 +17,7 @@ public class TipsWin : Window
     {
     }
 
-    protected override void AddListeners()
+    protected override void SetListeners()
     {
     }
 

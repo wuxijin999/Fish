@@ -8,6 +8,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IPresenterInit
+{
+    void Init();
+}
+
+public interface IPresenterUnInit
+{
+    void UnInit();
+}
+
+public interface IPresenterOnSwitchAccount
+{
+    void OnSwitchAccount();
+}
+
+public interface IPresenterOnLoginOk
+{
+    void OnLoginOk();
+}
+
 public abstract class Presenter<T> where T : class, new()
 {
 
@@ -21,9 +41,7 @@ public abstract class Presenter<T> where T : class, new()
 
     }
 
-    public abstract void Init();
-    public abstract void UnInit();
-    public abstract void OnSwitchAccount();
-    public abstract void OnLoginOk();
+    public abstract void OpenWindow();
+    public abstract void CloseWindow();
 
 }

@@ -13,11 +13,8 @@ public class #ClassName# : Window
 {
 
     #region Built-in
-    protected override void BindController()
-    {
-    }
 
-    protected override void AddListeners()
+    protected override void SetListeners()
     {
     }
 
@@ -25,17 +22,10 @@ public class #ClassName# : Window
     {
     }
 
-    protected override void OnAfterOpen()
-    {
-    }
-
     protected override void OnPreClose()
     {
     }
 
-    protected override void OnAfterClose()
-    {
-    }
     #endregion
    
 }

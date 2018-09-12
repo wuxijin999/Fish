@@ -14,6 +14,7 @@ public abstract class Window : MonoBehaviour
     public int id { get { return m_Id; } }
 
     [SerializeField] Tween m_Tween;
+    [SerializeField] Button m_Close;
     [SerializeField] protected RectTransform m_BackGround;
     [SerializeField] protected RectTransform m_Content;
 
@@ -53,7 +54,12 @@ public abstract class Window : MonoBehaviour
                 }
 
                 BindController();
-                AddListeners();
+                SetListeners();
+
+                if (m_Close != null)
+                {
+                    m_Close.SetListener(() => { Close(); });
+                }
                 initialized = true;
             }
         }
@@ -119,22 +125,14 @@ public abstract class Window : MonoBehaviour
         return this;
     }
 
-    protected virtual void LateUpdate()
-    {
-
-    }
-
-    protected virtual void OnActived()
-    {
-
-    }
-
-    protected abstract void BindController();
-    protected abstract void AddListeners();
-    protected abstract void OnPreOpen();
-    protected abstract void OnAfterOpen();
-    protected abstract void OnPreClose();
-    protected abstract void OnAfterClose();
+    protected virtual void BindController() { }
+    protected virtual void SetListeners() { }
+    protected virtual void OnPreOpen() { }
+    protected virtual void OnAfterOpen() { }
+    protected virtual void OnPreClose() { }
+    protected virtual void OnAfterClose() { }
+    protected virtual void OnActived() { }
+    protected virtual void LateUpdate() { }
 
     private void ActiveWindow()
     {
@@ -183,7 +181,7 @@ public abstract class Window : MonoBehaviour
         var rectTransform = emptyClose.transform as RectTransform;
         rectTransform.MatchWhith(this.transform as RectTransform).SetAsFirstSibling();
         emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
-        emptyCloseButton.AddListener(() => { Close(); });
+        emptyCloseButton.SetListener(() => { Close(); });
     }
 
 }

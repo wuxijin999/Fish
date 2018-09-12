@@ -8,20 +8,14 @@ public class PleaseWait : Presenter<PleaseWait>
 
     List<WaitType> waitings = new List<WaitType>();
 
-    public override void Init()
+    public override void OpenWindow()
     {
+        Windows.Instance.Open(WindowType.PleaseWait);
     }
 
-    public override void UnInit()
+    public override void CloseWindow()
     {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
-    {
+        Windows.Instance.Close(WindowType.PleaseWait);
     }
 
     public void Show(WaitType waitType, float _delay = 0f)
@@ -31,10 +25,7 @@ public class PleaseWait : Presenter<PleaseWait>
             waitings.Add(waitType);
         }
 
-        if (!Windows.Instance.IsOpen(WindowType.PleaseWait))
-        {
-            Windows.Instance.Open(WindowType.PleaseWait);
-        }
+        OpenWindow();
     }
 
     public void Hide(WaitType waitType)
@@ -44,11 +35,13 @@ public class PleaseWait : Presenter<PleaseWait>
             waitings.Remove(waitType);
         }
 
-        if (waitings.Count == 0 && Windows.Instance.IsOpen(WindowType.PleaseWait))
+        if (waitings.Count == 0)
         {
-            Windows.Instance.Close(WindowType.PleaseWait);
+            CloseWindow();
         }
     }
+
+
 
     public enum WaitType
     {

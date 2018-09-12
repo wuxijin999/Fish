@@ -21,7 +21,7 @@ public class PleaseWaitWin : Window
         circle = this.transform.Find("Img_Circle");
     }
 
-    protected override void AddListeners()
+    protected override void SetListeners()
     {
     }
 

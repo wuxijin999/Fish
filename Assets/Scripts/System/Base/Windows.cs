@@ -123,7 +123,7 @@ public class Windows : SingletonMonobehaviour<Windows>
     {
         if (!windows.ContainsKey(type))
         {
-            var prefab = UIAssets.LoadWindow(type.ToString());
+            var prefab = UIAssets.LoadWindow(StringUtil.Contact(type, "Win"));
             var instance = GameObject.Instantiate(prefab);
             var window = instance.GetComponent<Window>();
             if (window != null)
@@ -164,4 +164,5 @@ public enum WindowType
     Setting,
     ConfirmCancel,
     PleaseWait,
+    Login,
 }

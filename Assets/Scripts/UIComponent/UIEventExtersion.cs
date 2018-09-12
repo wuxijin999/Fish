@@ -92,7 +92,6 @@ public class BizEvent
 
 public class BizEvent<T>
 {
-
     event Action<T> bizEvent;
     public BizEvent()
     {

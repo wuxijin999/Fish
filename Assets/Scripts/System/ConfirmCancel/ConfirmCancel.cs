@@ -8,22 +8,14 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
     UnityAction confirmAction = null;
     UnityAction cancelAction = null;
 
-    public string content;
-    public string title;
+    public string content { get; private set; }
+    public string title { get; private set; }
 
-    public override void Init()
+    public override void OpenWindow()
     {
     }
 
-    public override void UnInit()
-    {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
+    public override void CloseWindow()
     {
     }
 
@@ -83,5 +75,6 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
             cancelAction.Invoke();
         }
     }
+
 
 }

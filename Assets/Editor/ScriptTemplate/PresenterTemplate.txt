@@ -10,22 +10,13 @@ using UnityEngine;
 public class #ClassName# : Presenter<#ClassName#>
 {
 
-    public override void Init()
-    {
-    }
-
-    public override void UnInit()
-    {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
+	public override void OpenWindow()
     {
     }
    
+    public override void CloseWindow()
+    {
+    }
 }
 
 

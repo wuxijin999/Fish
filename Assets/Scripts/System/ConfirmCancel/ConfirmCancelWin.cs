@@ -16,7 +16,7 @@ public class ConfirmCancelWin : Window
     {
     }
 
-    protected override void AddListeners()
+    protected override void SetListeners()
     {
         m_Confirm.AddListener(OnConfirm);
         m_Cancel.AddListener(OnCancel);
@@ -33,18 +33,6 @@ public class ConfirmCancelWin : Window
         {
             m_Description.text = ConfirmCancel.Instance.content;
         }
-    }
-
-    protected override void OnAfterOpen()
-    {
-    }
-
-    protected override void OnPreClose()
-    {
-    }
-
-    protected override void OnAfterClose()
-    {
     }
 
     private void OnConfirm()
