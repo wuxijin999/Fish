@@ -59,7 +59,10 @@ public class PopupTipsWidget : Widget
             var instance = pool.Get();
             var behaviour = instance.GetComponent<PopupTipBehaviour>();
             activedBehaviours.Add(behaviour);
-            behaviour.transform.SetParentEx(this.transform, m_StartPoint.localPosition, Quaternion.identity, Vector3.one);
+            behaviour.transform.SetParentEx(this.transform)
+                                             .SetLocalPosition(m_StartPoint.localPosition)
+                                             .SetLocalEulerAngles(Vector3.zero)
+                                             .SetScale(Vector3.one);
 
             var from = m_StartPoint.anchoredPosition.y;
             var to = m_PriorPoint.anchoredPosition.y;

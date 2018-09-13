@@ -9,7 +9,7 @@
 
 	Subshader
 	{
-		LOD 200
+		LOD 100
 		Tags {
 			"Queue" = "Transparent"
 			"IgnoreProjector" = "True"

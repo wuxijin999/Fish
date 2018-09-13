@@ -2,53 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Widget : MonoBehaviour
+public abstract class Widget : UIBase
 {
 
-    protected GameObject instance;
+    bool inited = false;
     protected virtual void BindControllers()
     {
 
     }
+
     protected virtual void SetListeners()
     {
 
     }
 
+    protected virtual void OnActived() { }
+    protected virtual void OnDeactived() { }
+
     public void SetActive(bool active)
     {
         if (active)
         {
-            if (instance == null)
+            if (!inited)
             {
-                UIAssets.LoadWindowAsync(this.name, OnLoad);
+                BindControllers();
+                SetListeners();
+                inited = true;
             }
-            else
-            {
-                instance.SetActive(true);
-            }
+
+            this.gameObject.SetActive(true);
+            OnActived();
         }
         else
         {
-            instance.SetActive(false);
+            OnDeactived();
+            this.gameObject.SetActive(false);
         }
     }
 
-    private void OnLoad(bool ok, UnityEngine.Object @object)
-    {
-        if (ok && @object != null)
-        {
-            var prefab = @object as GameObject;
-            instance = GameObject.Instantiate(prefab);
-            UIAssets.UnLoadWindowAsset(this.name);
-            BindControllers();
-            SetListeners();
-            instance.SetActive(true);
-        }
-        else
-        {
-            DebugEx.LogFormat("{0}资源不存在，请检查！", this.name);
-        }
-    }
+
 
 }

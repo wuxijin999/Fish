@@ -18,17 +18,16 @@ public abstract class Window : UIBase
     [SerializeField] protected RectTransform m_BackGround;
     [SerializeField] protected RectTransform m_Content;
 
+    List<Widget> widgets = new List<Widget>();
     Canvas m_Canvas;
     GraphicRaycaster m_Raycaster;
 
     public WindowState windowState { get; private set; }
     public int order = 1000;
     bool m_Interactable = false;
-    public bool interactable
-    {
+    public bool interactable {
         get { return m_Interactable; }
-        set
-        {
+        set {
             m_Interactable = value;
             m_Raycaster.enabled = m_Interactable;
         }
@@ -37,7 +36,6 @@ public abstract class Window : UIBase
     ButtonEx emptyCloseButton;
     bool initialized = false;
     WindowConfig config { get { return WindowConfig.Get(m_Id); } }
-    RectTransform rectTransform { get { return this.transform.AddMissingComponent<RectTransform>(); } }
 
     internal Window Open(int _order)
     {
@@ -80,7 +78,7 @@ public abstract class Window : UIBase
         }
         finally
         {
-            rectTransform.MatchWhith(UIRoot.Instance.windowRoot);
+            rectTransform.MatchWhith(UIRoot.windowRoot);
             windowState = WindowState.Opened;
             ActiveWindow();
         }
@@ -125,6 +123,31 @@ public abstract class Window : UIBase
         return this;
     }
 
+    public void SetWidgetActive<T>(bool value) where T : Widget
+    {
+        var widget = widgets.Find((x) => { return x != null && x is T; });
+
+        if (value)
+        {
+            if (widget != null)
+            {
+                widget.SetActive(true);
+            }
+            else
+            {
+                var name = typeof(T).Name;
+                UIAssets.LoadWindowAsync(name, OnLoadWidget);
+            }
+        }
+        else
+        {
+            if (widget != null)
+            {
+                widget.SetActive(false);
+            }
+        }
+    }
+
     protected virtual void BindController() { }
     protected virtual void SetListeners() { }
     protected virtual void OnPreOpen() { }
@@ -132,7 +155,6 @@ public abstract class Window : UIBase
     protected virtual void OnPreClose() { }
     protected virtual void OnAfterClose() { }
     protected virtual void OnActived() { }
-    protected virtual void LateUpdate() { }
 
     private void ActiveWindow()
     {
@@ -177,12 +199,38 @@ public abstract class Window : UIBase
 
     private void AddEmptyCloseResponser()
     {
-        var emptyClose = UIUtil.CreateWidget("InvisibleButton", "EmptyClose");
+        var emptyClose = UIUtil.CreateElement("InvisibleButton", "EmptyClose");
         var rectTransform = emptyClose.transform as RectTransform;
         rectTransform.MatchWhith(this.transform as RectTransform).SetAsFirstSibling();
         emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
         emptyCloseButton.SetListener(() => { Close(); });
     }
+
+    private void OnLoadWidget(bool ok, UnityEngine.Object @object)
+    {
+        if (ok && @object != null)
+        {
+            var prefab = @object as GameObject;
+            var name = prefab.name;
+            var exist = widgets.Exists((x) => { return x != null && x.name == name; });
+
+            if (!exist)
+            {
+                var instance = GameObject.Instantiate(prefab);
+                var widget = instance.GetComponent<Widget>();
+                widgets.Add(widget);
+                instance.name = name;
+                UIAssets.UnLoadWindowAsset(name);
+                widget.rectTransform.MatchWhith(m_Content);
+                widget.SetActive(true);
+            }
+        }
+        else
+        {
+            DebugEx.LogFormat("{0}资源不存在，请检查！", this.name);
+        }
+    }
+
 
 }
 

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public static class UIUtil
 {
-    public static GameObject CreateWidget(string sourceName, string name)
+    public static GameObject CreateElement(string sourceName, string name)
     {
         var prefab = UIAssets.LoadPrefab(sourceName);
         if (prefab == null)

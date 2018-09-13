@@ -106,6 +106,8 @@
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancelWin.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRole.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobInstroduceWidget.cs" />
+    <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectButton.cs" />
+    <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectWidget.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleWin.cs" />
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
@@ -172,33 +174,26 @@
     <Compile Include="Assets\Scripts\Utility\WaitingForConst.cs" />
     <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
     <Compile Include="Assets\Scripts\Version\VersionUtil.cs" />
-    <Compile Include="Assets\taecgLibrary\Tools\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\FreeLookCam.cs" />
-    <Compile Include="Assets\taecgLibrary\Tools\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ProtectCameraFromWallClip.cs" />
-    <Compile Include="Assets\taecgLibrary\Tools\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ThirdPersonCharacter.cs" />
-    <Compile Include="Assets\taecgLibrary\Tools\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ThirdPersonUserControl.cs" />
-    <Compile Include="Assets\taecgLibrary\Tools\MobileFastShadow\MobileFastShadow.cs" />
     <Compile Include="Assets\test.cs" />
     <Compile Include="Assets\testBiz.cs" />
     <Compile Include="Assets\TimeTest.cs" />
-    <None Include="Assets\taecgLibrary\Tools\MobileFastShadow\ProjectorShadow.shader" />
-    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character, OutLine.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Fish_01_OutLine.shader" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
-    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Sea_wave.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Fish_02_SeaWave.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
     <None Include="Assets\ResourcesOut\6_Audio\readme.txt" />
     <None Include="Assets\ResourcesOut\7_Effect\readme.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
-    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_02_Water2.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Window.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Test.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Effect.txt" />
-    <None Include="Assets\ResourcesOut\3_Shader\Snxxz_00_Character,Spec,Reflect,Normal.shader" />
+    <None Include="Assets\ResourcesOut\3_Shader\Fish_01_Spec,Reflect,Normal.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\FishCG.cginc" />
-    <None Include="Assets\ResourcesOut\3_Shader\00_Character, GUI, Skinmask.shader" />
-    <None Include="Assets\taecgLibrary\Tools\MobileFastShadow\Readme.txt" />
+    <None Include="Assets\ResourcesOut\3_Shader\Fish_01_GUI,Skinmask.shader" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>

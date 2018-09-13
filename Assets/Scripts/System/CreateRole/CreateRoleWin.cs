@@ -11,12 +11,9 @@ using UnityEngine.UI;
 
 public class CreateRoleWin : Window
 {
-
     [SerializeField] InputField m_RoleName;
     [SerializeField] ButtonEx m_RandomName;
     [SerializeField] ButtonEx m_Create;
-
-    [SerializeField] CreateRoleJobInstroduceWidget m_JobInstroduce;
 
     #region Built-in
 
@@ -31,15 +28,18 @@ public class CreateRoleWin : Window
         m_RoleName.text = string.Empty;
     }
 
-    protected override void OnPreClose()
-    {
-    }
-
     protected override void OnActived()
     {
         base.OnActived();
         RandomName();
-        m_JobInstroduce.SetActive(true);
+        SetWidgetActive<CreateRoleJobSelectWidget>(true);
+        SetWidgetActive<CreateRoleJobInstroduceWidget>(true);
+    }
+
+    protected override void OnPreClose()
+    {
+        SetWidgetActive<CreateRoleJobSelectWidget>(false);
+        SetWidgetActive<CreateRoleJobInstroduceWidget>(false);
     }
 
     #endregion

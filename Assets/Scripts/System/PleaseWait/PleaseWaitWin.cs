@@ -42,30 +42,19 @@ public class PleaseWaitWin : Window
         }
     }
 
-    protected override void OnAfterOpen()
-    {
-    }
-
-    protected override void OnPreClose()
-    {
-    }
-
-    protected override void OnAfterClose()
-    {
-    }
     #endregion
 
-    protected override void LateUpdate()
+    public override void OnLateUpdate()
     {
-        base.LateUpdate();
-        timer += Time.deltaTime;
+        base.OnLateUpdate();
 
+        timer += Time.deltaTime;
         if (!actived && timer > linkOverTime)
         {
             backGround.gameObject.SetActive(true);
             circle.gameObject.SetActive(true);
         }
-
     }
+
 }
 

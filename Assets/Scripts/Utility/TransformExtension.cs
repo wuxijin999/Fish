@@ -5,17 +5,6 @@ using System.Collections.Generic;
 public static class TransformExtension
 {
 
-    public static void SetParentEx(this Transform transform, Transform parent, Vector3 localPosition, Quaternion rotation, Vector3 scale)
-    {
-        if (transform != null && parent != null)
-        {
-            transform.SetParent(parent);
-            transform.localPosition = localPosition;
-            transform.localRotation = rotation;
-            transform.localScale = scale;
-        }
-    }
-
     public static Transform SetParentEx(this Transform transform, Transform parent)
     {
         if (transform != null && parent != null)
@@ -148,7 +137,6 @@ public static class TransformExtension
             return null;
         }
 
-
         if (parent != null && child.parent != parent)
         {
             child.SetParent(parent);
@@ -164,7 +152,6 @@ public static class TransformExtension
 
         return child;
     }
-
 
     public static bool ContainWorldPosition(this RectTransform rectTransform, Vector3 worldPosition)
     {

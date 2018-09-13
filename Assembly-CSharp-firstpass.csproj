@@ -78,7 +78,13 @@
     <Compile Include="Assets\Plugins\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\Plugins\LitJson\Lexer.cs" />
     <Compile Include="Assets\Plugins\LitJson\ParserToken.cs" />
+    <Compile Include="Assets\Plugins\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\Plugins\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ProtectCameraFromWallClip.cs" />
+    <Compile Include="Assets\Plugins\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ThirdPersonCharacter.cs" />
+    <Compile Include="Assets\Plugins\MobileFastShadow\DEMO\Scripts\ThirdPersonController\Scripts\ThirdPersonUserControl.cs" />
+    <Compile Include="Assets\Plugins\MobileFastShadow\MobileFastShadow.cs" />
     <None Include="Assets\Plugins\Demigiant\DOTweenPro\readme.txt" />
+    <None Include="Assets\Plugins\MobileFastShadow\ProjectorShadow.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.xml" />
@@ -99,6 +105,7 @@
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Plugins\MobileFastShadow\Readme.txt" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\Plugins\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
