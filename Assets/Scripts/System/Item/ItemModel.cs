@@ -22,10 +22,10 @@ public class ItemModel : Model<ItemModel>
     {
     }
 
-    public Item GetItemByInstanceId(int instanceId)
+    public Item GetItemByInstanceId(int guid)
     {
         Item item;
-        itemDictionary.TryGetValue(instanceId, out item);
+        itemDictionary.TryGetValue(guid, out item);
 
         return item;
     }

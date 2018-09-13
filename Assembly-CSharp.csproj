@@ -104,6 +104,9 @@
     <Compile Include="Assets\Scripts\System\Base\Windows.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancel.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancelWin.cs" />
+    <Compile Include="Assets\Scripts\System\CreateRole\CreateRole.cs" />
+    <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobInstroduceWidget.cs" />
+    <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleWin.cs" />
     <Compile Include="Assets\Scripts\System\Item\Equip.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
@@ -119,12 +122,12 @@
     <Compile Include="Assets\Scripts\System\Tip\PopupTipsWidget.cs" />
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ButtonEx.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\ImageEx.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\CoreEx\TextEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIBase.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIEngine.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\CoreEx\ButtonEx.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\CoreEx\ImageEx.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\CoreEx\TextEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
