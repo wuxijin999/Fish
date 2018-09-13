@@ -7,31 +7,27 @@ using TMPro;
 public class ButtonEx : Button
 {
 
-    [SerializeField] float interval;
-    [SerializeField] int positiveSound = 0;
-    [SerializeField] int negativeSound = 0;
+    [SerializeField] float m_Interval;
+    [SerializeField] int m_PositiveSound = 0;
+    [SerializeField] int m_NegativeSound = 0;
     [SerializeField] TextMeshProUGUI m_TitleMesh;
-    [SerializeField] Color m_NormalColor;
-    [SerializeField] Color m_DisableColor;
+    [SerializeField] Color m_NormalColor = Color.white;
+    [SerializeField] Color m_DisableColor = Color.white;
     [SerializeField] TextMeshProUGUI m_CoolDownText;
     [SerializeField] ImageEx m_Image;
-
 
     float coolDownTimer = 0f;
 
     float m_AbleTime = 0f;
-    public float ableTime
-    {
+    public float ableTime {
         get { return m_AbleTime; }
         private set { m_AbleTime = value; }
     }
 
     string m_Title;
-    public string title
-    {
+    public string title {
         get { return m_Title; }
-        set
-        {
+        set {
             if (m_Title != value)
             {
                 m_Title = value;
@@ -41,11 +37,9 @@ public class ButtonEx : Button
     }
 
     State m_State;
-    public State state
-    {
+    public State state {
         get { return m_State; }
-        set
-        {
+        set {
             m_State = value;
         }
     }
@@ -79,7 +73,7 @@ public class ButtonEx : Button
             case State.Normal:
                 base.OnPointerClick(eventData);
                 PlayPositiveSound();
-                ableTime = Time.realtimeSinceStartup + Mathf.Clamp(interval, 0, float.MaxValue);
+                ableTime = Time.realtimeSinceStartup + Mathf.Clamp(m_Interval, 0, float.MaxValue);
                 SetState(State.CoolDown);
                 break;
         }
