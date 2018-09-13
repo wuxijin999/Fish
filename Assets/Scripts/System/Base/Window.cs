@@ -7,7 +7,7 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Canvas))]
 [RequireComponent(typeof(GraphicRaycaster))]
-public abstract class Window : UIBase
+public class Window : UIBase
 {
 
     [SerializeField] int m_Id;

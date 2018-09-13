@@ -4,22 +4,76 @@ using System.Collections;
 
 public class GameObjectMenuExtension
 {
-    [MenuItem("GameObject/UICustom/Button")]
-    static void Test()
+    [MenuItem("GameObject/UICustom/Button &1")]
+    static void CreateButton()
     {
-        Debug.Log("创建一个button");
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/Button.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "Button";
+        if (Selection.activeTransform != null)
+        {
+            instance.transform.SetParentEx(Selection.activeTransform)
+                                          .SetLocalPosition(Vector3.zero)
+                                          .SetLocalEulerAngles(Vector3.zero)
+                                          .SetScale(Vector3.one);
+        }
     }
 
-    [MenuItem("GameObject/UICustom/Image")]
-    static void Test1()
+    [MenuItem("GameObject/UICustom/ButtonEx &2")]
+    static void CreateButtonEx()
     {
-        Debug.Log("创建一个Image");
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/ButtonEx.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "ButtonEx";
+        if (Selection.activeTransform != null)
+        {
+            instance.transform.SetParentEx(Selection.activeTransform)
+                                          .SetLocalPosition(Vector3.zero)
+                                          .SetLocalEulerAngles(Vector3.zero)
+                                          .SetScale(Vector3.one);
+        }
     }
 
-    [MenuItem("GameObject/UICustom/Text")]
-    static void Test2()
+    [MenuItem("GameObject/UICustom/Container &3")]
+    static void CreateContainer()
     {
-        Debug.Log("创建一个Text");
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/Container.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "Container";
+        if (Selection.activeTransform != null)
+        {
+            (instance.transform as RectTransform).MatchWhith(Selection.activeTransform as RectTransform);
+        }
+    }
+
+    [MenuItem("GameObject/UICustom/ImageEx &4")]
+    static void CreateImageEx()
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/ImageEx.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "ImageEx";
+        if (Selection.activeTransform != null)
+        {
+            instance.transform.SetParentEx(Selection.activeTransform)
+                                          .SetLocalPosition(Vector3.zero)
+                                          .SetLocalEulerAngles(Vector3.zero)
+                                          .SetScale(Vector3.one);
+        }
+    }
+
+    [MenuItem("GameObject/UICustom/TextEx &5")]
+    static void CreateTextEx()
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/TextEx.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "TextEx";
+        if (Selection.activeTransform != null)
+        {
+            instance.transform.SetParentEx(Selection.activeTransform)
+                                          .SetLocalPosition(Vector3.zero)
+                                          .SetLocalEulerAngles(Vector3.zero)
+                                          .SetScale(Vector3.one);
+        }
     }
 
     [InitializeOnLoadMethod]

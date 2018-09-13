@@ -94,9 +94,8 @@
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
     <Compile Include="Assets\Scripts\Stage\StageUtil.cs" />
     <Compile Include="Assets\Scripts\System\Base\Model.cs" />
-    <Compile Include="Assets\Scripts\System\Base\ModelUtility.cs" />
+    <Compile Include="Assets\Scripts\System\Base\ModelUtil.cs" />
     <Compile Include="Assets\Scripts\System\Base\Presenter.cs" />
-    <Compile Include="Assets\Scripts\System\Base\PresenterUtility.cs" />
     <Compile Include="Assets\Scripts\System\Base\Widget.cs" />
     <Compile Include="Assets\Scripts\System\Base\Window.cs" />
     <Compile Include="Assets\Scripts\System\Base\WindowAsyncLoad.cs" />
@@ -125,6 +124,7 @@
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\UIFlippable.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIBase.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIEngine.cs" />
     <Compile Include="Assets\Scripts\UIComponent\CoreEx\ButtonEx.cs" />

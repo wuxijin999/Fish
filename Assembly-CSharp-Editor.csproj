@@ -67,11 +67,12 @@
     <Compile Include="Assets\Editor\Tool\AnimatorControllerGenerate.cs" />
     <Compile Include="Assets\Editor\Tool\ConfigClassGenerate.cs" />
     <Compile Include="Assets\Editor\Tool\CreateClass.cs" />
-    <Compile Include="Assets\Editor\Tool\ExtensionalTools.cs" />
+    <Compile Include="Assets\Editor\Tool\ExtenalTools.cs" />
     <Compile Include="Assets\Editor\Tool\FileOpenEx.cs" />
     <Compile Include="Assets\Editor\Tool\GameObjectMenuExtension.cs" />
     <Compile Include="Assets\Editor\Tool\ShaderHelperWindow.cs" />
     <Compile Include="Assets\Editor\Tool\UIPoolDebugWindow.cs" />
+    <Compile Include="Assets\Editor\Tool\UIRootCreator.cs" />
     <Compile Include="Assets\ScenesResources\Effects\Sorting View\Editor\SortingView.cs" />
     <None Include="Assets\Editor\ScriptTemplate\ShaderPattern.txt" />
     <None Include="Assets\Editor\ScriptTemplate\ModelTemplate.txt" />
