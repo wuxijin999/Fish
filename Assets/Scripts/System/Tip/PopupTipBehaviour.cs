@@ -10,16 +10,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(RectTransform))]
-public class PopupTipBehaviour : UIBehaviour
+public class PopupTipBehaviour : UIBase
 {
     [SerializeField] TextMeshProUGUI m_Content;
     [SerializeField] Tween m_Tween;
     [SerializeField] CanvasGroup m_CanvasGroup;
 
     public float fadeOutTime { get; set; }
-
-    RectTransform m_RecTransform;
-    public RectTransform rectTransform { get { return m_RecTransform ?? (this.transform as RectTransform); } }
 
     public void Popup(string content, float fromY, float toY, float duration)
     {

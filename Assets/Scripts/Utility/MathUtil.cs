@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class MathUtil
+public static class MathUtil
 {
 
     public static Vector3 Rotate90_XZ_CW(Vector3 vector)
@@ -197,6 +197,16 @@ public class MathUtil
         {
             return true;
         }
+    }
+
+    public static bool InRange(this int value, int min, int max)
+    {
+        return value >= min && value <= max;
+    }
+
+    public static bool InRange(this float value, float min, float max)
+    {
+        return value >= min && value <= max;
     }
 
 }

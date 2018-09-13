@@ -4,11 +4,4 @@ using UnityEngine;
 
 public class SkillWidget : Widget
 {
-    public override void AddListeners()
-    {
-    }
-
-    public override void BindControllers()
-    {
-    }
 }

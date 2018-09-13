@@ -28,14 +28,6 @@ public class PopupTipsWidget : Widget
     float interval = 0.5f;
     float nextTipTime = 0f;
 
-    public override void AddListeners()
-    {
-    }
-
-    public override void BindControllers()
-    {
-    }
-
     public void Popup(string tip)
     {
         while (tips.Count > maxCount)

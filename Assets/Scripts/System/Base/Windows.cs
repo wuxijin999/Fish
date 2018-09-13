@@ -165,4 +165,5 @@ public enum WindowType
     ConfirmCancel,
     PleaseWait,
     Login,
+    CreateRole,
 }

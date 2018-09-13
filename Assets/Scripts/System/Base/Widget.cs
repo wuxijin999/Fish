@@ -6,8 +6,14 @@ public abstract class Widget : MonoBehaviour
 {
 
     protected GameObject instance;
-    public abstract void AddListeners();
-    public abstract void BindControllers();
+    protected virtual void BindControllers()
+    {
+
+    }
+    protected virtual void SetListeners()
+    {
+
+    }
 
     public void SetActive(bool active)
     {
@@ -36,7 +42,7 @@ public abstract class Widget : MonoBehaviour
             instance = GameObject.Instantiate(prefab);
             UIAssets.UnLoadWindowAsset(this.name);
             BindControllers();
-            AddListeners();
+            SetListeners();
             instance.SetActive(true);
         }
         else

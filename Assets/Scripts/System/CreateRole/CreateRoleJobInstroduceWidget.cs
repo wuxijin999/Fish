@@ -8,10 +8,19 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(RectTransform))]
-public class CreateRoleJobInstroduceWidget : MonoBehaviour {
+public class CreateRoleJobInstroduceWidget : Widget
+{
+    [SerializeField] TextEx m_JobName;
+    [SerializeField] TextEx m_Instroduce;
+    [SerializeField] ImageEx m_Icon;
+    [SerializeField] TextEx m_Speciality;
 
-    RectTransform m_RecTransform;
-    RectTransform rectTransform { get { return m_RecTransform??(this.transform as RectTransform); } }
+    protected override void SetListeners()
+    {
+
+    }
+
+
 
 }
 

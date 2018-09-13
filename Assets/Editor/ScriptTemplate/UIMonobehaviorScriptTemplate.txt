@@ -7,11 +7,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(RectTransform))]
-public class #ClassName#:MonoBehaviour {
+public class #ClassName#:UIBase {
 
-    RectTransform m_RecTransform;
-    RectTransform rectTransform { get { return m_RecTransform??(this.transform as RectTransform); } }
 
 }
 
