@@ -1,5 +1,5 @@
 
-Shader "Character/Normal ,Spec,Reflect"
+Shader "Character/Normal,Spec,Reflect"
 {
 	Properties
 	{

@@ -1,10 +1,10 @@
-﻿Shader "ScaleAnimation/"
+﻿Shader "UI/Spin"
 {
 	Properties
 	{
 		_MainTex("Main Texture", 2D) = "white" {}
 		_Color("Color" ,Color)=(1,1,1,1)
-		_Vector("Rotation",Vector)=(0,0,0,1)
+		_Speed("Speed",Range(0,2))=1
 	}
 
 	Subshader
@@ -52,32 +52,28 @@
 
 		uniform sampler2D _MainTex;
 		half4 _Color;
-		float4 _Vector;
+		float _Speed;
 		
 		v2f vert(vertexInput v)
 		{
-			v2f o;
+			v2f o=(v2f)0;
 
-			//v.vertex.xyz=RotationZ(v.vertex.xyz,-180*_Time.y);
 			o.pos = UnityObjectToClipPos(v.vertex);
-			//o.uv0 = RotationUV( v.texcoord,-180*_Time.y);
 			o.uv0=v.texcoord;
-			o.color=_Color;
+			o.color = _Color;
 
 			return o;
 		}
 
 		fixed4 frag(v2f i) : SV_Target{
 
-			float2 uv=RotationUV(i.uv0,_Time.y*180);
-
+			fixed2 uv=RotationUV(i.uv0,_Time.y*180*_Speed);
 			fixed4 color = tex2D(_MainTex,uv);
-
 			if(pow(uv.x-0.5,2)+pow(uv.y-0.5,2)>0.25){
 				color.a=0;
 			}
 
-			color.xyz=_Color.xyz+((sin(_Time.y*10)+1.5)*0.5).xxx;
+			color.xyz= color.xyz* _Color.xyz+((sin(_Time.y*10)+1.5)*0.5).xxx;
 
 			return color;
 		}
