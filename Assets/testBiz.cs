@@ -15,23 +15,19 @@ public class testBiz
 
 }
 
-
 public class BizProperty<T>
 {
     public T value;
 
     bool m_Dirty = true;
-    public bool dirty
-    {
-        get
-        {
+    public bool dirty {
+        get {
             lock (this)
             {
                 return m_Dirty;
             }
         }
-        set
-        {
+        set {
             lock (this)
             {
                 m_Dirty = value;
@@ -41,6 +37,7 @@ public class BizProperty<T>
 
     public BizProperty()
     {
+
     }
 
 }

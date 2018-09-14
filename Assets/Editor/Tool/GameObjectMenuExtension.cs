@@ -76,7 +76,7 @@ public class GameObjectMenuExtension
         }
     }
 
-    [MenuItem("GameObject/UICustom/PatternWin %q")]
+    [MenuItem("GameObject/UICustom/PatternWin &q")]
     static void CreatePatternWin()
     {
         var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/PatternWin.prefab");
