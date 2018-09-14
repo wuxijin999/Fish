@@ -9,10 +9,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(GraphicRaycaster))]
 public class Window : UIBase
 {
-
+    [Header("Base")]
     [SerializeField] int m_Id;
     public int id { get { return m_Id; } }
-
     [SerializeField] Tween m_Tween;
     [SerializeField] Button m_Close;
     [SerializeField] protected RectTransform m_BackGround;
@@ -25,9 +24,11 @@ public class Window : UIBase
     public WindowState windowState { get; private set; }
     public int order = 1000;
     bool m_Interactable = false;
-    public bool interactable {
+    public bool interactable
+    {
         get { return m_Interactable; }
-        set {
+        set
+        {
             m_Interactable = value;
             m_Raycaster.enabled = m_Interactable;
         }
@@ -231,7 +232,20 @@ public class Window : UIBase
         }
     }
 
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (m_BackGround == null)
+        {
+            m_BackGround = this.transform.GetComponent<RectTransform>("BackGround");
+        }
 
+        if (m_Content == null)
+        {
+            m_Content = this.transform.GetComponent<RectTransform>("Content");
+        }
+    }
+#endif
 }
 
 public enum WindowState

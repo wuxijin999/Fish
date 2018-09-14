@@ -76,6 +76,20 @@ public class GameObjectMenuExtension
         }
     }
 
+    [MenuItem("GameObject/UICustom/PatternWin %q")]
+    static void CreatePatternWin()
+    {
+        var prefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Editor/Prefabs/PatternWin.prefab");
+        var instance = GameObject.Instantiate(prefab);
+        instance.name = "PatternWin";
+        if (Selection.activeTransform != null)
+        {
+            (instance.transform as RectTransform).MatchWhith(Selection.activeTransform as RectTransform);
+        }
+
+        Selection.activeObject = instance;
+    }
+
     [InitializeOnLoadMethod]
     static void StartInitializeOnLoadMethod()
     {
