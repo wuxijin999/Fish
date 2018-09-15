@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeTest : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TimeTest : MonoBehaviour
 
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             for (int i = 0; i < 100; i++)
@@ -17,7 +19,6 @@ public class TimeTest : MonoBehaviour
                 second.ToTimeString("dd:HH:mm:ss");
             }
         }
-
 
         if (Input.GetKeyDown(KeyCode.G))
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemModel : Model<ItemModel>
 {
-    Dictionary<int, Item> itemDictionary = new Dictionary<int, Item>();
+    Dictionary<int, ItemEntry> itemDictionary = new Dictionary<int, ItemEntry>();
 
     public override void Init()
     {
@@ -22,22 +22,22 @@ public class ItemModel : Model<ItemModel>
     {
     }
 
-    public Item GetItemByInstanceId(int guid)
+    public ItemEntry GetItemByInstanceId(int guid)
     {
-        Item item;
+        ItemEntry item;
         itemDictionary.TryGetValue(guid, out item);
 
         return item;
     }
 
-    public List<Item> GetItemsById(int id)
+    public List<int> GetItemsById(int id)
     {
-        var items = new List<Item>();
+        var items = new List<int>();
         foreach (var item in itemDictionary.Values)
         {
             if (item.id == id)
             {
-                items.Add(item);
+                items.Add(item.instanceId);
             }
         }
 
@@ -58,5 +58,36 @@ public class ItemModel : Model<ItemModel>
         return sum;
     }
 
+
+    public class ItemEntry
+    {
+
+        int m_InstanceId;
+        public int instanceId
+        {
+            get { return m_InstanceId; }
+            private set { m_InstanceId = value; }
+        }
+
+        int m_Id;
+        public int id
+        {
+            get { return m_Id; }
+            private set { m_Id = value; }
+        }
+
+        int m_Count;
+        public int count
+        {
+            get { return m_Count; }
+            set { m_Count = value; }
+        }
+
+        public ItemEntry(int _instanceId)
+        {
+            this.instanceId = _instanceId;
+        }
+
+    }
 
 }

@@ -168,5 +168,25 @@ public static class ComponentExtension
         inputField.onValueChanged.RemoveAllListeners();
     }
 
+    public static void SetSprite(this Image image, int id)
+    {
+        if (image == null)
+        {
+            return;
+        }
 
+        var config = IconConfig.Get(id);
+        if (config != null)
+        {
+            image.overrideSprite = UIAssets.LoadSprite(config.folder, config.assetName);
+        }
+    }
+
+    public static void SetText(this TextEx text, object @object)
+    {
+        if (text != null)
+        {
+            text.SetText(@object.ToString());
+        }
+    }
 }

@@ -9,19 +9,14 @@ using System.Threading;
 using System;
 using UnityEngine;
 
-public partial class ItemConfig
+public partial class IconConfig
 {
 
     public readonly int id;
-	public readonly int type;
-	public readonly int level;
-	public readonly string name;
-	public readonly int icon;
-	public readonly int quality;
-	public readonly int starLevel;
-	public readonly int price;
+	public readonly string folder;
+	public readonly string assetName;
 
-    public ItemConfig(string content)
+    public IconConfig(string content)
     {
         try
         {
@@ -29,19 +24,9 @@ public partial class ItemConfig
 
             int.TryParse(tables[0],out id); 
 
-			int.TryParse(tables[1],out type); 
+			folder = tables[1];
 
-			int.TryParse(tables[2],out level); 
-
-			name = tables[3];
-
-			int.TryParse(tables[4],out icon); 
-
-			int.TryParse(tables[5],out quality); 
-
-			int.TryParse(tables[6],out starLevel); 
-
-			int.TryParse(tables[7],out price); 
+			assetName = tables[2];
         }
         catch (Exception ex)
         {
@@ -49,18 +34,18 @@ public partial class ItemConfig
         }
     }
 
-    static Dictionary<int, ItemConfig> configs = new Dictionary<int, ItemConfig>();
-    public static ItemConfig Get(int id)
+    static Dictionary<int, IconConfig> configs = new Dictionary<int, IconConfig>();
+    public static IconConfig Get(int id)
     {
         if (configs.ContainsKey(id))
         {
             return configs[id];
         }
 
-        ItemConfig config = null;
+        IconConfig config = null;
         if (rawDatas.ContainsKey(id))
         {
-            config = configs[id] = new ItemConfig(rawDatas[id]);
+            config = configs[id] = new IconConfig(rawDatas[id]);
             rawDatas.Remove(id);
         }
 
@@ -71,7 +56,7 @@ public partial class ItemConfig
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Item.txt";
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Icon.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
             var lines = File.ReadAllLines(path);

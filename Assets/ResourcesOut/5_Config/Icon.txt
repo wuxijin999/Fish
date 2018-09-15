@@ -1,0 +1,13 @@
+int	string	string
+id	folder	assetName
+icon id	图片文件夹	资源名称
+1	aaa	bbb
+2	aaa	bbb
+3	aaa	bbb
+4	aaa	bbb
+5	aaa	bbb
+6	aaa	bbb
+7	aaa	bbb
+8	aaa	bbb
+9	aaa	bbb
+10	aaa	bbb

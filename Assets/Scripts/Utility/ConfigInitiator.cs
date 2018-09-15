@@ -11,7 +11,10 @@ public class ConfigInitiator
         TestConfig.Init();
         WindowConfig.Init();
         EffectConfig.Init();
-        //初始化结束
+        EquipConfig.Init();
+		IconConfig.Init();
+		LanguageConfig.Init();
+		//初始化结束
     }
 
 }

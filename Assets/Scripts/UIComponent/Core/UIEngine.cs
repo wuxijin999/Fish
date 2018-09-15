@@ -29,7 +29,7 @@ public class UIEngine : SingletonMonobehaviour<UIEngine>
         {
             try
             {
-                if (item.isActiveAndEnabled)
+                if (item != null && item.isActiveAndEnabled)
                 {
                     item.OnUpdate();
                 }
@@ -47,7 +47,7 @@ public class UIEngine : SingletonMonobehaviour<UIEngine>
         {
             try
             {
-                if (item.isActiveAndEnabled)
+                if (item != null && item.isActiveAndEnabled)
                 {
                     item.OnLateUpdate();
                 }

@@ -40,4 +40,23 @@ public class UIAssets
 
     }
 
+
+    public static Sprite LoadSprite(string folder,string name)
+    {
+        Sprite sprite = null;
+        if (AssetSource.uiFromEditor)
+        {
+#if UNITY_EDITOR
+            var path = StringUtil.Contact(AssetPath.UI_SPRITE_ROOT_PATH, "/",folder,"/" ,name, ".png");
+            sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
+#endif
+        }
+        else
+        {
+
+        }
+
+        return sprite;
+    }
+
 }
