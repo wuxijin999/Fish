@@ -97,7 +97,6 @@
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
     <Compile Include="Assets\Scripts\Stage\StageUtil.cs" />
     <Compile Include="Assets\Scripts\System\Base\Model.cs" />
-    <Compile Include="Assets\Scripts\System\Base\ModelUtil.cs" />
     <Compile Include="Assets\Scripts\System\Base\Presenter.cs" />
     <Compile Include="Assets\Scripts\System\Base\Widget.cs" />
     <Compile Include="Assets\Scripts\System\Base\Window.cs" />
@@ -122,6 +121,8 @@
     <Compile Include="Assets\Scripts\System\MainWin\HeroBriefInfoWidget.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\MainWin.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\SkillWidget.cs" />
+    <Compile Include="Assets\Scripts\System\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\System\Player\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWait.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWaitWin.cs" />
     <Compile Include="Assets\Scripts\System\Tip\PopupTipBehaviour.cs" />

@@ -2,25 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemModel : Model<ItemModel>
+public class ItemModel
 {
     Dictionary<int, ItemEntry> itemDictionary = new Dictionary<int, ItemEntry>();
-
-    public override void Init()
-    {
-    }
-
-    public override void UnInit()
-    {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
-    {
-    }
 
     public ItemEntry GetItemByInstanceId(int guid)
     {
