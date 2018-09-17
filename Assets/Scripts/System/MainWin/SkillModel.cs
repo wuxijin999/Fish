@@ -8,28 +8,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SkillModel : Model<SkillModel>
+public class SkillModel
 {
 
     Dictionary<int, int> indexToSkills = new Dictionary<int, int>();
     Dictionary<int, DateTime> skillNextCastTimes = new Dictionary<int, DateTime>();
-
-    public override void Init()
-    {
-    }
-
-    public override void UnInit()
-    {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
-    {
-    }
-
 
     public int GetSkill(int index)
     {

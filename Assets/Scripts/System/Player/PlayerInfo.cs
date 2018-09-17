@@ -78,6 +78,27 @@ public class PlayerInfo : Presenter<PlayerInfo>
         propertyEvent.Invoke(type);
     }
 
+    public PlayerBriefInfo GetPlayerBriefInfo()
+    {
+        return new PlayerBriefInfo()
+        {
+            name = playerModel.playerName,
+            level = playerModel.level,
+            icon = "null",
+        };
+    }
+
+    public Int2 GetPlayerHp()
+    {
+        return new Int2(playerModel.hp, playerModel.maxHp);
+    }
+
+    public struct PlayerBriefInfo
+    {
+        public string name;
+        public string icon;
+        public int level;
+    }
 }
 
 

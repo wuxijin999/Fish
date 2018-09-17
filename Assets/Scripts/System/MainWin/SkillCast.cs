@@ -11,6 +11,8 @@ using System;
 public class SkillCast : Presenter<SkillCast>
 {
 
+    SkillModel skillModel = new SkillModel();
+
     public override void OpenWindow()
     {
     }
@@ -21,7 +23,7 @@ public class SkillCast : Presenter<SkillCast>
 
     public void CastSkill(int index)
     {
-        var skill = SkillModel.Instance.GetSkill(index);
+        var skill = skillModel.GetSkill(index);
 
         if (IsCountDown(index))
         {
@@ -35,18 +37,18 @@ public class SkillCast : Presenter<SkillCast>
 
     public bool IsCountDown(int index)
     {
-        var skill = SkillModel.Instance.GetSkill(index);
+        var skill = skillModel.GetSkill(index);
         DateTime canCastTime;
-        SkillModel.Instance.TryGetNextCastTime(skill, out canCastTime);
+        skillModel.TryGetNextCastTime(skill, out canCastTime);
         return DateTime.Now < canCastTime;
     }
 
     public int GetSkillCountDown(int index)
     {
-        var skill = SkillModel.Instance.GetSkill(index);
+        var skill = skillModel.GetSkill(index);
 
         DateTime canCastTime;
-        SkillModel.Instance.TryGetNextCastTime(skill, out canCastTime);
+        skillModel.TryGetNextCastTime(skill, out canCastTime);
         var seconds = (int)(canCastTime - DateTime.Now).TotalSeconds;
 
         var countDown = seconds > 0 ? seconds : 0;
