@@ -1,0 +1,52 @@
+﻿//--------------------------------------------------------
+//    [Author]:           Fish
+//    [  Date ]:           Friday, September 14, 2018
+//--------------------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class SkillModel : Model<SkillModel>
+{
+
+    Dictionary<int, int> indexToSkills = new Dictionary<int, int>();
+    Dictionary<int, DateTime> skillNextCastTimes = new Dictionary<int, DateTime>();
+
+    public override void Init()
+    {
+    }
+
+    public override void UnInit()
+    {
+    }
+
+    public override void OnSwitchAccount()
+    {
+    }
+
+    public override void OnLoginOk()
+    {
+    }
+
+
+    public int GetSkill(int index)
+    {
+        var skill = 0;
+        indexToSkills.TryGetValue(index, out skill);
+        return skill;
+    }
+
+    public bool TryGetNextCastTime(int skillId, out DateTime dateTime)
+    {
+        return skillNextCastTimes.TryGetValue(skillId, out dateTime);
+    }
+
+
+}
+
+
+
+
+

@@ -5,8 +5,6 @@ using UnityEngine.Jobs;
 
 public class MainWin : Window
 {
-    [SerializeField] SkillWidget m_SkillWidget;
-    [SerializeField] HeroBriefInfoWidget m_HeroBreifInfoWidget;
 
     protected override void BindController()
     {

@@ -118,8 +118,13 @@
     <Compile Include="Assets\Scripts\System\Login\Login.cs" />
     <Compile Include="Assets\Scripts\System\Login\LoginModel.cs" />
     <Compile Include="Assets\Scripts\System\Login\LoginWin.cs" />
-    <Compile Include="Assets\Scripts\System\MainWin\HeroBriefInfoWidget.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\MainWin.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\PlayerBriefInfoWidget.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\PlayerModel.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\SkillButton.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\SkillCast.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\SkillModel.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\SkillWidget.cs" />
     <Compile Include="Assets\Scripts\System\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\System\Player\PlayerModel.cs" />
