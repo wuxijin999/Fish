@@ -60,6 +60,11 @@ public class ActorBase
         pathFinder = new PathFinder(this);
     }
 
+    public virtual void ProcessMoveEvent(int rangeLeft,int rangeRight)
+    {
+
+    }
+
     protected virtual void OnFixedUpdate()
     {
     }

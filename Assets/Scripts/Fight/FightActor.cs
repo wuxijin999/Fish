@@ -36,15 +36,15 @@ public class FightActor : ActorBase
         base.OnUpdate2();
     }
 
-    public int GetSkillId(string stateName)
-    {
-
-        return 0;
-    }
-
-    public void CastSkill(int skillIndex)
+    public virtual void ProcessAttackEvent(int attackIndex, int rangeLeft, int rangeRight)
     {
 
     }
+
+    public virtual void ProcessSkillEvent(int skillIndex, int rangeLeft, int rangeRight)
+    {
+
+    }
+
 
 }

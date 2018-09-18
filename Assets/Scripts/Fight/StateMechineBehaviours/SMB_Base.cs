@@ -7,14 +7,14 @@ public class SMB_Base : StateMachineBehaviour
 
     protected ActorBase actor;
     protected int frame = 0;
-    protected int processedFrame = 0;
+    protected int processedFrame = -1;
 
     public sealed override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         base.OnStateEnter(animator, stateInfo, layerIndex);
 
         frame = 0;
-        processedFrame = 0;
+        processedFrame = -1;
         var instanceId = animator.GetInteger(ActionController.Param_ActorInstanceId);
         if (ActorCenter.Instance.TryGet(instanceId, out actor))
         {
@@ -54,7 +54,7 @@ public class SMB_Base : StateMachineBehaviour
     {
         base.OnStateExit(animator, stateInfo, layerIndex);
         frame = 0;
-        processedFrame = 0;
+        processedFrame = -1;
         if (actor != null)
         {
             OnExit(actor, animator, stateInfo, layerIndex);

@@ -7,7 +7,8 @@ public class SMB_Attack : SMB_Base
 
     [SerializeField] int m_AttackIndex = 0;
 
-    EffectBehaviour effectBehaviour;
+    FightActor fightActor;
+    EffectBehaviour effect;
 
     protected override void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -23,14 +24,16 @@ public class SMB_Attack : SMB_Base
 
     protected override void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        fightActor = null;
+        EffectUtil.Instance.Stop(effect);
+        effect = null;
         base.OnExit(owner, animator, stateInfo, layerIndex);
-
     }
 
     protected override void OnProcessFrameEvent()
     {
         base.OnProcessFrameEvent();
-
+        fightActor.ProcessAttackEvent(m_AttackIndex, processedFrame, frame);
     }
 
 

@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SMB_Skill : SMB_Base
 {
-    [SerializeField] int m_SkillIndex;
+    [SerializeField] int m_SkillIndex = 0;
 
     FightActor fightActor;
+    EffectBehaviour effect;
 
     protected override void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -25,6 +26,9 @@ public class SMB_Skill : SMB_Base
 
     protected override void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        fightActor = null;
+        EffectUtil.Instance.Stop(effect);
+        effect = null;
         base.OnExit(owner, animator, stateInfo, layerIndex);
     }
 
@@ -32,7 +36,7 @@ public class SMB_Skill : SMB_Base
     {
         base.OnProcessFrameEvent();
 
-        fightActor.CastSkill(m_SkillIndex);
+        fightActor.ProcessSkillEvent(m_SkillIndex, processedFrame, frame);
     }
 
 
