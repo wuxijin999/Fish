@@ -202,7 +202,6 @@
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Icon.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Language.txt" />
-    <None Include="Assets\ResourcesOut\6_Audio\readme.txt" />
     <None Include="Assets\ResourcesOut\7_Effect\readme.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />
