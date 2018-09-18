@@ -16,6 +16,8 @@ public class EffectBehaviour : MonoBehaviour
     Animation[] animations;
     ParticleSystem[] particleSystems;
 
+    Transform target;
+
     private void Awake()
     {
         animators = this.GetComponentsInChildren<Animator>(true);
@@ -23,7 +25,7 @@ public class EffectBehaviour : MonoBehaviour
         particleSystems = this.GetComponentsInChildren<ParticleSystem>(true);
     }
 
-    public void OnPlay()
+    public void OnPlay(Transform target = null)
     {
         if (animators != null)
         {
@@ -42,6 +44,7 @@ public class EffectBehaviour : MonoBehaviour
         }
 
         stopTime = Time.time + m_Duration;
+        this.target = target;
     }
 
     public void OnStop()
@@ -61,15 +64,22 @@ public class EffectBehaviour : MonoBehaviour
                 animation.enabled = false;
             }
         }
+
+        target = null;
     }
 
     private void LateUpdate()
     {
+        if (target != null)
+        {
+            this.transform.position = target.position;
+            this.transform.rotation = target.rotation;
+        }
+
         if (!m_Loop)
         {
             if (Time.time >= stopTime)
             {
-                //回收
                 EffectUtil.Instance.Stop(this);
             }
         }

@@ -25,17 +25,24 @@ namespace taecg.tools.thirdPersonController
 
         void FixedUpdate()
         {
-            //读取输入设置
-            float h = Input.GetAxis("Horizontal");
-            float v = Input.GetAxis("Vertical");
-
-            if (m_CamTrans != null)
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)|| Input.GetKey(KeyCode.S)|| Input.GetKey(KeyCode.W))
             {
-                m_CamForward = Vector3.Scale(m_CamTrans.forward, new Vector3(1, 0, 1)).normalized;
-                moveVec3 = v * m_CamForward + h * m_CamTrans.right;
-            }
+                //读取输入设置
+                float h = Input.GetAxis("Horizontal");
+                float v = Input.GetAxis("Vertical");
 
-            m_Character.Move(moveVec3);
+                if (m_CamTrans != null)
+                {
+                    m_CamForward = Vector3.Scale(m_CamTrans.forward, new Vector3(1, 0, 1)).normalized;
+                    moveVec3 = v * m_CamForward + h * m_CamTrans.right;
+                }
+
+                m_Character.Move(moveVec3);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                m_Character.HandleGroundedMovement(true);
+            }
         }
     }
 }

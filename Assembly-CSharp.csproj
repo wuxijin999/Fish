@@ -89,9 +89,14 @@
     <Compile Include="Assets\Scripts\Fight\ActorBrain.cs" />
     <Compile Include="Assets\Scripts\Fight\ActorCenter.cs" />
     <Compile Include="Assets\Scripts\Fight\ActorEngine.cs" />
+    <Compile Include="Assets\Scripts\Fight\FightActor.cs" />
     <Compile Include="Assets\Scripts\Fight\Hero.cs" />
     <Compile Include="Assets\Scripts\Fight\PassiveAction.cs" />
     <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Attack.cs" />
+    <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Base.cs" />
+    <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Move.cs" />
+    <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Skill.cs" />
     <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\Stage.cs" />
@@ -177,6 +182,7 @@
     <Compile Include="Assets\Scripts\Utility\ShaderUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\Singleton.cs" />
     <Compile Include="Assets\Scripts\Utility\SingletonMonobehaviour.cs" />
+    <Compile Include="Assets\Scripts\Utility\SoundUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\StringUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\StructEx.cs" />
     <Compile Include="Assets\Scripts\Utility\TimeUtil.cs" />

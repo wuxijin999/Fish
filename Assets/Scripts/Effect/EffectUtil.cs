@@ -7,7 +7,7 @@ public class EffectUtil : Singleton<EffectUtil>
 
     Dictionary<int, GameObjectPool> effectPools = new Dictionary<int, GameObjectPool>();
 
-    public EffectBehaviour Play(int id)
+    public EffectBehaviour Play(int id, Transform parent = null)
     {
         try
         {
@@ -27,8 +27,7 @@ public class EffectUtil : Singleton<EffectUtil>
                 behaviour.gameObject.SetActive(true);
             }
 
-            behaviour.OnPlay();
-
+            behaviour.OnPlay(parent);
             return behaviour;
         }
         catch (System.Exception ex)
@@ -36,18 +35,6 @@ public class EffectUtil : Singleton<EffectUtil>
             DebugEx.Log(ex);
             return null;
         }
-
-    }
-
-    public EffectBehaviour Play(int id, Transform parent)
-    {
-        var effect = Play(id);
-        if (parent != null)
-        {
-            effect.transform.SetParentEx(parent).SetLocalPosition(Vector3.zero).SetLocalEulerAngles(Vector3.zero).SetScale(Vector3.one);
-        }
-
-        return effect;
     }
 
     public void Stop(EffectBehaviour effect)

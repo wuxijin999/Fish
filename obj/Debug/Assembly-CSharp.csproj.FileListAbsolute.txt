@@ -1,15 +1,12 @@
 H:\Fish\Temp\bin\Debug\Assembly-CSharp.dll
 H:\Fish\Temp\bin\Debug\Assembly-CSharp.pdb
 H:\Fish\Temp\bin\Debug\Boo.Lang.dll
-H:\Fish\Temp\bin\Debug\com.unity.postprocessing.Editor.dll
-H:\Fish\Temp\bin\Debug\com.unity.postprocessing.Runtime.dll
 H:\Fish\Temp\bin\Debug\mscorlib.dll
 H:\Fish\Temp\bin\Debug\System.Core.dll
 H:\Fish\Temp\bin\Debug\System.dll
 H:\Fish\Temp\bin\Debug\System.Runtime.Serialization.dll
 H:\Fish\Temp\bin\Debug\System.Xml.dll
 H:\Fish\Temp\bin\Debug\System.Xml.Linq.dll
-H:\Fish\Temp\bin\Debug\Unity.AssetBundleBrowser.Editor.dll
 H:\Fish\Temp\bin\Debug\Unity.Locator.dll
 H:\Fish\Temp\bin\Debug\Unity.PackageManagerUI.Editor.dll
 H:\Fish\Temp\bin\Debug\Unity.ShaderGraph.Editor.dll
@@ -352,9 +349,6 @@ E:\Fish\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\Fish\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
 E:\Fish\obj\Debug\Assembly-CSharp.dll
 E:\Fish\obj\Debug\Assembly-CSharp.pdb
-H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Editor.dll
-H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.IncludePaths.dll
-H:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Runtime.dll
 E:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Editor.dll
 E:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.IncludePaths.dll
 E:\Fish\Temp\bin\Debug\com.unity.render-pipelines.core.Runtime.dll
@@ -374,3 +368,6 @@ H:\Fish\Temp\bin\Debug\UnityEngine.FileSystemHttpModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.LocalizationModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.ProfilerModule.xml
 H:\Fish\Temp\bin\Debug\UnityEngine.StreamingModule.xml
+H:\Fish\Temp\bin\Debug\Unity.RenderPipelines.Core.Editor.dll
+H:\Fish\Temp\bin\Debug\Unity.RenderPipelines.Core.IncludePaths.dll
+H:\Fish\Temp\bin\Debug\Unity.RenderPipelines.Core.Runtime.dll

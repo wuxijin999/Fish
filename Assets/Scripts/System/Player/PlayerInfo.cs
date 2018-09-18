@@ -84,7 +84,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
         {
             name = playerModel.playerName,
             level = playerModel.level,
-            icon = "null",
+            icon = 0,
         };
     }
 
@@ -96,7 +96,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
     public struct PlayerBriefInfo
     {
         public string name;
-        public string icon;
+        public int icon;
         public int level;
     }
 }

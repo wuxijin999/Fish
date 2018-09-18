@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : ActorBase
+public class Hero : FightActor
 {
+
+
 
     public Hero(Transform model) : base(model)
     {

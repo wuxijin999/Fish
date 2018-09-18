@@ -11,25 +11,34 @@ using UnityEngine.Jobs;
 
 public class test : MonoBehaviour
 {
-    [SerializeField] int m_Quality;
-    [SerializeField] Color m_Color;
-    [SerializeField] Text m_Text;
-    [TextArea] [SerializeField] string m_Input;
 
+    public AnimationClip run;
+    public AnimationClip walk;
+
+    Animator animator;
+    AnimatorOverrideController overrideController;
 
     private void OnEnable()
     {
-
+        animator = this.GetComponent<Animator>();
+        animator.runtimeAnimatorController = overrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            m_Color = ColorUtil.QualityColor(m_Quality);
-            m_Text.text = ColorUtil.QualityColorString(m_Quality, "aaaa");
+            overrideController["idle"] = run;
+        }
 
-            DebugEx.Log("aaaa");
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            overrideController["idle"] = walk;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            overrideController["idle"] = null;
         }
     }
 
