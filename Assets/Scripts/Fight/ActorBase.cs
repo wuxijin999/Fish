@@ -6,18 +6,15 @@ public class ActorBase
 {
 
     int m_InstanceId = 0;
-    public int instanceId
-    {
+    public int instanceId {
         get { return m_InstanceId; }
         set { m_InstanceId = value; }
     }
 
     bool m_Enable = false;
-    public bool enable
-    {
+    public bool enable {
         get { return m_Enable; }
-        set
-        {
+        set {
             ActorEngine.Instance.onFixedUpdateEvent -= OnFixedUpdate;
             ActorEngine.Instance.onUpdateEvent1 -= OnUpdate1;
             ActorEngine.Instance.onUpdateEvent2 -= OnUpdate2;
@@ -38,8 +35,7 @@ public class ActorBase
     }
 
     ActorBrainState m_BrainState = ActorBrainState.Sane;
-    public ActorBrainState brainState
-    {
+    public ActorBrainState brainState {
         get { return m_BrainState; }
         set { m_BrainState = value; }
     }
@@ -60,7 +56,13 @@ public class ActorBase
         pathFinder = new PathFinder(this);
     }
 
-    public virtual void ProcessMoveEvent(int rangeLeft,int rangeRight)
+    public void MoveTo(Vector3 position)
+    {
+
+    }
+
+
+    public virtual void ProcessMoveEvent(int rangeLeft, int rangeRight)
     {
 
     }
@@ -85,9 +87,6 @@ public class ActorBase
     {
     }
 
-    private void OnGetValue(System.IntPtr stmt)
-    {
-    }
 }
 
 

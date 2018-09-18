@@ -150,6 +150,7 @@
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
+    <Compile Include="Assets\Scripts\Utility\AccountLocalSave.cs" />
     <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtil.cs" />

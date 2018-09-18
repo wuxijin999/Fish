@@ -208,7 +208,7 @@ public static class LocalSave
         PlayerPrefs.SetString(key, valueGroup);
     }
 
-    public static string[] GeStringArray(string key)
+    public static string[] GetStringArray(string key)
     {
         if (!PlayerPrefs.HasKey(key))
         {
