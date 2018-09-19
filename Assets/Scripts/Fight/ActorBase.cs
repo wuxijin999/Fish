@@ -61,7 +61,6 @@ public class ActorBase
 
     }
 
-
     public virtual void ProcessMoveEvent(int rangeLeft, int rangeRight)
     {
 
@@ -73,6 +72,7 @@ public class ActorBase
 
     protected virtual void OnUpdate1()
     {
+        pathFinder.Update();
     }
 
     protected virtual void OnUpdate2()

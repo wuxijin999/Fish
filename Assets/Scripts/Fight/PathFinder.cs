@@ -16,10 +16,12 @@ public class PathFinder
 
     public PathFinder(ActorBase actor)
     {
+
+        var list = new List<int>();
         owner = actor;
     }
 
-    public bool ReCalculatePath(Vector3 startPosition, Vector3 endPosition, int mask = NavMesh.AllAreas)
+    public bool CalculatePath(Vector3 startPosition, Vector3 endPosition, int mask = NavMesh.AllAreas)
     {
         return NavMesh.CalculatePath(startPosition, endPosition, mask, m_NavMeshPath);
     }
@@ -36,9 +38,9 @@ public class PathFinder
         }
     }
 
-    public void MoveTo(Vector3 endPosition)
+    public void MoveTo(Vector3 position)
     {
-        if (ReCalculatePath(this.transform.position, endPosition, NavMesh.AllAreas))
+        if (CalculatePath(this.transform.position, position, NavMesh.AllAreas))
         {
             cornerIndex = 0;
             state = State.Move;
