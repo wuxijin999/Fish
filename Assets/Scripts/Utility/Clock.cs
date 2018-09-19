@@ -12,24 +12,24 @@ public class Clock
 
     public Clock(DateTime _endTime, System.Action _callBack)
     {
-        type = ClockType.DateTimeClock;
-        endTime1 = _endTime;
-        onAlarm = _callBack;
+        this.type = ClockType.DateTimeClock;
+        this.endTime1 = _endTime;
+        this.onAlarm = _callBack;
     }
 
     public Clock(float _endTime, System.Action _callBack)
     {
-        type = ClockType.UnityTimeClock;
-        endTime2 = _endTime;
-        onAlarm = _callBack;
+        this.type = ClockType.UnityTimeClock;
+        this.endTime2 = _endTime;
+        this.onAlarm = _callBack;
     }
 
     public void Alarm()
     {
-        if (onAlarm != null)
+        if (this.onAlarm != null)
         {
-            onAlarm();
-            onAlarm = null;
+            this.onAlarm();
+            this.onAlarm = null;
         }
     }
 

@@ -12,72 +12,72 @@ using System;
 public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] RectTransform m_Content;
-    public RectTransform content { get { return m_Content; } }
+    public RectTransform content { get { return this.m_Content; } }
 
     [SerializeField] protected BoundOffset m_BoundOffset;
     [SerializeField] protected Vector2 m_CellSize = new Vector2(100, 100);
-    public Vector2 cellSize { get { return m_CellSize; } }
+    public Vector2 cellSize { get { return this.m_CellSize; } }
 
     [SerializeField] protected Vector2 m_Spacing;
-    public Vector2 spacing { get { return m_Spacing; } }
+    public Vector2 spacing { get { return this.m_Spacing; } }
 
     [SerializeField] Align m_Align = Align.Top;
-    public Align align { get { return m_Align; } }
+    public Align align { get { return this.m_Align; } }
 
     [SerializeField] bool m_ElasticityOn = true;
-    public bool elasticityOn { get { return m_ElasticityOn; } }
+    public bool elasticityOn { get { return this.m_ElasticityOn; } }
 
     [SerializeField] private float m_Elasticity = 0.1f;
-    public float elasticity { get { return m_Elasticity; } }
+    public float elasticity { get { return this.m_Elasticity; } }
 
     [SerializeField] private float m_DecelerationRate = 0.135f;
-    public float decelerationRate { get { return m_DecelerationRate; } }
+    public float decelerationRate { get { return this.m_DecelerationRate; } }
 
     public float normalizedPosition
     {
         get
         {
-            if (content == null)
+            if (this.content == null)
             {
                 return 0f;
             }
 
-            var offset = (dataMaxOffset - dataMinOffset);
-            var axisIndex = align == Align.Left || align == Align.Right ? 0 : 1;
-            return Mathf.Clamp01(Mathf.Abs((content.anchoredPosition[axisIndex] - dataMinOffset[axisIndex]) / offset[axisIndex]));
+            var offset = (this.dataMaxOffset - this.dataMinOffset);
+            var axisIndex = this.align == Align.Left || this.align == Align.Right ? 0 : 1;
+            return Mathf.Clamp01(Mathf.Abs((this.content.anchoredPosition[axisIndex] - this.dataMinOffset[axisIndex]) / offset[axisIndex]));
         }
         set
         {
-            if (content == null)
+            if (this.content == null)
             {
                 return;
             }
 
             value = Mathf.Clamp01(value);
             var normalize = 0f;
-            var offset = (dataMaxOffset - dataMinOffset);
-            switch (align)
+            var offset = (this.dataMaxOffset - this.dataMinOffset);
+            switch (this.align)
             {
                 case Align.Top:
                 case Align.Bottom:
-                    normalize = (content.anchoredPosition.y - dataMinOffset.y) / offset.y;
+                    normalize = (this.content.anchoredPosition.y - this.dataMinOffset.y) / offset.y;
                     if (Mathf.Abs(normalize - value) > 0.0001f)
                     {
-                        targetOffset = dataMinOffset + new Vector2(0, dataMaxOffset.y * value);
-                        velocity = 0f;
-                        autoLerp = true;
-                        refAutoLerpPosition = Vector2.zero;
+                        this.targetOffset = this.dataMinOffset + new Vector2(0, this.dataMaxOffset.y * value);
+                        this.velocity = 0f;
+                        this.autoLerp = true;
+                        this.refAutoLerpPosition = Vector2.zero;
                     }
                     break;
                 case Align.Left:
                 case Align.Right:
-                    normalize = (content.anchoredPosition.x - dataMinOffset.x) / offset.x;
+                    normalize = (this.content.anchoredPosition.x - this.dataMinOffset.x) / offset.x;
                     if (Mathf.Abs(normalize - value) > 0.0001f)
                     {
-                        targetOffset = dataMinOffset + new Vector2(dataMaxOffset.x * value, 0);
-                        velocity = 0f;
-                        autoLerp = true;
-                        refAutoLerpPosition = Vector2.zero;
+                        this.targetOffset = this.dataMinOffset + new Vector2(this.dataMaxOffset.x * value, 0);
+                        this.velocity = 0f;
+                        this.autoLerp = true;
+                        this.refAutoLerpPosition = Vector2.zero;
                     }
                     break;
             }
@@ -103,14 +103,14 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
     protected float velocity = 0f;
     protected bool dragging = false;
 
-    public int dataCount { get { return datas == null ? 0 : datas.Count; } }
-    bool moveNextable { get { return hostIndex < dataCount - 1; } }
-    bool moveLastable { get { return preIndex > 0; } }
+    public int dataCount { get { return this.datas == null ? 0 : this.datas.Count; } }
+    bool moveNextable { get { return this.hostIndex < this.dataCount - 1; } }
+    bool moveLastable { get { return this.preIndex > 0; } }
     protected int preIndex { get; set; }
     protected int hostIndex { get; set; }
 
-    Vector2 maxOffset { get { return rectTransform.GetMaxReferencePosition(rectTransform); } }
-    Vector2 minOffset { get { return rectTransform.GetMinReferencePosition(rectTransform); } }
+    Vector2 maxOffset { get { return this.rectTransform.GetMaxReferencePosition(this.rectTransform); } }
+    Vector2 minOffset { get { return this.rectTransform.GetMinReferencePosition(this.rectTransform); } }
 
     public virtual void Init<T>(List<T> _datas, bool _stepByStep = false)
     {
@@ -120,16 +120,16 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
             return;
         }
 
-        datas = _datas;
+        this.datas = _datas;
 
         ReArrange();
         FillBatchData(0);
 
         if (_stepByStep)
         {
-            for (int i = 0; i < infiniteItems.Count; i++)
+            for (int i = 0; i < this.infiniteItems.Count; i++)
             {
-                var infiniteItem = infiniteItems[i];
+                var infiniteItem = this.infiniteItems[i];
                 if (infiniteItem != null)
                 {
                     infiniteItem.gameObject.SetActive(false);
@@ -139,25 +139,25 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
         this.gameObject.SetActive(true);
 
-        dataMinOffset = content.anchoredPosition;
-        var totalOffset = dataCount == 0 ? Vector2.zero : cellSize * dataCount + spacing * (dataCount - 1)
-            + new Vector2(m_BoundOffset.left + m_BoundOffset.right, m_BoundOffset.top + m_BoundOffset.bottom);
+        this.dataMinOffset = this.content.anchoredPosition;
+        var totalOffset = this.dataCount == 0 ? Vector2.zero : this.cellSize * this.dataCount + this.spacing * (this.dataCount - 1)
+            + new Vector2(this.m_BoundOffset.left + this.m_BoundOffset.right, this.m_BoundOffset.top + this.m_BoundOffset.bottom);
 
-        var longer = Mathf.Abs(totalOffset.x) > Mathf.Abs(rectTransform.rect.width);
-        var higher = Mathf.Abs(totalOffset.y) > Mathf.Abs(rectTransform.rect.height);
-        switch (align)
+        var longer = Mathf.Abs(totalOffset.x) > Mathf.Abs(this.rectTransform.rect.width);
+        var higher = Mathf.Abs(totalOffset.y) > Mathf.Abs(this.rectTransform.rect.height);
+        switch (this.align)
         {
             case Align.Left:
-                dataMaxOffset = longer ? dataMinOffset - new Vector2(totalOffset.x - rectTransform.rect.width, 0) : dataMinOffset;
+                this.dataMaxOffset = longer ? this.dataMinOffset - new Vector2(totalOffset.x - this.rectTransform.rect.width, 0) : this.dataMinOffset;
                 break;
             case Align.Right:
-                dataMaxOffset = longer ? dataMinOffset + new Vector2(totalOffset.x - rectTransform.rect.width, 0) : dataMinOffset;
+                this.dataMaxOffset = longer ? this.dataMinOffset + new Vector2(totalOffset.x - this.rectTransform.rect.width, 0) : this.dataMinOffset;
                 break;
             case Align.Top:
-                dataMaxOffset = higher ? dataMinOffset + new Vector2(0, totalOffset.y - rectTransform.rect.height) : dataMinOffset;
+                this.dataMaxOffset = higher ? this.dataMinOffset + new Vector2(0, totalOffset.y - this.rectTransform.rect.height) : this.dataMinOffset;
                 break;
             case Align.Bottom:
-                dataMaxOffset = higher ? dataMinOffset - new Vector2(0, totalOffset.y - rectTransform.rect.height) : dataMinOffset;
+                this.dataMaxOffset = higher ? this.dataMinOffset - new Vector2(0, totalOffset.y - this.rectTransform.rect.height) : this.dataMinOffset;
                 break;
         }
 
@@ -169,11 +169,11 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void Dispose()
     {
-        velocity = 0f;
+        this.velocity = 0f;
         StopAllCoroutines();
-        for (int i = 0; i < infiniteItems.Count; i++)
+        for (int i = 0; i < this.infiniteItems.Count; i++)
         {
-            var infiniteItem = infiniteItems[i];
+            var infiniteItem = this.infiniteItems[i];
             if (infiniteItem != null)
             {
                 infiniteItem.Dispose();
@@ -184,18 +184,18 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
     public void HideAll()
     {
         StopAllCoroutines();
-        for (int i = 0; i < content.childCount; i++)
+        for (int i = 0; i < this.content.childCount; i++)
         {
-            content.GetChild(i).gameObject.SetActive(false);
+            this.content.GetChild(i).gameObject.SetActive(false);
         }
     }
 
     IEnumerator Co_StepByStepAppear()
     {
-        for (int i = 0; i < infiniteItems.Count; i++)
+        for (int i = 0; i < this.infiniteItems.Count; i++)
         {
-            var infiniteItem = infiniteItems[i];
-            if (infiniteItem != null && i < datas.Count)
+            var infiniteItem = this.infiniteItems[i];
+            if (infiniteItem != null && i < this.datas.Count)
             {
                 infiniteItem.gameObject.SetActive(true);
                 yield return WaitingForConst.millisecond100;
@@ -205,137 +205,137 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     public void MoveToCenter(int _dataIndex)
     {
-        if (_dataIndex < 0 || _dataIndex >= dataCount)
+        if (_dataIndex < 0 || _dataIndex >= this.dataCount)
         {
             return;
         }
 
-        var fillSpace = (_dataIndex + 0.5f) * cellSize + _dataIndex * spacing;
-        switch (align)
+        var fillSpace = (_dataIndex + 0.5f) * this.cellSize + _dataIndex * this.spacing;
+        switch (this.align)
         {
             case Align.Left:
-                var leftOffsetX = Mathf.Clamp(m_BoundOffset.left + fillSpace[0] - rectTransform.rect.width * 0.5f, 0, Mathf.Abs(dataMaxOffset.x));
-                targetOffset = new Vector2(dataMinOffset.x - leftOffsetX, 0);
+                var leftOffsetX = Mathf.Clamp(this.m_BoundOffset.left + fillSpace[0] - this.rectTransform.rect.width * 0.5f, 0, Mathf.Abs(this.dataMaxOffset.x));
+                this.targetOffset = new Vector2(this.dataMinOffset.x - leftOffsetX, 0);
                 break;
             case Align.Right:
-                var rightOffsetX = Mathf.Clamp(m_BoundOffset.right + fillSpace[0] - rectTransform.rect.width * 0.5f, 0, Mathf.Abs(dataMaxOffset.x));
-                targetOffset = new Vector2(dataMinOffset.x + rightOffsetX, 0);
+                var rightOffsetX = Mathf.Clamp(this.m_BoundOffset.right + fillSpace[0] - this.rectTransform.rect.width * 0.5f, 0, Mathf.Abs(this.dataMaxOffset.x));
+                this.targetOffset = new Vector2(this.dataMinOffset.x + rightOffsetX, 0);
                 break;
             case Align.Top:
-                var topOffsetY = Mathf.Clamp(m_BoundOffset.top + fillSpace[1] - rectTransform.rect.height * 0.5f, 0, Mathf.Abs(dataMaxOffset.y));
-                targetOffset = new Vector2(0, dataMinOffset.y + topOffsetY);
+                var topOffsetY = Mathf.Clamp(this.m_BoundOffset.top + fillSpace[1] - this.rectTransform.rect.height * 0.5f, 0, Mathf.Abs(this.dataMaxOffset.y));
+                this.targetOffset = new Vector2(0, this.dataMinOffset.y + topOffsetY);
                 break;
             case Align.Bottom:
-                var bottomOffsetY = Mathf.Clamp(m_BoundOffset.bottom + fillSpace[1] - rectTransform.rect.height * 0.5f, 0, Mathf.Abs(dataMaxOffset.y));
-                targetOffset = new Vector2(0, dataMinOffset.y - bottomOffsetY);
+                var bottomOffsetY = Mathf.Clamp(this.m_BoundOffset.bottom + fillSpace[1] - this.rectTransform.rect.height * 0.5f, 0, Mathf.Abs(this.dataMaxOffset.y));
+                this.targetOffset = new Vector2(0, this.dataMinOffset.y - bottomOffsetY);
                 break;
         }
 
-        autoLerp = true;
+        this.autoLerp = true;
     }
 
     #region Drag Process
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (autoLerp || eventData.button != PointerEventData.InputButton.Left)
+        if (this.autoLerp || eventData.button != PointerEventData.InputButton.Left)
         {
             return;
         }
 
-        startMousePosition = Vector2.zero;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out startMousePosition);
-        prevPosition = startContentPosition = content.anchoredPosition;
-        velocity = 0f;
-        dragging = true;
+        this.startMousePosition = Vector2.zero;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(this.rectTransform, eventData.position, eventData.pressEventCamera, out this.startMousePosition);
+        this.prevPosition = this.startContentPosition = this.content.anchoredPosition;
+        this.velocity = 0f;
+        this.dragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        if (autoLerp || eventData.button != PointerEventData.InputButton.Left)
+        if (this.autoLerp || eventData.button != PointerEventData.InputButton.Left)
         {
             return;
         }
 
         var localMouse = new Vector2();
-        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out localMouse))
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(this.rectTransform, eventData.position, eventData.pressEventCamera, out localMouse))
         {
-            var pointerDelta = localMouse - startMousePosition;
-            var position = startContentPosition + pointerDelta;
-            SetContentAnchoredPosition(position, align);
+            var pointerDelta = localMouse - this.startMousePosition;
+            var position = this.startContentPosition + pointerDelta;
+            SetContentAnchoredPosition(position, this.align);
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (autoLerp || eventData.button != PointerEventData.InputButton.Left)
+        if (this.autoLerp || eventData.button != PointerEventData.InputButton.Left)
         {
             return;
         }
 
-        dragging = false;
+        this.dragging = false;
     }
     #endregion
 
     public override void OnUpdate()
     {
-        if (autoLerp && Vector2.Distance(content.anchoredPosition, targetOffset) > 0.1f)
+        if (this.autoLerp && Vector2.Distance(this.content.anchoredPosition, this.targetOffset) > 0.1f)
         {
             var deltaTime = Time.unscaledDeltaTime;
-            var newPosition = Vector2.SmoothDamp(content.anchoredPosition, targetOffset, ref refAutoLerpPosition, m_Elasticity, Mathf.Infinity, deltaTime);
-            SetContentAnchoredPosition(newPosition, align);
+            var newPosition = Vector2.SmoothDamp(this.content.anchoredPosition, this.targetOffset, ref this.refAutoLerpPosition, this.m_Elasticity, Mathf.Infinity, deltaTime);
+            SetContentAnchoredPosition(newPosition, this.align);
         }
         else
         {
-            autoLerp = false;
+            this.autoLerp = false;
         }
     }
 
     public override void OnLateUpdate()
     {
-        if (content == null)
+        if (this.content == null)
         {
             return;
         }
 
         var deltaTime = Time.unscaledDeltaTime;
-        var offset = CalculateOffset(align);
-        var axisIndex = align == Align.Left || align == Align.Right ? 0 : 1;
+        var offset = CalculateOffset(this.align);
+        var axisIndex = this.align == Align.Left || this.align == Align.Right ? 0 : 1;
 
-        if (!dragging && (velocity != 0f || Vector2.SqrMagnitude(offset - Vector2.zero) > 0.1f))
+        if (!this.dragging && (this.velocity != 0f || Vector2.SqrMagnitude(offset - Vector2.zero) > 0.1f))
         {
-            var position = content.anchoredPosition;
+            var position = this.content.anchoredPosition;
             if (Vector2.SqrMagnitude(offset - Vector2.zero) > 0.1f)
             {
-                var speed = velocity;
+                var speed = this.velocity;
                 var current = position[axisIndex];
                 var target = position[axisIndex] - offset[axisIndex];
-                position[axisIndex] = Mathf.SmoothDamp(current, target, ref speed, m_Elasticity, Mathf.Infinity, deltaTime);
+                position[axisIndex] = Mathf.SmoothDamp(current, target, ref speed, this.m_Elasticity, Mathf.Infinity, deltaTime);
 
                 if (Mathf.Abs(speed) < 1)
                 {
                     speed = 0f;
                 }
-                velocity = speed;
+                this.velocity = speed;
             }
             else
             {
-                velocity *= Mathf.Pow(m_DecelerationRate, deltaTime);
-                if (Mathf.Abs(velocity) < 50)
+                this.velocity *= Mathf.Pow(this.m_DecelerationRate, deltaTime);
+                if (Mathf.Abs(this.velocity) < 50)
                 {
-                    velocity = 0;
+                    this.velocity = 0;
                 }
-                position[axisIndex] += velocity * deltaTime;
+                position[axisIndex] += this.velocity * deltaTime;
             }
 
-            SetContentAnchoredPosition(position, align);
+            SetContentAnchoredPosition(position, this.align);
         }
 
-        if (dragging)
+        if (this.dragging)
         {
-            var newVelocity = (content.anchoredPosition[axisIndex] - prevPosition[axisIndex]) / deltaTime;
-            velocity = Mathf.Lerp(velocity, newVelocity, deltaTime * 10);
-            prevPosition = content.anchoredPosition;
+            var newVelocity = (this.content.anchoredPosition[axisIndex] - this.prevPosition[axisIndex]) / deltaTime;
+            this.velocity = Mathf.Lerp(this.velocity, newVelocity, deltaTime * 10);
+            this.prevPosition = this.content.anchoredPosition;
         }
     }
 
@@ -344,32 +344,32 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         ScrollItem lastRect = null;
         ScrollItem item = null;
 
-        tempList.Clear();
-        for (int i = 0; i < infiniteItems.Count; i++)
+        this.tempList.Clear();
+        for (int i = 0; i < this.infiniteItems.Count; i++)
         {
-            tempList.Add(infiniteItems[i]);
+            this.tempList.Add(this.infiniteItems[i]);
         }
-        if (tempList.Count <= 0)
+        if (this.tempList.Count <= 0)
         {
             return;
         }
-        lastRect = tempList[tempList.Count - 1];
-        for (int i = 0; i < tempList.Count; i++)
+        lastRect = this.tempList[this.tempList.Count - 1];
+        for (int i = 0; i < this.tempList.Count; i++)
         {
-            item = tempList[i];
-            var able = moveNextable && CanMoveNext(align, item);
+            item = this.tempList[i];
+            var able = this.moveNextable && CanMoveNext(this.align, item);
             if (able)
             {
-                infiniteItems.Remove(item);
-                infiniteItems.Add(item);
-                var offset = CalculateElementOffset(align);
+                this.infiniteItems.Remove(item);
+                this.infiniteItems.Add(item);
+                var offset = CalculateElementOffset(this.align);
                 item.rectTransform.anchoredPosition = lastRect.rectTransform.anchoredPosition + offset;
                 lastRect = item;
 
-                hostIndex++;
-                preIndex++;
+                this.hostIndex++;
+                this.preIndex++;
                 item.Dispose();
-                item.Display(datas[hostIndex]);
+                item.Display(this.datas[this.hostIndex]);
             }
             else
             {
@@ -383,28 +383,28 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         ScrollItem firstRect = null;
         ScrollItem item = null;
 
-        tempList.Clear();
-        for (int i = 0; i < infiniteItems.Count; i++)
+        this.tempList.Clear();
+        for (int i = 0; i < this.infiniteItems.Count; i++)
         {
-            tempList.Add(infiniteItems[i]);
+            this.tempList.Add(this.infiniteItems[i]);
         }
 
-        firstRect = tempList[0];
-        for (int i = tempList.Count - 1; i >= 0; i--)
+        firstRect = this.tempList[0];
+        for (int i = this.tempList.Count - 1; i >= 0; i--)
         {
-            item = tempList[i];
-            var able = moveLastable && CanMoveLast(align, item);
+            item = this.tempList[i];
+            var able = this.moveLastable && CanMoveLast(this.align, item);
             if (able)
             {
-                infiniteItems.Remove(item);
-                infiniteItems.Insert(0, item);
-                var offset = CalculateElementOffset(align);
+                this.infiniteItems.Remove(item);
+                this.infiniteItems.Insert(0, item);
+                var offset = CalculateElementOffset(this.align);
                 item.rectTransform.anchoredPosition = firstRect.rectTransform.anchoredPosition - offset;
                 firstRect = item;
-                hostIndex--;
-                preIndex--;
+                this.hostIndex--;
+                this.preIndex--;
                 item.Dispose();
-                item.Display(datas[preIndex]);
+                item.Display(this.datas[this.preIndex]);
             }
             else
             {
@@ -415,28 +415,28 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private void SetContentAnchoredPosition(Vector2 _position, Align _align)
     {
-        if (_position == content.anchoredPosition)
+        if (_position == this.content.anchoredPosition)
         {
             return;
         }
 
-        if (!elasticityOn)
+        if (!this.elasticityOn)
         {
-            _position.y = Mathf.Clamp(_position.y, dataMinOffset.y, dataMaxOffset.y);
-            _position.x = Mathf.Clamp(_position.x, dataMinOffset.x, dataMaxOffset.x);
+            _position.y = Mathf.Clamp(_position.y, this.dataMinOffset.y, this.dataMaxOffset.y);
+            _position.x = Mathf.Clamp(_position.x, this.dataMinOffset.x, this.dataMaxOffset.x);
         }
 
-        var offset = _position - content.anchoredPosition;
+        var offset = _position - this.content.anchoredPosition;
 
         switch (_align)
         {
             case Align.Left:
             case Align.Right:
-                content.anchoredPosition.SetX(_position.x);
+                this.content.anchoredPosition.SetX(_position.x);
                 break;
             case Align.Top:
             case Align.Bottom:
-                content.anchoredPosition.SetY(_position.y);
+                this.content.anchoredPosition.SetY(_position.y);
                 break;
         }
 
@@ -459,43 +459,43 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         switch (_align)
         {
             case Align.Left:
-                if (content.anchoredPosition.x > dataMinOffset.x)
+                if (this.content.anchoredPosition.x > this.dataMinOffset.x)
                 {
-                    offset = content.anchoredPosition - dataMinOffset;
+                    offset = this.content.anchoredPosition - this.dataMinOffset;
                 }
-                else if (content.anchoredPosition.x < dataMaxOffset.x)
+                else if (this.content.anchoredPosition.x < this.dataMaxOffset.x)
                 {
-                    offset = content.anchoredPosition - dataMaxOffset;
+                    offset = this.content.anchoredPosition - this.dataMaxOffset;
                 }
                 break;
             case Align.Right:
-                if (content.anchoredPosition.x < dataMinOffset.x)
+                if (this.content.anchoredPosition.x < this.dataMinOffset.x)
                 {
-                    offset = content.anchoredPosition - dataMinOffset;
+                    offset = this.content.anchoredPosition - this.dataMinOffset;
                 }
-                else if (content.anchoredPosition.x > dataMaxOffset.x)
+                else if (this.content.anchoredPosition.x > this.dataMaxOffset.x)
                 {
-                    offset = content.anchoredPosition - dataMaxOffset;
+                    offset = this.content.anchoredPosition - this.dataMaxOffset;
                 }
                 break;
             case Align.Bottom:
-                if (content.anchoredPosition.y > dataMinOffset.y)
+                if (this.content.anchoredPosition.y > this.dataMinOffset.y)
                 {
-                    offset = content.anchoredPosition - dataMinOffset;
+                    offset = this.content.anchoredPosition - this.dataMinOffset;
                 }
-                else if (content.anchoredPosition.y < dataMaxOffset.y)
+                else if (this.content.anchoredPosition.y < this.dataMaxOffset.y)
                 {
-                    offset = content.anchoredPosition - dataMaxOffset;
+                    offset = this.content.anchoredPosition - this.dataMaxOffset;
                 }
                 break;
             case Align.Top:
-                if (content.anchoredPosition.y < dataMinOffset.y)
+                if (this.content.anchoredPosition.y < this.dataMinOffset.y)
                 {
-                    offset = content.anchoredPosition - dataMinOffset;
+                    offset = this.content.anchoredPosition - this.dataMinOffset;
                 }
-                else if (content.anchoredPosition.y > dataMaxOffset.y)
+                else if (this.content.anchoredPosition.y > this.dataMaxOffset.y)
                 {
-                    offset = content.anchoredPosition - dataMaxOffset;
+                    offset = this.content.anchoredPosition - this.dataMaxOffset;
                 }
                 break;
         }
@@ -506,25 +506,25 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
     [ContextMenu("Arrange")]
     public virtual void ReArrange()
     {
-        velocity = 0f;
-        autoLerp = false;
+        this.velocity = 0f;
+        this.autoLerp = false;
         ElementsMatch();
-        Arrange(align);
+        Arrange(this.align);
     }
 
     private void FillBatchData(int _startIndex)
     {
-        int min = Mathf.Min(infiniteItems.Count, dataCount);
-        preIndex = Mathf.Clamp(_startIndex, 0, dataCount - min);
-        hostIndex = preIndex + min - 1;
+        int min = Mathf.Min(this.infiniteItems.Count, this.dataCount);
+        this.preIndex = Mathf.Clamp(_startIndex, 0, this.dataCount - min);
+        this.hostIndex = this.preIndex + min - 1;
 
-        for (int i = 0; i < infiniteItems.Count; i++)
+        for (int i = 0; i < this.infiniteItems.Count; i++)
         {
-            var item = infiniteItems[i];
-            if (i <= hostIndex - preIndex)
+            var item = this.infiniteItems[i];
+            if (i <= this.hostIndex - this.preIndex)
             {
                 item.gameObject.SetActive(true);
-                item.Display(datas[preIndex + i]);
+                item.Display(this.datas[this.preIndex + i]);
             }
             else
             {
@@ -536,60 +536,60 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private void Arrange(Align _align)
     {
-        var head = infiniteItems[0];
+        var head = this.infiniteItems[0];
 
         var offset1 = Vector2.zero;
         switch (_align)
         {
             case Align.Left:
-                offset1 = new Vector2(-content.rect.width * 0.5f + head.rectTransform.rect.width * 0.5f + m_BoundOffset.left, 0);
+                offset1 = new Vector2(-this.content.rect.width * 0.5f + head.rectTransform.rect.width * 0.5f + this.m_BoundOffset.left, 0);
                 break;
             case Align.Right:
-                offset1 = new Vector2(content.rect.width * 0.5f - head.rectTransform.rect.width * 0.5f - m_BoundOffset.right, 0);
+                offset1 = new Vector2(this.content.rect.width * 0.5f - head.rectTransform.rect.width * 0.5f - this.m_BoundOffset.right, 0);
                 break;
             case Align.Top:
-                offset1 = new Vector2(0f, content.rect.height * 0.5f - head.rectTransform.rect.height * 0.5f - m_BoundOffset.top);
+                offset1 = new Vector2(0f, this.content.rect.height * 0.5f - head.rectTransform.rect.height * 0.5f - this.m_BoundOffset.top);
                 break;
             case Align.Bottom:
-                offset1 = new Vector2(0f, -content.rect.height * 0.5f + head.rectTransform.rect.height * 0.5f + m_BoundOffset.bottom);
+                offset1 = new Vector2(0f, -this.content.rect.height * 0.5f + head.rectTransform.rect.height * 0.5f + this.m_BoundOffset.bottom);
                 break;
         }
 
-        head.rectTransform.anchoredPosition = content.anchoredPosition + offset1;
+        head.rectTransform.anchoredPosition = this.content.anchoredPosition + offset1;
 
         var offset2 = CalculateElementOffset(_align);
-        for (int i = 1; i < infiniteItems.Count; i++)
+        for (int i = 1; i < this.infiniteItems.Count; i++)
         {
-            var item = infiniteItems[i];
+            var item = this.infiniteItems[i];
             item.rectTransform.anchoredPosition = head.rectTransform.anchoredPosition + offset2 * i;
         }
     }
 
     private void ElementsMatch()
     {
-        if (content == null)
+        if (this.content == null)
         {
             DebugEx.Log("Content 不能为空！");
             return;
         }
 
-        infiniteItems.Clear();
-        for (int i = 0; i < content.childCount; i++)
+        this.infiniteItems.Clear();
+        for (int i = 0; i < this.content.childCount; i++)
         {
-            var infiniteItem = content.GetChild(i).GetComponent<ScrollItem>();
+            var infiniteItem = this.content.GetChild(i).GetComponent<ScrollItem>();
             if (infiniteItem != null)
             {
-                infiniteItems.Add(infiniteItem);
-                infiniteItem.rectTransform.sizeDelta = cellSize;
+                this.infiniteItems.Add(infiniteItem);
+                infiniteItem.rectTransform.sizeDelta = this.cellSize;
                 infiniteItem.rectTransform.anchorMax = Vector2.one * 0.5f;
                 infiniteItem.rectTransform.anchorMin = Vector2.one * 0.5f;
                 infiniteItem.rectTransform.pivot = Vector2.one * 0.5f;
             }
         }
 
-        content.anchorMax = content.anchorMin = content.pivot = Vector2.one * 0.5f;
-        content.sizeDelta = rectTransform.sizeDelta;
-        content.anchoredPosition = Vector2.zero;
+        this.content.anchorMax = this.content.anchorMin = this.content.pivot = Vector2.one * 0.5f;
+        this.content.sizeDelta = this.rectTransform.sizeDelta;
+        this.content.anchoredPosition = Vector2.zero;
     }
 
     private Vector2 CalculateElementOffset(Align _align)
@@ -597,13 +597,13 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         switch (_align)
         {
             case Align.Left:
-                return new Vector2(cellSize.x + spacing.x, 0);
+                return new Vector2(this.cellSize.x + this.spacing.x, 0);
             case Align.Right:
-                return new Vector2(-cellSize.x - spacing.x, 0);
+                return new Vector2(-this.cellSize.x - this.spacing.x, 0);
             case Align.Top:
-                return new Vector2(0, -cellSize.y - spacing.y);
+                return new Vector2(0, -this.cellSize.y - this.spacing.y);
             case Align.Bottom:
-                return new Vector2(0, cellSize.y + spacing.y);
+                return new Vector2(0, this.cellSize.y + this.spacing.y);
             default:
                 return Vector2.zero;
         }
@@ -611,19 +611,19 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private bool CanMoveNext(Align _align, ScrollItem _item)
     {
-        var itemMinPosition = _item.rectTransform.GetMinReferencePosition(rectTransform);
-        var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(rectTransform);
+        var itemMinPosition = _item.rectTransform.GetMinReferencePosition(this.rectTransform);
+        var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(this.rectTransform);
 
         switch (_align)
         {
             case Align.Left:
-                return itemMaxPosition.x < minOffset.x;
+                return itemMaxPosition.x < this.minOffset.x;
             case Align.Bottom:
-                return itemMaxPosition.y < minOffset.y;
+                return itemMaxPosition.y < this.minOffset.y;
             case Align.Right:
-                return itemMinPosition.x > maxOffset.x;
+                return itemMinPosition.x > this.maxOffset.x;
             case Align.Top:
-                return itemMinPosition.y > maxOffset.y;
+                return itemMinPosition.y > this.maxOffset.y;
             default:
                 return false;
         }
@@ -631,19 +631,19 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     private bool CanMoveLast(Align _align, ScrollItem _item)
     {
-        var itemMinPosition = _item.rectTransform.GetMinReferencePosition(rectTransform);
-        var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(rectTransform);
+        var itemMinPosition = _item.rectTransform.GetMinReferencePosition(this.rectTransform);
+        var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(this.rectTransform);
 
         switch (_align)
         {
             case Align.Left:
-                return itemMinPosition.x > maxOffset.x;
+                return itemMinPosition.x > this.maxOffset.x;
             case Align.Bottom:
-                return itemMinPosition.y > maxOffset.y;
+                return itemMinPosition.y > this.maxOffset.y;
             case Align.Right:
-                return itemMaxPosition.x < minOffset.x;
+                return itemMaxPosition.x < this.minOffset.x;
             case Align.Top:
-                return itemMaxPosition.y < minOffset.y;
+                return itemMaxPosition.y < this.minOffset.y;
             default:
                 return false;
         }

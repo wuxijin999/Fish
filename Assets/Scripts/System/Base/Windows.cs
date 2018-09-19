@@ -12,35 +12,35 @@ public class Windows : SingletonMonobehaviour<Windows>
 
     public void Open(WindowType type)
     {
-        if (!openCmds.Contains(type))
+        if (!this.openCmds.Contains(type))
         {
-            openCmds.Add(type);
+            this.openCmds.Add(type);
         }
 
-        if (closeCmds.Contains(type))
+        if (this.closeCmds.Contains(type))
         {
-            closeCmds.Remove(type);
+            this.closeCmds.Remove(type);
         }
     }
 
     public void Close(WindowType type)
     {
-        if (!closeCmds.Contains(type))
+        if (!this.closeCmds.Contains(type))
         {
-            closeCmds.Add(type);
+            this.closeCmds.Add(type);
         }
 
-        if (openCmds.Contains(type))
+        if (this.openCmds.Contains(type))
         {
-            openCmds.Remove(type);
+            this.openCmds.Remove(type);
         }
     }
 
     public bool IsOpen(WindowType type)
     {
-        if (windows.ContainsKey(type))
+        if (this.windows.ContainsKey(type))
         {
-            return windows[type].windowState == WindowState.Opened;
+            return this.windows[type].windowState == WindowState.Opened;
         }
         else
         {
@@ -50,7 +50,7 @@ public class Windows : SingletonMonobehaviour<Windows>
 
     public void CloseAll()
     {
-        foreach (var window in windows.Values)
+        foreach (var window in this.windows.Values)
         {
             if (window != null && window.windowState == WindowState.Opened)
             {
@@ -61,7 +61,7 @@ public class Windows : SingletonMonobehaviour<Windows>
 
     public void CloseOthers(WindowType type)
     {
-        foreach (var keyValue in windows)
+        foreach (var keyValue in this.windows)
         {
             if (keyValue.Key == type)
             {
@@ -77,12 +77,12 @@ public class Windows : SingletonMonobehaviour<Windows>
 
     private void LateUpdate()
     {
-        for (int i = 0; i < closeCmds.Count; i++)
+        for (int i = 0; i < this.closeCmds.Count; i++)
         {
-            var task = closeCmds[i];
-            if (windows.ContainsKey(task))
+            var task = this.closeCmds[i];
+            if (this.windows.ContainsKey(task))
             {
-                var window = windows[task];
+                var window = this.windows[task];
                 if (window != null)
                 {
                     window.Close();
@@ -90,16 +90,16 @@ public class Windows : SingletonMonobehaviour<Windows>
             }
         }
 
-        orderAdminister.ResetHightestOrder(GetHighestOrder());
+        this.orderAdminister.ResetHightestOrder(GetHighestOrder());
 
-        for (int i = 0; i < openCmds.Count; i++)
+        for (int i = 0; i < this.openCmds.Count; i++)
         {
-            var task = openCmds[i];
+            var task = this.openCmds[i];
             GetInstance(task);
-            var window = windows[task];
+            var window = this.windows[task];
             if (window != null)
             {
-                var order = orderAdminister.ApplyFor();
+                var order = this.orderAdminister.ApplyFor();
                 window.Open(order);
             }
         }
@@ -108,7 +108,7 @@ public class Windows : SingletonMonobehaviour<Windows>
     private int GetHighestOrder()
     {
         var highestOrder = 1000;
-        foreach (var window in windows.Values)
+        foreach (var window in this.windows.Values)
         {
             if (window.order > highestOrder)
             {
@@ -121,14 +121,14 @@ public class Windows : SingletonMonobehaviour<Windows>
 
     private void GetInstance(WindowType type)
     {
-        if (!windows.ContainsKey(type))
+        if (!this.windows.ContainsKey(type))
         {
             var prefab = UIAssets.LoadWindow(StringUtil.Contact(type, "Win"));
             var instance = GameObject.Instantiate(prefab);
             var window = instance.GetComponent<Window>();
             if (window != null)
             {
-                windows[type] = window;
+                this.windows[type] = window;
             }
         }
     }
@@ -144,12 +144,12 @@ public class Windows : SingletonMonobehaviour<Windows>
 
         public int ApplyFor()
         {
-            return hightestOrder = hightestOrder + 10;
+            return this.hightestOrder = this.hightestOrder + 10;
         }
 
         public void ResetHightestOrder(int order)
         {
-            hightestOrder = Mathf.Clamp(order, dynamicMin, dynamicMax);
+            this.hightestOrder = Mathf.Clamp(order, dynamicMin, dynamicMax);
         }
 
     }

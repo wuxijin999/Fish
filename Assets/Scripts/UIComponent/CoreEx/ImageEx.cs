@@ -16,12 +16,12 @@ public class ImageEx : Image
     {
         get
         {
-            return m_Gray;
+            return this.m_Gray;
         }
         set
         {
-            m_Gray = value;
-            this.material = m_Gray ? MaterialUtil.GetDefaultSpriteGrayMaterial() : MaterialUtil.GetUIDefaultGraphicMaterial();
+            this.m_Gray = value;
+            this.material = this.m_Gray ? MaterialUtil.GetDefaultSpriteGrayMaterial() : MaterialUtil.GetUIDefaultGraphicMaterial();
         }
     }
 

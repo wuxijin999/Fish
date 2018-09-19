@@ -22,11 +22,11 @@ public partial class IconConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id);
 
-			folder = tables[1];
+            this.folder = tables[1];
 
-			assetName = tables[2];
+            this.assetName = tables[2];
         }
         catch (Exception ex)
         {

@@ -6,84 +6,84 @@ using System.IO;
 public class AssetVersion
 {
     string m_RelativePath = string.Empty;
-    public string relativePath { get { return m_RelativePath; } }
+    public string relativePath { get { return this.m_RelativePath; } }
 
     string m_FileName;
-    public string fileName { get { return m_FileName; } }
+    public string fileName { get { return this.m_FileName; } }
 
     string m_Extension = string.Empty;
-    public string extension { get { return m_Extension; } }
+    public string extension { get { return this.m_Extension; } }
 
     string m_Md5 = string.Empty;
-    public string md5 { get { return m_Md5; } }
+    public string md5 { get { return this.m_Md5; } }
 
     int m_Size = 0;
-    public int size { get { return m_Size; } }       //字节     
+    public int size { get { return this.m_Size; } }       //字节     
 
     StorageLocation m_FileLocation = StorageLocation.ExternalStore;
-    public StorageLocation fileLocation { get { return m_FileLocation; } }
+    public StorageLocation fileLocation { get { return this.m_FileLocation; } }
 
     bool m_LocalValid = false;
     public bool localValid
     {
-        get { return m_LocalValid; }
-        set { m_LocalValid = value; }
+        get { return this.m_LocalValid; }
+        set { this.m_LocalValid = value; }
     }
 
     public AssetVersion(string versionString)
     {
         var strings = versionString.Split('\t');
 
-        m_RelativePath = strings[0];
-        m_Extension = strings[1];
-        int.TryParse(strings[2], out m_Size);
-        m_Md5 = strings[3];
+        this.m_RelativePath = strings[0];
+        this.m_Extension = strings[1];
+        int.TryParse(strings[2], out this.m_Size);
+        this.m_Md5 = strings[3];
 
-        var paths = m_RelativePath.Split('/');
+        var paths = this.m_RelativePath.Split('/');
 
         var lastPath = paths[paths.Length - 1];
         var index = lastPath.IndexOf('.');
         if (index != -1)
         {
-            m_FileName = lastPath.Substring(0, index);
+            this.m_FileName = lastPath.Substring(0, index);
         }
         else
         {
-            m_FileName = lastPath;
+            this.m_FileName = lastPath;
         }
     }
 
     public AssetCategory GetAssetCategory()
     {
-        if (extension == ".dll")
+        if (this.extension == ".dll")
         {
             return AssetCategory.Dll;
         }
-        else if (m_RelativePath.StartsWith("ui/"))
+        else if (this.m_RelativePath.StartsWith("ui/"))
         {
             return AssetCategory.UI;
         }
-        else if (m_RelativePath.StartsWith("audio/"))
+        else if (this.m_RelativePath.StartsWith("audio/"))
         {
             return AssetCategory.Audio;
         }
-        else if (m_RelativePath.StartsWith("mob/"))
+        else if (this.m_RelativePath.StartsWith("mob/"))
         {
             return AssetCategory.Mob;
         }
-        else if (m_RelativePath.StartsWith("maps/"))
+        else if (this.m_RelativePath.StartsWith("maps/"))
         {
             return AssetCategory.Scene;
         }
-        else if (m_RelativePath.StartsWith("effect/"))
+        else if (this.m_RelativePath.StartsWith("effect/"))
         {
             return AssetCategory.Effect;
         }
-        else if (m_RelativePath.StartsWith("config/"))
+        else if (this.m_RelativePath.StartsWith("config/"))
         {
             return AssetCategory.Config;
         }
-        else if (m_RelativePath.StartsWith("graphic/"))
+        else if (this.m_RelativePath.StartsWith("graphic/"))
         {
             return AssetCategory.Shader;
         }
@@ -95,32 +95,32 @@ public class AssetVersion
 
     public bool CheckLocalFileValid()
     {
-        if (extension == ".manifest" || extension == ".bytes" || extension == ".txt" || extension == ".dll")
+        if (this.extension == ".manifest" || this.extension == ".bytes" || this.extension == ".txt" || this.extension == ".dll")
         {
-            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, this.m_RelativePath);
             var fileInfo = new FileInfo(path);
 
-            if (!fileInfo.Exists || fileInfo.Length != size || md5 != FileExtension.GetMD5HashFromFile(path))
+            if (!fileInfo.Exists || fileInfo.Length != this.size || this.md5 != FileExtension.GetMD5HashFromFile(path))
             {
                 return false;
             }
         }
-        else if (string.IsNullOrEmpty(extension) || extension.Length == 0)
+        else if (string.IsNullOrEmpty(this.extension) || this.extension.Length == 0)
         {
-            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, this.m_RelativePath);
             var fileInfo = new FileInfo(path);
 
-            var manifestAssetVersion = AssetVersionUtility.GetAssetVersion(StringUtil.Contact(m_RelativePath, ".manifest"));
-            if (!fileInfo.Exists || fileInfo.Length != size || manifestAssetVersion == null || !manifestAssetVersion.CheckLocalFileValid())
+            var manifestAssetVersion = AssetVersionUtility.GetAssetVersion(StringUtil.Contact(this.m_RelativePath, ".manifest"));
+            if (!fileInfo.Exists || fileInfo.Length != this.size || manifestAssetVersion == null || !manifestAssetVersion.CheckLocalFileValid())
             {
                 return false;
             }
         }
         else
         {
-            var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            var path = StringUtil.Contact(AssetPath.ExternalStorePath, this.m_RelativePath);
             var fileInfo = new FileInfo(path);
-            if (!fileInfo.Exists || fileInfo.Length != size)
+            if (!fileInfo.Exists || fileInfo.Length != this.size)
             {
                 return false;
             }

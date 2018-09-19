@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ActiveAction : Action
+namespace Actor
 {
-
-    public virtual void OnAttackBegin()
+    public class ActiveAction : Action
     {
 
+        public virtual void OnAttackBegin()
+        {
+
+        }
+
+        public virtual void OnAttack(int attackId)
+        {
+
+        }
+
+        public virtual void OnAttackEnd()
+        {
+
+        }
+
     }
-
-    public virtual void OnAttack(int attackId)
-    {
-
-    }
-
-    public virtual void OnAttackEnd()
-    {
-
-    }
-
 }
+

@@ -2,40 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SMB_Move : SMB_Base
+namespace Actor
 {
-
-    protected override void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class SMB_Move : SMB_Base
     {
-        base.OnEnter(owner, animator, stateInfo, layerIndex);
-    }
 
-    protected override void OnUpdate(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnUpdate(owner, animator, stateInfo, layerIndex);
-
-        var moveState = animator.GetFloat(ActionController.Param_MoveState);
-        if (moveState < 0.25f)
+        protected override void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //停的状态
+            base.OnEnter(owner, animator, stateInfo, layerIndex);
         }
-        else if (moveState < 0.75f)
+
+        protected override void OnUpdate(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //走的状态
-            EffectUtil.Instance.Play(2, owner.transform);
+            base.OnUpdate(owner, animator, stateInfo, layerIndex);
+
+            var moveState = animator.GetFloat(ActionController.Param_MoveState);
+            if (moveState < 0.25f)
+            {
+                //停的状态
+            }
+            else if (moveState < 0.75f)
+            {
+                //走的状态
+                EffectUtil.Instance.Play(2, owner.transform);
+            }
+            else
+            {
+                //跑的状态
+                EffectUtil.Instance.Play(3, owner.transform);
+            }
         }
-        else
+
+        protected override void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //跑的状态
-            EffectUtil.Instance.Play(3, owner.transform);
+            base.OnExit(owner, animator, stateInfo, layerIndex);
+
         }
-    }
-
-    protected override void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnExit(owner, animator, stateInfo, layerIndex);
 
     }
-
 
 }
+

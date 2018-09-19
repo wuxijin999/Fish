@@ -12,8 +12,8 @@ public class CreateRoleJobSelectButton : Button
 
     bool m_Selected = false;
     public bool selected {
-        get { return m_Selected; }
-        set { m_Selected = value; }
+        get { return this.m_Selected; }
+        set { this.m_Selected = value; }
     }
 
 }

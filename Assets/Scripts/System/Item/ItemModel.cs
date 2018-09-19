@@ -9,7 +9,7 @@ public class ItemModel
     public ItemEntry GetItemByInstanceId(int guid)
     {
         ItemEntry item;
-        itemDictionary.TryGetValue(guid, out item);
+        this.itemDictionary.TryGetValue(guid, out item);
 
         return item;
     }
@@ -17,7 +17,7 @@ public class ItemModel
     public List<int> GetItemsById(int id)
     {
         var items = new List<int>();
-        foreach (var item in itemDictionary.Values)
+        foreach (var item in this.itemDictionary.Values)
         {
             if (item.id == id)
             {
@@ -31,7 +31,7 @@ public class ItemModel
     public int GetItemCount(int id)
     {
         var sum = 0;
-        foreach (var item in itemDictionary.Values)
+        foreach (var item in this.itemDictionary.Values)
         {
             if (item.id == id)
             {
@@ -49,22 +49,22 @@ public class ItemModel
         int m_InstanceId;
         public int instanceId
         {
-            get { return m_InstanceId; }
-            private set { m_InstanceId = value; }
+            get { return this.m_InstanceId; }
+            private set { this.m_InstanceId = value; }
         }
 
         int m_Id;
         public int id
         {
-            get { return m_Id; }
-            private set { m_Id = value; }
+            get { return this.m_Id; }
+            private set { this.m_Id = value; }
         }
 
         int m_Count;
         public int count
         {
-            get { return m_Count; }
-            set { m_Count = value; }
+            get { return this.m_Count; }
+            set { this.m_Count = value; }
         }
 
         public ItemEntry(int _instanceId)

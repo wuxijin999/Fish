@@ -26,61 +26,61 @@ public class TweenEditor : Editor
 
     private void OnEnable()
     {
-        m_Type = serializedObject.FindProperty("m_Type");
-        m_IsUI = serializedObject.FindProperty("m_IsUI");
-        m_IsLocal = serializedObject.FindProperty("m_IsLocal");
-        m_From = serializedObject.FindProperty("m_From");
-        m_To = serializedObject.FindProperty("m_To");
+        this.m_Type = this.serializedObject.FindProperty("m_Type");
+        this.m_IsUI = this.serializedObject.FindProperty("m_IsUI");
+        this.m_IsLocal = this.serializedObject.FindProperty("m_IsLocal");
+        this.m_From = this.serializedObject.FindProperty("m_From");
+        this.m_To = this.serializedObject.FindProperty("m_To");
 
-        m_AlphaFrom = serializedObject.FindProperty("m_AlphaFrom");
-        m_AlphaTo = serializedObject.FindProperty("m_AlphaTo");
+        this.m_AlphaFrom = this.serializedObject.FindProperty("m_AlphaFrom");
+        this.m_AlphaTo = this.serializedObject.FindProperty("m_AlphaTo");
 
-        m_Trigger = serializedObject.FindProperty("m_Trigger");
-        m_WrapMode = serializedObject.FindProperty("m_WrapMode");
-        m_Delay = serializedObject.FindProperty("m_Delay");
-        m_Duration = serializedObject.FindProperty("m_Duration");
+        this.m_Trigger = this.serializedObject.FindProperty("m_Trigger");
+        this.m_WrapMode = this.serializedObject.FindProperty("m_WrapMode");
+        this.m_Delay = this.serializedObject.FindProperty("m_Delay");
+        this.m_Duration = this.serializedObject.FindProperty("m_Duration");
 
-        m_Ease = serializedObject.FindProperty("m_Ease");
-        m_OnComplete = serializedObject.FindProperty("m_OnComplete");
+        this.m_Ease = this.serializedObject.FindProperty("m_Ease");
+        this.m_OnComplete = this.serializedObject.FindProperty("m_OnComplete");
     }
 
 
     public override void OnInspectorGUI()
     {
-        var tween = (Tween)target;
+        var tween = (Tween)this.target;
         EditorGUILayout.Space();
-        serializedObject.Update();
+        this.serializedObject.Update();
 
-        EditorGUILayout.PropertyField(m_Type, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_Type, new GUILayoutOption[0]);
 
         EditorGUI.indentLevel++;
         switch (tween.type)
         {
             case Tween.TweenType.Alpha:
-                EditorGUILayout.PropertyField(m_AlphaFrom, new GUIContent("From"), new GUILayoutOption[0]);
-                EditorGUILayout.PropertyField(m_AlphaTo, new GUIContent("To"), new GUILayoutOption[0]);
+                EditorGUILayout.PropertyField(this.m_AlphaFrom, new GUIContent("From"), new GUILayoutOption[0]);
+                EditorGUILayout.PropertyField(this.m_AlphaTo, new GUIContent("To"), new GUILayoutOption[0]);
                 break;
             case Tween.TweenType.Position:
             case Tween.TweenType.Rotation:
             case Tween.TweenType.Scale:
-                EditorGUILayout.PropertyField(m_From, new GUILayoutOption[0]);
-                EditorGUILayout.PropertyField(m_To, new GUILayoutOption[0]);
+                EditorGUILayout.PropertyField(this.m_From, new GUILayoutOption[0]);
+                EditorGUILayout.PropertyField(this.m_To, new GUILayoutOption[0]);
                 break;
         }
         EditorGUI.indentLevel--;
 
-        EditorGUILayout.PropertyField(m_IsUI, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_IsLocal, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_IsUI, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_IsLocal, new GUILayoutOption[0]);
 
-        EditorGUILayout.PropertyField(m_Trigger, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_WrapMode, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Delay, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_Duration, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_Trigger, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_WrapMode, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_Delay, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_Duration, new GUILayoutOption[0]);
 
-        EditorGUILayout.PropertyField(m_Ease, new GUILayoutOption[0]);
-        EditorGUILayout.PropertyField(m_OnComplete, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_Ease, new GUILayoutOption[0]);
+        EditorGUILayout.PropertyField(this.m_OnComplete, new GUILayoutOption[0]);
 
-        serializedObject.ApplyModifiedProperties();
+        this.serializedObject.ApplyModifiedProperties();
     }
 
 }

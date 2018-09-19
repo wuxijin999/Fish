@@ -41,48 +41,48 @@ public class ItemBehaviour : UIBase
 
     public void SetListener(UnityAction action)
     {
-        onClick = action;
+        this.onClick = action;
     }
 
     public void RemoveListener()
     {
-        onClick = null;
+        this.onClick = null;
     }
 
     private void OnEnable()
     {
-        m_Button.SetListener(OnClick);
+        this.m_Button.SetListener(this.OnClick);
     }
 
     private void DisplayItemBaseInfo()
     {
-        var config = ItemConfig.Get(id);
-        m_Icon.SetSprite(config.icon);
-        m_BackGround.SetSprite(2);
+        var config = ItemConfig.Get(this.id);
+        this.m_Icon.SetSprite(config.icon);
+        this.m_BackGround.SetSprite(2);
 
-        for (var i = 0; i < m_Stars.Length; i++)
+        for (var i = 0; i < this.m_Stars.Length; i++)
         {
-            m_Stars[i].gameObject.SetActive(i < config.starLevel);
+            this.m_Stars[i].gameObject.SetActive(i < config.starLevel);
         }
     }
 
     private void DisplayCountInfo()
     {
-        if (m_CountContainer != null)
+        if (this.m_CountContainer != null)
         {
-            m_CountContainer.gameObject.SetActive(this.count > 1);
+            this.m_CountContainer.gameObject.SetActive(this.count > 1);
             if (this.count > 1)
             {
-                m_Count.SetText(this.count);
+                this.m_Count.SetText(this.count);
             }
         }
     }
 
     private void OnClick()
     {
-        if (onClick != null)
+        if (this.onClick != null)
         {
-            onClick();
+            this.onClick();
         }
         else
         {

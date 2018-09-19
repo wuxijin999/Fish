@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Tween : MonoBehaviour
 {
     [SerializeField] TweenType m_Type = TweenType.Position;
-    public TweenType type { get { return m_Type; } }
+    public TweenType type { get { return this.m_Type; } }
 
     [SerializeField] bool m_IsUI = true;
     [SerializeField] bool m_IsLocal = true;
@@ -21,13 +21,13 @@ public class Tween : MonoBehaviour
     [SerializeField] WrapMode m_WrapMode = WrapMode.Once;
     [SerializeField] float m_Delay = 0f;
     [SerializeField] float m_Duration = 1f;
-    public float duration { get { return m_Duration; } }
+    public float duration { get { return this.m_Duration; } }
 
     [SerializeField] Ease m_Ease = Ease.Linear;
     [SerializeField] UIEvent m_OnComplete = null;
 
     CanvasGroup m_CanvasGroup;
-    CanvasGroup canvasGroup { get { return m_CanvasGroup ?? (m_CanvasGroup = this.AddMissingComponent<CanvasGroup>()); } }
+    CanvasGroup canvasGroup { get { return this.m_CanvasGroup ?? (this.m_CanvasGroup = this.AddMissingComponent<CanvasGroup>()); } }
 
     Vector3 from;
     Vector3 to;
@@ -37,45 +37,45 @@ public class Tween : MonoBehaviour
 
     private void OnEnable()
     {
-        if (m_Trigger == Trigger.Enable)
+        if (this.m_Trigger == Trigger.Enable)
         {
-            switch (m_Type)
+            switch (this.m_Type)
             {
                 case TweenType.Alpha:
-                    alphaFrom = m_AlphaFrom;
-                    alphaTo = m_AlphaTo;
+                    this.alphaFrom = this.m_AlphaFrom;
+                    this.alphaTo = this.m_AlphaTo;
                     break;
                 case TweenType.Position:
                 case TweenType.Rotation:
                 case TweenType.Scale:
-                    from = m_From;
-                    to = m_To;
+                    this.from = this.m_From;
+                    this.to = this.m_To;
                     break;
             }
 
-            Begin(m_Type);
+            Begin(this.m_Type);
         }
     }
 
     private void Start()
     {
-        if (m_Trigger == Trigger.Start)
+        if (this.m_Trigger == Trigger.Start)
         {
-            switch (m_Type)
+            switch (this.m_Type)
             {
                 case TweenType.Alpha:
-                    alphaFrom = m_AlphaFrom;
-                    alphaTo = m_AlphaTo;
+                    this.alphaFrom = this.m_AlphaFrom;
+                    this.alphaTo = this.m_AlphaTo;
                     break;
                 case TweenType.Position:
                 case TweenType.Rotation:
                 case TweenType.Scale:
-                    from = m_From;
-                    to = m_To;
+                    this.from = this.m_From;
+                    this.to = this.m_To;
                     break;
             }
 
-            Begin(m_Type);
+            Begin(this.m_Type);
         }
     }
 
@@ -86,30 +86,30 @@ public class Tween : MonoBehaviour
 
     public Tween Play(bool forward = true)
     {
-        m_OnComplete.RemoveAllListeners();
+        this.m_OnComplete.RemoveAllListeners();
 
-        switch (m_Type)
+        switch (this.m_Type)
         {
             case TweenType.Alpha:
-                alphaFrom = forward ? m_AlphaFrom : m_AlphaTo;
-                alphaTo = forward ? m_AlphaTo : m_AlphaFrom;
+                this.alphaFrom = forward ? this.m_AlphaFrom : this.m_AlphaTo;
+                this.alphaTo = forward ? this.m_AlphaTo : this.m_AlphaFrom;
                 break;
             case TweenType.Position:
             case TweenType.Rotation:
             case TweenType.Scale:
-                from = forward ? m_From : m_To;
-                to = forward ? m_To : m_From;
+                this.from = forward ? this.m_From : this.m_To;
+                this.to = forward ? this.m_To : this.m_From;
                 break;
         }
 
-        Begin(m_Type);
+        Begin(this.m_Type);
 
         return this;
     }
 
     public Tween Play(TweenType type, Vector3 from, Vector3 to, float duration)
     {
-        m_OnComplete.RemoveAllListeners();
+        this.m_OnComplete.RemoveAllListeners();
 
         switch (type)
         {
@@ -118,7 +118,7 @@ public class Tween : MonoBehaviour
             case TweenType.Scale:
                 this.from = from;
                 this.to = to;
-                m_Duration = duration;
+                this.m_Duration = duration;
                 Begin(type);
                 break;
             default:
@@ -130,14 +130,14 @@ public class Tween : MonoBehaviour
 
     public Tween Play(TweenType type, float from, float to, float duration)
     {
-        m_OnComplete.RemoveAllListeners();
+        this.m_OnComplete.RemoveAllListeners();
 
         switch (type)
         {
             case TweenType.Alpha:
-                alphaFrom = Mathf.Clamp01(from);
-                alphaTo = Mathf.Clamp01(to);
-                m_Duration = duration;
+                this.alphaFrom = Mathf.Clamp01(from);
+                this.alphaTo = Mathf.Clamp01(to);
+                this.m_Duration = duration;
                 Begin(type);
                 return this;
             default:
@@ -147,21 +147,21 @@ public class Tween : MonoBehaviour
 
     public Tween OnComplete(UnityAction onComplete)
     {
-        m_OnComplete.RemoveAllListeners();
-        m_OnComplete.AddListener(onComplete);
+        this.m_OnComplete.RemoveAllListeners();
+        this.m_OnComplete.AddListener(onComplete);
 
         return this;
     }
 
     void Begin(TweenType type)
     {
-        var delay = m_Delay;
+        var delay = this.m_Delay;
         if (delay < 0f)
         {
             delay = 0f;
         }
 
-        var duration = m_Duration;
+        var duration = this.m_Duration;
         if (duration < 0f)
         {
             duration = 0f;
@@ -170,7 +170,7 @@ public class Tween : MonoBehaviour
         var loopTimes = 0;
         var loopType = LoopType.Restart;
 
-        switch (m_WrapMode)
+        switch (this.m_WrapMode)
         {
             case WrapMode.Once:
                 loopTimes = 0;
@@ -205,58 +205,58 @@ public class Tween : MonoBehaviour
 
     private void BeginPosition(float delay, float duration, int loopTimes, LoopType loopType)
     {
-        if (m_IsLocal)
+        if (this.m_IsLocal)
         {
-            if (m_IsUI)
+            if (this.m_IsUI)
             {
                 var rectTransform = this.transform as RectTransform;
-                rectTransform.anchoredPosition = from;
-                rectTransform.DOLocalMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+                rectTransform.anchoredPosition = this.from;
+                rectTransform.DOLocalMove(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
             }
             else
             {
-                this.transform.localPosition = from;
-                this.transform.DOLocalMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+                this.transform.localPosition = this.from;
+                this.transform.DOLocalMove(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
             }
         }
         else
         {
-            this.transform.position = from;
-            this.transform.DOMove(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+            this.transform.position = this.from;
+            this.transform.DOMove(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
         }
     }
 
     private void BeginRotation(float delay, float duration, int loopTimes, LoopType loopType)
     {
-        if (m_IsLocal)
+        if (this.m_IsLocal)
         {
-            this.transform.localEulerAngles = from;
-            this.transform.DOLocalRotate(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+            this.transform.localEulerAngles = this.from;
+            this.transform.DOLocalRotate(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
         }
         else
         {
-            this.transform.eulerAngles = from;
-            this.transform.DORotate(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+            this.transform.eulerAngles = this.from;
+            this.transform.DORotate(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
         }
     }
 
     private void BeginScale(float delay, float duration, int loopTimes, LoopType loopType)
     {
-        this.transform.localScale = from;
-        this.transform.DOScale(to, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+        this.transform.localScale = this.from;
+        this.transform.DOScale(this.to, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
     }
 
     private void BeginFade(float delay, float duration, int loopTimes, LoopType loopType)
     {
-        canvasGroup.alpha = alphaFrom;
-        canvasGroup.DOFade(alphaTo, duration).SetDelay(delay).SetEase(m_Ease).OnComplete(OnComplete).SetLoops(loopTimes, loopType);
+        this.canvasGroup.alpha = this.alphaFrom;
+        this.canvasGroup.DOFade(this.alphaTo, duration).SetDelay(delay).SetEase(this.m_Ease).OnComplete(this.OnComplete).SetLoops(loopTimes, loopType);
     }
 
     private void OnComplete()
     {
-        if (m_OnComplete != null)
+        if (this.m_OnComplete != null)
         {
-            m_OnComplete.Invoke();
+            this.m_OnComplete.Invoke();
         }
     }
 

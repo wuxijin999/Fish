@@ -15,19 +15,19 @@ public class CreateRole : Presenter<CreateRole>
     BrowseJob browseJob = new BrowseJob();
 
     public int browsingJob {
-        get { return browseJob.job; }
+        get { return this.browseJob.job; }
         set {
-            if (browseJob.job != value)
+            if (this.browseJob.job != value)
             {
-                browseJob.job = value;
-                browseJobEvent.Invoke();
+                this.browseJob.job = value;
+                this.browseJobEvent.Invoke();
             }
         }
     }
 
     public override void OpenWindow()
     {
-        browseJob.Reset();
+        this.browseJob.Reset();
         Windows.Instance.Open(WindowType.CreateRole);
     }
 
@@ -57,7 +57,7 @@ public class CreateRole : Presenter<CreateRole>
 
     public int GetRandomJob()
     {
-        return browseJob.Random();
+        return this.browseJob.Random();
     }
 
     public string GetRandomName()
@@ -78,7 +78,7 @@ public class CreateRole : Presenter<CreateRole>
 
         public void Reset()
         {
-            job = 1;
+            this.job = 1;
         }
 
         public int Random()

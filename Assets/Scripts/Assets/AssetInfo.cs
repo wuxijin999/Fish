@@ -6,13 +6,13 @@ public class AssetInfo {
     public string path;
 
     public AssetInfo(string assetPath, string bundleName, string assetName) {
-        path = assetPath;
-        assetBundleName = bundleName;
-        name = assetName;
+        this.path = assetPath;
+        this.assetBundleName = bundleName;
+        this.name = assetName;
     }
 
     public AssetInfo(string bundleName, string assetName) {
-        assetBundleName = bundleName;
-        name = assetName;
+        this.assetBundleName = bundleName;
+        this.name = assetName;
     }
 }

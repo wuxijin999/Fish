@@ -22,13 +22,13 @@ public partial class EffectConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id);
 
-			assetName = tables[1];
+            this.assetName = tables[1];
 
 			var bindParentTemp = 0;
-			int.TryParse(tables[2],out bindParentTemp); 
-			bindParent=bindParentTemp!=0;
+			int.TryParse(tables[2],out bindParentTemp);
+            this.bindParent =bindParentTemp!=0;
         }
         catch (Exception ex)
         {

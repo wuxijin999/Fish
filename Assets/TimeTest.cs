@@ -16,7 +16,7 @@ public class TimeTest : MonoBehaviour
         {
             for (int i = 0; i < 100; i++)
             {
-                second.ToTimeString("dd:HH:mm:ss");
+                this.second.ToTimeString("dd:HH:mm:ss");
             }
         }
 

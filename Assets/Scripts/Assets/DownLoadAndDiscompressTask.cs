@@ -12,12 +12,12 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     {
         get
         {
-            return Mathf.Clamp01((float)RemoteFile.TotalDownloadSize / totalSize);
+            return Mathf.Clamp01((float)RemoteFile.TotalDownloadSize / this.totalSize);
         }
     }
 
     List<AssetVersion> tasks = new List<AssetVersion>();
-    public bool isDone { get { return step == Step.Completed; } }
+    public bool isDone { get { return this.step == Step.Completed; } }
     public int totalSize { get; private set; }
     public int totalCount { get; private set; }
     public int okCount { get; private set; }
@@ -30,16 +30,16 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     Step m_Step = Step.None;
     public Step step
     {
-        get { return m_Step; }
+        get { return this.m_Step; }
         set
         {
-            if (m_Step != value)
+            if (this.m_Step != value)
             {
-                m_Step = value;
+                this.m_Step = value;
 
                 if (downLoadStepChangeEvent != null)
                 {
-                    downLoadStepChangeEvent(m_Step);
+                    downLoadStepChangeEvent(this.m_Step);
                 }
             }
         }
@@ -47,19 +47,19 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
 
     public void Prepare(List<AssetVersion> downLoadTasks, bool prior, System.Action downLoadOkCallBack)
     {
-        tasks = downLoadTasks;
+        this.tasks = downLoadTasks;
         this.downLoadOkCallBack = downLoadOkCallBack;
 
-        totalCount = tasks.Count;
-        okCount = 0;
-        step = Step.DownLoadPrepared;
-        restartApp = false;
-        totalSize = 0;
+        this.totalCount = this.tasks.Count;
+        this.okCount = 0;
+        this.step = Step.DownLoadPrepared;
+        this.restartApp = false;
+        this.totalSize = 0;
 
-        for (int i = 0; i < tasks.Count; i++)
+        for (int i = 0; i < this.tasks.Count; i++)
         {
-            var task = tasks[i];
-            totalSize += task.size;
+            var task = this.tasks[i];
+            this.totalSize += task.size;
 #if UNITY_ANDROID
             if (!restartApp && task.GetAssetCategory() == AssetVersion.AssetCategory.Dll)
             {
@@ -73,7 +73,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
 
     public void StartDownLoad()
     {
-        step = Step.DownLoad;
+        this.step = Step.DownLoad;
         CoroutineUtil.Instance.Coroutine(Co_StartDownLoad());
     }
 
@@ -81,31 +81,31 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     {
         RemoteFile.Prepare();
 
-        for (int i = 0; i < tasks.Count; i++)
+        for (int i = 0; i < this.tasks.Count; i++)
         {
-            var assetVersion = tasks[i];
+            var assetVersion = this.tasks[i];
 
             var remoteURL = StringUtil.Contact(VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", assetVersion.relativePath);
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
         }
 
-        while (okCount < totalCount)
+        while (this.okCount < this.totalCount)
         {
             yield return null;
         }
 
-        step = Step.Completed;
+        this.step = Step.Completed;
 
-        if (downLoadOkCallBack != null)
+        if (this.downLoadOkCallBack != null)
         {
-            downLoadOkCallBack();
-            downLoadOkCallBack = null;
+            this.downLoadOkCallBack();
+            this.downLoadOkCallBack = null;
         }
 
-        if (restartApp)
+        if (this.restartApp)
         {
         }
     }
@@ -114,7 +114,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     {
         if (ok)
         {
-            okCount++;
+            this.okCount++;
             assetVersion.localValid = true;
         }
         else
@@ -123,7 +123,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
         }
     }
 

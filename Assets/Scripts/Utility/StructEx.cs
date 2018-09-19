@@ -18,7 +18,7 @@ public struct Int2
     {
         get
         {
-            return index == 0 ? x : index == 1 ? y : 0;
+            return index == 0 ? this.x : index == 1 ? this.y : 0;
         }
         set
         {
@@ -80,7 +80,7 @@ public struct Int2
 
     public override string ToString()
     {
-        return string.Format("({0},{1})", x, y);
+        return string.Format("({0},{1})", this.x, this.y);
     }
 
     public static bool operator ==(Int2 lhs, Int2 rhs)
@@ -200,7 +200,7 @@ public struct Int3
 
     public override string ToString()
     {
-        return string.Format("({0},{1},{2})", x, y, z);
+        return string.Format("({0},{1},{2})", this.x, this.y, this.z);
     }
 
     public static bool operator ==(Int3 lhs, Int3 rhs)

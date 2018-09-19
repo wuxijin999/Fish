@@ -17,13 +17,13 @@ public class SkillModel
     public int GetSkill(int index)
     {
         var skill = 0;
-        indexToSkills.TryGetValue(index, out skill);
+        this.indexToSkills.TryGetValue(index, out skill);
         return skill;
     }
 
     public bool TryGetNextCastTime(int skillId, out DateTime dateTime)
     {
-        return skillNextCastTimes.TryGetValue(skillId, out dateTime);
+        return this.skillNextCastTimes.TryGetValue(skillId, out dateTime);
     }
 
 

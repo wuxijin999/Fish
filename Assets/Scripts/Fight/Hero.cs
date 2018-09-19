@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hero : FightActor
+namespace Actor
 {
-
-
-
-    public Hero(Transform model) : base(model)
+    public class Hero : FightActor
     {
+        public Hero(Transform model) : base(model)
+        {
+
+        }
 
     }
-
 }
+

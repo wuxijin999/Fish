@@ -20,13 +20,13 @@ public class LoginWin : Window
 
     protected override void SetListeners()
     {
-        m_Login.SetListener(AccountLogin);
+        this.m_Login.SetListener(this.AccountLogin);
     }
 
     protected override void OnPreOpen()
     {
-        Login.Instance.accountErrorEvent += OnAccountError;
-        Login.Instance.passwordErrorEvent += OnPasswordError;
+        Login.Instance.accountErrorEvent += this.OnAccountError;
+        Login.Instance.passwordErrorEvent += this.OnPasswordError;
     }
 
     protected override void OnAfterOpen()
@@ -35,8 +35,8 @@ public class LoginWin : Window
 
     protected override void OnPreClose()
     {
-        Login.Instance.accountErrorEvent -= OnAccountError;
-        Login.Instance.passwordErrorEvent -= OnPasswordError;
+        Login.Instance.accountErrorEvent -= this.OnAccountError;
+        Login.Instance.passwordErrorEvent -= this.OnPasswordError;
     }
 
     protected override void OnAfterClose()
@@ -46,7 +46,7 @@ public class LoginWin : Window
 
     private void AccountLogin()
     {
-        Login.Instance.AccountLogin(m_Account.text, m_Password.text);
+        Login.Instance.AccountLogin(this.m_Account.text, this.m_Password.text);
     }
 
     private void OnAccountError(int error)

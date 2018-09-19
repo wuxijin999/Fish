@@ -2,84 +2,87 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SMB_Base : StateMachineBehaviour
+namespace Actor
 {
-
-    protected ActorBase actor;
-    protected int frame = 0;
-    protected int processedFrame = -1;
-
-    public sealed override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public class SMB_Base : StateMachineBehaviour
     {
-        base.OnStateEnter(animator, stateInfo, layerIndex);
+        protected ActorBase actor;
+        protected int frame = 0;
+        protected int processedFrame = -1;
 
-        frame = 0;
-        processedFrame = -1;
-        var instanceId = animator.GetInteger(ActionController.Param_ActorInstanceId);
-        if (ActorCenter.Instance.TryGet(instanceId, out actor))
+        public sealed override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            OnEnter(actor, animator, stateInfo, layerIndex);
-        }
-    }
+            base.OnStateEnter(animator, stateInfo, layerIndex);
 
-    public sealed override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnStateUpdate(animator, stateInfo, layerIndex);
-        var normalizedInt = (int)stateInfo.normalizedTime;
-        frame = (int)((stateInfo.normalizedTime - normalizedInt) * stateInfo.length * GlobalDefine.ANIMATION_FRAMERATE);
-
-        if (frame > processedFrame)
-        {
-            try
+            this.frame = 0;
+            this.processedFrame = -1;
+            var instanceId = animator.GetInteger(ActionController.Param_ActorInstanceId);
+            if (ActorCenter.Instance.TryGet(instanceId, out this.actor))
             {
-                OnProcessFrameEvent();
-            }
-            catch (System.Exception ex)
-            {
-                Debug.Log(ex);
-            }
-            finally
-            {
-                processedFrame = frame;
+                OnEnter(this.actor, animator, stateInfo, layerIndex);
             }
         }
 
-        if (actor != null)
+        public sealed override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            OnUpdate(actor, animator, stateInfo, layerIndex);
-        }
-    }
+            base.OnStateUpdate(animator, stateInfo, layerIndex);
+            var normalizedInt = (int)stateInfo.normalizedTime;
+            this.frame = (int)((stateInfo.normalizedTime - normalizedInt) * stateInfo.length /** GlobalDefine.ANIMATION_FRAMERATE*/);
 
-    public sealed override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        base.OnStateExit(animator, stateInfo, layerIndex);
-        frame = 0;
-        processedFrame = -1;
-        if (actor != null)
+            if (this.frame > this.processedFrame)
+            {
+                try
+                {
+                    OnProcessFrameEvent();
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.Log(ex);
+                }
+                finally
+                {
+                    this.processedFrame = this.frame;
+                }
+            }
+
+            if (this.actor != null)
+            {
+                OnUpdate(this.actor, animator, stateInfo, layerIndex);
+            }
+        }
+
+        public sealed override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            OnExit(actor, animator, stateInfo, layerIndex);
-            actor = null;
+            base.OnStateExit(animator, stateInfo, layerIndex);
+            this.frame = 0;
+            this.processedFrame = -1;
+            if (this.actor != null)
+            {
+                OnExit(this.actor, animator, stateInfo, layerIndex);
+                this.actor = null;
+            }
         }
+
+        protected virtual void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+
+        }
+
+        protected virtual void OnUpdate(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+
+        }
+
+        protected virtual void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+
+        }
+
+        protected virtual void OnProcessFrameEvent()
+        {
+
+        }
+
     }
-
-    protected virtual void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    protected virtual void OnUpdate(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    protected virtual void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-
-    }
-
-    protected virtual void OnProcessFrameEvent()
-    {
-
-    }
-
 }
+

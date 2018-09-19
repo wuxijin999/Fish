@@ -23,17 +23,17 @@ public partial class WindowConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id); 
 
 			var fullScreenTemp = 0;
-			int.TryParse(tables[1],out fullScreenTemp); 
-			fullScreen=fullScreenTemp!=0;
+			int.TryParse(tables[1],out fullScreenTemp);
+            this.fullScreen =fullScreenTemp!=0;
 
-			int.TryParse(tables[2],out depth); 
+			int.TryParse(tables[2],out this.depth); 
 
 			var emptyToCloseTemp = 0;
-			int.TryParse(tables[3],out emptyToCloseTemp); 
-			emptyToClose=emptyToCloseTemp!=0;
+			int.TryParse(tables[3],out emptyToCloseTemp);
+            this.emptyToClose =emptyToCloseTemp!=0;
         }
         catch (Exception ex)
         {

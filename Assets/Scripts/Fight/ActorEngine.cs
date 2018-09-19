@@ -3,55 +3,125 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ActorEngine : SingletonMonobehaviour<ActorEngine>
+namespace Actor
 {
-
-    public event System.Action onFixedUpdateEvent;
-
-    public event System.Action onUpdateEvent1;
-    public event System.Action onUpdateEvent2;
-
-    public event System.Action onLateUpdateEvent1;
-    public event System.Action onLateUpdateEvent2;
-
-    public void Launch()
+    public class ActorEngine : MonoBehaviour
     {
+        public static ActorEngine Instance { get; private set; }
+
+        [RuntimeInitializeOnLoadMethod]
+        static void Init()
+        {
+            if (FindObjectOfType<ActorEngine>() == null)
+            {
+                var gameObject = new GameObject("ActorEngine");
+                Instance = gameObject.AddComponent<ActorEngine>();
+                GameObject.DontDestroyOnLoad(gameObject);
+            }
+        }
+
+        List<ActorBase> actorBases = new List<ActorBase>();
+        public void Register(ActorBase actorBase)
+        {
+            if (!this.actorBases.Contains(actorBase))
+            {
+                this.actorBases.Add(actorBase);
+            }
+        }
+
+        public void UnRegister(ActorBase actorBase)
+        {
+            if (this.actorBases.Contains(actorBase))
+            {
+                this.actorBases.Remove(actorBase);
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            foreach (var item in this.actorBases)
+            {
+                try
+                {
+                    if (item != null && item.enable)
+                    {
+                        item.OnFixedUpdate();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            }
+        }
+
+        private void Update()
+        {
+            foreach (var item in this.actorBases)
+            {
+                try
+                {
+                    if (item != null && item.enable)
+                    {
+                        item.OnUpdate1();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            }
+
+            foreach (var item in this.actorBases)
+            {
+                try
+                {
+                    if (item != null && item.enable)
+                    {
+                        item.OnUpdate2();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            }
+        }
+
+        private void LateUpdate()
+        {
+            foreach (var item in this.actorBases)
+            {
+                try
+                {
+                    if (item != null && item.enable)
+                    {
+                        item.OnLateUpdate1();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            }
+
+            foreach (var item in this.actorBases)
+            {
+                try
+                {
+                    if (item != null && item.enable)
+                    {
+                        item.OnLateUpdate2();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogException(ex);
+                }
+            }
+        }
+
 
     }
-
-    private void FixedUpdate()
-    {
-        if (onFixedUpdateEvent != null)
-        {
-            onFixedUpdateEvent();
-        }
-    }
-
-    private void Update()
-    {
-        if (onUpdateEvent1 != null)
-        {
-            onUpdateEvent1();
-        }
-
-        if (onUpdateEvent2 != null)
-        {
-            onUpdateEvent2();
-        }
-    }
-
-    private void LateUpdate()
-    {
-        if (onLateUpdateEvent1 != null)
-        {
-            onLateUpdateEvent1();
-        }
-
-        if (onLateUpdateEvent2 != null)
-        {
-            onLateUpdateEvent2();
-        }
-    }
-
-
 }
+

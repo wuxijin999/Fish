@@ -27,21 +27,21 @@ public partial class ItemConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id); 
 
-			int.TryParse(tables[1],out type); 
+			int.TryParse(tables[1],out this.type); 
 
-			int.TryParse(tables[2],out level); 
+			int.TryParse(tables[2],out this.level);
 
-			name = tables[3];
+            this.name = tables[3];
 
-			int.TryParse(tables[4],out icon); 
+			int.TryParse(tables[4],out this.icon); 
 
-			int.TryParse(tables[5],out quality); 
+			int.TryParse(tables[5],out this.quality); 
 
-			int.TryParse(tables[6],out starLevel); 
+			int.TryParse(tables[6],out this.starLevel); 
 
-			int.TryParse(tables[7],out price); 
+			int.TryParse(tables[7],out this.price); 
         }
         catch (Exception ex)
         {

@@ -11,7 +11,7 @@ public class Window : UIBase
 {
     [Header("Base")]
     [SerializeField] int m_Id;
-    public int id { get { return m_Id; } }
+    public int id { get { return this.m_Id; } }
     [SerializeField] Tween m_Tween;
     [SerializeField] Button m_Close;
     [SerializeField] protected RectTransform m_BackGround;
@@ -26,28 +26,28 @@ public class Window : UIBase
     bool m_Interactable = false;
     public bool interactable
     {
-        get { return m_Interactable; }
+        get { return this.m_Interactable; }
         set
         {
-            m_Interactable = value;
-            m_Raycaster.enabled = m_Interactable;
+            this.m_Interactable = value;
+            this.m_Raycaster.enabled = this.m_Interactable;
         }
     }
 
     ButtonEx emptyCloseButton;
     bool initialized = false;
-    WindowConfig config { get { return WindowConfig.Get(m_Id); } }
+    WindowConfig config { get { return WindowConfig.Get(this.m_Id); } }
 
     internal Window Open(int _order)
     {
-        order = _order;
+        this.order = _order;
         try
         {
-            if (!initialized)
+            if (!this.initialized)
             {
-                m_Canvas = this.GetComponent<Canvas>();
-                m_Raycaster = this.GetComponent<GraphicRaycaster>();
-                if (config.emptyToClose && emptyCloseButton == null)
+                this.m_Canvas = this.GetComponent<Canvas>();
+                this.m_Raycaster = this.GetComponent<GraphicRaycaster>();
+                if (this.config.emptyToClose && this.emptyCloseButton == null)
                 {
                     AddEmptyCloseResponser();
                 }
@@ -55,11 +55,11 @@ public class Window : UIBase
                 BindController();
                 SetListeners();
 
-                if (m_Close != null)
+                if (this.m_Close != null)
                 {
-                    m_Close.SetListener(() => { Close(); });
+                    this.m_Close.SetListener(() => { Close(); });
                 }
-                initialized = true;
+                this.initialized = true;
             }
         }
         catch (System.Exception ex)
@@ -67,7 +67,7 @@ public class Window : UIBase
             Debug.Log(ex.StackTrace);
         }
 
-        m_Canvas.sortingOrder = order;
+        this.m_Canvas.sortingOrder = this.order;
 
         try
         {
@@ -79,8 +79,8 @@ public class Window : UIBase
         }
         finally
         {
-            rectTransform.MatchWhith(UIRoot.windowRoot);
-            windowState = WindowState.Opened;
+            this.rectTransform.MatchWhith(UIRoot.windowRoot);
+            this.windowState = WindowState.Opened;
             ActiveWindow();
         }
 
@@ -100,7 +100,7 @@ public class Window : UIBase
 
         try
         {
-            interactable = false;
+            this.interactable = false;
         }
         catch (System.Exception ex)
         {
@@ -109,7 +109,7 @@ public class Window : UIBase
         finally
         {
             this.gameObject.SetActive(false);
-            windowState = WindowState.Closed;
+            this.windowState = WindowState.Closed;
         }
 
         try
@@ -126,7 +126,7 @@ public class Window : UIBase
 
     public void SetWidgetActive<T>(bool value) where T : Widget
     {
-        var widget = widgets.Find((x) => { return x != null && x is T; });
+        var widget = this.widgets.Find((x) => { return x != null && x is T; });
 
         if (value)
         {
@@ -137,7 +137,7 @@ public class Window : UIBase
             else
             {
                 var name = typeof(T).Name;
-                UIAssets.LoadWindowAsync(name, OnLoadWidget);
+                UIAssets.LoadWindowAsync(name, this.OnLoadWidget);
             }
         }
         else
@@ -159,7 +159,7 @@ public class Window : UIBase
 
     private void ActiveWindow()
     {
-        if (windowState == WindowState.Closed)
+        if (this.windowState == WindowState.Closed)
         {
             return;
         }
@@ -182,9 +182,9 @@ public class Window : UIBase
 
         try
         {
-            if (m_Tween != null)
+            if (this.m_Tween != null)
             {
-                m_Tween.Play(true).OnComplete(OnAfterOpen);
+                this.m_Tween.Play(true).OnComplete(this.OnAfterOpen);
             }
             else
             {
@@ -203,8 +203,8 @@ public class Window : UIBase
         var emptyClose = UIUtil.CreateElement("InvisibleButton", "EmptyClose");
         var rectTransform = emptyClose.transform as RectTransform;
         rectTransform.MatchWhith(this.transform as RectTransform).SetAsFirstSibling();
-        emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
-        emptyCloseButton.SetListener(() => { Close(); });
+        this.emptyCloseButton = emptyClose.GetComponent<ButtonEx>();
+        this.emptyCloseButton.SetListener(() => { Close(); });
     }
 
     private void OnLoadWidget(bool ok, UnityEngine.Object @object)
@@ -213,16 +213,16 @@ public class Window : UIBase
         {
             var prefab = @object as GameObject;
             var name = prefab.name;
-            var exist = widgets.Exists((x) => { return x != null && x.name == name; });
+            var exist = this.widgets.Exists((x) => { return x != null && x.name == name; });
 
             if (!exist)
             {
                 var instance = GameObject.Instantiate(prefab);
                 var widget = instance.GetComponent<Widget>();
-                widgets.Add(widget);
+                this.widgets.Add(widget);
                 instance.name = name;
                 UIAssets.UnLoadWindowAsset(name);
-                widget.rectTransform.MatchWhith(m_Content);
+                widget.rectTransform.MatchWhith(this.m_Content);
                 widget.SetActive(true);
             }
         }
@@ -235,14 +235,14 @@ public class Window : UIBase
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (m_BackGround == null)
+        if (this.m_BackGround == null)
         {
-            m_BackGround = this.transform.GetComponent<RectTransform>("BackGround");
+            this.m_BackGround = this.transform.GetComponent<RectTransform>("BackGround");
         }
 
-        if (m_Content == null)
+        if (this.m_Content == null)
         {
-            m_Content = this.transform.GetComponent<RectTransform>("Content");
+            this.m_Content = this.transform.GetComponent<RectTransform>("Content");
         }
     }
 #endif

@@ -4,7 +4,7 @@
 public class UIBase : MonoBehaviour
 {
     RectTransform m_RecTransform;
-    public RectTransform rectTransform { get { return m_RecTransform ?? (m_RecTransform = this.transform as RectTransform); } }
+    public RectTransform rectTransform { get { return this.m_RecTransform ?? (this.m_RecTransform = this.transform as RectTransform); } }
 
     protected virtual void Awake()
     {

@@ -16,29 +16,29 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        m_PointerState = PointerState.Down;
+        this.m_PointerState = PointerState.Down;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (m_PointerState == PointerState.Down)
+        if (this.m_PointerState == PointerState.Down)
         {
             CastSkill();
         }
 
-        m_PointerState = PointerState.Up;
+        this.m_PointerState = PointerState.Up;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        m_PointerState = PointerState.Exit;
+        this.m_PointerState = PointerState.Exit;
     }
 
     public override void OnLateUpdate()
     {
         base.OnLateUpdate();
 
-        if (SkillCast.Instance.IsCountDown(m_Index))
+        if (SkillCast.Instance.IsCountDown(this.m_Index))
         {
 
 
@@ -47,7 +47,7 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
     private void CastSkill()
     {
-        SkillCast.Instance.CastSkill(m_Index);
+        SkillCast.Instance.CastSkill(this.m_Index);
     }
 
     public enum PointerState

@@ -24,7 +24,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         yield return StartCoroutine(Co_LoadMainfestFile("graphic"));
         yield return StartCoroutine(Co_LoadMainfestFile("ui"));
 
-        initialized = true;
+        this.initialized = true;
     }
 
     private IEnumerator Co_LoadMainfestFile(string category)
@@ -51,7 +51,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             var _dependenices = manifest.GetAllDependencies(assetBundleName);
             var _hash = manifest.GetAssetBundleHash(assetBundleName);
             var assetBundleInfo = new AssetBundleInfo(assetBundleName, _hash, _dependenices);
-            m_AssetBundleInfoList.Add(assetBundleInfo);
+            this.m_AssetBundleInfoList.Add(assetBundleInfo);
         }
 
         assetBundle.Unload(true);
@@ -60,7 +60,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     public AssetBundleInfo GetAssetBundleInfo(string assetBundleName)
     {
-        return m_AssetBundleInfoList.Find((x) => { return x.name == assetBundleName; });
+        return this.m_AssetBundleInfoList.Find((x) => { return x.name == assetBundleName; });
     }
 
     #region 对AssetBundle资源进行异步协程加载的方法
@@ -118,7 +118,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
         {
 
-            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
+            if (this.m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
             {
                 yield return Co_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
             }
@@ -139,14 +139,14 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         {
             if (callBack != null)
             {
-                callBack(true, m_AssetDict[assetBundleName][assetName]);
+                callBack(true, this.m_AssetDict[assetBundleName][assetName]);
             }
             yield break;
         }
 
         yield return Co_LoadAssetBundle(assetBundleName);
 
-        var request = m_AssetBundleDict[assetBundleName].LoadAssetAsync(assetName);
+        var request = this.m_AssetBundleDict[assetBundleName].LoadAssetAsync(assetName);
         while (!request.isDone)
         {
             yield return null;
@@ -157,7 +157,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             CacheAsset(assetBundleName, assetName, request.asset);
             if (callBack != null)
             {
-                callBack(true, m_AssetDict[assetBundleName][assetName]);
+                callBack(true, this.m_AssetDict[assetBundleName][assetName]);
             }
         }
         else
@@ -216,22 +216,22 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         if (JudgeExistAsset(assetBundleName, assetName))
         {
 
-            @object = m_AssetDict[assetBundleName][assetName];
+            @object = this.m_AssetDict[assetBundleName][assetName];
 
         }
         else
         {
 
             Sync_LoadAssetBundle(assetBundleName);
-            if (m_AssetBundleDict.ContainsKey(assetBundleName))
+            if (this.m_AssetBundleDict.ContainsKey(assetBundleName))
             {
                 if (type != null)
                 {
-                    @object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName, type);
+                    @object = this.m_AssetBundleDict[assetBundleName].LoadAsset(assetName, type);
                 }
                 else
                 {
-                    @object = m_AssetBundleDict[assetBundleName].LoadAsset(assetName);
+                    @object = this.m_AssetBundleDict[assetBundleName].LoadAsset(assetName);
                 }
 
                 if (@object != null)
@@ -284,7 +284,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
         for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
         {
-            if (m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
+            if (this.m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
             {
                 Sync_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
             }
@@ -333,9 +333,9 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return;
         }
 
-        UnityEngine.Object assetObject = m_AssetDict[assetBundleName][assetName];
+        UnityEngine.Object assetObject = this.m_AssetDict[assetBundleName][assetName];
 
-        m_AssetDict[assetBundleName].Remove(assetName);
+        this.m_AssetDict[assetBundleName].Remove(assetName);
 
         if (assetObject is GameObject)
         {
@@ -349,7 +349,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
         if (Application.isEditor)
         {
-            Transform asset = transform.Find(assetBundleName + "/Asset:" + assetName);
+            Transform asset = this.transform.Find(assetBundleName + "/Asset:" + assetName);
             if (asset)
             {
                 Destroy(asset.gameObject);
@@ -365,7 +365,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
     public void UnloadAll()
     {
 
-        List<string> assetBundleNameList = new List<string>(m_AssetBundleDict.Keys);
+        List<string> assetBundleNameList = new List<string>(this.m_AssetBundleDict.Keys);
 
         foreach (var assetBundleName in assetBundleNameList)
         {
@@ -391,10 +391,10 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             }
         }
 
-        if (m_AssetDict.ContainsKey(assetBundleInfo.name))
+        if (this.m_AssetDict.ContainsKey(assetBundleInfo.name))
         {
 
-            List<string> _assetNames = new List<string>(m_AssetDict[assetBundleInfo.name].Keys);
+            List<string> _assetNames = new List<string>(this.m_AssetDict[assetBundleInfo.name].Keys);
 
             // 卸载对应缓存住的asset资源
             foreach (var _assetName in _assetNames)
@@ -409,19 +409,19 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         }
 
         // assetBundle包卸载
-        m_AssetBundleDict[assetBundleInfo.name].Unload(unloadAllLoadedObjects);
+        this.m_AssetBundleDict[assetBundleInfo.name].Unload(unloadAllLoadedObjects);
 
-        m_AssetDict.Remove(assetBundleInfo.name);
+        this.m_AssetDict.Remove(assetBundleInfo.name);
 
         // 卸载缓存的assetBundle资源
-        m_AssetBundleDict.Remove(assetBundleInfo.name);
+        this.m_AssetBundleDict.Remove(assetBundleInfo.name);
 
         DebugEx.LogFormat("UnloadAssetBundle(): 成功卸载assetBundle包 => {0}. ", assetBundleInfo.name);
 
         if (Application.isEditor)
         {
 
-            Transform asset = transform.Find(assetBundleInfo.name);
+            Transform asset = this.transform.Find(assetBundleInfo.name);
             Transform parent = asset.parent;
 
             if (asset)
@@ -429,7 +429,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
                 DestroyImmediate(asset.gameObject);
             }
 
-            if (parent.childCount == 0 && parent != transform)
+            if (parent.childCount == 0 && parent != this.transform)
             {
                 DestroyImmediate(parent.gameObject);
             }
@@ -451,9 +451,9 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return false;
         }
 
-        if (m_AssetDict.ContainsKey(assetBundleName) == false
-         || m_AssetDict[assetBundleName].ContainsKey(assetName) == false
-         || m_AssetDict[assetBundleName][assetName] == null)
+        if (this.m_AssetDict.ContainsKey(assetBundleName) == false
+         || this.m_AssetDict[assetBundleName].ContainsKey(assetName) == false
+         || this.m_AssetDict[assetBundleName][assetName] == null)
         {
             return false;
         }
@@ -465,12 +465,12 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
     {
         assetBundleName = assetBundleName.ToLower();
 
-        if (m_AssetBundleDict.ContainsKey(assetBundleName) == false)
+        if (this.m_AssetBundleDict.ContainsKey(assetBundleName) == false)
         {
             return false;
         }
 
-        if (m_AssetBundleDict[assetBundleName] == null)
+        if (this.m_AssetBundleDict[assetBundleName] == null)
         {
             return false;
         }
@@ -490,19 +490,19 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             (asset as GameObject).SetActive(true);
         }
 
-        if (m_AssetDict.ContainsKey(assetBundleName) == false)
+        if (this.m_AssetDict.ContainsKey(assetBundleName) == false)
         {
             Dictionary<string, UnityEngine.Object> _temp = new Dictionary<string, UnityEngine.Object>();
-            m_AssetDict.Add(assetBundleName, _temp);
+            this.m_AssetDict.Add(assetBundleName, _temp);
         }
 
-        m_AssetDict[assetBundleName][assetName] = asset;
+        this.m_AssetDict[assetBundleName][assetName] = asset;
 
         string assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
-        if (m_AssetInfoDict.ContainsKey(assembleName) == false)
+        if (this.m_AssetInfoDict.ContainsKey(assembleName) == false)
         {
             AssetInfo _assetInfo = new AssetInfo(assetBundleName, assetName);
-            m_AssetInfoDict[assembleName] = _assetInfo;
+            this.m_AssetInfoDict[assembleName] = _assetInfo;
         }
 
         DebugEx.LogFormat("CacheAsset(): 成功缓存asset => {0}. ", assetName);
@@ -517,13 +517,13 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return;
         }
 
-        if (m_AssetBundleDict.ContainsKey(assetBundleName))
+        if (this.m_AssetBundleDict.ContainsKey(assetBundleName))
         {
             DebugEx.LogErrorFormat("CacheAssetBundle(): {0}出现错误 => 将要缓存的包已经在缓存中. ", assetBundleName);
             return;
         }
 
-        m_AssetBundleDict[assetBundleName] = assetBundle;
+        this.m_AssetBundleDict[assetBundleName] = assetBundle;
         if (Application.isEditor)
         {
             string[] names = assetBundleName.Split('/');
@@ -536,14 +536,14 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
                 {
                     selfPath = selfPath + "/" + names[j];
                 }
-                if (transform.Find(selfPath))
+                if (this.transform.Find(selfPath))
                 {
                     continue;
                 }
                 GameObject _go = new GameObject(names[i]);
                 if (i == 0)
                 {
-                    _go.transform.parent = transform;
+                    _go.transform.parent = this.transform;
                 }
                 else
                 {
@@ -552,7 +552,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
                     {
                         parentPath = parentPath + "/" + names[j];
                     }
-                    Transform parent = transform.Find(parentPath);
+                    Transform parent = this.transform.Find(parentPath);
                     if (parent)
                     {
                         _go.transform.parent = parent;
@@ -561,7 +561,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             }
         }
 
-        DebugEx.LogFormat("CacheAssetBundle(): 成功缓存assetBundle包资源 => {0}. 目前有 {1} 个资源.", assetBundleName, m_AssetBundleDict.Count);
+        DebugEx.LogFormat("CacheAssetBundle(): 成功缓存assetBundle包资源 => {0}. 目前有 {1} 个资源.", assetBundleName, this.m_AssetBundleDict.Count);
     }
 
 }

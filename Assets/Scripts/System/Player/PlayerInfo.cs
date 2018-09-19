@@ -25,31 +25,31 @@ public class PlayerInfo : Presenter<PlayerInfo>
         switch (type)
         {
             case PropertyType.PlayerId:
-                return playerModel.id;
+                return this.playerModel.id;
             case PropertyType.Level:
-                return playerModel.level;
+                return this.playerModel.level;
             case PropertyType.Exp:
-                return playerModel.exp;
+                return this.playerModel.exp;
             case PropertyType.Job:
-                return playerModel.job;
+                return this.playerModel.job;
             case PropertyType.MinAttack:
-                return playerModel.minAttack;
+                return this.playerModel.minAttack;
             case PropertyType.MaxAttack:
-                return playerModel.maxAttack;
+                return this.playerModel.maxAttack;
             case PropertyType.Hp:
-                return playerModel.hp;
+                return this.playerModel.hp;
             case PropertyType.Defense:
-                return playerModel.defense;
+                return this.playerModel.defense;
             case PropertyType.Hit:
-                return playerModel.hit;
+                return this.playerModel.hit;
             case PropertyType.MoveSpeed:
-                return playerModel.moveSpeed;
+                return this.playerModel.moveSpeed;
             case PropertyType.Crit:
-                return playerModel.crit;
+                return this.playerModel.crit;
             case PropertyType.Haste:
-                return playerModel.haste;
+                return this.playerModel.haste;
             case PropertyType.Proficiency:
-                return playerModel.proficiency;
+                return this.playerModel.proficiency;
             default:
                 return 0;
         }
@@ -60,7 +60,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
         switch (type)
         {
             case PropertyType.PlayerName:
-                return playerModel.playerName;
+                return this.playerModel.playerName;
             default:
                 return string.Empty;
         }
@@ -68,29 +68,29 @@ public class PlayerInfo : Presenter<PlayerInfo>
 
     public void SetProperty(PropertyType type, int value)
     {
-        playerModel.UpdateProperty(type, value);
-        propertyEvent.Invoke(type);
+        this.playerModel.UpdateProperty(type, value);
+        this.propertyEvent.Invoke(type);
     }
 
     public void SetProperty(PropertyType type, string value)
     {
-        playerModel.UpdateProperty(type, value);
-        propertyEvent.Invoke(type);
+        this.playerModel.UpdateProperty(type, value);
+        this.propertyEvent.Invoke(type);
     }
 
     public PlayerBriefInfo GetPlayerBriefInfo()
     {
         return new PlayerBriefInfo()
         {
-            name = playerModel.playerName,
-            level = playerModel.level,
+            name = this.playerModel.playerName,
+            level = this.playerModel.level,
             icon = 0,
         };
     }
 
     public Int2 GetPlayerHp()
     {
-        return new Int2(playerModel.hp, playerModel.maxHp);
+        return new Int2(this.playerModel.hp, this.playerModel.maxHp);
     }
 
     public struct PlayerBriefInfo

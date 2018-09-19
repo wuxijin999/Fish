@@ -23,11 +23,11 @@ public abstract class Widget : UIBase
     {
         if (active)
         {
-            if (!inited)
+            if (!this.inited)
             {
                 BindControllers();
                 SetListeners();
-                inited = true;
+                this.inited = true;
             }
 
             this.gameObject.SetActive(true);

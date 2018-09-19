@@ -20,9 +20,9 @@ public class PleaseWait : Presenter<PleaseWait>
 
     public void Show(WaitType waitType, float _delay = 0f)
     {
-        if (!waitings.Contains(waitType))
+        if (!this.waitings.Contains(waitType))
         {
-            waitings.Add(waitType);
+            this.waitings.Add(waitType);
         }
 
         OpenWindow();
@@ -30,12 +30,12 @@ public class PleaseWait : Presenter<PleaseWait>
 
     public void Hide(WaitType waitType)
     {
-        if (waitings.Contains(waitType))
+        if (this.waitings.Contains(waitType))
         {
-            waitings.Remove(waitType);
+            this.waitings.Remove(waitType);
         }
 
-        if (waitings.Count == 0)
+        if (this.waitings.Count == 0)
         {
             CloseWindow();
         }

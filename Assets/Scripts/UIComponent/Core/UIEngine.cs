@@ -9,23 +9,23 @@ public class UIEngine : SingletonMonobehaviour<UIEngine>
 
     public void Register(UIBase uibase)
     {
-        if (!uibases.Contains(uibase))
+        if (!this.uibases.Contains(uibase))
         {
-            uibases.Add(uibase);
+            this.uibases.Add(uibase);
         }
     }
 
     public void UnRegister(UIBase uibase)
     {
-        if (uibases.Contains(uibase))
+        if (this.uibases.Contains(uibase))
         {
-            uibases.Remove(uibase);
+            this.uibases.Remove(uibase);
         }
     }
 
     private void Update()
     {
-        foreach (var item in uibases)
+        foreach (var item in this.uibases)
         {
             try
             {
@@ -43,7 +43,7 @@ public class UIEngine : SingletonMonobehaviour<UIEngine>
 
     private void LateUpdate()
     {
-        foreach (var item in uibases)
+        foreach (var item in this.uibases)
         {
             try
             {

@@ -13,94 +13,94 @@ public class VersionConfig : ScriptableObject
     public const string VERSION_ALTERNATIVE = "0.0.0";
 
     [SerializeField] public string m_AppId = string.Empty;
-    public string appId { get { return m_AppId; } }
+    public string appId { get { return this.m_AppId; } }
 
     [SerializeField] VersionAuthority m_VersionAuthority;
-    public VersionAuthority versionAuthority { get { return m_VersionAuthority; } }
+    public VersionAuthority versionAuthority { get { return this.m_VersionAuthority; } }
 
     [SerializeField] public string m_Version;
-    public string version { get { return VersionCompare(m_Version, VERSION_ALTERNATIVE); } }
+    public string version { get { return VersionCompare(this.m_Version, VERSION_ALTERNATIVE); } }
 
     [SerializeField] string m_ClientPackageFlag;
-    public string clientPackageFlag { get { return m_ClientPackageFlag; } }
+    public string clientPackageFlag { get { return this.m_ClientPackageFlag; } }
 
     [SerializeField] int m_Branch = 0;
-    public int branch { get { return m_Branch; } }
+    public int branch { get { return this.m_Branch; } }
 
     [SerializeField] InstalledAsset m_AssetAccess = InstalledAsset.IngoreDownLoad;
-    public InstalledAsset assetAccess { get { return m_AssetAccess; } }
+    public InstalledAsset assetAccess { get { return this.m_AssetAccess; } }
 
     [SerializeField] bool m_PartAssetPackage = false;
-    public bool partAssetPackage { get { return m_PartAssetPackage; } }
+    public bool partAssetPackage { get { return this.m_PartAssetPackage; } }
 
     [SerializeField] string m_ProductName = string.Empty;
-    public string productName { get { return m_ProductName; } }
+    public string productName { get { return this.m_ProductName; } }
 
     [SerializeField] string m_BundleIdentifier = string.Empty;
-    public string bundleIdentifier { get { return m_BundleIdentifier; } }
+    public string bundleIdentifier { get { return this.m_BundleIdentifier; } }
 
     [SerializeField] string m_KeystoreFileName;
-    public string keystoreFileName { get { return m_KeystoreFileName; } }
+    public string keystoreFileName { get { return this.m_KeystoreFileName; } }
 
     [SerializeField] string m_KeystorePassword;
-    public string keystorePassword { get { return m_KeystorePassword; } }
+    public string keystorePassword { get { return this.m_KeystorePassword; } }
 
     [SerializeField] string m_KeystoreAlias;
-    public string keystoreAlias { get { return m_KeystoreAlias; } }
+    public string keystoreAlias { get { return this.m_KeystoreAlias; } }
 
     [SerializeField] string m_KeystoreAliasPassword;
-    public string keystoreAliasPassword { get { return m_KeystoreAliasPassword; } }
+    public string keystoreAliasPassword { get { return this.m_KeystoreAliasPassword; } }
 
     [SerializeField] string m_AppleDeveloperTeamID;
-    public string appleDeveloperTeamID { get { return m_AppleDeveloperTeamID; } }
+    public string appleDeveloperTeamID { get { return this.m_AppleDeveloperTeamID; } }
 
     [SerializeField] bool m_DebugVersion = false;
     public bool debugVersion
     {
-        get { return m_DebugVersion; }
-        set { m_DebugVersion = value; }
+        get { return this.m_DebugVersion; }
+        set { this.m_DebugVersion = value; }
     }
 
     [SerializeField] bool m_IsBanShu = false;
     public bool isBanShu
     {
-        get { return m_IsBanShu; }
-        set { m_IsBanShu = value; }
+        get { return this.m_IsBanShu; }
+        set { this.m_IsBanShu = value; }
     }
 
     [SerializeField] string m_BuildTime;
     public string buildTime
     {
-        get { return m_BuildTime; }
-        set { m_BuildTime = value; }
+        get { return this.m_BuildTime; }
+        set { this.m_BuildTime = value; }
     }
 
     [SerializeField] int m_BuildIndex;
     public int buildIndex
     {
-        get { return m_BuildIndex; }
-        set { m_BuildIndex = value; }
+        get { return this.m_BuildIndex; }
+        set { this.m_BuildIndex = value; }
     }
 
     public void Read(string _data)
     {
         var dataStrings = _data.Split('\t');
-        m_AppId = dataStrings[1];
-        m_VersionAuthority = (VersionAuthority)int.Parse(dataStrings[2]);
-        m_Version = dataStrings[3];
-        m_ClientPackageFlag = dataStrings[4];
-        m_Branch = int.Parse(dataStrings[5]);
-        m_AssetAccess = (InstalledAsset)int.Parse(dataStrings[6]);
-        m_PartAssetPackage = int.Parse(dataStrings[7]) == 1;
-        m_ProductName = dataStrings[8];
-        m_BundleIdentifier = dataStrings[9];
-        m_KeystoreFileName = dataStrings[10];
-        m_KeystorePassword = dataStrings[11];
-        m_KeystoreAlias = dataStrings[12];
-        m_KeystoreAliasPassword = dataStrings[13];
-        m_AppleDeveloperTeamID = dataStrings[14];
-        m_DebugVersion = int.Parse(dataStrings[15]) == 1;
-        m_IsBanShu = int.Parse(dataStrings[16]) == 1;
+        this.m_AppId = dataStrings[1];
+        this.m_VersionAuthority = (VersionAuthority)int.Parse(dataStrings[2]);
+        this.m_Version = dataStrings[3];
+        this.m_ClientPackageFlag = dataStrings[4];
+        this.m_Branch = int.Parse(dataStrings[5]);
+        this.m_AssetAccess = (InstalledAsset)int.Parse(dataStrings[6]);
+        this.m_PartAssetPackage = int.Parse(dataStrings[7]) == 1;
+        this.m_ProductName = dataStrings[8];
+        this.m_BundleIdentifier = dataStrings[9];
+        this.m_KeystoreFileName = dataStrings[10];
+        this.m_KeystorePassword = dataStrings[11];
+        this.m_KeystoreAlias = dataStrings[12];
+        this.m_KeystoreAliasPassword = dataStrings[13];
+        this.m_AppleDeveloperTeamID = dataStrings[14];
+        this.m_DebugVersion = int.Parse(dataStrings[15]) == 1;
+        this.m_IsBanShu = int.Parse(dataStrings[16]) == 1;
     }
 
 #if UNITY_EDITOR

@@ -98,22 +98,22 @@ public class RemoteFile
     protected bool mHadError = false;
     public bool HaveError
     {
-        get { return mHadError; }
+        get { return this.mHadError; }
     }
 
     bool m_Done = false;
     public bool done
     {
-        get { return m_Done; }
+        get { return this.m_Done; }
         private set
         {
-            m_Done = value;
+            this.m_Done = value;
             if (value)
             {
-                if (onCompleted != null)
+                if (this.onCompleted != null)
                 {
-                    onCompleted(!HaveError, assetVersion);
-                    onCompleted = null;
+                    this.onCompleted(!this.HaveError, this.assetVersion);
+                    this.onCompleted = null;
                 }
             }
         }
@@ -132,9 +132,9 @@ public class RemoteFile
 
     public RemoteFile(string remoteFile, string _localFile, AssetVersion _assetVersion)
     {
-        mRemoteFile = remoteFile;
-        localFile = _localFile;
-        assetVersion = _assetVersion;
+        this.mRemoteFile = remoteFile;
+        this.localFile = _localFile;
+        this.assetVersion = _assetVersion;
     }
 
     ~RemoteFile()
@@ -154,21 +154,21 @@ public class RemoteFile
 
     public void Reset()
     {
-        mLocalFileTemp = ""; //临时文件
-        mRemoteLastModified = DateTime.MinValue;
-        mLocalLastModified = DateTime.MinValue;
-        mRemoteFileSize = 0;
-        if (fs != null)
+        this.mLocalFileTemp = ""; //临时文件
+        this.mRemoteLastModified = DateTime.MinValue;
+        this.mLocalLastModified = DateTime.MinValue;
+        this.mRemoteFileSize = 0;
+        if (this.fs != null)
         {
-            fs.Close();
-            fs = null;
+            this.fs.Close();
+            this.fs = null;
         }
-        if (inStream != null)
+        if (this.inStream != null)
         {
-            inStream.Close();
-            inStream = null;
+            this.inStream.Close();
+            this.inStream = null;
         }
-        mHadError = false;
+        this.mHadError = false;
     }
 
 
@@ -198,8 +198,8 @@ public class RemoteFile
 
     public IEnumerator DownloadRemoteFile(Action<bool, AssetVersion> _onCompleted)
     {
-        done = false;
-        onCompleted = _onCompleted;
+        this.done = false;
+        this.onCompleted = _onCompleted;
 
         while (gDownloadIsRunningCount >= MaxConnectLimit)
         {
@@ -207,22 +207,22 @@ public class RemoteFile
             yield return null;
         }
 
-        while (assetVersion.extension == ".manifest" && !AssetVersionUtility.GetAssetVersion(assetVersion.relativePath.Replace(".manifest", "")).localValid)
+        while (this.assetVersion.extension == ".manifest" && !AssetVersionUtility.GetAssetVersion(this.assetVersion.relativePath.Replace(".manifest", "")).localValid)
         {
             yield return null;
         }
 
         gDownloadIsRunningCount++;
-        mHadError = false;
-        fileWriteState = FileWriteState.None;
-        mLocalFileTemp = localFile + ".tmp";  //先下载为临时文件
+        this.mHadError = false;
+        this.fileWriteState = FileWriteState.None;
+        this.mLocalFileTemp = this.localFile + ".tmp";  //先下载为临时文件
 
-        MakeSureDirectory(mLocalFileTemp);   //确保文件写入目录存在
+        MakeSureDirectory(this.mLocalFileTemp);   //确保文件写入目录存在
 
-        mLocalLastModified = DateTime.MinValue;
+        this.mLocalLastModified = DateTime.MinValue;
         long localFileSize = 0L;
-        mLocalLastModified = File.GetLastWriteTime(mLocalFileTemp);
-        HttpWebRequest headRequest = (HttpWebRequest)System.Net.WebRequest.Create(mRemoteFile);
+        this.mLocalLastModified = File.GetLastWriteTime(this.mLocalFileTemp);
+        HttpWebRequest headRequest = (HttpWebRequest)System.Net.WebRequest.Create(this.mRemoteFile);
         if (headRequest.ServicePoint.ConnectionLimit < RemoteFile.MaxConnectLimit)
         {
             headRequest.ServicePoint.ConnectionLimit = RemoteFile.MaxConnectLimit;
@@ -243,8 +243,8 @@ public class RemoteFile
                     try
                     {
                         head_response = (x.AsyncState as HttpWebRequest).EndGetResponse(x) as HttpWebResponse;
-                        mRemoteLastModified = head_response.LastModified;
-                        mRemoteFileSize = head_response.ContentLength;
+                        this.mRemoteLastModified = head_response.LastModified;
+                        this.mRemoteFileSize = head_response.ContentLength;
                         if (head_response.Headers["Accept-Ranges"] != null)
                         {
                             string s = head_response.Headers["Accept-Ranges"];
@@ -253,13 +253,13 @@ public class RemoteFile
                                 isAcceptRange = false;
                             }
                         }
-                        System.Threading.Interlocked.Add(ref RemoteFile.TotalRemoteFileSize, mRemoteFileSize);
+                        System.Threading.Interlocked.Add(ref RemoteFile.TotalRemoteFileSize, this.mRemoteFileSize);
                         headRequestOk = true;
                     }
                     catch (Exception ex)
                     {
                         DebugEx.LogWarning("ERROR: " + ex);
-                        mHadError = true;
+                        this.mHadError = true;
                     }
                     finally
                     {
@@ -276,73 +276,73 @@ public class RemoteFile
         }
         catch (WebException webEx)
         {
-            DebugEx.LogWarning("<color=red>Request File Head ERROR: " + mRemoteFile + "</color>");
+            DebugEx.LogWarning("<color=red>Request File Head ERROR: " + this.mRemoteFile + "</color>");
             DebugEx.LogWarning("ERROR: " + webEx);
-            mHadError = true;
+            this.mHadError = true;
             gDownloadIsRunningCount--;
-            done = true;
+            this.done = true;
             yield break;
         }
         catch (System.Exception e)
         {
-            DebugEx.LogWarning("<color=red>Request File Head ERROR: " + mRemoteFile + "</color>");
+            DebugEx.LogWarning("<color=red>Request File Head ERROR: " + this.mRemoteFile + "</color>");
             DebugEx.LogWarning("ERROR: " + e);
-            mHadError = true;
+            this.mHadError = true;
             gDownloadIsRunningCount--;
-            done = true;
+            this.done = true;
             yield break;
         }
 
-        while (!headRequestOk && !mHadError)
+        while (!headRequestOk && !this.mHadError)
         {
             if (processErroring)
             {
-                mHadError = true;
+                this.mHadError = true;
                 break;
             }
             float dur = System.Environment.TickCount - tick1;
-            if (dur > timeOut)
+            if (dur > this.timeOut)
             {
-                DebugEx.LogWarningFormat("获取远程文件{0} 信息超时!", mRemoteFile);
-                mHadError = true;
+                DebugEx.LogWarningFormat("获取远程文件{0} 信息超时!", this.mRemoteFile);
+                this.mHadError = true;
                 break;
             }
             yield return null;
         }
 
-        if (mHadError)
+        if (this.mHadError)
         {
-            DebugEx.LogWarningFormat("获取远程文件{0} 信息失败!", mRemoteFile);
+            DebugEx.LogWarningFormat("获取远程文件{0} 信息失败!", this.mRemoteFile);
             headRequest.Abort();
-            done = true;
+            this.done = true;
             gDownloadIsRunningCount--;
             yield break;
         }
 
         //判断是否有已经下载部分的临时文件
-        if (File.Exists(mLocalFileTemp))
+        if (File.Exists(this.mLocalFileTemp))
         { // This will not work in web player!
             //判断是否断点续传, 依据临时文件是否存在,以及修改时间是否小于服务器文件时间
-            localFileSize = (File.Exists(mLocalFileTemp)) ? (new FileInfo(mLocalFileTemp)).Length : 0L;
-            bool outDated = IsOutdated;
-            if (localFileSize == mRemoteFileSize && !outDated)
+            localFileSize = (File.Exists(this.mLocalFileTemp)) ? (new FileInfo(this.mLocalFileTemp)).Length : 0L;
+            bool outDated = this.IsOutdated;
+            if (localFileSize == this.mRemoteFileSize && !outDated)
             {
                 gDownloadIsRunningCount--;
-                done = true;
-                mHadError = !Move(mLocalFileTemp, localFile);//把临时文件改名为正式文件
+                this.done = true;
+                this.mHadError = !Move(this.mLocalFileTemp, this.localFile);//把临时文件改名为正式文件
                 yield break; // We already have the file, early out
             }
-            else if (localFileSize > mRemoteFileSize || outDated)
+            else if (localFileSize > this.mRemoteFileSize || outDated)
             {
                 if (!outDated) DebugEx.LogWarning("Local file is larger than remote file, but not outdated. PANIC!");
                 if (outDated)
                 {
-                    DebugEx.LogWarning(mLocalFileTemp + " Local file is outdated, deleting");
+                    DebugEx.LogWarning(this.mLocalFileTemp + " Local file is outdated, deleting");
                 }
                 try
                 {
-                    if (File.Exists(mLocalFileTemp))
-                        File.Delete(mLocalFileTemp);
+                    if (File.Exists(this.mLocalFileTemp))
+                        File.Delete(this.mLocalFileTemp);
                 }
                 catch (System.Exception e)
                 {
@@ -350,7 +350,7 @@ public class RemoteFile
                     DebugEx.LogError(e);
                 }
 
-                while (File.Exists(mLocalFileTemp))
+                while (File.Exists(this.mLocalFileTemp))
                 {
                     yield return null;
                 }
@@ -359,26 +359,26 @@ public class RemoteFile
             }
         }
 
-        if (mHadError)
+        if (this.mHadError)
         {
             gDownloadIsRunningCount--;
-            done = true;
+            this.done = true;
             yield break;
         }
 
-        if (File.Exists(localFile))
+        if (File.Exists(this.localFile))
         {
             try
             {
-                if (File.Exists(localFile))
-                    File.Delete(localFile);
+                if (File.Exists(this.localFile))
+                    File.Delete(this.localFile);
             }
             catch (System.Exception e)
             {
                 DebugEx.LogWarning("<color=red>Could not delete local file</color>");
                 DebugEx.LogWarning(e);
             }
-            while (File.Exists(localFile))
+            while (File.Exists(this.localFile))
             {
                 yield return null;
             }
@@ -387,7 +387,7 @@ public class RemoteFile
         HttpWebRequest request = null;
         try
         {
-            request = (HttpWebRequest)HttpWebRequest.Create(mRemoteFile);
+            request = (HttpWebRequest)HttpWebRequest.Create(this.mRemoteFile);
             if (request.ServicePoint.ConnectionLimit < RemoteFile.MaxConnectLimit)
             {
                 request.ServicePoint.ConnectionLimit = RemoteFile.MaxConnectLimit;
@@ -397,10 +397,10 @@ public class RemoteFile
             if (localFileSize != 0L && isAcceptRange)
             {
                 //CatDebugger.Log("文件{0} 开始断点续传 from {1} to {2}", mRemoteFile, localFileSize, mRemoteFileSize);
-                request.AddRange((int)localFileSize, (int)mRemoteFileSize - 1);
+                request.AddRange((int)localFileSize, (int)this.mRemoteFileSize - 1);
             }
             request.Method = WebRequestMethods.Http.Get;
-            request.BeginGetResponse(AsynchCallback, request);
+            request.BeginGetResponse(this.AsynchCallback, request);
             tick1 = System.Environment.TickCount;
         }
         catch (System.Exception ex)
@@ -412,96 +412,96 @@ public class RemoteFile
                 request.Abort();
                 request = null;
             }
-            mHadError = true;
-            done = true;
+            this.mHadError = true;
+            this.done = true;
             gDownloadIsRunningCount--;
             yield break;
         }
 
-        while (mAsynchResponse == null && !mHadError)
+        while (this.mAsynchResponse == null && !this.mHadError)
         { // Wait for asynch to finish
             if (processErroring)
             {
-                mHadError = true;
+                this.mHadError = true;
                 break;
             }
             float dur = System.Environment.TickCount - tick1;
-            if (dur > timeOut)
+            if (dur > this.timeOut)
             {
-                DebugEx.LogWarningFormat("下载远程文件{0} 超时!", mRemoteFile);
-                mHadError = true;
+                DebugEx.LogWarningFormat("下载远程文件{0} 超时!", this.mRemoteFile);
+                this.mHadError = true;
                 break;
             }
             yield return null;
         }
 
-        if (mHadError)
+        if (this.mHadError)
         {
-            DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", localFile);
+            DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", this.localFile);
             if (request != null)
             {
                 request.Abort();
                 request = null;
             }
-            if (mAsynchResponse != null)
+            if (this.mAsynchResponse != null)
             {
-                mAsynchResponse.Close();
-                mAsynchResponse = null;
+                this.mAsynchResponse.Close();
+                this.mAsynchResponse = null;
             }
-            done = true;
+            this.done = true;
             gDownloadIsRunningCount--;
             yield break;
         }
 
         try
         {
-            inStream = mAsynchResponse.GetResponseStream();
-            fs = new FileStream(mLocalFileTemp, (localFileSize > 0) ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-            if (buff == null)
+            this.inStream = this.mAsynchResponse.GetResponseStream();
+            this.fs = new FileStream(this.mLocalFileTemp, (localFileSize > 0) ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            if (this.buff == null)
             {
-                buff = new byte[bufferSize];
+                this.buff = new byte[bufferSize];
             }
-            fileWriteState = FileWriteState.Writting;
-            inStream.BeginRead(buff, 0, bufferSize, ReadDataCallback, null);
-            read_Stream_startTickcount = System.Environment.TickCount;
+            this.fileWriteState = FileWriteState.Writting;
+            this.inStream.BeginRead(this.buff, 0, bufferSize, this.ReadDataCallback, null);
+            this.read_Stream_startTickcount = System.Environment.TickCount;
         }
         catch (Exception ex)
         {
-            DebugEx.LogWarning("<color=red>ERROR: " + mRemoteFile + "</color>");
+            DebugEx.LogWarning("<color=red>ERROR: " + this.mRemoteFile + "</color>");
             DebugEx.LogWarning(ex);
-            if (inStream != null)
+            if (this.inStream != null)
             {
-                inStream.Close();
-                inStream = null;
+                this.inStream.Close();
+                this.inStream = null;
             }
-            if (fs != null)
+            if (this.fs != null)
             {
-                fs.Close();
-                fs = null;
+                this.fs.Close();
+                this.fs = null;
             }
-            if (mAsynchResponse != null)
+            if (this.mAsynchResponse != null)
             {
-                mAsynchResponse.Close();
-                mAsynchResponse = null;
+                this.mAsynchResponse.Close();
+                this.mAsynchResponse = null;
             }
-            mHadError = true;
-            fileWriteState = FileWriteState.Error;
+            this.mHadError = true;
+            this.fileWriteState = FileWriteState.Error;
         }
 
-        while (fileWriteState == FileWriteState.Writting)
+        while (this.fileWriteState == FileWriteState.Writting)
         {
             if (processErroring)
             {
-                fileWriteState = FileWriteState.Error;
+                this.fileWriteState = FileWriteState.Error;
                 break;
             }
             if (downloadSpeedRef == 0)
             {
-                int dura = System.Environment.TickCount - read_Stream_startTickcount;
-                if (dura > timeOut)
+                int dura = System.Environment.TickCount - this.read_Stream_startTickcount;
+                if (dura > this.timeOut)
                 {
-                    fileWriteState = FileWriteState.Timeout;
-                    DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 读取超时{1}!", mRemoteFile, dura);
+                    this.fileWriteState = FileWriteState.Timeout;
+                    DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 读取超时{1}!", this.mRemoteFile, dura);
                     break;
                 }
             }
@@ -515,48 +515,48 @@ public class RemoteFile
             request = null;
         }
 
-        if (fileWriteState == FileWriteState.Error || fileWriteState == FileWriteState.Timeout)
+        if (this.fileWriteState == FileWriteState.Error || this.fileWriteState == FileWriteState.Timeout)
         {
-            DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", localFile);
-            if (mAsynchResponse != null)
+            DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", this.localFile);
+            if (this.mAsynchResponse != null)
             {
-                mAsynchResponse.Close();
-                mAsynchResponse = null;
+                this.mAsynchResponse.Close();
+                this.mAsynchResponse = null;
             }
-            mHadError = true;
-            done = true;
+            this.mHadError = true;
+            this.done = true;
             gDownloadIsRunningCount--;
             yield break;
         }
         try
         {
-            FileInfo localTempFileInfo = new FileInfo(mLocalFileTemp);
+            FileInfo localTempFileInfo = new FileInfo(this.mLocalFileTemp);
             if (localTempFileInfo.Exists)
             { //临时文件存在,需要判断大小是否一致
               //判断临时文件和远程文件size是否一致
-                if (localTempFileInfo.Length != mRemoteFileSize && mRemoteFileSize != 0L)
+                if (localTempFileInfo.Length != this.mRemoteFileSize && this.mRemoteFileSize != 0L)
                 {
-                    mHadError = true;
-                    DebugEx.LogError(string.Format(localFile + " 下载完成后, 但是大小{0} 和远程文件不一致 {1}", localTempFileInfo.Length, mRemoteFileSize));
+                    this.mHadError = true;
+                    DebugEx.LogError(string.Format(this.localFile + " 下载完成后, 但是大小{0} 和远程文件不一致 {1}", localTempFileInfo.Length, this.mRemoteFileSize));
                 }
                 else
                 {  //大小一致 
-                    mHadError = !Move(mLocalFileTemp, localFile);//把临时文件改名为正式文件
+                    this.mHadError = !Move(this.mLocalFileTemp, this.localFile);//把临时文件改名为正式文件
                 }
                 gDownloadIsRunningCount--;
-                done = true;
+                this.done = true;
             }
             else
             { //临时文件不存在
-                mHadError = true;
+                this.mHadError = true;
                 gDownloadIsRunningCount--;
-                done = true;
+                this.done = true;
             }
         }
         catch (Exception ex)
         {
             DebugEx.LogError(ex);
-            mHadError = true;
+            this.mHadError = true;
         }
     }
 
@@ -564,8 +564,8 @@ public class RemoteFile
     {
         get
         {
-            if (File.Exists(mLocalFileTemp))
-                return mRemoteLastModified > mLocalLastModified;
+            if (File.Exists(this.mLocalFileTemp))
+                return this.mRemoteLastModified > this.mLocalLastModified;
             return false;
         }
     }
@@ -586,27 +586,27 @@ public class RemoteFile
     {
         try
         {
-            int read = inStream.EndRead(ar);
+            int read = this.inStream.EndRead(ar);
             lock (lockObj)
             {
                 gTotalDownloadSize += read;
             }
             if (read > 0)
             {
-                fs.Write(buff, 0, read);
-                fs.Flush();
-                inStream.BeginRead(buff, 0, bufferSize, new AsyncCallback(ReadDataCallback), null);
-                read_Stream_startTickcount = System.Environment.TickCount;
+                this.fs.Write(this.buff, 0, read);
+                this.fs.Flush();
+                this.inStream.BeginRead(this.buff, 0, bufferSize, new AsyncCallback(ReadDataCallback), null);
+                this.read_Stream_startTickcount = System.Environment.TickCount;
             }
             else
             {
-                fs.Close();
-                fs = null;
-                inStream.Close();
-                inStream = null;
-                mAsynchResponse.Close();
-                mAsynchResponse = null;
-                fileWriteState = FileWriteState.Completed;
+                this.fs.Close();
+                this.fs = null;
+                this.inStream.Close();
+                this.inStream = null;
+                this.mAsynchResponse.Close();
+                this.mAsynchResponse = null;
+                this.fileWriteState = FileWriteState.Completed;
             }
         }
         catch (Exception ex)
@@ -616,17 +616,17 @@ public class RemoteFile
                 DebugEx.LogWarning(ex);
                 DebugEx.LogWarning("ReadDataCallback 异常信息: " + ex.Message);
             }
-            if (fs != null)
+            if (this.fs != null)
             {
-                fs.Close();
-                fs = null;
+                this.fs.Close();
+                this.fs = null;
             }
-            if (inStream != null)
+            if (this.inStream != null)
             {
-                inStream.Close();
-                inStream = null;
+                this.inStream.Close();
+                this.inStream = null;
             }
-            fileWriteState = FileWriteState.Error;
+            this.fileWriteState = FileWriteState.Error;
         }
     }
 
@@ -637,26 +637,26 @@ public class RemoteFile
             if (result == null)
             {
                 DebugEx.LogError("Asynch result is null!");
-                mHadError = true;
+                this.mHadError = true;
             }
 
             HttpWebRequest webRequest = (HttpWebRequest)result.AsyncState;
             if (webRequest == null)
             {
                 DebugEx.LogError("Could not cast to web request");
-                mHadError = true;
+                this.mHadError = true;
             }
 
-            mAsynchResponse = webRequest.EndGetResponse(result) as HttpWebResponse;
-            if (mAsynchResponse == null)
+            this.mAsynchResponse = webRequest.EndGetResponse(result) as HttpWebResponse;
+            if (this.mAsynchResponse == null)
             {
                 DebugEx.LogError("Asynch response is null!");
-                mHadError = true;
+                this.mHadError = true;
             }
         }
         catch (Exception ex)
         {
-            mHadError = true;
+            this.mHadError = true;
             DebugEx.LogWarning(ex);
             DebugEx.LogWarning("[RemoteFile] AsynchCallback 异常: " + ex.Message);
         }

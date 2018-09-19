@@ -9,7 +9,7 @@ public class EffectBehaviour : MonoBehaviour
     [SerializeField] float m_Duration;
 
     int m_EffectId = 0;
-    public int effectId { get { return m_EffectId; } set { m_EffectId = value; } }
+    public int effectId { get { return this.m_EffectId; } set { this.m_EffectId = value; } }
 
     float stopTime = 0f;
     Animator[] animators;
@@ -20,65 +20,65 @@ public class EffectBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        animators = this.GetComponentsInChildren<Animator>(true);
-        animations = this.GetComponentsInChildren<Animation>(true);
-        particleSystems = this.GetComponentsInChildren<ParticleSystem>(true);
+        this.animators = this.GetComponentsInChildren<Animator>(true);
+        this.animations = this.GetComponentsInChildren<Animation>(true);
+        this.particleSystems = this.GetComponentsInChildren<ParticleSystem>(true);
     }
 
     public void OnPlay(Transform target = null)
     {
-        if (animators != null)
+        if (this.animators != null)
         {
-            foreach (var animator in animators)
+            foreach (var animator in this.animators)
             {
                 animator.enabled = true;
             }
         }
 
-        if (animations != null)
+        if (this.animations != null)
         {
-            foreach (var animation in animations)
+            foreach (var animation in this.animations)
             {
                 animation.enabled = true;
             }
         }
 
-        stopTime = Time.time + m_Duration;
+        this.stopTime = Time.time + this.m_Duration;
         this.target = target;
     }
 
     public void OnStop()
     {
-        if (animators != null)
+        if (this.animators != null)
         {
-            foreach (var animator in animators)
+            foreach (var animator in this.animators)
             {
                 animator.enabled = false;
             }
         }
 
-        if (animations != null)
+        if (this.animations != null)
         {
-            foreach (var animation in animations)
+            foreach (var animation in this.animations)
             {
                 animation.enabled = false;
             }
         }
 
-        target = null;
+        this.target = null;
     }
 
     private void LateUpdate()
     {
-        if (target != null)
+        if (this.target != null)
         {
-            this.transform.position = target.position;
-            this.transform.rotation = target.rotation;
+            this.transform.position = this.target.position;
+            this.transform.rotation = this.target.rotation;
         }
 
-        if (!m_Loop)
+        if (!this.m_Loop)
         {
-            if (Time.time >= stopTime)
+            if (Time.time >= this.stopTime)
             {
                 EffectUtil.Instance.Stop(this);
             }

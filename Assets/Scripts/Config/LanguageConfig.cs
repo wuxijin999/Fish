@@ -21,7 +21,7 @@ public partial class LanguageConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id); 
 
 			content = tables[1];
         }

@@ -7,8 +7,8 @@ public class AssetBundleInfo {
     public string[] dependentBundles = null;
 
     public AssetBundleInfo(string bundleName, Hash128 hash128, string[] dependentBundleArray) {
-        name = bundleName;
-        hash = hash128;
-        dependentBundles = dependentBundleArray;
+        this.name = bundleName;
+        this.hash = hash128;
+        this.dependentBundles = dependentBundleArray;
     }
 }

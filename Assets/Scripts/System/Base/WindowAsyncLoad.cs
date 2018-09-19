@@ -14,14 +14,14 @@ public class WindowAsyncLoad : MonoBehaviour
     List<Task> taskQueue = new List<Task>();
     Task currentTask;
 
-    public bool busy { get { return currentTask != null; } }
+    public bool busy { get { return this.currentTask != null; } }
 
     public void PushTask(Task task)
     {
         var exist = false;
-        for (int i = taskQueue.Count - 1; i >= 0; i--)
+        for (int i = this.taskQueue.Count - 1; i >= 0; i--)
         {
-            var temp = taskQueue[i];
+            var temp = this.taskQueue[i];
             if (task.windowName == temp.windowName)
             {
                 exist = true;
@@ -31,56 +31,56 @@ public class WindowAsyncLoad : MonoBehaviour
 
         if (!exist)
         {
-            taskQueue.Add(task);
+            this.taskQueue.Add(task);
         }
     }
 
     public void StopTask(string name)
     {
-        for (int i = taskQueue.Count - 1; i >= 0; i--)
+        for (int i = this.taskQueue.Count - 1; i >= 0; i--)
         {
-            var task = taskQueue[i];
+            var task = this.taskQueue[i];
             if (task.windowName == name)
             {
-                taskQueue.Remove(task);
+                this.taskQueue.Remove(task);
                 break;
             }
         }
 
-        if (currentTask != null && currentTask.windowName == name)
+        if (this.currentTask != null && this.currentTask.windowName == name)
         {
-            currentTask.Dispose();
-            currentTask = null;
+            this.currentTask.Dispose();
+            this.currentTask = null;
             PleaseWait.Instance.Hide(PleaseWait.WaitType.WindowLoad);
         }
     }
 
     public void StopAllTasks()
     {
-        if (currentTask != null)
+        if (this.currentTask != null)
         {
-            currentTask.Dispose();
+            this.currentTask.Dispose();
         }
-        currentTask = null;
-        taskQueue.Clear();
+        this.currentTask = null;
+        this.taskQueue.Clear();
         PleaseWait.Instance.Hide(PleaseWait.WaitType.WindowLoad);
     }
 
     private void LateUpdate()
     {
-        if (currentTask == null && taskQueue.Count > 0)
+        if (this.currentTask == null && this.taskQueue.Count > 0)
         {
-            currentTask = taskQueue[0];
-            taskQueue.RemoveAt(0);
+            this.currentTask = this.taskQueue[0];
+            this.taskQueue.RemoveAt(0);
 
-            UIAssets.LoadWindowAsync(currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
+            UIAssets.LoadWindowAsync(this.currentTask.windowName, (bool ok, UnityEngine.Object _resource) =>
             {
                 try
                 {
-                    if (currentTask != null)
+                    if (this.currentTask != null)
                     {
-                        currentTask.Done(ok, _resource);
-                        currentTask = null;
+                        this.currentTask.Done(ok, _resource);
+                        this.currentTask = null;
                     }
                 }
                 catch (Exception ex)
@@ -107,24 +107,24 @@ public class WindowAsyncLoad : MonoBehaviour
 
         public Task(string _windowName, Action<bool, UnityEngine.Object> _callBack)
         {
-            windowName = _windowName;
-            callBack = _callBack;
+            this.windowName = _windowName;
+            this.callBack = _callBack;
         }
 
         public void Done(bool _ok, UnityEngine.Object _object)
         {
-            result = _ok;
-            asset = _object;
-            if (callBack != null)
+            this.result = _ok;
+            this.asset = _object;
+            if (this.callBack != null)
             {
-                callBack(result, asset);
-                callBack = null;
+                this.callBack(this.result, this.asset);
+                this.callBack = null;
             }
         }
 
         public void Dispose()
         {
-            callBack = null;
+            this.callBack = null;
         }
 
 

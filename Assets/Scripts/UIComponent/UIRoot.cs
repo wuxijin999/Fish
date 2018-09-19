@@ -26,14 +26,14 @@ public class UIRoot : MonoBehaviour
 
     private void Awake()
     {
-        if (m_UICamera != null)
+        if (this.m_UICamera != null)
         {
-            uiCamera = m_UICamera;
+            uiCamera = this.m_UICamera;
         }
 
-        if (m_WindowRoot != null)
+        if (this.m_WindowRoot != null)
         {
-            windowRoot = m_WindowRoot;
+            windowRoot = this.m_WindowRoot;
         }
     }
 

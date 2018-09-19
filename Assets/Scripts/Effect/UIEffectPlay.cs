@@ -11,22 +11,22 @@ public class UIEffectPlay : MonoBehaviour
 
     public void Play()
     {
-        if (effect != null)
+        if (this.effect != null)
         {
-            EffectUtil.Instance.Stop(effect);
+            EffectUtil.Instance.Stop(this.effect);
         }
 
-        effect = EffectUtil.Instance.Play(m_Id, this.transform);
+        this.effect = EffectUtil.Instance.Play(this.m_Id, this.transform);
     }
 
     public void Stop()
     {
-        if (effect != null)
+        if (this.effect != null)
         {
-            EffectUtil.Instance.Stop(effect);
+            EffectUtil.Instance.Stop(this.effect);
         }
 
-        effect = null;
+        this.effect = null;
     }
 
 }

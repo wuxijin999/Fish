@@ -19,13 +19,13 @@ public class CreateRoleWin : Window
 
     protected override void SetListeners()
     {
-        m_RandomName.SetListener(RandomName);
-        m_Create.SetListener(Create);
+        this.m_RandomName.SetListener(this.RandomName);
+        this.m_Create.SetListener(this.Create);
     }
 
     protected override void OnPreOpen()
     {
-        m_RoleName.text = string.Empty;
+        this.m_RoleName.text = string.Empty;
     }
 
     protected override void OnActived()
@@ -46,13 +46,13 @@ public class CreateRoleWin : Window
 
     private void RandomName()
     {
-        m_RoleName.text = CreateRole.Instance.GetRandomName();
+        this.m_RoleName.text = CreateRole.Instance.GetRandomName();
     }
 
     private void Create()
     {
         var job = CreateRole.Instance.browsingJob;
-        var name = m_RoleName.text;
+        var name = this.m_RoleName.text;
         CreateRole.Instance.Create(job, name);
     }
 

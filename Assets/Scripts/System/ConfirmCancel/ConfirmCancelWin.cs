@@ -18,20 +18,20 @@ public class ConfirmCancelWin : Window
 
     protected override void SetListeners()
     {
-        m_Confirm.AddListener(OnConfirm);
-        m_Cancel.AddListener(OnCancel);
+        this.m_Confirm.AddListener(this.OnConfirm);
+        this.m_Cancel.AddListener(this.OnCancel);
     }
 
     protected override void OnPreOpen()
     {
         if (!string.IsNullOrEmpty(ConfirmCancel.Instance.title))
         {
-            m_Title.text = ConfirmCancel.Instance.title;
+            this.m_Title.text = ConfirmCancel.Instance.title;
         }
 
         if (!string.IsNullOrEmpty(ConfirmCancel.Instance.content))
         {
-            m_Description.text = ConfirmCancel.Instance.content;
+            this.m_Description.text = ConfirmCancel.Instance.content;
         }
     }
 

@@ -19,25 +19,25 @@ public class VersionUtil : Singleton<VersionUtil>
 
     public float progress
     {
-        get { return RemoteFile.TotalDownloadSize / ((float)versionInfo.GetLatestVersion().file_size * 1024); }
+        get { return RemoteFile.TotalDownloadSize / ((float)this.versionInfo.GetLatestVersion().file_size * 1024); }
     }
 
     public string apkLocalURL = string.Empty;
     public VersionInfo versionInfo { get; private set; }
-    public bool completed { get { return step == Step.Completed; } }
+    public bool completed { get { return this.step == Step.Completed; } }
 
     Step m_Step = Step.None;
     public Step step
     {
-        get { return m_Step; }
+        get { return this.m_Step; }
         private set
         {
-            if (m_Step != value)
+            if (this.m_Step != value)
             {
-                m_Step = value;
+                this.m_Step = value;
                 if (downLoadStepChangeEvent != null)
                 {
-                    downLoadStepChangeEvent(m_Step);
+                    downLoadStepChangeEvent(this.m_Step);
                 }
             }
         }
@@ -55,44 +55,44 @@ public class VersionUtil : Singleton<VersionUtil>
         }
 
         var url = StringUtil.Contact(VERSION_URL, HttpRequest.HashTableToString(tables));
-        HttpRequest.Instance.RequestHttpGet(url, OnVersionCheckResult);
+        HttpRequest.Instance.RequestHttpGet(url, this.OnVersionCheckResult);
     }
 
     private void OnVersionCheckResult(bool ok, string result)
     {
         if (ok)
         {
-            versionInfo = JsonMapper.ToObject<VersionInfo>(result);
-            if (versionInfo.VersionCount > 0)
+            this.versionInfo = JsonMapper.ToObject<VersionInfo>(result);
+            if (this.versionInfo.VersionCount > 0)
             {
-                var version = versionInfo.GetLatestVersion();
+                var version = this.versionInfo.GetLatestVersion();
                 var remoteURL = version.download_url;
 
                 switch (Application.platform)
                 {
                     case RuntimePlatform.Android:
                         var fileName = Path.GetFileName(remoteURL);
-                        apkLocalURL = StringUtil.Contact(androidRoot, "/", fileName);
-                        if (File.Exists(apkLocalURL))
+                        this.apkLocalURL = StringUtil.Contact(this.androidRoot, "/", fileName);
+                        if (File.Exists(this.apkLocalURL))
                         {
-                            step = Step.ApkExist;
+                            this.step = Step.ApkExist;
                         }
                         else
                         {
-                            step = Step.DownLoadPrepared;
+                            this.step = Step.DownLoadPrepared;
                         }
                         break;
                     case RuntimePlatform.IPhonePlayer:
-                        step = Step.DownLoadPrepared;
+                        this.step = Step.DownLoadPrepared;
                         break;
                     default:
-                        step = Step.Completed;
+                        this.step = Step.Completed;
                         break;
                 }
             }
             else
             {
-                step = Step.Completed;
+                this.step = Step.Completed;
 
                 var apkFiles = new DirectoryInfo(AssetPath.ExternalStorePath).GetFiles("*.apk");
                 for (int i = apkFiles.Length - 1; i >= 0; i--)
@@ -103,38 +103,38 @@ public class VersionUtil : Singleton<VersionUtil>
         }
         else
         {
-            step = Step.None;
-            Clock.Create(DateTime.Now + new TimeSpan(TimeSpan.TicksPerSecond), RequestVersionCheck);
+            this.step = Step.None;
+            Clock.Create(DateTime.Now + new TimeSpan(TimeSpan.TicksPerSecond), this.RequestVersionCheck);
         }
     }
 
     public void StartDownLoad()
     {
-        step = Step.DownLoad;
-        var version = versionInfo.GetLatestVersion();
+        this.step = Step.DownLoad;
+        var version = this.versionInfo.GetLatestVersion();
         var remoteURL = version.download_url;
         var fileName = Path.GetFileName(remoteURL);
-        apkLocalURL = StringUtil.Contact(androidRoot, "/", fileName);
-        var remoteFile = new RemoteFile(remoteURL, apkLocalURL, null);
+        this.apkLocalURL = StringUtil.Contact(this.androidRoot, "/", fileName);
+        var remoteFile = new RemoteFile(remoteURL, this.apkLocalURL, null);
         RemoteFile.Prepare();
-        CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(OnDownLoadApkCompleted));
+        CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnDownLoadApkCompleted));
     }
 
     private void OnDownLoadApkCompleted(bool ok, AssetVersion assetVersion)
     {
         if (ok)
         {
-            step = Step.Completed;
+            this.step = Step.Completed;
         }
         else
         {
-            step = Step.DownLoadFailed;
+            this.step = Step.DownLoadFailed;
         }
     }
 
     public void SkipVersion()
     {
-        step = Step.Completed;
+        this.step = Step.Completed;
     }
 
     public class VersionInfo
@@ -147,9 +147,9 @@ public class VersionUtil : Singleton<VersionUtil>
 
         public Version GetLatestVersion()
         {
-            if (versions.Length > 0)
+            if (this.versions.Length > 0)
             {
-                return versions[0];
+                return this.versions[0];
             }
             else
             {
@@ -159,9 +159,9 @@ public class VersionUtil : Singleton<VersionUtil>
 
         public string GetResourcesURL(int _branch)
         {
-            if (resource_url != null)
+            if (this.resource_url != null)
             {
-                return resource_url[_branch.ToString()].ToString();
+                return this.resource_url[_branch.ToString()].ToString();
             }
             else
             {
@@ -173,9 +173,9 @@ public class VersionUtil : Singleton<VersionUtil>
         {
             try
             {
-                if (notice_flag != null)
+                if (this.notice_flag != null)
                 {
-                    return notice_flag[_branch.ToString()].ToString();
+                    return this.notice_flag[_branch.ToString()].ToString();
                 }
                 else
                 {

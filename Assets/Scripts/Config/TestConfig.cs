@@ -24,17 +24,17 @@ public partial class TestConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out ID); 
+            int.TryParse(tables[0],out this.ID); 
 
 			var LVTemp = 0;
-			int.TryParse(tables[1],out LVTemp); 
-			LV=LVTemp!=0;
+			int.TryParse(tables[1],out LVTemp);
+            this.LV =LVTemp!=0;
 
-			Int2.TryParse(tables[2],out ItemName); 
+			Int2.TryParse(tables[2],out this.ItemName); 
 
-			Int3.TryParse(tables[3],out Type); 
+			Int3.TryParse(tables[3],out this.Type);
 
-			EquipPlace=tables[4].Vector3Parse();
+            this.EquipPlace =tables[4].Vector3Parse();
         }
         catch (Exception ex)
         {

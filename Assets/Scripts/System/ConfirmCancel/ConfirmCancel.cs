@@ -21,36 +21,36 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
 
     public ConfirmCancel Get()
     {
-        confirmAction = null;
-        cancelAction = null;
+        this.confirmAction = null;
+        this.cancelAction = null;
 
-        content = string.Empty;
-        title = string.Empty;
+        this.content = string.Empty;
+        this.title = string.Empty;
 
         return this;
     }
 
     public ConfirmCancel SetContent(string _content)
     {
-        content = _content;
+        this.content = _content;
         return this;
     }
 
     public ConfirmCancel SetTitle(string _title)
     {
-        title = _title;
+        this.title = _title;
         return this;
     }
 
     public ConfirmCancel OnConfirm(UnityAction _onConfirm)
     {
-        confirmAction = _onConfirm;
+        this.confirmAction = _onConfirm;
         return this;
     }
 
     public ConfirmCancel OnCancel(UnityAction _onCancel)
     {
-        cancelAction = _onCancel;
+        this.cancelAction = _onCancel;
         return this;
     }
 
@@ -62,17 +62,17 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
 
     public void Confirm()
     {
-        if (confirmAction != null)
+        if (this.confirmAction != null)
         {
-            confirmAction.Invoke();
+            this.confirmAction.Invoke();
         }
     }
 
     public void Cancel()
     {
-        if (cancelAction != null)
+        if (this.cancelAction != null)
         {
-            cancelAction.Invoke();
+            this.cancelAction.Invoke();
         }
     }
 

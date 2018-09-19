@@ -21,9 +21,9 @@ public partial class EquipConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0],out this.id); 
 
-			int.TryParse(tables[1],out place); 
+			int.TryParse(tables[1],out this.place); 
         }
         catch (Exception ex)
         {

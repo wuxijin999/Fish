@@ -11,13 +11,13 @@ public class EffectUtil : Singleton<EffectUtil>
     {
         try
         {
-            if (!effectPools.ContainsKey(id))
+            if (!this.effectPools.ContainsKey(id))
             {
                 var prefab = EffectAssets.LoadEffect(id);
-                effectPools[id] = GameObjectPoolUtil.Create(prefab);
+                this.effectPools[id] = GameObjectPoolUtil.Create(prefab);
             }
 
-            var pool = effectPools[id];
+            var pool = this.effectPools[id];
             var instance = pool.Get();
             var behaviour = instance.GetComponent<EffectBehaviour>();
             behaviour.effectId = id;
@@ -46,7 +46,7 @@ public class EffectUtil : Singleton<EffectUtil>
                 return;
             }
             var id = effect.effectId;
-            var pool = effectPools[id];
+            var pool = this.effectPools[id];
             effect.OnStop();
 
             if (pool != null)

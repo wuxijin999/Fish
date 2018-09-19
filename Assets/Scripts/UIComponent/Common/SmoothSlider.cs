@@ -29,29 +29,29 @@ public class SmoothSlider : UIBase
 
     public void Reset()
     {
-        m_Slider.value = value;
-        refspeed = 0f;
+        this.m_Slider.value = this.value;
+        this.refspeed = 0f;
     }
 
     public override void OnLateUpdate()
     {
         base.OnLateUpdate();
-        if (m_Slider != null && Mathf.Abs(m_Slider.value - value) > 0.001f)
+        if (this.m_Slider != null && Mathf.Abs(this.m_Slider.value - this.value) > 0.001f)
         {
-            m_Slider.value = Mathf.SmoothDamp(m_Slider.value, value, ref refspeed, m_Smooth);
+            this.m_Slider.value = Mathf.SmoothDamp(this.m_Slider.value, this.value, ref this.refspeed, this.m_Smooth);
 
-            if (m_Progess != null)
+            if (this.m_Progess != null)
             {
-                switch (m_Pattern)
+                switch (this.m_Pattern)
                 {
                     case DigitPattern.Integet:
-                        m_Progess.text = Mathf.RoundToInt(m_Slider.value).ToString();
+                        this.m_Progess.text = Mathf.RoundToInt(this.m_Slider.value).ToString();
                         break;
                     case DigitPattern.Percentage:
-                        m_Progess.text = string.Concat(Mathf.RoundToInt(m_Slider.value * 100).ToString(), "%");
+                        this.m_Progess.text = string.Concat(Mathf.RoundToInt(this.m_Slider.value * 100).ToString(), "%");
                         break;
                     default:
-                        m_Progess.text = m_Slider.value.ToString("f2");
+                        this.m_Progess.text = this.m_Slider.value.ToString("f2");
                         break;
                 }
             }

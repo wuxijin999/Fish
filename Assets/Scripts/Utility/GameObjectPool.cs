@@ -14,87 +14,87 @@ public class GameObjectPool
 
     public GameObjectPool(int _instanceId, GameObject _prefab)
     {
-        root = new GameObject(StringUtil.Contact("UIPool_", _instanceId));
-        Object.DontDestroyOnLoad(root);
-        root.transform.position = GameObjectPoolUtil.HIDE_POINT;
+        this.root = new GameObject(StringUtil.Contact("UIPool_", _instanceId));
+        Object.DontDestroyOnLoad(this.root);
+        this.root.transform.position = GameObjectPoolUtil.HIDE_POINT;
 
-        instanceId = _instanceId;
-        m_Prefab = _prefab;
-        name = _prefab.name;
+        this.instanceId = _instanceId;
+        this.m_Prefab = _prefab;
+        this.name = _prefab.name;
     }
 
     public GameObject Get()
     {
         GameObject instance = null;
-        if (m_FreeList.Count == 0)
+        if (this.m_FreeList.Count == 0)
         {
-            instance = Object.Instantiate(m_Prefab);
-            instance.name = name;
+            instance = Object.Instantiate(this.m_Prefab);
+            instance.name = this.name;
         }
         else
         {
-            instance = m_FreeList[0];
-            m_FreeList.RemoveAt(0);
+            instance = this.m_FreeList[0];
+            this.m_FreeList.RemoveAt(0);
         }
 
-        m_ActiveList.Add(instance);
+        this.m_ActiveList.Add(instance);
         return instance;
     }
 
     public void Release(GameObject instance)
     {
-        if (m_ActiveList.Contains(instance))
+        if (this.m_ActiveList.Contains(instance))
         {
-            m_ActiveList.Remove(instance);
+            this.m_ActiveList.Remove(instance);
         }
         else
         {
             DebugEx.LogWarningFormat("回收的对象 {0} 并不是从池里取得的...", instance.name);
         }
 
-        instance.transform.SetParent(root.transform);
-        if (!m_FreeList.Contains(instance))
+        instance.transform.SetParent(this.root.transform);
+        if (!this.m_FreeList.Contains(instance))
         {
-            m_FreeList.Add(instance);
+            this.m_FreeList.Add(instance);
         }
     }
 
     public void Clear()
     {
-        foreach (var item in m_FreeList)
+        foreach (var item in this.m_FreeList)
         {
             Object.Destroy(item);
         }
 
-        foreach (var item in m_ActiveList)
+        foreach (var item in this.m_ActiveList)
         {
             Object.Destroy(item);
         }
 
-        m_FreeList.Clear();
-        m_ActiveList.Clear();
+        this.m_FreeList.Clear();
+        this.m_ActiveList.Clear();
     }
 
     public void Destroy()
     {
         Clear();
 
-        m_Prefab = null;
-        m_FreeList = null;
-        m_ActiveList = null;
-        GameObject.Destroy(root);
+        this.m_Prefab = null;
+        this.m_FreeList = null;
+        this.m_ActiveList = null;
+        GameObject.Destroy(this.root);
     }
 
 
 #if UNITY_EDITOR
     public List<GameObject> GetFreeList()
     {
-        return new List<GameObject>(m_FreeList);
+        return new List<GameObject>(this.m_FreeList);
     }
 
     public List<GameObject> GetActiveList()
     {
-        return new List<GameObject>(m_ActiveList);
+        return new List<GameObject>(this.m_ActiveList);
     }
 
 #endif

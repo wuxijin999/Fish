@@ -12,15 +12,15 @@ public class PlayerBriefInfoWidget : Widget
     private void DisplayHp()
     {
         var info = PlayerInfo.Instance.GetPlayerHp();
-        m_Life.value = info.x / (float)info.y;
+        this.m_Life.value = info.x / (float)info.y;
     }
 
     private void DisplayPlayerBriefInfo()
     {
         var info = PlayerInfo.Instance.GetPlayerBriefInfo();
-        m_PlayerName.SetText(info.name);
-        m_Level.SetText(info.level);
-        m_Icon.SetSprite(1);
+        this.m_PlayerName.SetText(info.name);
+        this.m_Level.SetText(info.level);
+        this.m_Icon.SetSprite(1);
     }
 
 

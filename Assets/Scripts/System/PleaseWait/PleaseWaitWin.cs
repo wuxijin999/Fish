@@ -17,8 +17,8 @@ public class PleaseWaitWin : Window
     #region Built-in
     protected override void BindController()
     {
-        backGround = this.transform.Find("Image");
-        circle = this.transform.Find("Img_Circle");
+        this.backGround = this.transform.Find("Image");
+        this.circle = this.transform.Find("Img_Circle");
     }
 
     protected override void SetListeners()
@@ -27,18 +27,18 @@ public class PleaseWaitWin : Window
 
     protected override void OnPreOpen()
     {
-        timer = 0f;
+        this.timer = 0f;
         if (linkOverTime > 0.001f)
         {
-            actived = false;
-            backGround.gameObject.SetActive(false);
-            circle.gameObject.SetActive(false);
+            this.actived = false;
+            this.backGround.gameObject.SetActive(false);
+            this.circle.gameObject.SetActive(false);
         }
         else
         {
-            actived = true;
-            backGround.gameObject.SetActive(true);
-            circle.gameObject.SetActive(true);
+            this.actived = true;
+            this.backGround.gameObject.SetActive(true);
+            this.circle.gameObject.SetActive(true);
         }
     }
 
@@ -48,11 +48,11 @@ public class PleaseWaitWin : Window
     {
         base.OnLateUpdate();
 
-        timer += Time.deltaTime;
-        if (!actived && timer > linkOverTime)
+        this.timer += Time.deltaTime;
+        if (!this.actived && this.timer > linkOverTime)
         {
-            backGround.gameObject.SetActive(true);
-            circle.gameObject.SetActive(true);
+            this.backGround.gameObject.SetActive(true);
+            this.circle.gameObject.SetActive(true);
         }
     }
 

@@ -15,26 +15,26 @@ public class CreateRoleJobSelectWidget : Widget
 
     protected override void SetListeners()
     {
-        m_Warrior.SetListener(() => { CreateRole.Instance.browsingJob = 1; });
-        m_Wizard.SetListener(() => { CreateRole.Instance.browsingJob = 2; });
-        m_Pastor.SetListener(() => { CreateRole.Instance.browsingJob = 3; });
+        this.m_Warrior.SetListener(() => { CreateRole.Instance.browsingJob = 1; });
+        this.m_Wizard.SetListener(() => { CreateRole.Instance.browsingJob = 2; });
+        this.m_Pastor.SetListener(() => { CreateRole.Instance.browsingJob = 3; });
     }
 
     protected override void OnActived()
     {
-        CreateRole.Instance.browseJobEvent += OnSelectJob;
+        CreateRole.Instance.browseJobEvent += this.OnSelectJob;
     }
 
     protected override void OnDeactived()
     {
-        CreateRole.Instance.browseJobEvent -= OnSelectJob;
+        CreateRole.Instance.browseJobEvent -= this.OnSelectJob;
     }
 
     private void OnSelectJob()
     {
-        m_Warrior.selected = CreateRole.Instance.browsingJob == 1;
-        m_Wizard.selected = CreateRole.Instance.browsingJob == 2;
-        m_Pastor.selected = CreateRole.Instance.browsingJob == 3;
+        this.m_Warrior.selected = CreateRole.Instance.browsingJob == 1;
+        this.m_Wizard.selected = CreateRole.Instance.browsingJob == 2;
+        this.m_Pastor.selected = CreateRole.Instance.browsingJob == 3;
     }
 
 }

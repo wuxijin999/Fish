@@ -39,14 +39,14 @@ public class Login : Presenter<Login>
         var accountError = 0;
         if (IsValidAccount(account, out accountError))
         {
-            accountErrorEvent.Invoke(accountError);
+            this.accountErrorEvent.Invoke(accountError);
             return;
         }
 
         var passwordError = 0;
         if (IsValidPassword(password, out passwordError))
         {
-            passwordErrorEvent.Invoke(passwordError);
+            this.passwordErrorEvent.Invoke(passwordError);
             return;
         }
 

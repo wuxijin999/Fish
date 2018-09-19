@@ -9,8 +9,8 @@ public class testBiz
 
     public testBiz()
     {
-        testInt.value = 0;
-        testString.value = "aaaa";
+        this.testInt.value = 0;
+        this.testString.value = "aaaa";
     }
 
 }
@@ -24,13 +24,13 @@ public class BizProperty<T>
         get {
             lock (this)
             {
-                return m_Dirty;
+                return this.m_Dirty;
             }
         }
         set {
             lock (this)
             {
-                m_Dirty = value;
+                this.m_Dirty = value;
             }
         }
     }
@@ -49,13 +49,13 @@ public class BizObject
 
     public BizObject()
     {
-        value = null;
-        dirty = true;
+        this.value = null;
+        this.dirty = true;
     }
 
     public BizObject(ref object _value)
     {
-        value = _value;
-        dirty = true;
+        this.value = _value;
+        this.dirty = true;
     }
 }

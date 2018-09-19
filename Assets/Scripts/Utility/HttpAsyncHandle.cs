@@ -48,17 +48,17 @@ public class HttpAsyncHandle : MonoBehaviour
 
     public void Reinitialize()
     {
-        url = string.Empty;
-        method = string.Empty;
-        content = string.Empty;
-        message = string.Empty;
+        this.url = string.Empty;
+        this.method = string.Empty;
+        this.content = string.Empty;
+        this.message = string.Empty;
 
-        callBack = null;
-        getResult = false;
-        timeOut = 0f;
-        cookie = null;
-        request = null;
-        ok = false;
+        this.callBack = null;
+        this.getResult = false;
+        this.timeOut = 0f;
+        this.cookie = null;
+        this.request = null;
+        this.ok = false;
     }
 
     public void Begin(string url, string method, string content, Action<bool, string> result = null)
@@ -69,58 +69,58 @@ public class HttpAsyncHandle : MonoBehaviour
         this.callBack = result;
         this.timeOut = Time.time + DESIGN_TIME_OUT_SECOND;
 
-        cookie = new CookieContainer();
-        request = (HttpWebRequest)WebRequest.Create(url);
-        request.ServicePoint.Expect100Continue = false;
-        request.Method = method;
-        request.ContentType = HttpRequest.defaultHttpContentType;
-        request.CookieContainer = cookie;
-        request.Proxy = null;
-        request.KeepAlive = false;
+        this.cookie = new CookieContainer();
+        this.request = (HttpWebRequest)WebRequest.Create(url);
+        this.request.ServicePoint.Expect100Continue = false;
+        this.request.Method = method;
+        this.request.ContentType = HttpRequest.defaultHttpContentType;
+        this.request.CookieContainer = this.cookie;
+        this.request.Proxy = null;
+        this.request.KeepAlive = false;
 
         try
         {
             if (string.IsNullOrEmpty(content))
             {
-                request.BeginGetResponse(OnHttpWebResponse, null);
+                this.request.BeginGetResponse(this.OnHttpWebResponse, null);
             }
             else
             {
                 var data = Encoding.UTF8.GetBytes(content);
-                request.ContentLength = data.Length;
-                request.BeginGetRequestStream(GetRequestStreamCallback, null);
+                this.request.ContentLength = data.Length;
+                this.request.BeginGetRequestStream(this.GetRequestStreamCallback, null);
             }
         }
         catch (System.Exception ex)
         {
-            ok = false;
-            message = ex.Message;
-            getResult = true;
+            this.ok = false;
+            this.message = ex.Message;
+            this.getResult = true;
         }
     }
 
     void Update()
     {
-        if (Time.time > timeOut && !getResult)
+        if (Time.time > this.timeOut && !this.getResult)
         {
-            request.Abort();
-            ok = false;
-            message = "TimeOut";
-            getResult = true;
+            this.request.Abort();
+            this.ok = false;
+            this.message = "TimeOut";
+            this.getResult = true;
         }
 
-        if (getResult)
+        if (this.getResult)
         {
-            if (request != null)
+            if (this.request != null)
             {
-                request.Abort();
+                this.request.Abort();
             }
 
-            if (callBack != null)
+            if (this.callBack != null)
             {
-                callBack(ok, message);
-                callBack = null;
-                DebugEx.LogFormat("Http 数据通信 {0},请求数据结果：{1},内容：{2}", method, ok, message);
+                this.callBack(this.ok, this.message);
+                this.callBack = null;
+                DebugEx.LogFormat("Http 数据通信 {0},请求数据结果：{1},内容：{2}", this.method, this.ok, this.message);
             }
 
             this.gameObject.SetActive(false);
@@ -133,16 +133,16 @@ public class HttpAsyncHandle : MonoBehaviour
         Stream s = null;
         try
         {
-            var bytes = Encoding.UTF8.GetBytes(content);
-            s = request.EndGetRequestStream(ar);
+            var bytes = Encoding.UTF8.GetBytes(this.content);
+            s = this.request.EndGetRequestStream(ar);
             s.Write(bytes, 0, bytes.Length);
-            request.BeginGetResponse(OnHttpWebResponse, request);
+            this.request.BeginGetResponse(this.OnHttpWebResponse, this.request);
         }
         catch (Exception ex)
         {
-            ok = false;
-            message = ex.Message;
-            getResult = true;
+            this.ok = false;
+            this.message = ex.Message;
+            this.getResult = true;
         }
         finally
         {
@@ -161,23 +161,23 @@ public class HttpAsyncHandle : MonoBehaviour
 
         try
         {
-            response = request.EndGetResponse(result) as HttpWebResponse;
-            response.Cookies = cookie.GetCookies(response.ResponseUri);
+            response = this.request.EndGetResponse(result) as HttpWebResponse;
+            response.Cookies = this.cookie.GetCookies(response.ResponseUri);
             s = response.GetResponseStream();
             sr = new StreamReader(s, Encoding.UTF8);
-            message = sr.ReadToEnd();
-            ok = true;
+            this.message = sr.ReadToEnd();
+            this.ok = true;
         }
         catch (System.Exception ex)
         {
-            ok = false;
-            message = ex.Message;
+            this.ok = false;
+            this.message = ex.Message;
         }
         finally
         {
-            if (request != null)
+            if (this.request != null)
             {
-                request.Abort();
+                this.request.Abort();
             }
 
             if (response != null)
@@ -194,7 +194,7 @@ public class HttpAsyncHandle : MonoBehaviour
             {
                 sr.Close();
             }
-            getResult = true;
+            this.getResult = true;
         }
 
     }

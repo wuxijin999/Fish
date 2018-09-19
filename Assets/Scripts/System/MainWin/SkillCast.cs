@@ -23,7 +23,7 @@ public class SkillCast : Presenter<SkillCast>
 
     public void CastSkill(int index)
     {
-        var skill = skillModel.GetSkill(index);
+        var skill = this.skillModel.GetSkill(index);
 
         if (IsCountDown(index))
         {
@@ -37,18 +37,18 @@ public class SkillCast : Presenter<SkillCast>
 
     public bool IsCountDown(int index)
     {
-        var skill = skillModel.GetSkill(index);
+        var skill = this.skillModel.GetSkill(index);
         DateTime canCastTime;
-        skillModel.TryGetNextCastTime(skill, out canCastTime);
+        this.skillModel.TryGetNextCastTime(skill, out canCastTime);
         return DateTime.Now < canCastTime;
     }
 
     public int GetSkillCountDown(int index)
     {
-        var skill = skillModel.GetSkill(index);
+        var skill = this.skillModel.GetSkill(index);
 
         DateTime canCastTime;
-        skillModel.TryGetNextCastTime(skill, out canCastTime);
+        this.skillModel.TryGetNextCastTime(skill, out canCastTime);
         var seconds = (int)(canCastTime - DateTime.Now).TotalSeconds;
 
         var countDown = seconds > 0 ? seconds : 0;

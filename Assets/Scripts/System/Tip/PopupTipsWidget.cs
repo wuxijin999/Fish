@@ -14,13 +14,13 @@ public class PopupTipsWidget : Widget
     const float eisxtTime = 5f;
 
     [SerializeField] float m_PopupSpeed = 10f;
-    public float popupSpeed { get { return Mathf.Clamp(m_PopupSpeed, 5f, 1000f); } }
+    public float popupSpeed { get { return Mathf.Clamp(this.m_PopupSpeed, 5f, 1000f); } }
 
     [SerializeField] RectTransform m_StartPoint;
     [SerializeField] RectTransform m_PriorPoint;
 
     GameObjectPool m_Pool;
-    GameObjectPool pool { get { return m_Pool ?? (m_Pool = GameObjectPoolUtil.Create(UIAssets.LoadPrefab("PopupTipBehaviour"))); } }
+    GameObjectPool pool { get { return this.m_Pool ?? (this.m_Pool = GameObjectPoolUtil.Create(UIAssets.LoadPrefab("PopupTipBehaviour"))); } }
 
     Queue<string> tips = new Queue<string>();
     List<PopupTipBehaviour> activedBehaviours = new List<PopupTipBehaviour>();
@@ -30,12 +30,12 @@ public class PopupTipsWidget : Widget
 
     public void Popup(string tip)
     {
-        while (tips.Count > maxCount)
+        while (this.tips.Count > maxCount)
         {
-            tips.Dequeue();
+            this.tips.Dequeue();
         }
 
-        tips.Enqueue(tip);
+        this.tips.Enqueue(tip);
     }
 
     private void OnDisable()
@@ -45,35 +45,35 @@ public class PopupTipsWidget : Widget
 
     private void Update()
     {
-        if (Time.time > nextTipTime && tips.Count > 0)
+        if (Time.time > this.nextTipTime && this.tips.Count > 0)
         {
-            nextTipTime = Time.time + interval;
+            this.nextTipTime = Time.time + this.interval;
 
-            while (activedBehaviours.Count >= maxCount)
+            while (this.activedBehaviours.Count >= maxCount)
             {
-                activedBehaviours[0].FadeOut(1f, 0f, 0.5f, OnFadeOut);
-                activedBehaviours.RemoveAt(0);
+                this.activedBehaviours[0].FadeOut(1f, 0f, 0.5f, this.OnFadeOut);
+                this.activedBehaviours.RemoveAt(0);
             }
 
-            var tip = tips.Dequeue();
-            var instance = pool.Get();
+            var tip = this.tips.Dequeue();
+            var instance = this.pool.Get();
             var behaviour = instance.GetComponent<PopupTipBehaviour>();
-            activedBehaviours.Add(behaviour);
+            this.activedBehaviours.Add(behaviour);
             behaviour.transform.SetParentEx(this.transform)
-                                             .SetLocalPosition(m_StartPoint.localPosition)
+                                             .SetLocalPosition(this.m_StartPoint.localPosition)
                                              .SetLocalEulerAngles(Vector3.zero)
                                              .SetScale(Vector3.one);
 
-            var from = m_StartPoint.anchoredPosition.y;
-            var to = m_PriorPoint.anchoredPosition.y;
-            var duration = Mathf.Abs(to - from) / popupSpeed;
+            var from = this.m_StartPoint.anchoredPosition.y;
+            var to = this.m_PriorPoint.anchoredPosition.y;
+            var duration = Mathf.Abs(to - from) / this.popupSpeed;
 
             behaviour.fadeOutTime = Time.time + eisxtTime;
             behaviour.Popup(tip, from, to, duration);
 
-            if (activedBehaviours.Count > 1)
+            if (this.activedBehaviours.Count > 1)
             {
-                var delay = (Mathf.Abs(to - from) - behaviour.rectTransform.rect.height) / popupSpeed;
+                var delay = (Mathf.Abs(to - from) - behaviour.rectTransform.rect.height) / this.popupSpeed;
                 StartCoroutine("Co_DelayReArrange", delay);
             }
         }
@@ -81,13 +81,13 @@ public class PopupTipsWidget : Widget
 
     private void LateUpdate()
     {
-        for (int i = activedBehaviours.Count - 1; i >= 0; i--)
+        for (int i = this.activedBehaviours.Count - 1; i >= 0; i--)
         {
-            var activedBehaviour = activedBehaviours[i];
+            var activedBehaviour = this.activedBehaviours[i];
             if (Time.time > activedBehaviour.fadeOutTime)
             {
-                activedBehaviour.FadeOut(1f, 0f, 0.5f, OnFadeOut);
-                activedBehaviours.Remove(activedBehaviour);
+                activedBehaviour.FadeOut(1f, 0f, 0.5f, this.OnFadeOut);
+                this.activedBehaviours.Remove(activedBehaviour);
             }
         }
     }
@@ -96,18 +96,18 @@ public class PopupTipsWidget : Widget
     {
         yield return new WaitForSeconds(delay);
 
-        for (int i = 0; i < activedBehaviours.Count - 1; i++)
+        for (int i = 0; i < this.activedBehaviours.Count - 1; i++)
         {
-            var activedBehaviour = activedBehaviours[i];
+            var activedBehaviour = this.activedBehaviours[i];
             var formY = activedBehaviour.rectTransform.anchoredPosition.y;
-            var toY = m_PriorPoint.anchoredPosition.y + activedBehaviour.rectTransform.rect.height * (activedBehaviours.Count - i - 1);
-            activedBehaviour.Move(formY, toY, Mathf.Abs(formY - toY) / popupSpeed);
+            var toY = this.m_PriorPoint.anchoredPosition.y + activedBehaviour.rectTransform.rect.height * (this.activedBehaviours.Count - i - 1);
+            activedBehaviour.Move(formY, toY, Mathf.Abs(formY - toY) / this.popupSpeed);
         }
     }
 
     private void OnFadeOut(PopupTipBehaviour behaviour)
     {
-        pool.Release(behaviour.gameObject);
+        this.pool.Release(behaviour.gameObject);
     }
 
 

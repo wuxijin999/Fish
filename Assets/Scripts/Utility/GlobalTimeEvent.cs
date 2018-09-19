@@ -27,18 +27,18 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
     private void Update()
     {
         var second = DateTime.Now.Second;
-        if (second != secondBuf)
+        if (second != this.secondBuf)
         {
             if (secondEvent != null)
             {
                 secondEvent();
             }
 
-            secondBuf = second;
+            this.secondBuf = second;
         }
 
         var minute = DateTime.Now.Minute;
-        if (minuteBuf != minute)
+        if (this.minuteBuf != minute)
         {
             try
             {
@@ -53,12 +53,12 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
             }
             finally
             {
-                minuteBuf = minute;
+                this.minuteBuf = minute;
             }
         }
 
         var fiveMinute = minute / 5;
-        if (fiveMinuteBuf != fiveMinute)
+        if (this.fiveMinuteBuf != fiveMinute)
         {
             try
             {
@@ -73,12 +73,12 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
             }
             finally
             {
-                fiveMinuteBuf = fiveMinute;
+                this.fiveMinuteBuf = fiveMinute;
             }
         }
 
         var tenMinute = minute / 10;
-        if (tenMinuteBuf != tenMinute)
+        if (this.tenMinuteBuf != tenMinute)
         {
             try
             {
@@ -93,12 +93,12 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
             }
             finally
             {
-                tenMinuteBuf = tenMinute;
+                this.tenMinuteBuf = tenMinute;
             }
         }
 
         var thirtyMinute = minute / 30;
-        if (halfHourBuf != thirtyMinute)
+        if (this.halfHourBuf != thirtyMinute)
         {
             try
             {
@@ -113,12 +113,12 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
             }
             finally
             {
-                halfHourBuf = thirtyMinute;
+                this.halfHourBuf = thirtyMinute;
             }
         }
 
         var hour = DateTime.Now.Hour;
-        if (hourBuf != hour)
+        if (this.hourBuf != hour)
         {
             try
             {
@@ -133,7 +133,7 @@ public class GlobalTimeEvent : SingletonMonobehaviour<GlobalTimeEvent>
             }
             finally
             {
-                hourBuf = hour;
+                this.hourBuf = hour;
             }
         }
 

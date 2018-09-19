@@ -20,27 +20,27 @@ public class ButtonEx : Button
 
     float m_AbleTime = 0f;
     public float ableTime {
-        get { return m_AbleTime; }
-        private set { m_AbleTime = value; }
+        get { return this.m_AbleTime; }
+        private set { this.m_AbleTime = value; }
     }
 
     string m_Title;
     public string title {
-        get { return m_Title; }
+        get { return this.m_Title; }
         set {
-            if (m_Title != value)
+            if (this.m_Title != value)
             {
-                m_Title = value;
-                m_TitleMesh.text = m_Title;
+                this.m_Title = value;
+                this.m_TitleMesh.text = this.m_Title;
             }
         }
     }
 
     State m_State;
     public State state {
-        get { return m_State; }
+        get { return this.m_State; }
         set {
-            m_State = value;
+            this.m_State = value;
         }
     }
 
@@ -50,13 +50,13 @@ public class ButtonEx : Button
         switch (state)
         {
             case State.CoolDown:
-                m_Image.gray = true;
+                this.m_Image.gray = true;
                 break;
             case State.Disable:
-                m_Image.gray = true;
+                this.m_Image.gray = true;
                 break;
             case State.Normal:
-                m_Image.gray = false;
+                this.m_Image.gray = false;
                 break;
         }
     }
@@ -73,7 +73,7 @@ public class ButtonEx : Button
             case State.Normal:
                 base.OnPointerClick(eventData);
                 PlayPositiveSound();
-                ableTime = Time.realtimeSinceStartup + Mathf.Clamp(m_Interval, 0, float.MaxValue);
+                this.ableTime = Time.realtimeSinceStartup + Mathf.Clamp(this.m_Interval, 0, float.MaxValue);
                 SetState(State.CoolDown);
                 break;
         }
@@ -94,13 +94,13 @@ public class ButtonEx : Button
 
     private void LateUpdate()
     {
-        if (state == State.CoolDown)
+        if (this.state == State.CoolDown)
         {
-            coolDownTimer += Time.deltaTime;
+            this.coolDownTimer += Time.deltaTime;
 
-            if (coolDownTimer > 1f)
+            if (this.coolDownTimer > 1f)
             {
-                coolDownTimer = 0f;
+                this.coolDownTimer = 0f;
                 DisplayCoolDown();
             }
         }
@@ -109,17 +109,17 @@ public class ButtonEx : Button
 
     private void DisplayCoolDown()
     {
-        var surplusTime = ableTime - Time.realtimeSinceStartup;
+        var surplusTime = this.ableTime - Time.realtimeSinceStartup;
         if (surplusTime >= 1f)
         {
-            m_TitleMesh.gameObject.SetActive(false);
-            m_CoolDownText.gameObject.SetActive(true);
-            m_CoolDownText.text = "";
+            this.m_TitleMesh.gameObject.SetActive(false);
+            this.m_CoolDownText.gameObject.SetActive(true);
+            this.m_CoolDownText.text = "";
         }
         else
         {
-            m_TitleMesh.gameObject.SetActive(true);
-            m_CoolDownText.gameObject.SetActive(false);
+            this.m_TitleMesh.gameObject.SetActive(true);
+            this.m_CoolDownText.gameObject.SetActive(false);
         }
     }
 

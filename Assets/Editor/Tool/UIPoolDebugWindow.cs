@@ -11,14 +11,14 @@ public class UIPoolDebugWindow : EditorWindow
 
     private void OnGUI()
     {
-        if (pools == null)
+        if (this.pools == null)
         {
             return;
         }
 
-        scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+        this.scrollPosition = EditorGUILayout.BeginScrollView(this.scrollPosition);
 
-        foreach (var pool in pools.Values)
+        foreach (var pool in this.pools.Values)
         {
             EditorGUILayout.Space();
             DrawPool(pool);
@@ -39,13 +39,13 @@ public class UIPoolDebugWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
 
         ViewSwitch viewSwitch = null;
-        if (!switches.ContainsKey(pool.instanceId))
+        if (!this.switches.ContainsKey(pool.instanceId))
         {
-            viewSwitch = switches[pool.instanceId] = new ViewSwitch(pool.instanceId);
+            viewSwitch = this.switches[pool.instanceId] = new ViewSwitch(pool.instanceId);
         }
         else
         {
-            viewSwitch = switches[pool.instanceId];
+            viewSwitch = this.switches[pool.instanceId];
         }
 
         viewSwitch.active = EditorGUILayout.Toggle("使用的", viewSwitch.active);
@@ -92,7 +92,7 @@ public class UIPoolDebugWindow : EditorWindow
 
         public ViewSwitch(int _instance)
         {
-            poolInstance = _instance;
+            this.poolInstance = _instance;
         }
     }
 
