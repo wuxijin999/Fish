@@ -3,8 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class UIEngine : SingletonMonobehaviour<UIEngine>
+public class UIEngine : MonoBehaviour
 {
+    public static UIEngine Instance { get; private set; }
+
+    [RuntimeInitializeOnLoadMethod]
+    static void Init()
+    {
+        if (FindObjectOfType<UIEngine>() == null)
+        {
+            var gameObject = new GameObject("UIEngine");
+            Instance = gameObject.AddComponent<UIEngine>();
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
+    }
+
     List<UIBase> uibases = new List<UIBase>();
 
     public void Register(UIBase uibase)
