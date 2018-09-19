@@ -11,27 +11,27 @@ namespace Actor
 
         }
 
-        protected override void OnFixedUpdate()
+        public override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
         }
 
-        protected override void OnLateUpdate1()
+        public override void OnLateUpdate1()
         {
             base.OnLateUpdate1();
         }
 
-        protected override void OnLateUpdate2()
+        public override void OnLateUpdate2()
         {
             base.OnLateUpdate2();
         }
 
-        protected override void OnUpdate1()
+        public override void OnUpdate1()
         {
             base.OnUpdate1();
         }
 
-        protected override void OnUpdate2()
+        public override void OnUpdate2()
         {
             base.OnUpdate2();
         }
