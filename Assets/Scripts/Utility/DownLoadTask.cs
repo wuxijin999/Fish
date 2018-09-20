@@ -45,24 +45,10 @@ public class FileDownLoad
 
     }
 
-    public void Reset()
+    private void ProcessTaskResult(bool ok, string description)
     {
-        this.remoteLastModifiedTime = DateTime.MinValue;
-        this.localLastModifiedTime = DateTime.MinValue;
-        this.remoteFileSize = 0;
 
-        if (this.fs != null)
-        {
-            this.fs.Close();
-            this.fs = null;
-        }
-        if (this.inStream != null)
-        {
-            this.inStream.Close();
-            this.inStream = null;
-        }
     }
-
 
     void CreateDirectory(string path)
     {
@@ -98,7 +84,8 @@ public class FileDownLoad
 
     private void Prepare()
     {
-
+        CreateDirectory(this.tempFile);   //确保文件写入目录存在
+        this.localLastModifiedTime = File.GetLastWriteTime(this.tempFile);
     }
 
     private void BeginGetHeadFile()
@@ -249,231 +236,86 @@ public class FileDownLoad
 
     private void OnGetFile(IAsyncResult result)
     {
-
-    }
-
-    private void BeginReadFile()
-    {
-
-    }
-
-    private  void OnEndReadFlush()
-    {
-
-    }
-
-
-    public IEnumerator DownloadRemoteFile(Action<bool, AssetVersion> _onCompleted)
-    {
-        this.onCompleted = _onCompleted;
-
-        this.fileWriteState = FileWriteState.None;
-        CreateDirectory(this.tempFile);   //确保文件写入目录存在
-        this.localLastModifiedTime = File.GetLastWriteTime(this.tempFile);
-
-        long localFileSize = 0L;
-
+        HttpWebResponse response = null;
+        Stream stream = null;
+        FileStream fileStream = null;
         try
         {
-            this.inStream = this.mAsynchResponse.GetResponseStream();
-            this.fs = new FileStream(this.tempFile, (localFileSize > 0) ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
-            if (this.buff == null)
-            {
-                this.buff = new byte[BUFFER_SIZE];
-            }
-            this.fileWriteState = FileWriteState.Writting;
-            this.inStream.BeginRead(this.buff, 0, BUFFER_SIZE, this.ReadDataCallback, null);
+            response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
+            stream = response.GetResponseStream();
+            var teamFileSize = File.Exists(this.tempFile) ? new FileInfo(this.tempFile).Length : 0;
+            fileStream = new FileStream(this.tempFile, (teamFileSize > 0) ? FileMode.Append : FileMode.Create, FileAccess.Write, FileShare.ReadWrite);
+            BeginReadFile(stream, fileStream);
             this.read_Stream_startTickcount = System.Environment.TickCount;
         }
         catch (Exception ex)
         {
-            DebugEx.LogWarning("<color=red>ERROR: " + this.remoteFile + "</color>");
-            DebugEx.LogWarning(ex);
-            if (this.inStream != null)
-            {
-                this.inStream.Close();
-                this.inStream = null;
-            }
-            if (this.fs != null)
-            {
-                this.fs.Close();
-                this.fs = null;
-            }
-            if (this.mAsynchResponse != null)
-            {
-                this.mAsynchResponse.Close();
-                this.mAsynchResponse = null;
-            }
-            this.mHadError = true;
-            this.fileWriteState = FileWriteState.Error;
-        }
-
-        while (this.fileWriteState == FileWriteState.Writting)
-        {
-            if (processErroring)
-            {
-                this.fileWriteState = FileWriteState.Error;
-                break;
-            }
-            if (downloadSpeedRef == 0)
-            {
-                int dura = System.Environment.TickCount - this.read_Stream_startTickcount;
-                if (dura > this.timeOut)
-                {
-                    this.fileWriteState = FileWriteState.Timeout;
-                    DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 读取超时{1}!", this.remoteFile, dura);
-                    break;
-                }
-            }
-
-            yield return null;
-        }
-
-        if (request != null)
-        {
-            request.Abort();
-            request = null;
-        }
-
-        if (this.fileWriteState == FileWriteState.Error || this.fileWriteState == FileWriteState.Timeout)
-        {
-            DebugEx.LogWarningFormat("[RemoteFile] 远程文件{0} 下载失败! ", this.localFile);
-            if (this.mAsynchResponse != null)
-            {
-                this.mAsynchResponse.Close();
-                this.mAsynchResponse = null;
-            }
-            this.mHadError = true;
-            this.done = true;
-            gDownloadIsRunningCount--;
-            yield break;
-        }
-        try
-        {
-            FileInfo localTempFileInfo = new FileInfo(this.tempFile);
-            if (localTempFileInfo.Exists)
-            { //临时文件存在,需要判断大小是否一致
-              //判断临时文件和远程文件size是否一致
-                if (localTempFileInfo.Length != this.remoteFileSize && this.remoteFileSize != 0L)
-                {
-                    this.mHadError = true;
-                    DebugEx.LogError(string.Format(this.localFile + " 下载完成后, 但是大小{0} 和远程文件不一致 {1}", localTempFileInfo.Length, this.remoteFileSize));
-                }
-                else
-                {  //大小一致 
-                    this.mHadError = !MoveFile(this.tempFile, this.localFile);//把临时文件改名为正式文件
-                }
-                gDownloadIsRunningCount--;
-                this.done = true;
-            }
-            else
-            { //临时文件不存在
-                this.mHadError = true;
-                gDownloadIsRunningCount--;
-                this.done = true;
-            }
-        }
-        catch (Exception ex)
-        {
             DebugEx.LogError(ex);
-            this.mHadError = true;
+            if (stream != null)
+            {
+                stream.Close();
+            }
+
+            if (fileStream != null)
+            {
+                fileStream.Close();
+            }
         }
     }
 
-    bool IsOutdated {
-        get {
-            if (File.Exists(this.tempFile))
-                return this.remoteLastModifiedTime > this.localLastModifiedTime;
-            return false;
-        }
-    }
-
-    enum FileWriteState
+    class FileStreams
     {
-        None,
-        Writting,
-        Completed,
-        Error,
-        Timeout,
+        public Stream stream;
+        public FileStream fileStream;
     }
 
-    Stream inStream;
-    FileStream fs;
-    FileWriteState fileWriteState = FileWriteState.None;  //下载文件写入状态
-    void ReadDataCallback(IAsyncResult ar)
+    private void BeginReadFile(Stream stream, FileStream fileStream)
     {
-        try
+        if (this.buff == null)
         {
-            int read = this.inStream.EndRead(ar);
-            if (read > 0)
-            {
-                this.fs.Write(this.buff, 0, read);
-                this.fs.Flush();
-                this.inStream.BeginRead(this.buff, 0, BUFFER_SIZE, new AsyncCallback(ReadDataCallback), null);
-                this.read_Stream_startTickcount = System.Environment.TickCount;
-            }
-            else
-            {
-                this.fs.Close();
-                this.fs = null;
-                this.inStream.Close();
-                this.inStream = null;
-                this.mAsynchResponse.Close();
-                this.mAsynchResponse = null;
-                this.fileWriteState = FileWriteState.Completed;
-            }
+            this.buff = new byte[BUFFER_SIZE];
         }
-        catch (Exception ex)
-        {
-            if (!processErroring)
-            {
-                DebugEx.LogWarning(ex);
-                DebugEx.LogWarning("ReadDataCallback 异常信息: " + ex.Message);
-            }
-            if (this.fs != null)
-            {
-                this.fs.Close();
-                this.fs = null;
-            }
-            if (this.inStream != null)
-            {
-                this.inStream.Close();
-                this.inStream = null;
-            }
-            this.fileWriteState = FileWriteState.Error;
-        }
+
+        var streams = new FileStreams();
+        streams.stream = stream;
+        streams.fileStream = fileStream;
+        stream.BeginRead(this.buff, 0, BUFFER_SIZE, this.OnEndReadFlush, streams);
     }
 
-    protected void AsynchCallback(IAsyncResult result)
+    private void OnEndReadFlush(IAsyncResult result)
     {
-        try
+        var streams = result.AsyncState as FileStreams;
+        var read = streams.stream.EndRead(result);
+        if (read > 0)
         {
-            if (result == null)
-            {
-                DebugEx.LogError("Asynch result is null!");
-                this.mHadError = true;
-            }
-
-            HttpWebRequest webRequest = (HttpWebRequest)result.AsyncState;
-            if (webRequest == null)
-            {
-                DebugEx.LogError("Could not cast to web request");
-                this.mHadError = true;
-            }
-
-            this.mAsynchResponse = webRequest.EndGetResponse(result) as HttpWebResponse;
-            if (this.mAsynchResponse == null)
-            {
-                DebugEx.LogError("Asynch response is null!");
-                this.mHadError = true;
-            }
+            streams.fileStream.Write(this.buff, 0, read);
+            streams.fileStream.Flush();
+            streams.stream.BeginRead(this.buff, 0, BUFFER_SIZE, OnEndReadFlush, streams);
         }
-        catch (Exception ex)
+        else
         {
-            this.mHadError = true;
-            DebugEx.LogWarning(ex);
-            DebugEx.LogWarning("[RemoteFile] AsynchCallback 异常: " + ex.Message);
+            streams.stream.Close();
+            streams.fileStream.Close();
+            OnReadFileEnd();
         }
     }
+
+    private void OnReadFileEnd()
+    {
+        if (File.Exists(this.tempFile))
+        {
+            var fileInfo = new FileInfo(this.tempFile);
+            if (this.remoteFileSize != 0L && fileInfo.Length == this.remoteFileSize)
+            {
+                MoveFile(this.tempFile, this.localFile);
+            }
+        }
+        else
+        {
+            //处理结束
+        }
+    }
+
+
 }
 
