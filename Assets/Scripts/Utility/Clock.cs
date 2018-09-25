@@ -6,25 +6,128 @@ using System;
 public class Clock
 {
     System.Action onAlarm;
-    public readonly DateTime endTime1;
-    public readonly float endTime2;
+
     public readonly ClockType type;
+    public readonly float endTime2;
+    public readonly DateTime endTime1;
 
-    public Clock(DateTime _endTime, System.Action _callBack)
+    bool repeat = false;
+    float interval = 10;
+    float nextAlarmTime2 = 0f;
+    DateTime nextAlarmTime1 = DateTime.MinValue;
+
+    public bool end { get; private set; }
+
+    public Clock(ClockParams value, System.Action _callBack)
     {
-        this.type = ClockType.DateTimeClock;
-        this.endTime1 = _endTime;
+        this.type = value.type;
+        switch (this.type)
+        {
+            case ClockType.UnityTimeClock:
+                this.endTime2 = Time.time + value.surplusSecond;
+                break;
+            case ClockType.UnityUnScaleClock:
+                this.endTime2 = Time.realtimeSinceStartup + value.surplusSecond;
+                break;
+            case ClockType.DateTimeClock:
+                this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.surplusSecond));
+                break;
+            default:
+                break;
+        }
+
+        this.repeat = value.repeat;
+        this.interval = value.interval;
+
+        if (repeat)
+        {
+            switch (this.type)
+            {
+                case ClockType.UnityTimeClock:
+                    this.nextAlarmTime2 = Time.time + value.interval;
+                    break;
+                case ClockType.UnityUnScaleClock:
+                    this.nextAlarmTime2 = Time.realtimeSinceStartup + value.interval;
+                    break;
+                case ClockType.DateTimeClock:
+                    this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.interval));
+                    break;
+                default:
+                    break;
+            }
+        }
+
         this.onAlarm = _callBack;
     }
 
-    public Clock(float _endTime, System.Action _callBack)
+    public void Invoke()
     {
-        this.type = ClockType.UnityTimeClock;
-        this.endTime2 = _endTime;
-        this.onAlarm = _callBack;
+        switch (type)
+        {
+            case ClockType.DateTimeClock:
+                if (this.repeat)
+                {
+                    if (DateTime.Now > this.nextAlarmTime1)
+                    {
+                        Alarm();
+                        this.nextAlarmTime1 += new TimeSpan((int)(TimeSpan.TicksPerSecond * this.interval));
+                    }
+                }
+                else
+                {
+                    if (DateTime.Now > endTime1)
+                    {
+                        Alarm();
+                        end = true;
+                    }
+                }
+                break;
+            case ClockType.UnityTimeClock:
+                if (this.repeat)
+                {
+                    if (Time.time > this.nextAlarmTime2)
+                    {
+                        Alarm();
+                        this.nextAlarmTime2 += this.interval;
+                    }
+                }
+                else
+                {
+                    if (Time.time > this.endTime2)
+                    {
+                        Alarm();
+                        end = true;
+                    }
+                }
+                break;
+            case ClockType.UnityUnScaleClock:
+                if (this.repeat)
+                {
+                    if (Time.realtimeSinceStartup > this.nextAlarmTime2)
+                    {
+                        Alarm();
+                        this.nextAlarmTime2 += this.interval;
+                    }
+                }
+                else
+                {
+                    if (Time.realtimeSinceStartup > this.endTime2)
+                    {
+                        Alarm();
+                        end = true;
+                    }
+                }
+                break;
+        }
     }
 
-    public void Alarm()
+    public void Stop()
+    {
+        this.onAlarm = null;
+        end = true;
+    }
+
+    void Alarm()
     {
         if (this.onAlarm != null)
         {
@@ -37,71 +140,55 @@ public class Clock
     {
         DateTimeClock,
         UnityTimeClock,
+        UnityUnScaleClock,
     }
 
-    static bool inited = false;
-    static List<Clock> clocks = new List<Clock>();
-
-    public static void Create(DateTime endTime, System.Action callBack)
+    public struct ClockParams
     {
-        if (!inited)
-        {
-            GlobalTimeEvent.Instance.secondEvent += OnPerSecond;
-            inited = true;
-        }
-
-        clocks.Add(new Clock(endTime, callBack));
+        public ClockType type;
+        public bool repeat;
+        public float interval;
+        public float surplusSecond;
     }
+}
 
-    public static void Create(float endTime, System.Action callBack)
+public class ClockUtil : SingletonMonobehaviour<ClockUtil>
+{
+    List<Clock> clocks = new List<Clock>();
+
+    public Clock Create(Clock.ClockParams value, System.Action callBack)
     {
-        if (!inited)
-        {
-            GlobalTimeEvent.Instance.secondEvent += OnPerSecond;
-            inited = true;
-        }
-
-        clocks.Add(new Clock(endTime, callBack));
+        var clock = new Clock(value, callBack);
+        clocks.Add(clock);
+        return clock;
     }
 
-    public static void Clear()
+    public void Clear()
     {
         clocks.Clear();
     }
 
-    public static void Dispose()
+    public void Dispose()
     {
+        foreach (var item in clocks)
+        {
+            item.Stop();
+        }
+
         clocks.Clear();
-        inited = false;
-        GlobalTimeEvent.Instance.secondEvent -= OnPerSecond;
     }
 
-    private static void OnPerSecond()
+    private void Update()
     {
         for (int i = clocks.Count - 1; i >= 0; i--)
         {
             var clock = clocks[i];
-            switch (clock.type)
+            clock.Invoke();
+            if (clock.end)
             {
-                case ClockType.DateTimeClock:
-                    if (DateTime.Now > clock.endTime1)
-                    {
-                        clock.Alarm();
-                        clocks.Remove(clock);
-                    }
-                    break;
-                case ClockType.UnityTimeClock:
-                    if (Time.time > clock.endTime2)
-                    {
-                        clock.Alarm();
-                        clocks.Remove(clock);
-                    }
-                    break;
+                clocks.RemoveAt(i);
             }
-
         }
-
     }
-
 
 }
