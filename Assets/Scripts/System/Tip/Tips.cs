@@ -13,7 +13,7 @@ public class Tips : Presenter<Tips>
     {
     }
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 }

@@ -41,7 +41,7 @@ public abstract class Presenter<T> where T : class, new()
 
     }
 
-    public abstract void OpenWindow();
+    public abstract void OpenWindow(int functionId = 0);
     public abstract void CloseWindow();
 
 }

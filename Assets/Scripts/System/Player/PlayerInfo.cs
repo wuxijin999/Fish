@@ -12,7 +12,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
     PlayerModel playerModel = new PlayerModel();
     public BizEvent<PropertyType> propertyEvent = new BizEvent<PropertyType>();
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 

@@ -12,7 +12,7 @@ public class ItemInfo : Presenter<ItemInfo>
 
     public Item showItem { get; private set; }
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 

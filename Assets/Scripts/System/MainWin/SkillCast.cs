@@ -13,7 +13,7 @@ public class SkillCast : Presenter<SkillCast>
 
     SkillModel skillModel = new SkillModel();
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 

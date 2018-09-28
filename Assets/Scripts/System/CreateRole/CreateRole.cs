@@ -25,7 +25,7 @@ public class CreateRole : Presenter<CreateRole>
         }
     }
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
         this.browseJob.Reset();
         Windows.Instance.Open(WindowType.CreateRole);

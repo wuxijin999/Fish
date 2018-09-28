@@ -11,7 +11,7 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
     public string content { get; private set; }
     public string title { get; private set; }
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 

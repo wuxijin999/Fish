@@ -12,15 +12,11 @@ public class FindPrecious : Presenter<FindPrecious>
 
     public readonly BaseProperty<int> functionId = new BaseProperty<int>(0);
 
-    public override void OpenWindow()
-    {
-    }
-
     public override void CloseWindow()
     {
     }
 
-    public void OpenWindow(int functionId)
+    public override void OpenWindow(int functionId)
     {
         this.functionId.value = functionId;
     }

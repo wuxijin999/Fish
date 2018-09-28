@@ -18,7 +18,7 @@ public class WorldBoss : Presenter<WorldBoss>
     Dictionary<int, BossBrief> bossBriefs = new Dictionary<int, BossBrief>();
     WorldBossModel model = new WorldBossModel();
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
     }
 

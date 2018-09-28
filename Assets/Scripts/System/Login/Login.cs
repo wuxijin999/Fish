@@ -10,14 +10,12 @@ using UnityEngine;
 public class Login : Presenter<Login>
 {
 
-    string localSaveAccount
-    {
+    string localSaveAccount {
         get { return LocalSave.GetString("LocalSave_Account"); }
         set { LocalSave.SetString("LocalSave_Account", value); }
     }
 
-    string localSavePassword
-    {
+    string localSavePassword {
         get { return LocalSave.GetString("LocalSave_Password"); }
         set { LocalSave.SetString("LocalSave_Password", value); }
     }
@@ -25,7 +23,7 @@ public class Login : Presenter<Login>
     public BizEvent<int> accountErrorEvent = new BizEvent<int>();
     public BizEvent<int> passwordErrorEvent = new BizEvent<int>();
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
         Windows.Instance.Open(WindowType.Login);
     }

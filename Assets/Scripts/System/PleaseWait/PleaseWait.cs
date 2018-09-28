@@ -8,7 +8,7 @@ public class PleaseWait : Presenter<PleaseWait>
 
     List<WaitType> waitings = new List<WaitType>();
 
-    public override void OpenWindow()
+    public override void OpenWindow(int functionId = 0)
     {
         Windows.Instance.Open(WindowType.PleaseWait);
     }
