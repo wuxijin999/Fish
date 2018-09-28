@@ -1,5 +1,5 @@
 ﻿
-public class ScrollItem : UIBase
+public class ScrollBehaviour : UIBase
 {
 
     public virtual void Display(object data)

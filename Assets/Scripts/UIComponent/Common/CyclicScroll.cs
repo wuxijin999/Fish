@@ -93,8 +93,8 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
     Vector2 refAutoLerpPosition = Vector2.zero;
 
     protected IList datas;
-    protected List<ScrollItem> infiniteItems = new List<ScrollItem>();
-    List<ScrollItem> tempList = new List<ScrollItem>();
+    protected List<ScrollBehaviour> infiniteItems = new List<ScrollBehaviour>();
+    List<ScrollBehaviour> tempList = new List<ScrollBehaviour>();
 
     Vector2 startMousePosition = Vector2.zero;
     Vector2 startContentPosition = Vector2.zero;
@@ -341,8 +341,8 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     protected virtual void ProcessMoveNext()
     {
-        ScrollItem lastRect = null;
-        ScrollItem item = null;
+        ScrollBehaviour lastRect = null;
+        ScrollBehaviour item = null;
 
         this.tempList.Clear();
         for (int i = 0; i < this.infiniteItems.Count; i++)
@@ -380,8 +380,8 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
 
     protected virtual void ProcessMoveLast()
     {
-        ScrollItem firstRect = null;
-        ScrollItem item = null;
+        ScrollBehaviour firstRect = null;
+        ScrollBehaviour item = null;
 
         this.tempList.Clear();
         for (int i = 0; i < this.infiniteItems.Count; i++)
@@ -576,7 +576,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         this.infiniteItems.Clear();
         for (int i = 0; i < this.content.childCount; i++)
         {
-            var infiniteItem = this.content.GetChild(i).GetComponent<ScrollItem>();
+            var infiniteItem = this.content.GetChild(i).GetComponent<ScrollBehaviour>();
             if (infiniteItem != null)
             {
                 this.infiniteItems.Add(infiniteItem);
@@ -609,7 +609,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         }
     }
 
-    private bool CanMoveNext(Align _align, ScrollItem _item)
+    private bool CanMoveNext(Align _align, ScrollBehaviour _item)
     {
         var itemMinPosition = _item.rectTransform.GetMinReferencePosition(this.rectTransform);
         var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(this.rectTransform);
@@ -629,7 +629,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         }
     }
 
-    private bool CanMoveLast(Align _align, ScrollItem _item)
+    private bool CanMoveLast(Align _align, ScrollBehaviour _item)
     {
         var itemMinPosition = _item.rectTransform.GetMinReferencePosition(this.rectTransform);
         var itemMaxPosition = _item.rectTransform.GetMaxReferencePosition(this.rectTransform);

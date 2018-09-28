@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\Config\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectBehaviour.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectUtil.cs" />
     <Compile Include="Assets\Scripts\Effect\UIEffectPlay.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPrecious.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPreciousWin.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBoss.cs" />
+    <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossBriefBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossModel.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossWidget.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
@@ -143,6 +145,8 @@
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\CyclicScroll.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButton.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButtonGroup.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\ScrollItem.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\SmoothSlider.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
@@ -208,6 +212,7 @@
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Icon.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Language.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\WorldBoss.txt" />
     <None Include="Assets\ResourcesOut\7_Effect\readme.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />

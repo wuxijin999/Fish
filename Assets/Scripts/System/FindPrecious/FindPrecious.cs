@@ -10,7 +10,7 @@ using UnityEngine;
 public class FindPrecious : Presenter<FindPrecious>
 {
 
-    public readonly BaseProperty<int> functionId = new BaseProperty<int>(0);
+    public readonly IntProperty functionId = new IntProperty(0);
 
     public override void CloseWindow()
     {
@@ -22,6 +22,7 @@ public class FindPrecious : Presenter<FindPrecious>
     }
 
 
+    
 
 }
 

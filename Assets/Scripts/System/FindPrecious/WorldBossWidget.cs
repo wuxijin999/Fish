@@ -12,12 +12,24 @@ public class WorldBossWidget : Widget
 
     [SerializeField] ButtonEx m_Goto;
     [SerializeField] TextEx m_KillTimes;
+    [SerializeField] Toggle m_AttenToggle;
     [SerializeField] CyclicScroll m_BossInfoes;
 
     protected override void SetListeners()
     {
         base.SetListeners();
         m_Goto.SetListener(GotoKillBoss);
+    }
+
+    protected override void OnActived()
+    {
+        base.OnActived();
+
+        WorldBoss.Instance.SelectBoss(WorldBoss.Instance.GetRecommendBossId());
+
+        DisplayAtten();
+        DisplayKillTimes();
+        m_BossInfoes.Init(WorldBoss.Instance.GetBosses());
     }
 
     private void GotoKillBoss()
@@ -31,15 +43,29 @@ public class WorldBossWidget : Widget
 
         if (WorldBoss.Instance.killedTimes.dirty || WorldBoss.Instance.totalTimes.dirty)
         {
-            var killTimes = WorldBoss.Instance.killedTimes.Fetch();
-            var totalTimes = WorldBoss.Instance.totalTimes.Fetch();
-
-            m_KillTimes.SetText(StringUtil.Contact(killTimes, "/", totalTimes));
-            m_KillTimes.SetColor(killTimes >= totalTimes ? ColorUtil.red : ColorUtil.green);
+            DisplayKillTimes();
         }
 
+        if (WorldBoss.Instance.selectedBoss.dirty)
+        {
+            DisplayAtten();
+        }
     }
 
+    private void DisplayKillTimes()
+    {
+        var killTimes = WorldBoss.Instance.killedTimes.Fetch();
+        var totalTimes = WorldBoss.Instance.totalTimes.Fetch();
+
+        m_KillTimes.SetText(StringUtil.Contact(killTimes, "/", totalTimes));
+        m_KillTimes.SetColor(killTimes >= totalTimes ? ColorUtil.red : ColorUtil.green);
+    }
+
+    private void DisplayAtten()
+    {
+        var bossBrief = WorldBoss.Instance.GetBossBrief(WorldBoss.Instance.selectedBoss.value);
+        m_AttenToggle.isOn = bossBrief.subscribed.value;
+    }
 
 }
 

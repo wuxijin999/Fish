@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\ScriptEditor\ButtonExEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />
+    <Compile Include="Assets\Editor\ScriptEditor\FunctionButtonEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\TextExEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\TweenEditor.cs" />
     <Compile Include="Assets\Editor\Tool\AnimatorControllerGenerate.cs" />
