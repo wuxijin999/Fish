@@ -189,4 +189,13 @@ public static class ComponentExtension
             text.SetText(@object.ToString());
         }
     }
+
+    public static void SetColor(this TextEx text, Color color)
+    {
+        if (text != null)
+        {
+            text.color = color;
+        }
+    }
+
 }

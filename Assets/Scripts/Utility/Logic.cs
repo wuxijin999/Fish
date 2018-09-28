@@ -1,5 +1,5 @@
 ﻿
-public class BizProperty<T>
+public sealed class BaseProperty<T>
 {
     T m_Value;
     public T value
@@ -31,12 +31,12 @@ public class BizProperty<T>
         }
     }
 
-    public BizProperty()
+    public BaseProperty()
     {
 
     }
 
-    public BizProperty(T value)
+    public BaseProperty(T value)
     {
         this.value = value;
     }
@@ -53,3 +53,4 @@ public class BizProperty<T>
     }
 
 }
+

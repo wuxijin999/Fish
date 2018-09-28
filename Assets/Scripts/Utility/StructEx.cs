@@ -93,14 +93,14 @@ public struct Int2
         return lhs.x != rhs.x || lhs.y != rhs.y;
     }
 
-    public static Int2 operator +(Int2 a, Int2 b)
+    public static Int2 operator +(Int2 lhs, Int2 rhs)
     {
-        return new Int2(a.x + b.x, a.y + b.y);
+        return new Int2(lhs.x + rhs.x, lhs.y + rhs.y);
     }
 
-    public static Int2 operator -(Int2 a, Int2 b)
+    public static Int2 operator -(Int2 lhs, Int2 rhs)
     {
-        return new Int2(a.x - b.x, a.y - b.y);
+        return new Int2(lhs.x - rhs.x, lhs.y - rhs.y);
     }
 
 }
@@ -213,14 +213,14 @@ public struct Int3
         return lhs.x != rhs.x || lhs.y != rhs.y || lhs.z != rhs.z;
     }
 
-    public static Int3 operator +(Int3 a, Int3 b)
+    public static Int3 operator +(Int3 lhs, Int3 rhs)
     {
-        return new Int3(a.x + b.x, a.y + b.y, a.z + b.z);
+        return new Int3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
     }
 
-    public static Int3 operator -(Int3 a, Int3 b)
+    public static Int3 operator -(Int3 lhs, Int3 rhs)
     {
-        return new Int3(a.x - b.x, a.y - b.y, a.z - b.z);
+        return new Int3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
     }
 
 }

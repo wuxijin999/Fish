@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class testBiz
 {
-    public readonly BizProperty<int> testInt = new BizProperty<int>(0);
-    public readonly BizProperty<string> testString = new BizProperty<string>("aaaa");
+    public readonly BaseProperty<int> testInt = new BaseProperty<int>(0);
+    public readonly BaseProperty<string> testString = new BaseProperty<string>("aaaa");
 
 
 

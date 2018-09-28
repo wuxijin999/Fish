@@ -10,21 +10,6 @@ using UnityEngine;
 public class #ClassName# : Model<#ClassName#>
 {
 
-    public override void Init()
-    {
-    }
-
-    public override void UnInit()
-    {
-    }
-
-    public override void OnSwitchAccount()
-    {
-    }
-
-    public override void OnLoginOk()
-    {
-    }
 
    
 }
