@@ -32,7 +32,7 @@ public class BossModelShow : UIBase
                 delayClock.Stop();
             }
 
-            Clock.ClockParams setting = new Clock.ClockParams()
+            var setting = new Clock.ClockParams()
             {
                 type = Clock.ClockType.UnityTimeClock,
                 second = 0.3f,
@@ -48,6 +48,8 @@ public class BossModelShow : UIBase
         {
             delayClock.Stop();
         }
+
+        delayClock = null;
     }
 
     private void DisplayBaseInfo()

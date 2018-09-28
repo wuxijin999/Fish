@@ -142,6 +142,8 @@
     <Compile Include="Assets\Scripts\System\Player\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWait.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWaitWin.cs" />
+    <Compile Include="Assets\Scripts\System\Team\Team.cs" />
+    <Compile Include="Assets\Scripts\System\Team\TeamModel.cs" />
     <Compile Include="Assets\Scripts\System\Tip\PopupTipBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Tip\PopupTipsWidget.cs" />
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
