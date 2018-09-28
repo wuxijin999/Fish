@@ -4,58 +4,11 @@ using UnityEngine;
 
 public class testBiz
 {
-    public readonly BizProperty<int> testInt = new BizProperty<int>();
-    public readonly BizProperty<string> testString = new BizProperty<string>();
+    public readonly BizProperty<int> testInt = new BizProperty<int>(0);
+    public readonly BizProperty<string> testString = new BizProperty<string>("aaaa");
 
-    public testBiz()
-    {
-        this.testInt.value = 0;
-        this.testString.value = "aaaa";
-    }
+
+
 
 }
 
-public class BizProperty<T>
-{
-    public T value;
-
-    bool m_Dirty = true;
-    public bool dirty {
-        get {
-            lock (this)
-            {
-                return this.m_Dirty;
-            }
-        }
-        set {
-            lock (this)
-            {
-                this.m_Dirty = value;
-            }
-        }
-    }
-
-    public BizProperty()
-    {
-
-    }
-
-}
-
-public class BizObject
-{
-    public object value;
-    public bool dirty;
-
-    public BizObject()
-    {
-        this.value = null;
-        this.dirty = true;
-    }
-
-    public BizObject(ref object _value)
-    {
-        this.value = _value;
-        this.dirty = true;
-    }
-}

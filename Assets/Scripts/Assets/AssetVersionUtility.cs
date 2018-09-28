@@ -92,7 +92,12 @@ public class AssetVersionUtility
         }
         else
         {
-            Clock.Create(DateTime.Now + new TimeSpan(TimeSpan.TicksPerSecond), GetAssetVersionFile);
+            var clockSetting = new Clock.ClockParams()
+            {
+                type=Clock.ClockType.DateTimeClock,
+                second=1,
+            };
+            ClockUtil.Instance.Create(clockSetting, GetAssetVersionFile);
         }
     }
 

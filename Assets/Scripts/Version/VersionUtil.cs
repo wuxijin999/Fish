@@ -104,7 +104,13 @@ public class VersionUtil : Singleton<VersionUtil>
         else
         {
             this.step = Step.None;
-            Clock.Create(DateTime.Now + new TimeSpan(TimeSpan.TicksPerSecond), this.RequestVersionCheck);
+            var clockSetting = new Clock.ClockParams()
+            {
+                type = Clock.ClockType.DateTimeClock,
+                second = 1,
+            };
+
+            ClockUtil.Instance.Create(clockSetting, this.RequestVersionCheck);
         }
     }
 

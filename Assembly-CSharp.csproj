@@ -175,6 +175,7 @@
     <Compile Include="Assets\Scripts\Utility\HttpRequest.cs" />
     <Compile Include="Assets\Scripts\Utility\LayerUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\LocalSave.cs" />
+    <Compile Include="Assets\Scripts\Utility\Logic.cs" />
     <Compile Include="Assets\Scripts\Utility\MaterialUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\MathUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\QualityUtil.cs" />

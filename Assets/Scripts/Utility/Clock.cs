@@ -24,13 +24,13 @@ public class Clock
         switch (this.type)
         {
             case ClockType.UnityTimeClock:
-                this.endTime2 = Time.time + value.surplusSecond;
+                this.endTime2 = Time.time + value.second;
                 break;
             case ClockType.UnityUnScaleClock:
-                this.endTime2 = Time.realtimeSinceStartup + value.surplusSecond;
+                this.endTime2 = Time.realtimeSinceStartup + value.second;
                 break;
             case ClockType.DateTimeClock:
-                this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.surplusSecond));
+                this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.second));
                 break;
             default:
                 break;
@@ -148,7 +148,7 @@ public class Clock
         public ClockType type;
         public bool repeat;
         public float interval;
-        public float surplusSecond;
+        public float second;
     }
 }
 
