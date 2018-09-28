@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Config\IconConfig.cs" />
     <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
     <Compile Include="Assets\Scripts\Config\LanguageConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\NpcConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectButton.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectWidget.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleWin.cs" />
+    <Compile Include="Assets\Scripts\System\FindPrecious\BossModelShow.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPrecious.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPreciousWin.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBoss.cs" />
@@ -213,6 +215,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Icon.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Language.txt" />
     <None Include="Assets\ResourcesOut\5_Config\WorldBoss.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\Npc.txt" />
     <None Include="Assets\ResourcesOut\7_Effect\readme.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />

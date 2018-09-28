@@ -15,6 +15,7 @@ public class ConfigInitiator
 		IconConfig.Init();
 		LanguageConfig.Init();
 		WorldBossConfig.Init();
+		NpcConfig.Init();
 		//初始化结束
     }
 

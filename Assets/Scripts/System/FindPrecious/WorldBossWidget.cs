@@ -14,6 +14,7 @@ public class WorldBossWidget : Widget
     [SerializeField] TextEx m_KillTimes;
     [SerializeField] Toggle m_AttenToggle;
     [SerializeField] CyclicScroll m_BossInfoes;
+    [SerializeField] BossModelShow m_ModelShow;
 
     protected override void SetListeners()
     {
@@ -29,6 +30,7 @@ public class WorldBossWidget : Widget
 
         DisplayAtten();
         DisplayKillTimes();
+        DisplayBossInstroduce(0f);
         m_BossInfoes.Init(WorldBoss.Instance.GetBosses());
     }
 
@@ -49,6 +51,7 @@ public class WorldBossWidget : Widget
         if (WorldBoss.Instance.selectedBoss.dirty)
         {
             DisplayAtten();
+            DisplayBossInstroduce(0.3f);
         }
     }
 
@@ -65,6 +68,11 @@ public class WorldBossWidget : Widget
     {
         var bossBrief = WorldBoss.Instance.GetBossBrief(WorldBoss.Instance.selectedBoss.value);
         m_AttenToggle.isOn = bossBrief.subscribed.value;
+    }
+
+    private void DisplayBossInstroduce(float delay)
+    {
+        m_ModelShow.Show(WorldBoss.Instance.selectedBoss.value, delay);
     }
 
 }
