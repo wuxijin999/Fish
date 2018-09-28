@@ -29,7 +29,7 @@ public class WorldBossBriefBehaviour : ScrollBehaviour
 
         m_SelectButton.SetListener(SelectBoss);
         m_Icon.gray = bossBrief.rebornTime.Fetch() > DateTime.Now;
-        m_SelectedBehaviour.gameObject.SetActive(bossBrief.selected.Fetch());
+        m_SelectedBehaviour.SetActive(bossBrief.selected.Fetch());
     }
 
     public override void Dispose()
@@ -61,7 +61,7 @@ public class WorldBossBriefBehaviour : ScrollBehaviour
 
         if (bossBrief.selected.dirty)
         {
-            m_SelectedBehaviour.gameObject.SetActive(bossBrief.selected.Fetch());
+            m_SelectedBehaviour.SetActive(bossBrief.selected.Fetch());
         }
     }
 

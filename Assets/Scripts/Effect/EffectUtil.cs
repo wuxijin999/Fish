@@ -24,7 +24,7 @@ public class EffectUtil : Singleton<EffectUtil>
 
             if (!behaviour.gameObject.activeInHierarchy)
             {
-                behaviour.gameObject.SetActive(true);
+                behaviour.SetActive(true);
             }
 
             behaviour.OnPlay(parent);

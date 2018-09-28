@@ -62,7 +62,7 @@ public class ItemBehaviour : UIBase
 
         for (var i = 0; i < this.m_Stars.Length; i++)
         {
-            this.m_Stars[i].gameObject.SetActive(i < config.starLevel);
+            this.m_Stars[i].SetActive(i < config.starLevel);
         }
     }
 
@@ -70,7 +70,7 @@ public class ItemBehaviour : UIBase
     {
         if (this.m_CountContainer != null)
         {
-            this.m_CountContainer.gameObject.SetActive(this.count > 1);
+            this.m_CountContainer.SetActive(this.count > 1);
             if (this.count > 1)
             {
                 this.m_Count.SetText(this.count);

@@ -8,17 +8,27 @@ using System;
 public static class ComponentExtension
 {
 
-    public static T AddMissingComponent<T>(this Component compoent) where T : Component
+    public static void SetActive(this Component input, bool value)
     {
-        if (compoent == null)
+        if (input == null)
+        {
+            throw new ArgumentNullException();
+        }
+
+        input.gameObject.SetActive(value);
+    }
+
+    public static T AddMissingComponent<T>(this Component input) where T : Component
+    {
+        if (input == null)
         {
             return null;
         }
 
-        T component = compoent.GetComponent<T>();
+        T component = input.GetComponent<T>();
         if (component == null)
         {
-            component = compoent.gameObject.AddComponent<T>();
+            component = input.gameObject.AddComponent<T>();
         }
 
         return component;

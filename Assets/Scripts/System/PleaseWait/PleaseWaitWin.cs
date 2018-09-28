@@ -31,14 +31,14 @@ public class PleaseWaitWin : Window
         if (linkOverTime > 0.001f)
         {
             this.actived = false;
-            this.backGround.gameObject.SetActive(false);
-            this.circle.gameObject.SetActive(false);
+            this.backGround.SetActive(false);
+            this.circle.SetActive(false);
         }
         else
         {
             this.actived = true;
-            this.backGround.gameObject.SetActive(true);
-            this.circle.gameObject.SetActive(true);
+            this.backGround.SetActive(true);
+            this.circle.SetActive(true);
         }
     }
 
@@ -51,8 +51,8 @@ public class PleaseWaitWin : Window
         this.timer += Time.deltaTime;
         if (!this.actived && this.timer > linkOverTime)
         {
-            this.backGround.gameObject.SetActive(true);
-            this.circle.gameObject.SetActive(true);
+            this.backGround.SetActive(true);
+            this.circle.SetActive(true);
         }
     }
 
