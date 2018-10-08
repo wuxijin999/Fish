@@ -19,16 +19,10 @@ public class RedpointBehaviour : UIBase
         }
     }
 
-    [SerializeField] RectTransform m_SimpleRedpoint;
-    public RectTransform simpleRedpoint { get { return m_SimpleRedpoint; } }
-
-    [SerializeField] RectTransform m_QuantityRedpoint;
-    public RectTransform quantityRedpoint { get { return m_QuantityRedpoint; } }
-
-    [SerializeField] Text m_Quantity;
-    public Text quantityText { get { return m_Quantity; } }
-
-    [SerializeField] RectTransform m_FullRedpoint;
+    [SerializeField] RectTransform m_Simple;
+    [SerializeField] RectTransform m_Count;
+    [SerializeField] TextEx m_CountText;
+    [SerializeField] RectTransform m_Full;
 
     Redpoint redpoint;
 
@@ -52,29 +46,29 @@ public class RedpointBehaviour : UIBase
 
     void UpdateRedpoint(RedPointState state, int count)
     {
-        if (m_SimpleRedpoint != null)
+        if (m_Simple != null)
         {
-            m_SimpleRedpoint.gameObject.SetActive(state == RedPointState.Simple);
+            m_Simple.gameObject.SetActive(state == RedPointState.Simple);
         }
 
-        if (m_QuantityRedpoint != null)
+        if (m_Count != null)
         {
-            m_QuantityRedpoint.gameObject.SetActive(state == RedPointState.Count);
+            m_Count.gameObject.SetActive(state == RedPointState.Count);
         }
 
-        if (m_Quantity != null)
+        if (m_CountText != null)
         {
-            m_Quantity.gameObject.SetActive(state == RedPointState.Count);
+            m_CountText.gameObject.SetActive(state == RedPointState.Count);
+
+            if (state == RedPointState.Count)
+            {
+                m_CountText.SetText(count > 9 ? "N" : count >= 1 ? count.ToString() : "");
+            }
         }
 
-        if (m_FullRedpoint != null)
+        if (m_Full != null)
         {
-            m_FullRedpoint.gameObject.SetActive(state == RedPointState.Full);
-        }
-
-        if (state == RedPointState.Count && m_Quantity != null)
-        {
-            m_Quantity.text = count > 9 ? "N" : count >= 1 ? count.ToString() : "";
+            m_Full.gameObject.SetActive(state == RedPointState.Full);
         }
 
     }
