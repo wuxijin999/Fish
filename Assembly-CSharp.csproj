@@ -124,6 +124,8 @@
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossBriefBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossModel.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossWidget.cs" />
+    <Compile Include="Assets\Scripts\System\Friend\Friend.cs" />
+    <Compile Include="Assets\Scripts\System\Friend\FriendModel.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemInfo.cs" />

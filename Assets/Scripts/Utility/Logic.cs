@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 public class BaseProperty
 {
@@ -325,4 +326,51 @@ public sealed class EnumProperty<T> : BaseProperty where T : struct
         return this.m_Value;
     }
 
+}
+
+public sealed class ListProperty<T> : BaseProperty
+{
+    List<T> collect = new List<T>();
+
+    public void Add(T element)
+    {
+        collect.Add(element);
+        this.dirty = true;
+    }
+
+    public void AddRange(IList<T> elements)
+    {
+        collect.AddRange(elements);
+        this.dirty = true;
+    }
+
+    public void Remove(T element)
+    {
+        collect.Remove(element);
+        this.dirty = true;
+    }
+
+    public void RemoveAt(int index)
+    {
+        collect.RemoveAt(index);
+        this.dirty = true;
+    }
+
+    public void Clear()
+    {
+        collect.Clear();
+        this.dirty = true;
+    }
+
+    public void Sort(IComparer<T> comparer)
+    {
+        collect.Sort(comparer);
+        this.dirty = true;
+    }
+
+    public List<T> Fetch()
+    {
+        this.dirty = false;
+        return this.collect;
+    }
 }
