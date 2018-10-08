@@ -51,7 +51,7 @@ public class CreateRoleWin : Window
 
     private void Create()
     {
-        var job = CreateRole.Instance.browsingJob;
+        var job = CreateRole.Instance.browsingJob.value;
         var name = this.m_RoleName.text;
         CreateRole.Instance.Create(job, name);
     }

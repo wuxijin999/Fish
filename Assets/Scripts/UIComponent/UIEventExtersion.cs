@@ -47,7 +47,9 @@ public class UIEventString : UnityEvent<string>
     }
 }
 
-
+/// <summary>
+/// 只允许给数据层使用，不允许给界面表现类型使用
+/// </summary>
 public class BizEvent
 {
 
@@ -90,6 +92,9 @@ public class BizEvent
 
 }
 
+/// <summary>
+/// 只允许给数据层使用，不允许给界面表现类型使用
+/// </summary>
 public class BizEvent<T>
 {
     event Action<T> bizEvent;
@@ -128,10 +133,11 @@ public class BizEvent<T>
         }
         return @event;
     }
-
-
 }
 
+/// <summary>
+/// 只允许给数据层使用，不允许给界面表现类型使用
+/// </summary>
 public class BizEvent<T0, T1>
 {
 
@@ -174,6 +180,9 @@ public class BizEvent<T0, T1>
 
 }
 
+/// <summary>
+/// 只允许给数据层使用，不允许给界面表现类型使用
+/// </summary>
 public class BizEvent<T0, T1, T2>
 {
 

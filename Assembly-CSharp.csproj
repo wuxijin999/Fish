@@ -110,6 +110,8 @@
     <Compile Include="Assets\Scripts\System\Base\WindowAsyncLoad.cs" />
     <Compile Include="Assets\Scripts\System\Base\WindowInfo.cs" />
     <Compile Include="Assets\Scripts\System\Base\Windows.cs" />
+    <Compile Include="Assets\Scripts\System\Chat\Chat.cs" />
+    <Compile Include="Assets\Scripts\System\Chat\ChatModel.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancel.cs" />
     <Compile Include="Assets\Scripts\System\ConfirmCancel\ConfirmCancelWin.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRole.cs" />

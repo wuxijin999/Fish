@@ -10,20 +10,8 @@ using UnityEngine;
 public class CreateRole : Presenter<CreateRole>
 {
 
-    public BizEvent browseJobEvent = new BizEvent();
-
     BrowseJob browseJob = new BrowseJob();
-
-    public int browsingJob {
-        get { return this.browseJob.job; }
-        set {
-            if (this.browseJob.job != value)
-            {
-                this.browseJob.job = value;
-                this.browseJobEvent.Invoke();
-            }
-        }
-    }
+    public readonly IntProperty browsingJob = new IntProperty(1);
 
     public override void OpenWindow(int functionId = 0)
     {
@@ -34,6 +22,11 @@ public class CreateRole : Presenter<CreateRole>
     public override void CloseWindow()
     {
         Windows.Instance.Close(WindowType.CreateRole);
+    }
+
+    public void ViewJob(int job)
+    {
+        browsingJob.value = job;
     }
 
     public void Create(int job, string name)
