@@ -294,3 +294,35 @@ public sealed class DateTimeProperty : BaseProperty
     }
 
 }
+
+public sealed class EnumProperty<T> : BaseProperty where T : struct
+{
+    T m_Value;
+    public T value {
+        get { return this.m_Value; }
+        set {
+            lock (this)
+            {
+                this.m_Value = value;
+                this.dirty = true;
+            }
+        }
+    }
+
+    public EnumProperty(T value)
+    {
+        if (typeof(Enum) != typeof(T).BaseType)
+        {
+            throw new ArgumentException("参数必须是枚举类型！");
+        }
+
+        this.value = value;
+    }
+
+    public T Fetch()
+    {
+        this.dirty = false;
+        return this.m_Value;
+    }
+
+}

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 public class TeamModel
 {
-    public TeamInfo teamInfo;
+    TeamInfo teamInfo;
     List<TheirTeam> theirTeams = new List<TheirTeam>();
     Dictionary<int, Teammate> teammates = new Dictionary<int, Teammate>();
 
