@@ -64,8 +64,8 @@ public class RichTextUtil
     static string ItemMatchEvaluator(Match match)
     {
         var integerMatch = Regex.Match(match.Value, "\\d+");
-        var itemId = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
-        var config = ItemConfig.Get(itemId);
+        var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
+        var config = ItemConfig.Get(id);
 
         return config.name;
     }
