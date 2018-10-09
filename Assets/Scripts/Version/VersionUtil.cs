@@ -13,13 +13,11 @@ using System.IO;
 public class VersionUtil : Singleton<VersionUtil>
 {
     public const string VERSION_URL = "http://pub.game.secondworld.net.cn:11000/appversion/?";
-    const string VERSION_URL_PURE = "http://pub.game.secondworld.net.cn:11000/purge/appversion/?";
 
     public string androidRoot { get { return VersionConfig.Get().bundleIdentifier; } }
 
-    public float progress
-    {
-        get { return RemoteFile.TotalDownloadSize / ((float)this.versionInfo.GetLatestVersion().file_size * 1024); }
+    public float progress {
+        get { return 0 / ((float)this.versionInfo.GetLatestVersion().file_size * 1024); }
     }
 
     public string apkLocalURL = string.Empty;
@@ -27,11 +25,9 @@ public class VersionUtil : Singleton<VersionUtil>
     public bool completed { get { return this.step == Step.Completed; } }
 
     Step m_Step = Step.None;
-    public Step step
-    {
+    public Step step {
         get { return this.m_Step; }
-        private set
-        {
+        private set {
             if (this.m_Step != value)
             {
                 this.m_Step = value;
@@ -121,9 +117,6 @@ public class VersionUtil : Singleton<VersionUtil>
         var remoteURL = version.download_url;
         var fileName = Path.GetFileName(remoteURL);
         this.apkLocalURL = StringUtil.Contact(this.androidRoot, "/", fileName);
-        var remoteFile = new RemoteFile(remoteURL, this.apkLocalURL, null);
-        RemoteFile.Prepare();
-        CoroutineUtil.Instance.Begin(remoteFile.DownloadRemoteFile(this.OnDownLoadApkCompleted));
     }
 
     private void OnDownLoadApkCompleted(bool ok, AssetVersion assetVersion)

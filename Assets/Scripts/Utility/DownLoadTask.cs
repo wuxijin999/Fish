@@ -91,11 +91,7 @@ public class FileDownLoad
     private void BeginGetHeadFile()
     {
         var request = (HttpWebRequest)System.Net.WebRequest.Create(this.remoteFile);
-        if (request.ServicePoint.ConnectionLimit < RemoteFile.MaxConnectLimit)
-        {
-            request.ServicePoint.ConnectionLimit = RemoteFile.MaxConnectLimit;
-        }
-
+        request.ServicePoint.ConnectionLimit = MaxConnectLimit;
         request.Method = "HEAD"; // Only the header info, not full file!
         request.ServicePoint.Expect100Continue = false;
         request.Timeout = 3000;
@@ -138,7 +134,6 @@ public class FileDownLoad
             response = (result.AsyncState as HttpWebRequest).EndGetResponse(result) as HttpWebResponse;
             this.remoteLastModifiedTime = response.LastModified;
             this.remoteFileSize = response.ContentLength;
-            System.Threading.Interlocked.Add(ref RemoteFile.TotalRemoteFileSize, this.remoteFileSize);
 
             if (response.Headers["Accept-Ranges"] != null)
             {
@@ -208,11 +203,7 @@ public class FileDownLoad
         try
         {
             request = (HttpWebRequest)HttpWebRequest.Create(this.remoteFile);
-            if (request.ServicePoint.ConnectionLimit < RemoteFile.MaxConnectLimit)
-            {
-                request.ServicePoint.ConnectionLimit = RemoteFile.MaxConnectLimit;
-            }
-
+            request.ServicePoint.ConnectionLimit = MaxConnectLimit;
             request.ServicePoint.Expect100Continue = false;
             request.Timeout = 3000;
             if (tempFileSize != 0L && acceptRange)
