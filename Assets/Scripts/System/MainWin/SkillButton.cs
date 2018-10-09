@@ -12,6 +12,9 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
     [SerializeField] int m_Index = 0;
 
+    [SerializeField] RectTransform m_CoolDownContainer;
+    [SerializeField] TextEx m_CoolDown;
+
     PointerState m_PointerState = PointerState.Up;
 
     public void OnPointerDown(PointerEventData eventData)
@@ -40,8 +43,19 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
         if (SkillCast.Instance.IsCountDown(this.m_Index))
         {
+            if (!m_CoolDownContainer.gameObject.activeInHierarchy)
+            {
+                m_CoolDownContainer.gameObject.SetActive(true);
+            }
 
-
+            m_CoolDown.SetText(SkillCast.Instance.GetSkillCountDown(this.m_Index));
+        }
+        else
+        {
+            if (m_CoolDownContainer.gameObject.activeInHierarchy)
+            {
+                m_CoolDownContainer.gameObject.SetActive(false);
+            }
         }
     }
 

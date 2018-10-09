@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Saturday, September 15, 2018
+//    [  Date ]:           Tuesday, October 09, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -21,9 +21,9 @@ public partial class EquipConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out this.id); 
+            int.TryParse(tables[0],out id); 
 
-			int.TryParse(tables[1],out this.place); 
+			int.TryParse(tables[1],out place); 
         }
         catch (Exception ex)
         {
@@ -49,6 +49,10 @@ public partial class EquipConfig
         return config;
     }
 
+	public static bool Has(int id)
+    {
+        return configs.ContainsKey(id);
+    }
 
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()

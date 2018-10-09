@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Net.NetworkInformation;
-using System;
-using System.Net;
-using System.Net.Sockets;
+﻿using System;
 using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text.RegularExpressions;
+using UnityEngine;
 using UnityEngine.iOS;
 
 public class DeviceUtil
@@ -40,14 +37,14 @@ public class DeviceUtil
     {
         if (string.IsNullOrEmpty(ip))
         {
-            string url = "http://pv.sohu.com/cityjson";
-            WebRequest wRequest = WebRequest.Create(url);
+            var url = "http://pv.sohu.com/cityjson";
+            var wRequest = WebRequest.Create(url);
             wRequest.Method = "GET";
             wRequest.ContentType = "text/html;charset=UTF-8";
-            WebResponse wResponse = wRequest.GetResponse();
-            Stream stream = wResponse.GetResponseStream();
-            StreamReader reader = new StreamReader(stream, System.Text.Encoding.Default);
-            string str = reader.ReadToEnd();
+            var wResponse = wRequest.GetResponse();
+            var stream = wResponse.GetResponseStream();
+            var reader = new StreamReader(stream, System.Text.Encoding.Default);
+            var str = reader.ReadToEnd();
 
             reader.Close();
             wResponse.Close();
@@ -64,46 +61,46 @@ public class DeviceUtil
 
     public static string GetDeviceUniquenessIdentify()
     {
-#if UNITY_IOS
-        return UnityEngine.iOS.Device.advertisingIdentifier;
-# elif UNITY_ANDROID
-        return SystemInfo.deviceUniqueIdentifier;
-#else
-        return "";
-#endif
+        switch (Application.platform)
+        {
+            case RuntimePlatform.IPhonePlayer:
+                return Device.advertisingIdentifier;
+            default:
+                return SystemInfo.deviceUniqueIdentifier;
+        }
     }
 
     public static string GetDeviceOSLevel()
     {
-#if UNITY_IOS
-        return UnityEngine.iOS.Device.systemVersion;
-# elif UNITY_ANDROID
-        return SystemInfo.operatingSystem;
-#else
-        return "";
-#endif
+        switch (Application.platform)
+        {
+            case RuntimePlatform.IPhonePlayer:
+                return Device.systemVersion;
+            default:
+                return SystemInfo.operatingSystem;
+        }
     }
 
     public static string GetDeviceName()
     {
-#if UNITY_IOS
-        return UnityEngine.iOS.Device.generation.ToString();
-#elif UNITY_ANDROID
-        return SystemInfo.deviceName;
-#else
-        return "";
-#endif
+        switch (Application.platform)
+        {
+            case RuntimePlatform.IPhonePlayer:
+                return Device.generation.ToString();
+            default:
+                return SystemInfo.deviceName;
+        }
     }
 
     public static string GetDeviceModel()
     {
-#if UNITY_IOS
-        return UnityEngine.iOS.Device.generation.ToString();
-#elif UNITY_ANDROID
-        return SystemInfo.deviceModel;
-#else
-        return "";
-#endif
+        switch (Application.platform)
+        {
+            case RuntimePlatform.IPhonePlayer:
+                return Device.generation.ToString();
+            default:
+                return SystemInfo.deviceModel;
+        }
     }
 
     public static bool IsLowMemory()

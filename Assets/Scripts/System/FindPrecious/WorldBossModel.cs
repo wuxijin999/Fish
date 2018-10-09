@@ -15,7 +15,7 @@ public class WorldBossModel
     public void UpdateBossInfo(int bossId, int second)
     {
         var boss = GetBoss(bossId);
-        boss.rebornTime = DateTime.Now + new TimeSpan(TimeSpan.TicksPerSecond * second);
+        boss.rebornTime = Time.realtimeSinceStartup+ second;
     }
 
     public void UpdateBossSubscribe(int bossId, bool subscribed)
@@ -36,7 +36,7 @@ public class WorldBossModel
 
     public class Boss
     {
-        public DateTime rebornTime = DateTime.MinValue;
+        public float rebornTime = 0f;
         public bool subscribed = false;
     }
 

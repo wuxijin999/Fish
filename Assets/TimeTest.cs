@@ -2,30 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
 
 public class TimeTest : MonoBehaviour
 {
 
-
-    public int second = 9999;
+    public string input = @"this is a <Item=10007>||||<Npc=1>|<Npc=2>";
 
     void Update()
     {
-
         if (Input.GetKeyDown(KeyCode.F))
         {
-            for (int i = 0; i < 100; i++)
-            {
-                this.second.ToTimeString("dd:HH:mm:ss");
-            }
+            Debug.Log(RichTextUtil.Convert(input));
         }
 
         if (Input.GetKeyDown(KeyCode.G))
         {
-            for (int i = 0; i < 100; i++)
-            {
-                System.DateTime.Now.ToShortDateString();
-            }
+            MultipleTask();
         }
     }
+
+    void MultipleTask()
+    {
+
+        ThreadPool.QueueUserWorkItem(
+            (object a) =>
+            {
+                for (var i = 0; i < 1000; i++)
+                {
+                    Debug.Log(RichTextUtil.Convert(input));
+                    Thread.Sleep(30);
+                }
+            }
+            );
+
+    }
+
 }

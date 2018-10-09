@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Friday, September 28, 2018
+//    [  Date ]:           Tuesday, October 09, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -66,6 +66,10 @@ public partial class NpcConfig
         return config;
     }
 
+	public static bool Has(int id)
+    {
+        return configs.ContainsKey(id);
+    }
 
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()

@@ -3,10 +3,6 @@
 //    [  Date ]:           Friday, September 28, 2018
 //--------------------------------------------------------
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
 
 public class WorldBossBriefBehaviour : ScrollBehaviour
 {
@@ -25,10 +21,10 @@ public class WorldBossBriefBehaviour : ScrollBehaviour
 
         var bossId = (int)data;
         bossBrief = WorldBoss.Instance.GetBossBrief(bossId);
+        m_SelectButton.SetListener(SelectBoss);
         DisplayBaseInfo();
 
-        m_SelectButton.SetListener(SelectBoss);
-        m_Icon.gray = bossBrief.rebornTime.Fetch() > DateTime.Now;
+        m_Icon.gray = bossBrief.rebornTime.Fetch() > Time.realtimeSinceStartup;
         m_SelectedBehaviour.SetActive(bossBrief.selected.Fetch());
     }
 
@@ -55,7 +51,7 @@ public class WorldBossBriefBehaviour : ScrollBehaviour
     {
         if (bossBrief.rebornTime.dirty)
         {
-            var dead = bossBrief.rebornTime.Fetch() > DateTime.Now;
+            var dead = bossBrief.rebornTime.Fetch() > Time.realtimeSinceStartup;
             m_Icon.gray = dead;
         }
 

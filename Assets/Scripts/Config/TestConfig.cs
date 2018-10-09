@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, September 03, 2018
+//    [  Date ]:           Tuesday, October 09, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -24,17 +24,17 @@ public partial class TestConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out this.ID); 
+            int.TryParse(tables[0],out ID); 
 
 			var LVTemp = 0;
-			int.TryParse(tables[1],out LVTemp);
-            this.LV =LVTemp!=0;
+			int.TryParse(tables[1],out LVTemp); 
+			LV=LVTemp!=0;
 
-			Int2.TryParse(tables[2],out this.ItemName); 
+			Int2.TryParse(tables[2],out ItemName); 
 
-			Int3.TryParse(tables[3],out this.Type);
+			Int3.TryParse(tables[3],out Type); 
 
-            this.EquipPlace =tables[4].Vector3Parse();
+			EquipPlace=tables[4].Vector3Parse();
         }
         catch (Exception ex)
         {
@@ -60,6 +60,10 @@ public partial class TestConfig
         return config;
     }
 
+	public static bool Has(int id)
+    {
+        return configs.ContainsKey(id);
+    }
 
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()

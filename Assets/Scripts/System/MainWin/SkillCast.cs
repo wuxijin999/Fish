@@ -38,18 +38,18 @@ public class SkillCast : Presenter<SkillCast>
     public bool IsCountDown(int index)
     {
         var skill = this.skillModel.GetSkill(index);
-        DateTime canCastTime;
+        var canCastTime = 0f;
         this.skillModel.TryGetNextCastTime(skill, out canCastTime);
-        return DateTime.Now < canCastTime;
+        return Time.realtimeSinceStartup < canCastTime;
     }
 
     public int GetSkillCountDown(int index)
     {
         var skill = this.skillModel.GetSkill(index);
 
-        DateTime canCastTime;
+        var canCastTime = 0f;
         this.skillModel.TryGetNextCastTime(skill, out canCastTime);
-        var seconds = (int)(canCastTime - DateTime.Now).TotalSeconds;
+        var seconds = (int)(canCastTime - Time.realtimeSinceStartup);
 
         var countDown = seconds > 0 ? seconds : 0;
         return countDown;
@@ -63,7 +63,6 @@ public class SkillCast : Presenter<SkillCast>
             description = "这个技能很厉害",
         };
     }
-
 
     public struct SkillBaseInfo
     {

@@ -46,6 +46,10 @@ public partial class #ClassName#
         return config;
     }
 
+	public static bool Has(int id)
+    {
+        return configs.ContainsKey(id);
+    }
 
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()

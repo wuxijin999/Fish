@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, September 03, 2018
+//    [  Date ]:           Tuesday, October 09, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -23,17 +23,17 @@ public partial class WindowConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out this.id); 
+            int.TryParse(tables[0],out id); 
 
 			var fullScreenTemp = 0;
-			int.TryParse(tables[1],out fullScreenTemp);
-            this.fullScreen =fullScreenTemp!=0;
+			int.TryParse(tables[1],out fullScreenTemp); 
+			fullScreen=fullScreenTemp!=0;
 
-			int.TryParse(tables[2],out this.depth); 
+			int.TryParse(tables[2],out depth); 
 
 			var emptyToCloseTemp = 0;
-			int.TryParse(tables[3],out emptyToCloseTemp);
-            this.emptyToClose =emptyToCloseTemp!=0;
+			int.TryParse(tables[3],out emptyToCloseTemp); 
+			emptyToClose=emptyToCloseTemp!=0;
         }
         catch (Exception ex)
         {
@@ -59,6 +59,10 @@ public partial class WindowConfig
         return config;
     }
 
+	public static bool Has(int id)
+    {
+        return configs.ContainsKey(id);
+    }
 
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()

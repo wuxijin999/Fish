@@ -87,7 +87,7 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
     public class BossBrief
     {
         public readonly int bossId;
-        public readonly DateTimeProperty rebornTime = new DateTimeProperty();
+        public readonly FloatProperty rebornTime = new FloatProperty();
         public readonly BoolProperty subscribed = new BoolProperty();
         public readonly BoolProperty selected = new BoolProperty(false);
 
