@@ -123,7 +123,7 @@ public class VersionUtil : Singleton<VersionUtil>
         this.apkLocalURL = StringUtil.Contact(this.androidRoot, "/", fileName);
         var remoteFile = new RemoteFile(remoteURL, this.apkLocalURL, null);
         RemoteFile.Prepare();
-        CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnDownLoadApkCompleted));
+        CoroutineUtil.Instance.Begin(remoteFile.DownloadRemoteFile(this.OnDownLoadApkCompleted));
     }
 
     private void OnDownLoadApkCompleted(bool ok, AssetVersion assetVersion)

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 
 namespace Actor
 {
@@ -40,6 +40,11 @@ namespace Actor
 
         public ActorBase(Transform transform)
         {
+            if (transform == null)
+            {
+                throw new ArgumentNullException("transform is null");
+            }
+
             this.transform = transform;
             this.pathFinder = new PathFinder(this);
             this.actorBrain = new ActorBrain(this);

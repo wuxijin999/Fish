@@ -74,7 +74,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
     public void StartDownLoad()
     {
         this.step = Step.DownLoad;
-        CoroutineUtil.Instance.Coroutine(Co_StartDownLoad());
+        CoroutineUtil.Instance.Begin(Co_StartDownLoad());
     }
 
     IEnumerator Co_StartDownLoad()
@@ -89,7 +89,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Begin(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
         }
 
         while (this.okCount < this.totalCount)
@@ -123,7 +123,7 @@ public class DownLoadAndDiscompressTask : Singleton<DownLoadAndDiscompressTask>
             var localURL = StringUtil.Contact(AssetPath.ExternalStorePath, assetVersion.relativePath);
 
             var remoteFile = new RemoteFile(remoteURL, localURL, assetVersion);
-            CoroutineUtil.Instance.Coroutine(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
+            CoroutineUtil.Instance.Begin(remoteFile.DownloadRemoteFile(this.OnFileDownLoadCompleted));
         }
     }
 

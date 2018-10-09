@@ -92,8 +92,9 @@
     <Compile Include="Assets\Scripts\Fight\ActorEngine.cs" />
     <Compile Include="Assets\Scripts\Fight\FightActor.cs" />
     <Compile Include="Assets\Scripts\Fight\FightJudge.cs" />
-    <Compile Include="Assets\Scripts\Fight\Hero.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Base.cs" />
+    <Compile Include="Assets\Scripts\Fight\MyPlayer.cs" />
+    <Compile Include="Assets\Scripts\Fight\OhterPlayer.cs" />
     <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Attack.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Base.cs" />

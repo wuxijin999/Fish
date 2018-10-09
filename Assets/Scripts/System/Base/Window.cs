@@ -10,7 +10,8 @@ using UnityEngine.UI;
 public class Window : UIBase
 {
     [Header("Base")]
-    [SerializeField] int m_Id;
+    [SerializeField]
+    int m_Id;
     public int id { get { return this.m_Id; } }
     [SerializeField] Tween m_Tween;
     [SerializeField] Button m_Close;
@@ -24,11 +25,9 @@ public class Window : UIBase
     public WindowState windowState { get; private set; }
     public int order = 1000;
     bool m_Interactable = false;
-    public bool interactable
-    {
+    public bool interactable {
         get { return this.m_Interactable; }
-        set
-        {
+        set {
             this.m_Interactable = value;
             this.m_Raycaster.enabled = this.m_Interactable;
         }
@@ -38,7 +37,7 @@ public class Window : UIBase
     bool initialized = false;
     WindowConfig config { get { return WindowConfig.Get(this.m_Id); } }
 
-    internal Window Open(int _order)
+    internal void Open(int _order)
     {
         this.order = _order;
         try
@@ -84,10 +83,9 @@ public class Window : UIBase
             ActiveWindow();
         }
 
-        return this;
     }
 
-    internal Window Close()
+    internal void Close()
     {
         try
         {
@@ -121,7 +119,6 @@ public class Window : UIBase
             Debug.Log(ex.StackTrace);
         }
 
-        return this;
     }
 
     public void SetWidgetActive<T>(bool value) where T : Widget

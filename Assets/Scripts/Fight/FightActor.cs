@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Actor
 {
@@ -8,7 +9,10 @@ namespace Actor
     {
         public FightActor(Transform transform) : base(transform)
         {
-
+            if (transform == null)
+            {
+                throw new ArgumentNullException("transform is null");
+            }
         }
 
         public override void OnFixedUpdate()

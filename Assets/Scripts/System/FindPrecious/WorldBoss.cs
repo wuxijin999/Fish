@@ -52,6 +52,11 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
 
     public void UpdateBossInfoes(List<int> bossIds, List<int> seconds, List<bool> subscribes)
     {
+        if (bossIds == null || seconds == null || subscribes == null)
+        {
+            return;
+        }
+
         for (var i = 0; i < bossIds.Count; i++)
         {
             var bossId = bossIds[i];

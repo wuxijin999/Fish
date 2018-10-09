@@ -16,9 +16,8 @@ public class RichTextUtil
             case RichTextType.Npc:
                 return Regex.Replace(input, pattern, NpcMatchEvaluator);
             default:
-                break;
+                return string.Empty;
         }
-        return "";
     }
 
     public static string Convert(string input)
@@ -45,11 +44,11 @@ public class RichTextUtil
         var titleMatch = Regex.Match(match.Value, "[A-z]+");
         if (titleMatch != null)
         {
-            switch (titleMatch.Value)
+            switch (titleMatch.Value.ToLower())
             {
-                case "Item":
+                case "item":
                     return RichTextType.Item;
-                case "Npc":
+                case "npc":
                     return RichTextType.Npc;
                 default:
                     return RichTextType.None;
@@ -63,20 +62,36 @@ public class RichTextUtil
 
     static string ItemMatchEvaluator(Match match)
     {
-        var integerMatch = Regex.Match(match.Value, "\\d+");
-        var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
-        var config = ItemConfig.Get(id);
+        try
+        {
+            var integerMatch = Regex.Match(match.Value, "\\d+");
+            var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
+            var config = ItemConfig.Get(id);
 
-        return config.name;
+            return config.name;
+        }
+        catch (System.Exception ex)
+        {
+            DebugEx.Log(ex);
+            return string.Empty;
+        }
     }
 
     static string NpcMatchEvaluator(Match match)
     {
-        var integerMatch = Regex.Match(match.Value, "\\d+");
-        var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
-        var config = NpcConfig.Get(id);
+        try
+        {
+            var integerMatch = Regex.Match(match.Value, "\\d+");
+            var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
+            var config = NpcConfig.Get(id);
 
-        return config.name;
+            return config.name;
+        }
+        catch (System.Exception ex)
+        {
+            DebugEx.Log(ex);
+            return string.Empty;
+        }
     }
 
     public enum RichTextType
