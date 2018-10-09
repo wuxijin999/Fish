@@ -232,6 +232,7 @@
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Test.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\Map.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Effect.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_01_Spec,Reflect,Normal.shader" />
