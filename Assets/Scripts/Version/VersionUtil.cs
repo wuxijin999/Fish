@@ -106,7 +106,7 @@ public class VersionUtil : Singleton<VersionUtil>
             this.step = Step.None;
             var clockSetting = new Clock.ClockParams()
             {
-                type = Clock.ClockType.DateTimeClock,
+                type = Clock.ClockType.UnityRealTimeClock,
                 second = 1,
             };
 

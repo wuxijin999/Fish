@@ -68,9 +68,7 @@
     <Compile Include="Assets\Scripts\Assets\AssetSource.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetVersion.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetVersionUtility.cs" />
-    <Compile Include="Assets\Scripts\Assets\DownLoadAndDiscompressTask.cs" />
     <Compile Include="Assets\Scripts\Assets\EffectAssets.cs" />
-    <Compile Include="Assets\Scripts\Assets\RemoteFile.cs" />
     <Compile Include="Assets\Scripts\Assets\UIAssets.cs" />
     <Compile Include="Assets\Scripts\Config\EffectConfig.cs" />
     <Compile Include="Assets\Scripts\Config\EquipConfig.cs" />

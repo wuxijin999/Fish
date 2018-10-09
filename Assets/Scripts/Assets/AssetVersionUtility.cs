@@ -7,17 +7,14 @@ using System.IO;
 public class AssetVersionUtility
 {
 
-    public static bool hasDownLoadFullAsset
-    {
+    public static bool hasDownLoadFullAsset {
         get { return LocalSave.GetBool("HasDownLoadFullAsset"); }
         set { LocalSave.SetBool("HasDownLoadFullAsset", value); }
     }
 
     static bool m_PriorAssetDownLoadDone = false;
-    public static bool priorAssetDownLoadDone
-    {
-        get
-        {
+    public static bool priorAssetDownLoadDone {
+        get {
             switch (VersionConfig.Get().assetAccess)
             {
                 case InstalledAsset.NullAsset:
@@ -33,10 +30,8 @@ public class AssetVersionUtility
     }
 
     static bool m_UnPriorAssetDownLoadDone = false;
-    public static bool unPriorAssetDownLoadDone
-    {
-        get
-        {
+    public static bool unPriorAssetDownLoadDone {
+        get {
             switch (VersionConfig.Get().assetAccess)
             {
                 case InstalledAsset.NullAsset:
@@ -94,8 +89,8 @@ public class AssetVersionUtility
         {
             var clockSetting = new Clock.ClockParams()
             {
-                type=Clock.ClockType.DateTimeClock,
-                second=1,
+                type = Clock.ClockType.UnityRealTimeClock,
+                second = 1,
             };
             ClockUtil.Instance.Create(clockSetting, GetAssetVersionFile);
         }
@@ -106,16 +101,10 @@ public class AssetVersionUtility
         if (prior)
         {
             m_PriorAssetDownLoadDone = false;
-            DownLoadAndDiscompressTask.Instance.Prepare(priorDownLoadAssetVersions, true, () => { m_PriorAssetDownLoadDone = true; });
         }
         else
         {
             m_UnPriorAssetDownLoadDone = false;
-            DownLoadAndDiscompressTask.Instance.Prepare(unpriorDownLoadAssetVersions, false, () =>
-            {
-                m_UnPriorAssetDownLoadDone = true;
-                hasDownLoadFullAsset = true;
-            });
         }
     }
 

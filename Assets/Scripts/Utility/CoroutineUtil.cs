@@ -14,6 +14,7 @@ public class CoroutineUtil : SingletonMonobehaviour<CoroutineUtil>
 
     public void Begin(int hash, string methodName, IEnumerator routine)
     {
+        Stop(hash, methodName);
         var coroutine = StartCoroutine(routine);
         var table = coroutines.ContainsKey(hash) ? coroutines[hash] : coroutines[hash] = new Dictionary<string, Coroutine>();
         table[methodName] = coroutine;

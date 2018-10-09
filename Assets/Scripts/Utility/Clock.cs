@@ -8,13 +8,13 @@ public class Clock
     System.Action onAlarm;
 
     public readonly ClockType type;
-    public readonly float endTime2;
-    public readonly DateTime endTime1;
+    public readonly float endSecond;
+    public readonly DateTime endDateTime;
 
     bool repeat = false;
     float interval = 10;
-    float nextAlarmTime2 = 0f;
-    DateTime nextAlarmTime1 = DateTime.MinValue;
+    float nextAlarmSecond = 0f;
+    DateTime nextAlarmDateTime = DateTime.MinValue;
 
     public bool end { get; private set; }
 
@@ -24,13 +24,13 @@ public class Clock
         switch (this.type)
         {
             case ClockType.UnityTimeClock:
-                this.endTime2 = Time.time + value.second;
+                this.endSecond = Time.time + value.second;
                 break;
-            case ClockType.UnityUnScaleClock:
-                this.endTime2 = Time.realtimeSinceStartup + value.second;
+            case ClockType.UnityRealTimeClock:
+                this.endSecond = Time.realtimeSinceStartup + value.second;
                 break;
             case ClockType.DateTimeClock:
-                this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.second));
+                this.endDateTime = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.second));
                 break;
             default:
                 break;
@@ -44,13 +44,13 @@ public class Clock
             switch (this.type)
             {
                 case ClockType.UnityTimeClock:
-                    this.nextAlarmTime2 = Time.time + value.interval;
+                    this.nextAlarmSecond = Time.time + value.interval;
                     break;
-                case ClockType.UnityUnScaleClock:
-                    this.nextAlarmTime2 = Time.realtimeSinceStartup + value.interval;
+                case ClockType.UnityRealTimeClock:
+                    this.nextAlarmSecond = Time.realtimeSinceStartup + value.interval;
                     break;
                 case ClockType.DateTimeClock:
-                    this.endTime1 = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.interval));
+                    this.endDateTime = DateTime.Now + new TimeSpan((int)(TimeSpan.TicksPerSecond * value.interval));
                     break;
                 default:
                     break;
@@ -67,15 +67,15 @@ public class Clock
             case ClockType.DateTimeClock:
                 if (this.repeat)
                 {
-                    if (DateTime.Now > this.nextAlarmTime1)
+                    if (DateTime.Now > this.nextAlarmDateTime)
                     {
                         Alarm();
-                        this.nextAlarmTime1 += new TimeSpan((int)(TimeSpan.TicksPerSecond * this.interval));
+                        this.nextAlarmDateTime += new TimeSpan((int)(TimeSpan.TicksPerSecond * this.interval));
                     }
                 }
                 else
                 {
-                    if (DateTime.Now > endTime1)
+                    if (DateTime.Now > endDateTime)
                     {
                         Alarm();
                         end = true;
@@ -85,33 +85,33 @@ public class Clock
             case ClockType.UnityTimeClock:
                 if (this.repeat)
                 {
-                    if (Time.time > this.nextAlarmTime2)
+                    if (Time.time > this.nextAlarmSecond)
                     {
                         Alarm();
-                        this.nextAlarmTime2 += this.interval;
+                        this.nextAlarmSecond += this.interval;
                     }
                 }
                 else
                 {
-                    if (Time.time > this.endTime2)
+                    if (Time.time > this.endSecond)
                     {
                         Alarm();
                         end = true;
                     }
                 }
                 break;
-            case ClockType.UnityUnScaleClock:
+            case ClockType.UnityRealTimeClock:
                 if (this.repeat)
                 {
-                    if (Time.realtimeSinceStartup > this.nextAlarmTime2)
+                    if (Time.realtimeSinceStartup > this.nextAlarmSecond)
                     {
                         Alarm();
-                        this.nextAlarmTime2 += this.interval;
+                        this.nextAlarmSecond += this.interval;
                     }
                 }
                 else
                 {
-                    if (Time.realtimeSinceStartup > this.endTime2)
+                    if (Time.realtimeSinceStartup > this.endSecond)
                     {
                         Alarm();
                         end = true;
@@ -140,7 +140,7 @@ public class Clock
     {
         DateTimeClock,
         UnityTimeClock,
-        UnityUnScaleClock,
+        UnityRealTimeClock,
     }
 
     public struct ClockParams
