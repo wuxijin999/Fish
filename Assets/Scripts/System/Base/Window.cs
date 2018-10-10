@@ -21,7 +21,13 @@ public class Window : UIBase
     public WindowState windowState { get; private set; }
 
     int m_Order = 1000;
-    public int order { get { return m_Order; } set { m_Order = value; } }
+    public int order {
+        get { return m_Order; }
+        set {
+            m_Order = value;
+            this.m_Canvas.sortingOrder = m_Order;
+        }
+    }
 
     bool m_Interactable = false;
     public bool interactable {
@@ -44,6 +50,9 @@ public class Window : UIBase
             {
                 this.m_Canvas = this.GetComponent<Canvas>();
                 this.m_Raycaster = this.GetComponent<GraphicRaycaster>();
+                this.m_Canvas.overrideSorting = true;
+                this.m_Canvas.sortingLayerName = "UI";
+
                 if (this.config.emptyToClose && this.emptyCloseButton == null)
                 {
                     AddEmptyCloseResponser();
