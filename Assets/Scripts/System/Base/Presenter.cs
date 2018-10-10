@@ -1,14 +1,4 @@
-﻿//---------------------------------------------------
-//
-//
-//---------------------------------------------------
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IPresenterInit
+﻿public interface IPresenterInit
 {
     void Init();
 }
@@ -30,7 +20,6 @@ public interface IPresenterOnLoginOk
 
 public abstract class Presenter<T> where T : class, new()
 {
-
     static T m_Instance;
     public static T Instance {
         get { return m_Instance ?? (m_Instance = new T()); }
@@ -38,7 +27,44 @@ public abstract class Presenter<T> where T : class, new()
 
     protected Presenter()
     {
+        if (this is IPresenterInit)
+        {
+            var init = this as IPresenterInit;
+            init.Init();
+        }
 
+        Fish.AddLisenter(BroadcastType.LoginOk, OnLoginOk);
+        Fish.AddLisenter(BroadcastType.SwitchAccount, OnSwitchAccount);
+    }
+
+    ~Presenter()
+    {
+        if (this is IPresenterUnInit)
+        {
+            var uninit = this as IPresenterUnInit;
+            uninit.UnInit();
+        }
+
+        Fish.RemoveLisenter(BroadcastType.LoginOk, OnLoginOk);
+        Fish.RemoveLisenter(BroadcastType.SwitchAccount, OnSwitchAccount);
+    }
+
+    private void OnSwitchAccount()
+    {
+        if (this is IPresenterOnSwitchAccount)
+        {
+            var switchAccount = this as IPresenterOnSwitchAccount;
+            switchAccount.OnSwitchAccount();
+        }
+    }
+
+    private void OnLoginOk()
+    {
+        if (this is IPresenterOnLoginOk)
+        {
+            var loginOk = this as IPresenterOnLoginOk;
+            loginOk.OnLoginOk();
+        }
     }
 
     public abstract void OpenWindow(int functionId = 0);

@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine.Events;
-using System.Collections.Generic;
 
 [Serializable]
 public class UIEvent : UnityEvent
@@ -185,7 +184,6 @@ public class BizEvent<T0, T1>
 /// </summary>
 public class BizEvent<T0, T1, T2>
 {
-
     event Action<T0, T1, T2> bizEvent;
     public BizEvent()
     {
@@ -222,6 +220,5 @@ public class BizEvent<T0, T1, T2>
         }
         return @event;
     }
-
 
 }

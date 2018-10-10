@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
+    <Compile Include="Assets\Scripts\Core\Fish.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectBehaviour.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectUtil.cs" />
     <Compile Include="Assets\Scripts\Effect\UIEffectPlay.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Assets\Scripts\Stage\SceneLoad.cs" />
     <Compile Include="Assets\Scripts\Stage\SelectRoleScene.cs" />
     <Compile Include="Assets\Scripts\System\Base\Model.cs" />
+    <Compile Include="Assets\Scripts\System\Base\PreseneterUtil.cs" />
     <Compile Include="Assets\Scripts\System\Base\Presenter.cs" />
     <Compile Include="Assets\Scripts\System\Base\Widget.cs" />
     <Compile Include="Assets\Scripts\System\Base\Window.cs" />
@@ -123,6 +125,8 @@
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectButton.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectWidget.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleWin.cs" />
+    <Compile Include="Assets\Scripts\System\Dungeon\Dungeon.cs" />
+    <Compile Include="Assets\Scripts\System\Dungeon\DungeonModel.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\BossModelShow.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPrecious.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPreciousWin.cs" />

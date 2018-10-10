@@ -15,7 +15,7 @@ public class WorldBossModel
     public void UpdateBossInfo(int bossId, int second)
     {
         var boss = GetBoss(bossId);
-        boss.rebornTime = Time.realtimeSinceStartup+ second;
+        boss.rebornTime = Time.realtimeSinceStartup + second;
     }
 
     public void UpdateBossSubscribe(int bossId, bool subscribed)
@@ -38,8 +38,15 @@ public class WorldBossModel
     {
         public float rebornTime = 0f;
         public bool subscribed = false;
+        public List<KillRecord> killrecords = new List<KillRecord>();
+
     }
 
+    public struct KillRecord
+    {
+        public string killerName;
+        public DateTime killTime;
+    }
 
 }
 

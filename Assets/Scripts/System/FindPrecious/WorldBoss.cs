@@ -34,6 +34,7 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
 
     public override void CloseWindow()
     {
+        bossBriefs.Clear();
     }
 
     public void GotoKillBoss(int bossId)
@@ -50,10 +51,43 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
         }
     }
 
+    public void SubscribeBoss(int bossId)
+    {
+        if (this.bossBriefs.ContainsKey(bossId))
+        {
+            this.bossBriefs[bossId].subscribed.value = true;
+        }
+
+        model.UpdateBossSubscribe(bossId, true);
+    }
+
+    public void DesubscribeBoss(int bossId)
+    {
+        if (this.bossBriefs.ContainsKey(bossId))
+        {
+            this.bossBriefs[bossId].subscribed.value = false;
+        }
+
+        model.UpdateBossSubscribe(bossId, false);
+    }
+
     public void UpdateBossInfoes(List<int> bossIds, List<int> seconds, List<bool> subscribes)
     {
-        if (bossIds == null || seconds == null || subscribes == null)
+        if (bossIds == null)
         {
+            DebugEx.LogError("bossids is null");
+            return;
+        }
+
+        if (seconds == null)
+        {
+            DebugEx.LogError("seconds is null ");
+            return;
+        }
+
+        if (subscribes == null)
+        {
+            DebugEx.LogError("subscribes is null ");
             return;
         }
 
@@ -62,21 +96,34 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
             var bossId = bossIds[i];
             this.model.UpdateBossInfo(bossId, seconds[i]);
             this.model.UpdateBossSubscribe(bossId, subscribes[i]);
-
-            var brief = this.bossBriefs.ContainsKey(bossId) ? this.bossBriefs[i] : this.bossBriefs[i] = new BossBrief(bossId);
-
-            WorldBossModel.Boss bossInfo;
-            if (this.model.TryGetBossInfo(bossId, out bossInfo))
-            {
-                brief.rebornTime.value = bossInfo.rebornTime;
-                brief.subscribed.value = bossInfo.subscribed;
-            }
         }
     }
 
     public BossBrief GetBossBrief(int bossId)
     {
-        return this.bossBriefs.ContainsKey(bossId) ? this.bossBriefs[bossId] : null;
+        WorldBossModel.Boss bossInfo;
+        if (model.TryGetBossInfo(bossId, out bossInfo))
+        {
+            BossBrief brief;
+            if (this.bossBriefs.ContainsKey(bossId))
+            {
+                brief = this.bossBriefs[bossId];
+            }
+            else
+            {
+                brief = this.bossBriefs[bossId] = new BossBrief(bossId);
+                brief.rebornTime.value = bossInfo.rebornTime;
+                brief.subscribed.value = bossInfo.subscribed;
+                brief.selected.value = bossId == selectedBoss.value;
+            }
+
+            return brief;
+        }
+        else
+        {
+            DebugEx.LogFormat("查无此boss：{0},不要忽悠老人家！");
+            return null;
+        }
     }
 
     public List<int> GetBosses()
