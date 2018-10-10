@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\Config\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\Config\MapConfig.cs" />
     <Compile Include="Assets\Scripts\Config\NpcConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\PriorLanguageConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
@@ -102,7 +103,6 @@
     <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
     <Compile Include="Assets\Scripts\Stage\CreateRoleScene.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
-    <Compile Include="Assets\Scripts\Stage\LoadingUI.cs" />
     <Compile Include="Assets\Scripts\Stage\LoginScene.cs" />
     <Compile Include="Assets\Scripts\Stage\Scene.cs" />
     <Compile Include="Assets\Scripts\Stage\SceneLoad.cs" />
@@ -153,6 +153,9 @@
     <Compile Include="Assets\Scripts\System\Redpoint\Redpoint.cs" />
     <Compile Include="Assets\Scripts\System\Redpoint\RedpointBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Redpoint\RedpointCenter.cs" />
+    <Compile Include="Assets\Scripts\System\SceneLoad\LaunchPresenter.cs" />
+    <Compile Include="Assets\Scripts\System\SceneLoad\LaunchWin.cs" />
+    <Compile Include="Assets\Scripts\System\SceneLoad\LoadingPresenter.cs" />
     <Compile Include="Assets\Scripts\System\SceneLoad\LoadingWin.cs" />
     <Compile Include="Assets\Scripts\System\Team\Team.cs" />
     <Compile Include="Assets\Scripts\System\Team\TeamModel.cs" />
@@ -234,6 +237,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Window.txt" />
+    <None Include="Assets\Resources\Config\PriorLanguage.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Equip.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />

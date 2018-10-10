@@ -6,12 +6,10 @@ public class CreateRoleScene : Scene {
 
     public override void OnInitialize()
     {
-        base.OnInitialize();
     }
 
     public override void OnUnInitialize()
     {
-        base.OnUnInitialize();
     }
 
 }

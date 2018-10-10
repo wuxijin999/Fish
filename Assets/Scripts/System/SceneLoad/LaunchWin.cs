@@ -9,22 +9,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoadingWin : Window
+public class LaunchWin : Window
 {
     [SerializeField] ImageEx m_BackGround;
     [SerializeField] SmoothSlider m_Slider;
+    [SerializeField] TextEx m_Tips;
 
     #region Built-in
 
     protected override void SetListeners()
     {
-
     }
 
     protected override void OnPreOpen()
     {
         DisplayBackGround();
         DisplayProgress();
+        DisplayTips();
     }
 
     protected override void OnPreClose()
@@ -33,10 +34,14 @@ public class LoadingWin : Window
 
     public override void OnLateUpdate()
     {
-        base.OnLateUpdate();
-        if (LoadingPresenter.Instance.progress.dirty)
+        if (LaunchPresenter.Instance.progress.dirty)
         {
             DisplayProgress();
+        }
+
+        if (LaunchPresenter.Instance.randowTips.dirty)
+        {
+            DisplayTips();
         }
     }
 
@@ -44,16 +49,17 @@ public class LoadingWin : Window
 
     private void DisplayBackGround()
     {
-        var sceneId = LoadingPresenter.Instance.sceneId.Fetch();
-        var config = MapConfig.Get(sceneId);
-        m_BackGround.SetSprite(config.backGround);
     }
 
     private void DisplayProgress()
     {
-        m_Slider.value = LoadingPresenter.Instance.progress.Fetch();
+        m_Slider.value = LaunchPresenter.Instance.progress.Fetch();
     }
 
+    private void DisplayTips()
+    {
+        m_Tips.SetText(Language.GetLocal(LaunchPresenter.Instance.randowTips.Fetch()));
+    }
 
 }
 

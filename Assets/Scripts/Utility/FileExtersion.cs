@@ -27,7 +27,7 @@ public class FileExtension
         return fileInfoes;
     }
 
-    public static void GetAllDirectoryFileInfos(string path, List<FileInfo> fileInfos)
+    public static void GetAllDirectoryFileInfos(string path, ref List<FileInfo> fileInfos)
     {
         var directoryInfo = new DirectoryInfo(path);
         var allFileSystemInfos = directoryInfo.GetFileSystemInfos();
@@ -37,7 +37,7 @@ public class FileExtension
             var fileSystemInfo = allFileSystemInfos[i];
             if (fileSystemInfo is DirectoryInfo)
             {
-                GetAllDirectoryFileInfos(fileSystemInfo.FullName, fileInfos);
+                GetAllDirectoryFileInfos(fileSystemInfo.FullName, ref fileInfos);
             }
 
             if (fileSystemInfo is FileInfo)

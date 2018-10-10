@@ -2,17 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scene : MonoBehaviour
+public abstract class Scene : MonoBehaviour
 {
-
-    public virtual void OnInitialize()
-    {
-
-    }
-
-    public virtual void OnUnInitialize()
-    {
-
-    }
+    public abstract void OnInitialize();
+    public abstract void OnUnInitialize();
 
 }

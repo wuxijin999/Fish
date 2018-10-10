@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class LoginScene : Scene
 {
+
     public override void OnInitialize()
     {
-        base.OnInitialize();
+        Login.Instance.OpenWindow();
     }
 
     public override void OnUnInitialize()
     {
-        base.OnUnInitialize();
+        Login.Instance.CloseWindow();
     }
+
 }

@@ -5,6 +5,11 @@ using UnityEngine;
 public class ConfigInitiator
 {
 
+    public static void PreInit()
+    {
+        PriorLanguageConfig.Init();
+    }
+
     public static void Init()
     {
         ItemConfig.Init();

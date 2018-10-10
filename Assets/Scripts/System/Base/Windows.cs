@@ -166,4 +166,5 @@ public enum WindowType
     PleaseWait,
     Login,
     CreateRole,
+    Launch,
 }

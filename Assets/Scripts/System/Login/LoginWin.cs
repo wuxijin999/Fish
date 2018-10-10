@@ -29,19 +29,12 @@ public class LoginWin : Window
         Login.Instance.passwordErrorEvent += this.OnPasswordError;
     }
 
-    protected override void OnAfterOpen()
-    {
-    }
-
     protected override void OnPreClose()
     {
         Login.Instance.accountErrorEvent -= this.OnAccountError;
         Login.Instance.passwordErrorEvent -= this.OnPasswordError;
     }
 
-    protected override void OnAfterClose()
-    {
-    }
     #endregion
 
     private void AccountLogin()

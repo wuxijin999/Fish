@@ -23,7 +23,6 @@ public class CreateRoleJobInstroduceWidget : Widget
     public void Display(int job)
     {
 
-
     }
 
 }

@@ -30,6 +30,7 @@ public class Login : Presenter<Login>
 
     public override void CloseWindow()
     {
+        Windows.Instance.Close(WindowType.Login);
     }
 
     public void AccountLogin(string account, string password)

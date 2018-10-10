@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7410ada8794b5ea4ca12af85594f8866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BGImage: {fileID: 0}
+  m_BackGround: {fileID: 0}
   m_Slider: {fileID: 0}
 --- !u!114 &768012733
 MonoBehaviour:
@@ -333,7 +333,7 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0

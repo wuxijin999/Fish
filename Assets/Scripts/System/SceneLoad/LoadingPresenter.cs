@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadingUI : Presenter<LoadingUI>, IPresenterInit, IPresenterUnInit
+public class LoadingPresenter : Presenter<LoadingPresenter>, IPresenterInit, IPresenterUnInit
 {
     public readonly IntProperty sceneId = new IntProperty();
     public readonly FloatProperty progress = new FloatProperty();

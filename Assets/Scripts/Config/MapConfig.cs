@@ -13,12 +13,12 @@ public partial class MapConfig
 {
 
     public readonly int id;
-	public readonly int backGround;
-	public readonly int name;
-	public readonly int levelMin;
-	public readonly int levelMax;
-	public readonly int music;
-	public readonly int camp;
+    public readonly int backGround;
+    public readonly int name;
+    public readonly int levelMin;
+    public readonly int levelMax;
+    public readonly int music;
+    public readonly int camp;
 
     public MapConfig(string content)
     {
@@ -26,19 +26,19 @@ public partial class MapConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0],out id); 
+            int.TryParse(tables[0], out id);
 
-			int.TryParse(tables[1],out backGround); 
+            int.TryParse(tables[1], out backGround);
 
-			int.TryParse(tables[2],out name); 
+            int.TryParse(tables[2], out name);
 
-			int.TryParse(tables[3],out levelMin); 
+            int.TryParse(tables[3], out levelMin);
 
-			int.TryParse(tables[4],out levelMax); 
+            int.TryParse(tables[4], out levelMax);
 
-			int.TryParse(tables[5],out music); 
+            int.TryParse(tables[5], out music);
 
-			int.TryParse(tables[6],out camp); 
+            int.TryParse(tables[6], out camp);
         }
         catch (Exception ex)
         {
@@ -64,7 +64,7 @@ public partial class MapConfig
         return config;
     }
 
-	public static bool Has(int id)
+    public static bool Has(int id)
     {
         return configs.ContainsKey(id);
     }

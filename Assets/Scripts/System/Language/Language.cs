@@ -32,5 +32,31 @@ public class Language
         }
     }
 
+    public static string GetLocal(int id)
+    {
+        var config = PriorLanguageConfig.Get(id);
+        return config == null ? string.Empty : config.content;
+    }
+
+    public static string GetLocalFormat(int id, params object[] objects)
+    {
+        try
+        {
+            var config = PriorLanguageConfig.Get(id);
+            if (config != null)
+            {
+                return string.Format(config.content, objects);
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.Log(ex);
+            return string.Empty;
+        }
+    }
 
 }
