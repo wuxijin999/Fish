@@ -7,10 +7,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoginModel 
+public class LoginModel : Model
 {
+    public override void Reset()
+    {
+    }
 
-   
 }
 
 

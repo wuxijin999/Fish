@@ -6,11 +6,15 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class TeamModel
+public class TeamModel : Model
 {
     TeamInfo teamInfo;
     List<TheirTeam> theirTeams = new List<TheirTeam>();
     Dictionary<int, Teammate> teammates = new Dictionary<int, Teammate>();
+
+    public override void Reset()
+    {
+    }
 
     public void UpdateTeamTarget(int target)
     {

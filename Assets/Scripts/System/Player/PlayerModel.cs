@@ -7,9 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerModel 
+public class PlayerModel :Model
 {
-
     public int id { get; private set; }
     public string playerName { get; private set; }
     public int level { get; private set; }
@@ -26,6 +25,10 @@ public class PlayerModel
     public int crit { get; private set; }
     public int haste { get; private set; }
     public int proficiency { get; private set; }
+
+    public override void Reset()
+    {
+    }
 
     public void UpdateProperty(PropertyType type, int value)
     {

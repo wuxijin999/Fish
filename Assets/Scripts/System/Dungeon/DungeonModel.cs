@@ -6,11 +6,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class DungeonModel
+public class DungeonModel : Model
 {
-
-
-   
+    public override void Reset()
+    {
+    }
 }
 
 

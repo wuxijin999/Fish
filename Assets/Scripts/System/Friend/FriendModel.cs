@@ -6,7 +6,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class FriendModel
+public class FriendModel: Model
 {
     Dictionary<int, Friend> friends = new Dictionary<int, Friend>();
     Dictionary<int, BlackFriend> blackFriends = new Dictionary<int, BlackFriend>();
@@ -59,6 +59,10 @@ public class FriendModel
     public List<int> GetBlackFriends()
     {
         return new List<int>(blackFriends.Keys);
+    }
+
+    public override void Reset()
+    {
     }
 
     public class Friend

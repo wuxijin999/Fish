@@ -18,6 +18,11 @@ public interface IPresenterOnLoginOk
     void OnLoginOk();
 }
 
+public interface IPresenterReset
+{
+    void OnReset();
+}
+
 public abstract class Presenter<T> where T : class, new()
 {
     static T m_Instance;
@@ -33,6 +38,7 @@ public abstract class Presenter<T> where T : class, new()
             init.Init();
         }
 
+        Fish.AddLisenter(BroadcastType.BeforeLogin, OnReset);
         Fish.AddLisenter(BroadcastType.LoginOk, OnLoginOk);
         Fish.AddLisenter(BroadcastType.SwitchAccount, OnSwitchAccount);
     }
@@ -45,6 +51,7 @@ public abstract class Presenter<T> where T : class, new()
             uninit.UnInit();
         }
 
+        Fish.RemoveLisenter(BroadcastType.BeforeLogin, OnReset);
         Fish.RemoveLisenter(BroadcastType.LoginOk, OnLoginOk);
         Fish.RemoveLisenter(BroadcastType.SwitchAccount, OnSwitchAccount);
     }
@@ -64,6 +71,15 @@ public abstract class Presenter<T> where T : class, new()
         {
             var loginOk = this as IPresenterOnLoginOk;
             loginOk.OnLoginOk();
+        }
+    }
+
+    private void OnReset()
+    {
+        if (this is IPresenterReset)
+        {
+            var reset = this as IPresenterReset;
+            reset.OnReset();
         }
     }
 

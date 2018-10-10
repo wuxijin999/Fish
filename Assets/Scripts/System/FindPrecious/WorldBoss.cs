@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
+public class WorldBoss : Presenter<WorldBoss>, IPresenterInit, IPresenterReset
 {
     public readonly IntProperty killedTimes = new IntProperty(0);
     public readonly IntProperty totalTimes = new IntProperty(0);
@@ -26,6 +26,11 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
         }
 
         sortedBossIds.Sort(BossCompare);
+    }
+
+    public void OnReset()
+    {
+        model.Reset();
     }
 
     public override void OpenWindow(int functionId = 0)
@@ -153,6 +158,7 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit
     {
         return -WorldBossConfig.Get(lhs).level.CompareTo(WorldBossConfig.Get(rhs).level);
     }
+
 
 }
 

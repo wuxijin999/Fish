@@ -6,11 +6,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class ChatModel
+public class ChatModel : Model
 {
-
-
-   
+    public override void Reset()
+    {
+    }
 }
 
 

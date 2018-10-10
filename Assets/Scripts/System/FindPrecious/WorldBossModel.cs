@@ -8,9 +8,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class WorldBossModel
+public class WorldBossModel : Model
 {
     Dictionary<int, Boss> bosses = new Dictionary<int, Boss>();
+
+    public override void Reset()
+    {
+        bosses.Clear();
+    }
 
     public void UpdateBossInfo(int bossId, int second)
     {
@@ -39,7 +44,6 @@ public class WorldBossModel
         public float rebornTime = 0f;
         public bool subscribed = false;
         public List<KillRecord> killrecords = new List<KillRecord>();
-
     }
 
     public struct KillRecord

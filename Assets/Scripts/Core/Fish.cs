@@ -44,6 +44,7 @@ public class Fish
 
 public enum BroadcastType
 {
+    BeforeLogin,
     LoginOk,
     SwitchAccount,
 }

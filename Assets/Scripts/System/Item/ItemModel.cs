@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemModel
+public class ItemModel: Model
 {
     Dictionary<int, ItemEntry> itemDictionary = new Dictionary<int, ItemEntry>();
+
+    public override void Reset()
+    {
+    }
 
     public ItemEntry GetItemByInstanceId(int guid)
     {
@@ -41,7 +45,6 @@ public class ItemModel
 
         return sum;
     }
-
 
     public class ItemEntry
     {

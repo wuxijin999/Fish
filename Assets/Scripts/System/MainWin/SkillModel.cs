@@ -8,11 +8,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SkillModel
+public class SkillModel:Model
 {
-
     Dictionary<int, int> indexToSkills = new Dictionary<int, int>();
     Dictionary<int, float> skillNextCastTimes = new Dictionary<int, float>();
+
+    public override void Reset()
+    {
+    }
 
     public int GetSkill(int index)
     {
