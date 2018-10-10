@@ -1,5 +1,5 @@
-﻿int	string
-id	content
-语言key	语言内容
-1	我是个勇士
-2	今天我要打酱油
+﻿int	int	int	int	int	int	int
+id	backGround	name	levelMin	levelMax	music	camp
+地图id	地图背景	地图名称	最低等级	最高等级	音乐	地图阵营
+1	1	1	1	10	1	1
+2	2	2	10	20	2	2

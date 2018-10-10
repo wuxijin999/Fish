@@ -7,23 +7,22 @@ using UnityEngine.UI;
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Canvas))]
 [RequireComponent(typeof(GraphicRaycaster))]
+[RequireComponent(typeof(WindowSetting))]
 public class Window : UIBase
 {
-    [Header("Base")]
-    [SerializeField]
-    int m_Id;
-    public int id { get { return this.m_Id; } }
-    [SerializeField] Tween m_Tween;
-    [SerializeField] Button m_Close;
-    [SerializeField] protected RectTransform m_BackGround;
-    [SerializeField] protected RectTransform m_Content;
+    WindowSetting m_Setting;
+    WindowSetting setting { get { return m_Setting ?? (m_Setting = this.GetComponent<WindowSetting>()); } }
+    WindowConfig config { get { return WindowConfig.Get(this.setting.id); } }
 
     List<Widget> widgets = new List<Widget>();
     Canvas m_Canvas;
     GraphicRaycaster m_Raycaster;
 
     public WindowState windowState { get; private set; }
-    public int order = 1000;
+
+    int m_Order = 1000;
+    public int order { get { return m_Order; } set { m_Order = value; } }
+
     bool m_Interactable = false;
     public bool interactable {
         get { return this.m_Interactable; }
@@ -35,7 +34,6 @@ public class Window : UIBase
 
     ButtonEx emptyCloseButton;
     bool initialized = false;
-    WindowConfig config { get { return WindowConfig.Get(this.m_Id); } }
 
     internal void Open(int _order)
     {
@@ -54,9 +52,9 @@ public class Window : UIBase
                 BindController();
                 SetListeners();
 
-                if (this.m_Close != null)
+                if (this.setting.close != null)
                 {
-                    this.m_Close.SetListener(() => { Close(); });
+                    this.setting.close.SetListener(Close);
                 }
                 this.initialized = true;
             }
@@ -179,9 +177,9 @@ public class Window : UIBase
 
         try
         {
-            if (this.m_Tween != null)
+            if (this.setting.tween != null)
             {
-                this.m_Tween.Play(true).OnComplete(this.OnAfterOpen);
+                this.setting.tween.Play(true).OnComplete(this.OnAfterOpen);
             }
             else
             {
@@ -219,7 +217,7 @@ public class Window : UIBase
                 this.widgets.Add(widget);
                 instance.name = name;
                 UIAssets.UnLoadWindowAsset(name);
-                widget.rectTransform.MatchWhith(this.m_Content);
+                widget.rectTransform.MatchWhith(this.setting.content);
                 widget.SetActive(true);
             }
         }
@@ -229,20 +227,6 @@ public class Window : UIBase
         }
     }
 
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        if (this.m_BackGround == null)
-        {
-            this.m_BackGround = this.transform.GetComponent<RectTransform>("BackGround");
-        }
-
-        if (this.m_Content == null)
-        {
-            this.m_Content = this.transform.GetComponent<RectTransform>("Content");
-        }
-    }
-#endif
 }
 
 public enum WindowState

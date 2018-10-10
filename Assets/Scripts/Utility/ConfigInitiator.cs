@@ -16,6 +16,7 @@ public class ConfigInitiator
 		LanguageConfig.Init();
 		WorldBossConfig.Init();
 		NpcConfig.Init();
+		MapConfig.Init();
 		//初始化结束
     }
 

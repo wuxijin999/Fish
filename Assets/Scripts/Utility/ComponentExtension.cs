@@ -208,4 +208,12 @@ public static class ComponentExtension
         }
     }
 
+    public static void SetLanguage(this TextEx text, int id)
+    {
+        if (text != null)
+        {
+            text.SetText(Language.Get(id));
+        }
+    }
+
 }
