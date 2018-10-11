@@ -13,6 +13,28 @@ using UnityEditor;
 public class ExcelReader
 {
 
+    static Dictionary<string, string> txtExcelTables = new Dictionary<string, string>();
+
+    public static string GetExcelPath(string txtName)
+    {
+        if (!txtExcelTables.ContainsKey(txtName))
+        {
+            var lines = File.ReadAllLines(Application.dataPath + "/Editor/Config/ExcelToTxt.txt");
+            for (var i = 1; i < lines.Length; i++)
+            {
+                var contents = lines[i].Split('\t');
+                txtExcelTables[contents[1]] = contents[0];
+            }
+        }
+
+        if (!txtExcelTables.ContainsKey(txtName))
+        {
+            return string.Empty;
+        }
+
+        return StringUtil.Contact(ExtensionalTools.excelRootPath, "/", txtExcelTables[txtName], ".xlsx");
+    }
+
     [MenuItem("Assets/同步Excel母表")]
     static void XLSX()
     {
@@ -28,12 +50,11 @@ public class ExcelReader
             var extension = Path.GetExtension(path);
             if (extension.ToLower() == ".txt")
             {
-                var excelPath = StringUtil.Contact(Path.GetDirectoryName(path), "/", Path.GetFileNameWithoutExtension(path), ".xlsx");
+                var excelPath = GetExcelPath(Path.GetFileNameWithoutExtension(path));
                 var lines = ExcelRead(excelPath);
                 File.WriteAllLines(path, lines.ToArray(), Encoding.UTF8);
             }
         }
-
     }
 
     static List<string> ExcelRead(string excelPath)

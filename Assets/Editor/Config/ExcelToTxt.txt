@@ -1,0 +1,11 @@
+﻿excelName	txtName
+物品表	Item
+特效表	Effect
+装备表	Equip
+图标表	Icon
+语言表	Language
+地图表	Map
+Npc表	Npc
+测试表	Test
+窗口表	Window
+世界Boss表	WorldBoss

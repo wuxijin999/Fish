@@ -16,6 +16,11 @@ public class ExtensionalTools
         set { LocalSave.SetString("ExtensionalTools_TxtEditor", value); }
     }
 
+    public static string excelRootPath {
+        get { return LocalSave.GetString("ExtensionalTools_ExcelRootPath"); }
+        set { LocalSave.SetString("ExtensionalTools_ExcelRootPath", value); }
+    }
+
 }
 
 public class ExtensionalToolsWindow : EditorWindow
@@ -38,6 +43,10 @@ public class ExtensionalToolsWindow : EditorWindow
 
         EditorGUILayout.BeginHorizontal();
         ExtensionalTools.txtEditorPath = EditorGUILayout.TextField("文本文件编辑器", ExtensionalTools.txtEditorPath);
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        ExtensionalTools.excelRootPath = EditorGUILayout.TextField("Excel表根目录", ExtensionalTools.excelRootPath);
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space();

@@ -81,8 +81,10 @@
     <None Include="Assets\Editor\ScriptTemplate\ModelTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\WindowTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\PresenterTemplate.txt" />
+    <None Include="Assets\Editor\Config\ExcelToTxt.txt" />
     <None Include="Assets\Editor\ScriptTemplate\ConfigDataTemplate.txt" />
     <None Include="Assets\Editor\ScriptTemplate\UIMonobehaviorScriptTemplate.txt" />
+    <None Include="Assets\Editor\ScriptTemplate\Config.txt" />
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>H:/Fish/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>

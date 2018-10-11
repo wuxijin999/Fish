@@ -240,7 +240,6 @@
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Icon.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Language.txt" />
-    <None Include="Assets\UserLevel.txt" />
     <None Include="Assets\ResourcesOut\5_Config\WorldBoss.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Npc.txt" />
     <None Include="Assets\ResourcesOut\7_Effect\readme.txt" />

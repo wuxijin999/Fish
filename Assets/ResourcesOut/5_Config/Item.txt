@@ -1,4 +1,4 @@
-int	int	int	int	int	int	int	int
+﻿int	int	int	int	int	int	int	int
 id	type	level	name	icon	quality	starLevel	price
 物品id	道具类别	物品等级	物品名称	物品图标	品质	星级	出售价格
 1	1	1	11	1	1	1	0

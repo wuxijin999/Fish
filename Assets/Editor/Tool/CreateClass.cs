@@ -136,7 +136,6 @@ class UIClassTemplate : EndNameEditAction
 
 }
 
-
 public class CreateUIWindowClassFile
 {
     static string templatePath = "Assets/Editor/ScriptTemplate/WindowTemplate.txt";
@@ -314,6 +313,63 @@ class UIPresenterTemplate : EndNameEditAction
         bool throwOnInvalidBytes = false;
         UTF8Encoding encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier, throwOnInvalidBytes);
         bool append = false;
+        StreamWriter streamWriter = new StreamWriter(fullPath, append, encoding);
+        streamWriter.Write(text);
+        streamWriter.Close();
+        AssetDatabase.ImportAsset(pathName);
+        return AssetDatabase.LoadAssetAtPath(pathName, typeof(UnityEngine.Object));
+    }
+
+}
+
+public class CreateTxt
+{
+    static string templatePath = "Assets/Editor/ScriptTemplate/Config.txt";
+
+    [MenuItem("Assets/Create/Config/Txt", false, 7)]
+    public static void Create()
+    {
+        var txt = GetSelectedPathOrFallback() + "/newTxt.txt";
+        AssetDatabase.DeleteAsset(txt);
+        ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, ScriptableObject.CreateInstance<TxtTemplate>(), txt, null, templatePath);
+    }
+
+    public static string GetSelectedPathOrFallback()
+    {
+        string path = "Assets";
+        foreach (UnityEngine.Object obj in Selection.GetFiltered(typeof(UnityEngine.Object), SelectionMode.Assets))
+        {
+            path = AssetDatabase.GetAssetPath(obj);
+            if (!string.IsNullOrEmpty(path) && File.Exists(path))
+            {
+                path = Path.GetDirectoryName(path);
+                break;
+            }
+        }
+        return path;
+    }
+}
+
+class TxtTemplate : EndNameEditAction
+{
+
+    public override void Action(int instanceId, string pathName, string resourceFile)
+    {
+        UnityEngine.Object o = CreateScriptAssetFromTemplate(pathName, resourceFile);
+        ProjectWindowUtil.ShowCreatedAsset(o);
+    }
+
+    internal static UnityEngine.Object CreateScriptAssetFromTemplate(string pathName, string resourceFile)
+    {
+        var fullPath = Path.GetFullPath(pathName);
+        var streamReader = new StreamReader(resourceFile);
+        var text = streamReader.ReadToEnd();
+        streamReader.Close();
+
+        var encoderShouldEmitUTF8Identifier = true;
+        var throwOnInvalidBytes = false;
+        var encoding = new UTF8Encoding(encoderShouldEmitUTF8Identifier, throwOnInvalidBytes);
+        var append = false;
         StreamWriter streamWriter = new StreamWriter(fullPath, append, encoding);
         streamWriter.Write(text);
         streamWriter.Close();

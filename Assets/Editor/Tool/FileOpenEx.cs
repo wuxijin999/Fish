@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using UnityEditor.Callbacks;
+using System.IO;
 
 public class FileOpenEx
 {
@@ -36,6 +37,8 @@ public class FileOpenEx
 
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = ExtensionalTools.txtEditorPath;
+
+            name = ExcelReader.GetExcelPath(Path.GetFileNameWithoutExtension(path));
             startInfo.Arguments = name;
             process.StartInfo = startInfo;
             process.Start();
