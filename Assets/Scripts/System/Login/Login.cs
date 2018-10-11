@@ -10,6 +10,8 @@ using UnityEngine;
 public class Login : Presenter<Login>
 {
 
+    LoginModel model = new LoginModel();
+
     string localSaveAccount {
         get { return LocalSave.GetString("LocalSave_Account"); }
         set { LocalSave.SetString("LocalSave_Account", value); }
@@ -49,6 +51,18 @@ public class Login : Presenter<Login>
             return;
         }
 
+        model.Reset();
+
+    }
+
+    public bool IsAccountLoginOk()
+    {
+        return model.accountLoginOk;
+    }
+
+    public bool IsEnterWorldOk()
+    {
+        return model.enterWorldOk;
     }
 
     private void OnAccountLoginResult(bool ok, string result)

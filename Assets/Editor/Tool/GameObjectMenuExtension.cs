@@ -116,7 +116,6 @@ public class GameObjectMenuExtension
             && Event.current.button == 1 && Event.current.type <= EventType.MouseUp)
         {
             var selectedGameObject = EditorUtility.InstanceIDToObject(instanceID) as GameObject;
-            //这里可以判断selectedGameObject的条件
             if (selectedGameObject)
             {
                 var root = selectedGameObject.transform.root;

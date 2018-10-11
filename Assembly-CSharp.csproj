@@ -102,11 +102,17 @@
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Move.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Skill.cs" />
     <Compile Include="Assets\Scripts\Fight\UserInput.cs" />
+    <Compile Include="Assets\Scripts\NetWork\AccountLoginState.cs" />
+    <Compile Include="Assets\Scripts\NetWork\ConnectState.cs" />
+    <Compile Include="Assets\Scripts\NetWork\DisConnectState.cs" />
+    <Compile Include="Assets\Scripts\NetWork\EnterWorldState.cs" />
     <Compile Include="Assets\Scripts\NetWork\FishSocket.cs" />
     <Compile Include="Assets\Scripts\NetWork\GameNet.cs" />
+    <Compile Include="Assets\Scripts\NetWork\NerverConnectState.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetDeCoder.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetEnCoder.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetSecretKey.cs" />
+    <Compile Include="Assets\Scripts\NetWork\NetState.cs" />
     <Compile Include="Assets\Scripts\Stage\CreateRoleScene.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\LoginScene.cs" />

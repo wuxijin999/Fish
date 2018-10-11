@@ -9,8 +9,14 @@ using UnityEngine;
 
 public class LoginModel : Model
 {
+
+    public bool accountLoginOk = false;
+    public bool enterWorldOk = false;
+
     public override void Reset()
     {
+        accountLoginOk = false;
+        enterWorldOk = false;
     }
 
 }
