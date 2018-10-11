@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using UnityEditor;
 public class ExcelReader
 {
 
-    [MenuItem("Assets/Õ¨≤ΩExcelƒ∏±Ì")]
+    [MenuItem("Assets/ÂêåÊ≠•ExcelÊØçË°®")]
     static void XLSX()
     {
         if (Selection.objects == null)
@@ -29,14 +29,14 @@ public class ExcelReader
             if (extension.ToLower() == ".txt")
             {
                 var excelPath = StringUtil.Contact(Path.GetDirectoryName(path), "/", Path.GetFileNameWithoutExtension(path), ".xlsx");
-                var lines = ExcelRead2(excelPath);
+                var lines = ExcelRead(excelPath);
                 File.WriteAllLines(path, lines.ToArray());
             }
         }
 
     }
 
-    static List<string> ExcelRead2(string excelPath)
+    static List<string> ExcelRead(string excelPath)
     {
         var stream = File.Open(excelPath, FileMode.Open, FileAccess.Read);
         var excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
