@@ -30,7 +30,7 @@ public class ExcelReader
             {
                 var excelPath = StringUtil.Contact(Path.GetDirectoryName(path), "/", Path.GetFileNameWithoutExtension(path), ".xlsx");
                 var lines = ExcelRead(excelPath);
-                File.WriteAllLines(path, lines.ToArray());
+                File.WriteAllLines(path, lines.ToArray(), Encoding.UTF8);
             }
         }
 
