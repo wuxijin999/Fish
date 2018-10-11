@@ -7,7 +7,7 @@ public class UIRootCreator
 {
 
     [MenuItem("GameObject/UIRoot %U", false)]
-    static void CreateUIRoot()
+    public static void CreateUIRoot()
     {
         var uiroot = GameObject.FindObjectOfType<UIRoot>();
         if (uiroot == null)

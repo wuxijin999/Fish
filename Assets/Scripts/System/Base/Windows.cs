@@ -144,7 +144,7 @@ public class Windows : SingletonMonobehaviour<Windows>
 
         public int ApplyFor()
         {
-            return this.hightestOrder = this.hightestOrder + 10;
+            return this.hightestOrder = this.hightestOrder + step;
         }
 
         public void ResetHightestOrder(int order)
