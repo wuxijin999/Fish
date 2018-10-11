@@ -59,7 +59,7 @@ public class BossModelShow : UIBase
         m_BossLevel.SetText(config.level);
 
         var worldBossConfig = WorldBossConfig.Get(bossId);
-        m_BossDescription.SetText(worldBossConfig.name);
+        m_BossDescription.SetLanguage(worldBossConfig.name);
     }
 
     private void OnDelayShow()

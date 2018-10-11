@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Thursday, October 11, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ public partial class ItemConfig
     public readonly int id;
 	public readonly int type;
 	public readonly int level;
-	public readonly string name;
+	public readonly int name;
 	public readonly int icon;
 	public readonly int quality;
 	public readonly int starLevel;
@@ -33,7 +33,7 @@ public partial class ItemConfig
 
 			int.TryParse(tables[2],out level); 
 
-			name = tables[3];
+			int.TryParse(tables[3],out name); 
 
 			int.TryParse(tables[4],out icon); 
 

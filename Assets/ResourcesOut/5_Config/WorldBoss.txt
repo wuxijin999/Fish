@@ -1,4 +1,4 @@
-int	int	string	int[]	int	int
+int	int	int	int[]	int	int
 id	level	name	rewards	icon	mapId
 icon id	等级	名字	奖励	图标	所在地图
 1	10	可爱的boss1	1|2|3	1	100

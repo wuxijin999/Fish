@@ -67,8 +67,7 @@ public class RichTextUtil
             var integerMatch = Regex.Match(match.Value, "\\d+");
             var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
             var config = ItemConfig.Get(id);
-
-            return config.name;
+            return Language.Get(config.name);
         }
         catch (System.Exception ex)
         {
@@ -84,8 +83,7 @@ public class RichTextUtil
             var integerMatch = Regex.Match(match.Value, "\\d+");
             var id = integerMatch != null ? int.Parse(integerMatch.Value) : 0;
             var config = NpcConfig.Get(id);
-
-            return config.name;
+            return Language.Get(config.name);
         }
         catch (System.Exception ex)
         {

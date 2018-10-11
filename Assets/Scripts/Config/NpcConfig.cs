@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Thursday, October 11, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ public partial class NpcConfig
 
     public readonly int id;
 	public readonly int level;
-	public readonly string name;
+	public readonly int name;
 	public readonly int[] rewards;
 	public readonly int icon;
 	public readonly int mapId;
@@ -29,7 +29,7 @@ public partial class NpcConfig
 
 			int.TryParse(tables[1],out level); 
 
-			name = tables[2];
+			int.TryParse(tables[2],out name); 
 
 			string[] rewardsStringArray = tables[3].Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);
 			rewards = new int[rewardsStringArray.Length];
