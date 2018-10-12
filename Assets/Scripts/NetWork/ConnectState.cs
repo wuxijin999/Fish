@@ -9,6 +9,7 @@ public class ConnectState : NetState
 
     public override void Enter()
     {
+        PleaseWait.Instance.Hide(PleaseWait.WaitType.NetLink);
         isDisconnected = false;
         Fish.AddLisenter(BroadcastType.ApplicationUnPause, OnApplicationUnPause);
     }
@@ -23,6 +24,7 @@ public class ConnectState : NetState
         {
             detectClock.Stop();
         }
+
         Fish.RemoveLisenter(BroadcastType.ApplicationUnPause, OnApplicationUnPause);
     }
 

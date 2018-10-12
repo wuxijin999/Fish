@@ -37,7 +37,7 @@ public class GameNet : SingletonMonobehaviour<GameNet>
         {
             if (connected)
             {
-                socket.CloseConnect();
+                socket.DisConnect();
             }
 
             socket = new FishSocket();
@@ -65,7 +65,6 @@ public class GameNet : SingletonMonobehaviour<GameNet>
     public void DisConnect()
     {
         this.onComplete = null;
-
     }
 
     private void Update()
@@ -100,7 +99,15 @@ public class GameNet : SingletonMonobehaviour<GameNet>
                     }
                     break;
                 case State.Connect:
-                    netState = State.Disconnect;
+                    if (IsNetWorkReachable())
+                    {
+                        Login.Instance.ReAccountLogin();
+                        netState = State.AccountLogin;
+                    }
+                    else
+                    {
+                        netState = State.Disconnect;
+                    }
                     break;
                 case State.Disconnect:
                     netState = State.NerverConnect;
@@ -109,7 +116,17 @@ public class GameNet : SingletonMonobehaviour<GameNet>
                     break;
             }
         }
+    }
 
+    public bool IsNetWorkReachable()
+    {
+        switch (Application.internetReachability)
+        {
+            case NetworkReachability.NotReachable:
+                return false;
+            default:
+                return true;
+        }
     }
 
     public enum State

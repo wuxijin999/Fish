@@ -10,6 +10,8 @@ public class EnterWorldState : NetState
 
     public override void Enter()
     {
+        PleaseWait.Instance.Show(PleaseWait.WaitType.NetLink, 0f);
+
         isOverTime = false;
 
         var param = new Clock.ClockParams()
@@ -36,6 +38,8 @@ public class EnterWorldState : NetState
         {
             DebugEx.LogFormat("进入游戏世界超时！");
         }
+
+        PleaseWait.Instance.Hide(PleaseWait.WaitType.NetLink);
     }
 
     public override bool CanExit()

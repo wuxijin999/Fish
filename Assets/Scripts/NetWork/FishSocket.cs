@@ -34,7 +34,7 @@ public class FishSocket
 
     public bool connected { get { return socket == null ? false : socket.Connected; } }
     bool working = false;
-    float lastTimeGotNetPackage = Time.realtimeSinceStartup;
+    DateTime lastTimeGotNetPackage = DateTime.Now;
     Action<bool> onConnected = null;
 
     public FishSocket()
@@ -95,7 +95,7 @@ public class FishSocket
             }
             else
             {
-                CloseConnect();
+                DisConnect();
             }
         }
         catch (System.Exception ex)
@@ -112,10 +112,7 @@ public class FishSocket
         }
     }
 
-    /// <summary>
-    /// 关闭链接
-    /// </summary>
-    public void CloseConnect()
+    public void DisConnect()
     {
         working = false;
         try
@@ -143,7 +140,7 @@ public class FishSocket
         {
             if (!connected)
             {
-                CloseConnect();
+                DisConnect();
                 break;
             }
 
@@ -152,7 +149,7 @@ public class FishSocket
                 var dataLength = socket.Receive(bufferBytes);
                 if (dataLength <= 0)
                 {
-                    CloseConnect();
+                    DisConnect();
                     break;
                 }
 
@@ -197,8 +194,7 @@ public class FishSocket
             return;
         }
 
-        bytes = NetEnCoder.EnCode(bytes);
-        SendBytes(bytes);
+        SendBytes(NetEnCoder.EnCode(bytes));
     }
 
     Queue<byte[]> sendQueue = new Queue<byte[]>();

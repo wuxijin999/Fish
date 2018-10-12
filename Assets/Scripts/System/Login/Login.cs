@@ -22,6 +22,9 @@ public class Login : Presenter<Login>
         set { LocalSave.SetString("LocalSave_Password", value); }
     }
 
+    string accountBuf;
+    string passwordBuf;
+
     public BizEvent<int> accountErrorEvent = new BizEvent<int>();
     public BizEvent<int> passwordErrorEvent = new BizEvent<int>();
 
@@ -41,21 +44,29 @@ public class Login : Presenter<Login>
     public void AccountLogin(string account, string password)
     {
         var accountError = 0;
-        if (IsValidAccount(account, out accountError))
+        if (!IsValidAccount(account, out accountError))
         {
             this.accountErrorEvent.Invoke(accountError);
             return;
         }
 
         var passwordError = 0;
-        if (IsValidPassword(password, out passwordError))
+        if (!IsValidPassword(password, out passwordError))
         {
             this.passwordErrorEvent.Invoke(passwordError);
             return;
         }
 
+        accountBuf = account;
+        passwordBuf = password;
         model.Reset();
         accountLogining.value = true;
+
+    }
+
+    public void ReAccountLogin()
+    {
+        AccountLogin(localSaveAccount, localSavePassword);
     }
 
     public bool IsAccountLoginOk()
@@ -72,7 +83,8 @@ public class Login : Presenter<Login>
     {
         if (ok)
         {
-
+            localSaveAccount = accountBuf;
+            localSavePassword = passwordBuf;
         }
     }
 

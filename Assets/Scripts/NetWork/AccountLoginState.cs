@@ -10,6 +10,7 @@ public class AccountLoginState : NetState
 
     public override void Enter()
     {
+        PleaseWait.Instance.Show(PleaseWait.WaitType.NetLink, 0f);
         isOverTime = false;
 
         var param = new Clock.ClockParams()
@@ -36,6 +37,8 @@ public class AccountLoginState : NetState
         {
             DebugEx.LogFormat("账号登录超时！");
         }
+
+        PleaseWait.Instance.Hide(PleaseWait.WaitType.NetLink);
     }
 
     public override bool CanExit()
