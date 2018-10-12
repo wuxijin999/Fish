@@ -2,30 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemModel: Model
+public class ItemModel : Model
 {
-    Dictionary<int, ItemEntry> itemDictionary = new Dictionary<int, ItemEntry>();
+    Dictionary<string, ItemEntry> itemDictionary = new Dictionary<string, ItemEntry>();
 
     public override void Reset()
     {
     }
 
-    public ItemEntry GetItemByInstanceId(int guid)
+    public void UpdateItem(string guid, int id, int count)
     {
-        ItemEntry item;
-        this.itemDictionary.TryGetValue(guid, out item);
-
-        return item;
+        if (count > 0)
+        {
+            itemDictionary[guid] = new ItemEntry()
+            {
+                guid = guid,
+                id = id,
+                count = count,
+            };
+        }
+        else
+        {
+            itemDictionary.Remove(guid);
+        }
     }
 
-    public List<int> GetItemsById(int id)
+    public bool TryGetItemByGuid(string guid, out ItemEntry item)
     {
-        var items = new List<int>();
+        return this.itemDictionary.TryGetValue(guid, out item);
+    }
+
+    public List<string> GetItemsById(int id)
+    {
+        var items = new List<string>();
         foreach (var item in this.itemDictionary.Values)
         {
             if (item.id == id)
             {
-                items.Add(item.instanceId);
+                items.Add(item.guid);
             }
         }
 
@@ -46,35 +60,23 @@ public class ItemModel: Model
         return sum;
     }
 
-    public class ItemEntry
+    public List<ItemEntry> GetItems()
     {
+        return new List<ItemEntry>(itemDictionary.Values);
+    }
 
-        int m_InstanceId;
-        public int instanceId
-        {
-            get { return this.m_InstanceId; }
-            private set { this.m_InstanceId = value; }
-        }
+}
 
-        int m_Id;
-        public int id
-        {
-            get { return this.m_Id; }
-            private set { this.m_Id = value; }
-        }
+public struct ItemEntry
+{
+    public string guid;
+    public int id;
+    public int count;
 
-        int m_Count;
-        public int count
-        {
-            get { return this.m_Count; }
-            set { this.m_Count = value; }
-        }
-
-        public ItemEntry(int _instanceId)
-        {
-            this.instanceId = _instanceId;
-        }
-
+    public ItemEntry SetCount(int count)
+    {
+        this.count = count;
+        return this;
     }
 
 }

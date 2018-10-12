@@ -20,8 +20,8 @@ public class test : MonoBehaviour
 
     private void OnEnable()
     {
-        this.animator = this.GetComponent<Animator>();
-        this.animator.runtimeAnimatorController = this.overrideController = new AnimatorOverrideController(this.animator.runtimeAnimatorController);
+        // this.animator = this.GetComponent<Animator>();
+        // this.animator.runtimeAnimatorController = this.overrideController = new AnimatorOverrideController(this.animator.runtimeAnimatorController);
     }
 
     private void Update()
@@ -44,10 +44,11 @@ public class test : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            ThreadPool.QueueUserWorkItem((object a) =>
-            {
-                DebugEx.Log(Time.realtimeSinceStartup);
-            });
+            var list = new List<int>() { 1, 2, 3 };
+            list.Add(3);
+
+            var list2 = new List<int>() { 1, 2, 3 };
+            list.AddEx(3);
         }
 
 

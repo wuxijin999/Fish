@@ -5,8 +5,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI;
-
 
 public class FunctionButtonGroup : MonoBehaviour
 {
@@ -38,17 +36,13 @@ public class FunctionButtonGroup : MonoBehaviour
 
     public void UnRegister(FunctionButton _toggleButton)
     {
-        if (toggleButtons.ContainsKey(_toggleButton.order))
-        {
-            toggleButtons.Remove(_toggleButton.order);
-        }
+        toggleButtons.Remove(_toggleButton.order);
 
         if (orders.Contains(_toggleButton.order))
         {
             orders.Remove(_toggleButton.order);
             orders.Sort(OrderCompare);
         }
-
     }
 
     public void NotifyToggleOn(FunctionButton _toggleButton)

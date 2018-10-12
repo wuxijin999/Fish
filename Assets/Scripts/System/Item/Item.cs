@@ -4,7 +4,7 @@ using UnityEngine;
 
 public struct Item
 {
-    public int instanceId;
+    public string guid;
     public int id;
     public int count;
 }

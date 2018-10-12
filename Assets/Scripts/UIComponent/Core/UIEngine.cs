@@ -22,18 +22,12 @@ public class UIEngine : MonoBehaviour
 
     public void Register(UIBase uibase)
     {
-        if (!this.uibases.Contains(uibase))
-        {
-            this.uibases.Add(uibase);
-        }
+        this.uibases.AddEx(uibase);
     }
 
     public void UnRegister(UIBase uibase)
     {
-        if (this.uibases.Contains(uibase))
-        {
-            this.uibases.Remove(uibase);
-        }
+        this.uibases.Remove(uibase);
     }
 
     private void Update()

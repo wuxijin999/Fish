@@ -148,10 +148,12 @@
     <Compile Include="Assets\Scripts\System\FindPrecious\WorldBossWidget.cs" />
     <Compile Include="Assets\Scripts\System\Friend\Friend.cs" />
     <Compile Include="Assets\Scripts\System\Friend\FriendModel.cs" />
+    <Compile Include="Assets\Scripts\System\Item\Backpack.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemInfo.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
+    <Compile Include="Assets\Scripts\System\Item\ItemPresenter.cs" />
     <Compile Include="Assets\Scripts\System\Language\Language.cs" />
     <Compile Include="Assets\Scripts\System\Login\Login.cs" />
     <Compile Include="Assets\Scripts\System\Login\LoginModel.cs" />
@@ -235,6 +237,7 @@
     <Compile Include="Assets\Scripts\Utility\TransformExtension.cs" />
     <Compile Include="Assets\Scripts\Utility\UIUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\VectorUtil.cs" />
+    <Compile Include="Assets\Scripts\Utility\VesselExtension.cs" />
     <Compile Include="Assets\Scripts\Utility\WaitingForConst.cs" />
     <Compile Include="Assets\Scripts\Version\VersionConfig.cs" />
     <Compile Include="Assets\Scripts\Version\VersionUtil.cs" />

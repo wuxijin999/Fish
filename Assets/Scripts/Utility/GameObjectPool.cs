@@ -53,10 +53,7 @@ public class GameObjectPool
         }
 
         instance.transform.SetParent(this.root.transform);
-        if (!this.m_FreeList.Contains(instance))
-        {
-            this.m_FreeList.Add(instance);
-        }
+        this.m_FreeList.AddEx(instance);
     }
 
     public void Clear()

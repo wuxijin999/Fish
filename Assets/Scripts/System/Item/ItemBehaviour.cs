@@ -20,13 +20,13 @@ public class ItemBehaviour : UIBase
 
     UnityAction onClick;
 
-    int instanceId;
+    string guid;
     int id;
     int count;
 
     public void SetItem(Item item)
     {
-        this.instanceId = item.instanceId;
+        this.guid = item.guid;
         this.id = item.id;
         this.count = item.count;
         DisplayItemBaseInfo();
@@ -94,7 +94,7 @@ public class ItemBehaviour : UIBase
     {
         ItemInfo.Instance.ViewItemInfo(new Item()
         {
-            instanceId = this.instanceId,
+            guid = this.guid,
             id = this.id,
             count = this.count
         });
