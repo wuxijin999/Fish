@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
     <Compile Include="Assets\Scripts\Core\Fish.cs" />
+    <Compile Include="Assets\Scripts\Core\FishAgent.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectBehaviour.cs" />
     <Compile Include="Assets\Scripts\Effect\EffectUtil.cs" />
     <Compile Include="Assets\Scripts\Effect\UIEffectPlay.cs" />

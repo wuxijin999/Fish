@@ -33,9 +33,8 @@ public class FishSocket
     }
 
     public bool connected { get { return socket == null ? false : socket.Connected; } }
-
     bool working = false;
-
+    float lastTimeGotNetPackage = Time.realtimeSinceStartup;
     Action<bool> onConnected = null;
 
     public FishSocket()
@@ -111,7 +110,6 @@ public class FishSocket
                 onConnected = null;
             }
         }
-
     }
 
     /// <summary>

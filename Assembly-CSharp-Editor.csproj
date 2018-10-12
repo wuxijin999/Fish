@@ -382,6 +382,15 @@
     <Reference Include="DOTweenProEditor">
       <HintPath>H:/Fish/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Excel">
+      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/System.Data.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/Administrator/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -402,15 +411,6 @@
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data">
-      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/System.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Excel">
-      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/Excel.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>H:/Fish/Assets/Plugins/Editor/Excel/ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity 2018/Editor/Data/MonoBleedingEdge/lib/mono/2.0-api/mscorlib.dll</HintPath>

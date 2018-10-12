@@ -26,20 +26,31 @@ public class test : MonoBehaviour
 
     private void Update()
     {
+        //         if (Input.GetKeyDown(KeyCode.F))
+        //         {
+        //             this.overrideController["idle"] = this.run;
+        //         }
+        // 
+        //         if (Input.GetKeyDown(KeyCode.G))
+        //         {
+        //             this.overrideController["idle"] = this.walk;
+        //         }
+        // 
+        //         if (Input.GetKeyDown(KeyCode.C))
+        //         {
+        //             this.overrideController["idle"] = null;
+        //         }
+
+
         if (Input.GetKeyDown(KeyCode.F))
         {
-            this.overrideController["idle"] = this.run;
+            ThreadPool.QueueUserWorkItem((object a) =>
+            {
+                DebugEx.Log(Time.realtimeSinceStartup);
+            });
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            this.overrideController["idle"] = this.walk;
-        }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            this.overrideController["idle"] = null;
-        }
     }
 
 

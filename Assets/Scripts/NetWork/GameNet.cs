@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameNet : SingletonMonobehaviour<GameNet>
 {
@@ -25,11 +26,13 @@ public class GameNet : SingletonMonobehaviour<GameNet>
         { State.Disconnect,new DisConnectState() },
     };
 
+    Action<bool> onComplete;
     FishSocket socket;
     public bool connected { get { return socket != null && socket.connected; } }
 
-    public void Connect(string ip, int port, bool force)
+    public void BeginConnect(string ip, int port, bool force, Action<bool> onComplete)
     {
+        this.onComplete = onComplete;
         if (force)
         {
             if (connected)
@@ -52,11 +55,16 @@ public class GameNet : SingletonMonobehaviour<GameNet>
 
     private void OnConnect(bool ok)
     {
-
+        if (this.onComplete != null)
+        {
+            this.onComplete(ok);
+            this.onComplete = null;
+        }
     }
 
     public void DisConnect()
     {
+        this.onComplete = null;
 
     }
 
@@ -74,12 +82,34 @@ public class GameNet : SingletonMonobehaviour<GameNet>
                 case State.AccountLogin:
                     if (Login.Instance.IsAccountLoginOk())
                     {
+                        netState = State.EneterWorld;
                     }
+                    else
+                    {
+                        netState = State.NerverConnect;
+                    }
+                    break;
+                case State.EneterWorld:
+                    if (Login.Instance.IsEnterWorldOk())
+                    {
+                        netState = State.Connect;
+                    }
+                    else
+                    {
+                        netState = State.NerverConnect;
+                    }
+                    break;
+                case State.Connect:
+                    netState = State.Disconnect;
+                    break;
+                case State.Disconnect:
+                    netState = State.NerverConnect;
                     break;
                 default:
                     break;
             }
         }
+
     }
 
     public enum State

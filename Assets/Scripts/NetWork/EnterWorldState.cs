@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class EnterWorldState : NetState
 {
+    const float OVER_TIME = 15f;
+    bool isOverTime = false;
+    Clock clock;
 
     public override void Enter()
     {
+        isOverTime = false;
+
+        var param = new Clock.ClockParams()
+        {
+            type = Clock.ClockType.UnityRealTimeClock,
+            second = OVER_TIME,
+        };
+
+        clock = ClockUtil.Instance.Create(param, () => { isOverTime = true; });
     }
 
     public override void OnUpdate()
@@ -15,11 +27,19 @@ public class EnterWorldState : NetState
 
     public override void Exit()
     {
-    }
+        if (clock != null)
+        {
+            clock.Stop();
+        }
 
+        if (isOverTime)
+        {
+            DebugEx.LogFormat("进入游戏世界超时！");
+        }
+    }
 
     public override bool CanExit()
     {
-        return true;
+        return isOverTime || !Login.Instance.enterWorlding.value;
     }
 }

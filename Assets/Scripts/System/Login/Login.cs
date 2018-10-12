@@ -25,6 +25,9 @@ public class Login : Presenter<Login>
     public BizEvent<int> accountErrorEvent = new BizEvent<int>();
     public BizEvent<int> passwordErrorEvent = new BizEvent<int>();
 
+    public readonly BoolProperty accountLogining = new BoolProperty();
+    public readonly BoolProperty enterWorlding = new BoolProperty();
+
     public override void OpenWindow(int functionId = 0)
     {
         Windows.Instance.Open(WindowType.Login);
@@ -52,7 +55,7 @@ public class Login : Presenter<Login>
         }
 
         model.Reset();
-
+        accountLogining.value = true;
     }
 
     public bool IsAccountLoginOk()

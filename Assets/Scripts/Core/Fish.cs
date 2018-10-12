@@ -47,4 +47,10 @@ public enum BroadcastType
     BeforeLogin,
     LoginOk,
     SwitchAccount,
+
+   ApplicationOut,
+   ApplicationPause,
+   ApplicationUnPause,
+   ApplicationFocus,
+   ApplicationUnFocus,
 }

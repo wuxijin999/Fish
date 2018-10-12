@@ -19,7 +19,7 @@ public class NerverConnectState : NetState
 
     public override bool CanExit()
     {
-        return true;
+        return Login.Instance.accountLogining.value;
     }
 
 }

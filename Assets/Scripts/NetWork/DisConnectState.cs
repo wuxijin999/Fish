@@ -17,7 +17,6 @@ public class DisConnectState : NetState
     {
     }
 
-
     public override bool CanExit()
     {
         return true;
