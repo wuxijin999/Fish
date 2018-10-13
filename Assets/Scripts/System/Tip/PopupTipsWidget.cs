@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class PopupTipsWidget : Widget
+public class PopupTipsWidget : UIBase
 {
 
     const int maxCount = 3;

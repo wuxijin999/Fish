@@ -11,12 +11,9 @@ using UnityEngine.UI;
 
 public class TipsWin : Window
 {
+    [SerializeField] PopupTipsWidget m_NormalTip;
 
     #region Built-in
-    protected override void BindController()
-    {
-    }
-
     protected override void SetListeners()
     {
     }
@@ -25,19 +22,41 @@ public class TipsWin : Window
     {
     }
 
-    protected override void OnAfterOpen()
-    {
-    }
-
     protected override void OnPreClose()
     {
     }
 
-    protected override void OnAfterClose()
+    protected override void OnActived()
     {
+        base.OnActived();
+        DisplayNormalTip();
     }
+
+    public override void OnLateUpdate()
+    {
+        base.OnLateUpdate();
+
+        if (Tips.Instance.hasNewNormalTip.dirty)
+        {
+            DisplayNormalTip();
+        }
+    }
+
     #endregion
-   
+
+    private void DisplayNormalTip()
+    {
+        if (Tips.Instance.hasNewNormalTip.Fetch())
+        {
+            m_NormalTip.SetActive(true);
+            while (Tips.Instance.tipsQueue[Tips.Type.Normal].Count > 0)
+            {
+                var tip = Tips.Instance.tipsQueue[Tips.Type.Normal].Dequeue();
+                m_NormalTip.Popup(tip);
+            }
+        }
+    }
+
 }
 
 

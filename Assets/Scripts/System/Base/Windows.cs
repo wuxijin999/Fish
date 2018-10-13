@@ -167,5 +167,6 @@ public enum WindowType
     Login,
     CreateRole,
     Launch,
-    NormalDungeon
+    NormalDungeon,
+    Tip,
 }

@@ -48,11 +48,13 @@ public class NormalDungeon : Presenter<NormalDungeon>, IPresenterWindow, IPresen
 
     public void EnterDungeon()
     {
+        Tips.Instance.Show("EnterDungeon");
         Dungeon.Instance.EneterDungeon(dungeonId);
     }
 
     public void EnterDungeonGroup()
     {
+        Tips.Instance.Show("EnterDungeonGroup");
         Dungeon.Instance.EneterDungeonGroup(dungeonId);
     }
 
