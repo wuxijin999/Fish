@@ -139,7 +139,10 @@
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleJobSelectWidget.cs" />
     <Compile Include="Assets\Scripts\System\CreateRole\CreateRoleWin.cs" />
     <Compile Include="Assets\Scripts\System\Dungeon\Dungeon.cs" />
+    <Compile Include="Assets\Scripts\System\Dungeon\DungeonBriefBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Dungeon\DungeonModel.cs" />
+    <Compile Include="Assets\Scripts\System\Dungeon\NormalDungeon.cs" />
+    <Compile Include="Assets\Scripts\System\Dungeon\NormalDungeonWin.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\BossModelShow.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPrecious.cs" />
     <Compile Include="Assets\Scripts\System\FindPrecious\FindPreciousWin.cs" />
@@ -152,6 +155,7 @@
     <Compile Include="Assets\Scripts\System\Item\Backpack.cs" />
     <Compile Include="Assets\Scripts\System\Item\Item.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemBehaviour.cs" />
+    <Compile Include="Assets\Scripts\System\Item\ItemGroupBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemInfo.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemModel.cs" />
     <Compile Include="Assets\Scripts\System\Item\ItemPresenter.cs" />
@@ -182,6 +186,8 @@
     <Compile Include="Assets\Scripts\System\Tip\PopupTipsWidget.cs" />
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
+    <Compile Include="Assets\Scripts\System\UI3DModel\UI3DModelDrawer.cs" />
+    <Compile Include="Assets\Scripts\System\UI3DModel\UI3DNpcDrawer.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\CyclicScroll.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButton.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButtonGroup.cs" />

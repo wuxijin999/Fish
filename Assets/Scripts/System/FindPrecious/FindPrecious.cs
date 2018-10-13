@@ -10,19 +10,14 @@ using UnityEngine;
 public class FindPrecious : Presenter<FindPrecious>, IPresenterWindow
 {
 
-    public readonly IntProperty functionId = new IntProperty(0);
+    public void OpenWindow(object @object)
+    {
+        this.functionId.value = (int)@object;
+    }
 
     public void CloseWindow()
     {
     }
-
-    public void OpenWindow(int functionId)
-    {
-        this.functionId.value = functionId;
-    }
-
-
-
 
 }
 

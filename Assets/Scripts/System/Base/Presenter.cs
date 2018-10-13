@@ -25,7 +25,7 @@ public interface IPresenterReset
 
 public interface IPresenterWindow
 {
-    void OpenWindow(int functionId = 0);
+    void OpenWindow(object @object = null);
     void CloseWindow();
 }
 

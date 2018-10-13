@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ConfirmCancel : Presenter<ConfirmCancel>, IPresenterWindow
+public class ConfirmCancel : Presenter<ConfirmCancel>
 {
     UnityAction confirmAction = null;
     UnityAction cancelAction = null;
 
     public string content { get; private set; }
     public string title { get; private set; }
-
-    public void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public void CloseWindow()
-    {
-    }
 
     public ConfirmCancel Get()
     {

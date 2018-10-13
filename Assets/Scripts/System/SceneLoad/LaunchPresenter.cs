@@ -13,7 +13,7 @@ public class LaunchPresenter : Presenter<LaunchPresenter>, IPresenterWindow
     public readonly FloatProperty progress = new FloatProperty();
     public readonly IntProperty randowTips = new IntProperty();
 
-    public void OpenWindow(int functionId = 0)
+    public void OpenWindow(object @object)
     {
         randowTips.value = UnityEngine.Random.Range(1, 9);
         Windows.Instance.Open(WindowType.Launch);

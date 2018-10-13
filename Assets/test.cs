@@ -20,26 +20,26 @@ public class test : MonoBehaviour
 
     private void OnEnable()
     {
-        // this.animator = this.GetComponent<Animator>();
-        // this.animator.runtimeAnimatorController = this.overrideController = new AnimatorOverrideController(this.animator.runtimeAnimatorController);
+         this.animator = this.GetComponent<Animator>();
+         this.animator.runtimeAnimatorController = this.overrideController = new AnimatorOverrideController(this.animator.runtimeAnimatorController);
     }
 
     private void Update()
     {
-        //         if (Input.GetKeyDown(KeyCode.F))
-        //         {
-        //             this.overrideController["idle"] = this.run;
-        //         }
-        // 
-        //         if (Input.GetKeyDown(KeyCode.G))
-        //         {
-        //             this.overrideController["idle"] = this.walk;
-        //         }
-        // 
-        //         if (Input.GetKeyDown(KeyCode.C))
-        //         {
-        //             this.overrideController["idle"] = null;
-        //         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            this.overrideController["idle"] = this.run;
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            this.overrideController["idle"] = this.walk;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            this.overrideController["idle"] = null;
+        }
 
         if (Input.GetKeyDown(KeyCode.F))
         {

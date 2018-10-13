@@ -1,17 +1,19 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, October 08, 2018
+//    [  Date ]:           Saturday, October 13, 2018
 //--------------------------------------------------------
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
-public class Chat : Presenter<Chat>
+public class UI3DModelDrawer : UIBase
 {
+
+    public virtual void Display(int objectId)
+    {
+
+    }
+
 }
-
-
 
 
 

@@ -8,7 +8,7 @@ public class PleaseWait : Presenter<PleaseWait>, IPresenterWindow
 
     List<WaitType> waitings = new List<WaitType>();
 
-    public void OpenWindow(int functionId = 0)
+    public void OpenWindow(object @object=null)
     {
         Windows.Instance.Open(WindowType.PleaseWait);
     }

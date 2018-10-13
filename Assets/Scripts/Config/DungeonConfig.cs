@@ -13,12 +13,15 @@ public partial class DungeonConfig
 {
 
     public readonly int id;
+	public readonly int type;
 	public readonly int name;
 	public readonly int description;
 	public readonly int mapId;
 	public readonly int boss;
 	public readonly int levelMin;
 	public readonly Int2 recommendLevel;
+	public readonly int dailyTimes;
+	public readonly int weekTimes;
 	public readonly int timeLimit;
 	public readonly Int2[] rewards;
 
@@ -30,21 +33,27 @@ public partial class DungeonConfig
 
             int.TryParse(tables[0],out id); 
 
-			int.TryParse(tables[1],out name); 
+			int.TryParse(tables[1],out type); 
 
-			int.TryParse(tables[2],out description); 
+			int.TryParse(tables[2],out name); 
 
-			int.TryParse(tables[3],out mapId); 
+			int.TryParse(tables[3],out description); 
 
-			int.TryParse(tables[4],out boss); 
+			int.TryParse(tables[4],out mapId); 
 
-			int.TryParse(tables[5],out levelMin); 
+			int.TryParse(tables[5],out boss); 
 
-			Int2.TryParse(tables[6],out recommendLevel); 
+			int.TryParse(tables[6],out levelMin); 
 
-			int.TryParse(tables[7],out timeLimit); 
+			Int2.TryParse(tables[7],out recommendLevel); 
 
-			string[] rewardsStringArray = tables[8].Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);
+			int.TryParse(tables[8],out dailyTimes); 
+
+			int.TryParse(tables[9],out weekTimes); 
+
+			int.TryParse(tables[10],out timeLimit); 
+
+			string[] rewardsStringArray = tables[11].Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);
 			rewards = new Int2[rewardsStringArray.Length];
 			for (int i=0;i<rewardsStringArray.Length;i++)
 			{

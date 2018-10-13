@@ -31,7 +31,7 @@ public class Login : Presenter<Login>, IPresenterWindow
     public readonly BoolProperty accountLogining = new BoolProperty();
     public readonly BoolProperty enterWorlding = new BoolProperty();
 
-    public void OpenWindow(int functionId = 0)
+    public void OpenWindow(object @object = null)
     {
         Windows.Instance.Open(WindowType.Login);
     }

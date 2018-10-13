@@ -22,7 +22,7 @@ public class LoadingPresenter : Presenter<LoadingPresenter>, IPresenterInit, IPr
         SceneLoad.Instance.progressChangeEvent -= OnProgressChange;
     }
 
-    public void OpenWindow(int functionId = 0)
+    public void OpenWindow(object @object)
     {
     }
 

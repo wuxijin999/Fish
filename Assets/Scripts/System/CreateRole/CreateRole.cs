@@ -13,10 +13,8 @@ public class CreateRole : Presenter<CreateRole>, IPresenterWindow
     BrowseJob browseJob = new BrowseJob();
     public readonly IntProperty browsingJob = new IntProperty(1);
 
-    public void OpenWindow(int functionId = 0)
+    public void OpenWindow(object @object)
     {
-        this.browseJob.Reset();
-        Windows.Instance.Open(WindowType.CreateRole);
     }
 
     public void CloseWindow()
