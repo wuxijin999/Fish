@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PleaseWait : Presenter<PleaseWait>
+public class PleaseWait : Presenter<PleaseWait>, IPresenterWindow
 {
 
     List<WaitType> waitings = new List<WaitType>();
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
         Windows.Instance.Open(WindowType.PleaseWait);
     }
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
         Windows.Instance.Close(WindowType.PleaseWait);
     }

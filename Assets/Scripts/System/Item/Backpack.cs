@@ -12,14 +12,6 @@ public class Backpack : Presenter<Backpack>
 
     List<Grid> grids = new List<Grid>();
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public class Grid
     {
         public readonly int index;

@@ -10,13 +10,6 @@ using UnityEngine;
 public class #ClassName# : Presenter<#ClassName#>
 {
 
-	public override void OpenWindow(int functionId = 0)
-    {
-    }
-   
-    public override void CloseWindow()
-    {
-    }
 }
 
 

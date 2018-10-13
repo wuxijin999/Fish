@@ -14,14 +14,6 @@ public class Friend : Presenter<Friend>
     Dictionary<int, FriendBrief> friendBriefs = new Dictionary<int, FriendBrief>();
     ListProperty<StrangerBrief> strangerBriefs = new ListProperty<StrangerBrief>();
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public void AddFriend(int playerId)
     {
         model.DeleteBlackFriend(playerId);

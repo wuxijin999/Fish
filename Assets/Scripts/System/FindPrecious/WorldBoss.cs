@@ -33,11 +33,11 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit, IPresenterReset
         model.Reset();
     }
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
     }
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
         bossBriefs.Clear();
     }

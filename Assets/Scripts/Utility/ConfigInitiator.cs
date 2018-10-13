@@ -22,6 +22,7 @@ public class ConfigInitiator
 		WorldBossConfig.Init();
 		NpcConfig.Init();
 		MapConfig.Init();
+		DungeonConfig.Init();
 		//初始化结束
     }
 

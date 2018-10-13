@@ -89,6 +89,14 @@ public class CreateConfigClassFile
         {
             return StringUtil.Contact("public readonly int[] ", field.Trim(), ";");
         }
+        else if (type.Contains("Int2[]"))
+        {
+            return StringUtil.Contact("public readonly Int2[] ", field.Trim(), ";");
+        }
+        else if (type.Contains("Int3[]"))
+        {
+            return StringUtil.Contact("public readonly Int3[] ", field.Trim(), ";");
+        }
         else if (type.Contains("float[]"))
         {
             return StringUtil.Contact("public readonly float[] ", field.Trim(), ";");
@@ -149,6 +157,28 @@ public class CreateConfigClassFile
             var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
             var line4 = StringUtil.Contact(retract3, "{\n");
             var line5 = StringUtil.Contact(retract4, " int.TryParse(", field, "StringArray", "[i]", ",", "out ", field, "[i]", ")", ";", "\n");
+            var line6 = StringUtil.Contact(retract3, "}");
+
+            return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
+        }
+        else if (type.Contains("Int2[]"))
+        {
+            var line1 = StringUtil.Contact("string[] ", field, "StringArray", " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, field, " = ", "new Int2", "[", field, "StringArray.Length]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtil.Contact(retract3, "{\n");
+            var line5 = StringUtil.Contact(retract4, " Int2.TryParse(", field, "StringArray", "[i]", ",", "out ", field, "[i]", ")", ";", "\n");
+            var line6 = StringUtil.Contact(retract3, "}");
+
+            return StringUtil.Contact(line1, line2, line3, line4, line5, line6);
+        }
+        else if (type.Contains("Int3[]"))
+        {
+            var line1 = StringUtil.Contact("string[] ", field, "StringArray", " = ", "tables", "[", index, "]", ".Trim().Split(StringUtil.splitSeparator,StringSplitOptions.RemoveEmptyEntries);", "\n");
+            var line2 = StringUtil.Contact(retract3, field, " = ", "new Int3", "[", field, "StringArray.Length]", ";", "\n");
+            var line3 = StringUtil.Contact(retract3, "for (int i=0;i<", field, "StringArray", ".Length", ";", "i++", ")", "\n");
+            var line4 = StringUtil.Contact(retract3, "{\n");
+            var line5 = StringUtil.Contact(retract4, " Int3.TryParse(", field, "StringArray", "[i]", ",", "out ", field, "[i]", ")", ";", "\n");
             var line6 = StringUtil.Contact(retract3, "}");
 
             return StringUtil.Contact(line1, line2, line3, line4, line5, line6);

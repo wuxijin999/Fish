@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ConfirmCancel : Presenter<ConfirmCancel>
+public class ConfirmCancel : Presenter<ConfirmCancel>, IPresenterWindow
 {
     UnityAction confirmAction = null;
     UnityAction cancelAction = null;
@@ -11,11 +11,11 @@ public class ConfirmCancel : Presenter<ConfirmCancel>
     public string content { get; private set; }
     public string title { get; private set; }
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
     }
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
     }
 

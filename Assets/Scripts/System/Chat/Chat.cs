@@ -7,16 +7,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chat : Presenter<Chat>
+public class Chat : Presenter<Chat>, IPresenterWindow
 {
 
-	public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
     }
-   
-    public override void CloseWindow()
+
+    public void CloseWindow()
     {
     }
+
 }
 
 

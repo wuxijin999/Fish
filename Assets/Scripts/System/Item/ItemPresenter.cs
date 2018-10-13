@@ -12,14 +12,6 @@ public class ItemPresenter : Presenter<ItemPresenter>
 
     ItemModel model = new ItemModel();
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public ItemEntry GetItemByGuid(string guid)
     {
         ItemEntry itemEntry;

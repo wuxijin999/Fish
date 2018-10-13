@@ -9,3 +9,4 @@ Npc表	Npc
 测试表	Test
 窗口表	Window
 世界Boss表	WorldBoss
+副本表	Dungeon

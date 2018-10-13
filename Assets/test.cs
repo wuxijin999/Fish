@@ -41,7 +41,6 @@ public class test : MonoBehaviour
         //             this.overrideController["idle"] = null;
         //         }
 
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             var list = new List<int>() { 1, 2, 3 };

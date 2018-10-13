@@ -7,19 +7,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateRole : Presenter<CreateRole>
+public class CreateRole : Presenter<CreateRole>, IPresenterWindow
 {
 
     BrowseJob browseJob = new BrowseJob();
     public readonly IntProperty browsingJob = new IntProperty(1);
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
         this.browseJob.Reset();
         Windows.Instance.Open(WindowType.CreateRole);
     }
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
         Windows.Instance.Close(WindowType.CreateRole);
     }

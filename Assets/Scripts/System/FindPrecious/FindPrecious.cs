@@ -7,22 +7,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FindPrecious : Presenter<FindPrecious>
+public class FindPrecious : Presenter<FindPrecious>, IPresenterWindow
 {
 
     public readonly IntProperty functionId = new IntProperty(0);
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
     }
 
-    public override void OpenWindow(int functionId)
+    public void OpenWindow(int functionId)
     {
         this.functionId.value = functionId;
     }
 
 
-    
+
 
 }
 

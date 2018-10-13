@@ -12,14 +12,6 @@ public class ItemInfo : Presenter<ItemInfo>
 
     public Item showItem { get; private set; }
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public void ViewItemInfo(Item item)
     {
         this.showItem = item;

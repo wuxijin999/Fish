@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadingPresenter : Presenter<LoadingPresenter>, IPresenterInit, IPresenterUnInit
+public class LoadingPresenter : Presenter<LoadingPresenter>, IPresenterInit, IPresenterUnInit, IPresenterWindow
 {
     public readonly IntProperty sceneId = new IntProperty();
     public readonly FloatProperty progress = new FloatProperty();
@@ -22,17 +22,17 @@ public class LoadingPresenter : Presenter<LoadingPresenter>, IPresenterInit, IPr
         SceneLoad.Instance.progressChangeEvent -= OnProgressChange;
     }
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
     }
 
-    public override void CloseWindow()
-    {
-    }
-
-    public void OpenWindow(int sceneId, int functionId = 0)
+    public void OpenWindow(int sceneId, int functionId)
     {
         this.sceneId.value = sceneId;
+    }
+
+    public void CloseWindow()
+    {
     }
 
     private void OnProgressChange(float progress)

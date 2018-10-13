@@ -13,14 +13,6 @@ public class SkillCast : Presenter<SkillCast>
 
     SkillModel skillModel = new SkillModel();
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public void CastSkill(int index)
     {
         var skill = this.skillModel.GetSkill(index);

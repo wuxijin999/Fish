@@ -91,16 +91,16 @@ public class SceneLoad : Singleton<SceneLoad>
         switch (currentSceneId)
         {
             case LOGIN_SCENEID:
-                LoadingPresenter.Instance.OpenWindow();
+                LoadingPresenter.Instance.OpenWindow(LOGIN_SCENEID, 0);
                 break;
             case CREATEROLE_SCENEID:
-                LoadingPresenter.Instance.OpenWindow();
+                LoadingPresenter.Instance.OpenWindow(CREATEROLE_SCENEID, 0);
                 break;
             case SELECTROLE_SCENEID:
-                LoadingPresenter.Instance.OpenWindow();
+                LoadingPresenter.Instance.OpenWindow(SELECTROLE_SCENEID, 0);
                 break;
             default:
-                LoadingPresenter.Instance.OpenWindow();
+                LoadingPresenter.Instance.OpenWindow(currentSceneId, 0);
                 break;
         }
     }

@@ -15,14 +15,6 @@ public class Team : Presenter<Team>
     public readonly Teammates teammates = new Teammates();
     public readonly IntProperty theirTeams = new IntProperty();
 
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
-
-    public override void CloseWindow()
-    {
-    }
-
     public void CreateTeam()
     {
 

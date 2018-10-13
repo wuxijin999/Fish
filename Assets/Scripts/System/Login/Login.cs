@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Login : Presenter<Login>
+public class Login : Presenter<Login>, IPresenterWindow
 {
 
     LoginModel model = new LoginModel();
@@ -31,12 +31,12 @@ public class Login : Presenter<Login>
     public readonly BoolProperty accountLogining = new BoolProperty();
     public readonly BoolProperty enterWorlding = new BoolProperty();
 
-    public override void OpenWindow(int functionId = 0)
+    public void OpenWindow(int functionId = 0)
     {
         Windows.Instance.Open(WindowType.Login);
     }
 
-    public override void CloseWindow()
+    public void CloseWindow()
     {
         Windows.Instance.Close(WindowType.Login);
     }

@@ -9,13 +9,6 @@ using UnityEngine;
 
 public class Tips : Presenter<Tips>
 {
-    public override void CloseWindow()
-    {
-    }
-
-    public override void OpenWindow(int functionId = 0)
-    {
-    }
 }
 
 

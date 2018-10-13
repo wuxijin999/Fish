@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Assets\AssetVersionUtility.cs" />
     <Compile Include="Assets\Scripts\Assets\EffectAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\UIAssets.cs" />
+    <Compile Include="Assets\Scripts\Config\DungeonConfig.cs" />
     <Compile Include="Assets\Scripts\Config\EffectConfig.cs" />
     <Compile Include="Assets\Scripts\Config\EquipConfig.cs" />
     <Compile Include="Assets\Scripts\Config\IconConfig.cs" />
@@ -256,6 +257,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Item.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_Water2.shader" />
     <None Include="Assets\ResourcesOut\5_Config\Window.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\Dungeon.txt" />
     <None Include="Assets\Resources\Config\PriorLanguage.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Equip.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />

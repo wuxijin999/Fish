@@ -23,12 +23,20 @@ public interface IPresenterReset
     void OnReset();
 }
 
+public interface IPresenterWindow
+{
+    void OpenWindow(int functionId = 0);
+    void CloseWindow();
+}
+
 public abstract class Presenter<T> where T : class, new()
 {
     static T m_Instance;
     public static T Instance {
         get { return m_Instance ?? (m_Instance = new T()); }
     }
+
+    public readonly IntProperty functionId = new IntProperty();
 
     protected Presenter()
     {
@@ -82,8 +90,5 @@ public abstract class Presenter<T> where T : class, new()
             reset.OnReset();
         }
     }
-
-    public abstract void OpenWindow(int functionId = 0);
-    public abstract void CloseWindow();
 
 }

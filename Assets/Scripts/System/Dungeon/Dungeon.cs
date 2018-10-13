@@ -9,14 +9,13 @@ using UnityEngine;
 
 public class Dungeon : Presenter<Dungeon>
 {
+    DungeonModel model = new DungeonModel();
 
-	public override void OpenWindow(int functionId = 0)
+    public void EneterDungeon(int dungeonId)
     {
+        var config = DungeonConfig.Get(dungeonId);
     }
-   
-    public override void CloseWindow()
-    {
-    }
+
 }
 
 
