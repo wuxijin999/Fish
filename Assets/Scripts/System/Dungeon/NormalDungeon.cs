@@ -46,6 +46,21 @@ public class NormalDungeon : Presenter<NormalDungeon>, IPresenterWindow, IPresen
         Windows.Instance.Close(WindowType.NormalDungeon);
     }
 
+    public void EnterDungeon()
+    {
+        Dungeon.Instance.EneterDungeon(dungeonId);
+    }
+
+    public void EnterDungeonGroup()
+    {
+        Dungeon.Instance.EneterDungeonGroup(dungeonId);
+    }
+
+    public void Sweep()
+    {
+
+    }
+
     private void OnDungeonInfoUpdate(int dungeonId)
     {
         if (this.dungeonId != dungeonId)

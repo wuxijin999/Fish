@@ -31,6 +31,17 @@ public class Dungeon : Presenter<Dungeon>
         var config = DungeonConfig.Get(dungeonId);
     }
 
+    public void EneterDungeonGroup(int dungeonId)
+    {
+        if (!DungeonConfig.Has(dungeonId))
+        {
+            DebugEx.LogFormat("查无此副本，别开玩笑了:{0}", dungeonId);
+            return;
+        }
+
+        var config = DungeonConfig.Get(dungeonId);
+    }
+
     public void ExitDungeon()
     {
 

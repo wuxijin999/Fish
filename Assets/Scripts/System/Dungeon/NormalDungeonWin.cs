@@ -21,6 +21,10 @@ public class NormalDungeonWin : Window
 
     protected override void SetListeners()
     {
+        setting.close.SetListener(() => { NormalDungeon.Instance.CloseWindow(); });
+        m_SingleChallenge.SetListener(() => { NormalDungeon.Instance.EnterDungeon(); });
+        m_TeamChallenge.SetListener(() => { NormalDungeon.Instance.EnterDungeonGroup(); });
+        m_Sweep.SetListener(() => { NormalDungeon.Instance.Sweep(); });
     }
 
     protected override void OnPreOpen()

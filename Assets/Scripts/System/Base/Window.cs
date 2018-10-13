@@ -11,7 +11,7 @@ using UnityEngine.UI;
 public class Window : UIBase
 {
     WindowSetting m_Setting;
-    WindowSetting setting { get { return m_Setting ?? (m_Setting = this.GetComponent<WindowSetting>()); } }
+    protected WindowSetting setting { get { return m_Setting ?? (m_Setting = this.GetComponent<WindowSetting>()); } }
     WindowConfig config { get { return WindowConfig.Get(this.setting.id); } }
 
     List<Widget> widgets = new List<Widget>();
