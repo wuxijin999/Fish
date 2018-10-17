@@ -19,7 +19,8 @@ public class CreateRoleWin : Window
 
     protected override void SetListeners()
     {
-        this.m_RandomName.SetListener(this.RandomName);
+
+        this.m_RandomName.SetListener(() => { CreateRole.Instance.GetRandomName(); });
         this.m_Create.SetListener(this.Create);
     }
 
@@ -31,7 +32,7 @@ public class CreateRoleWin : Window
     protected override void OnActived()
     {
         base.OnActived();
-        RandomName();
+        CreateRole.Instance.GetRandomName();
         SetWidgetActive<CreateRoleJobSelectWidget>(true);
         SetWidgetActive<CreateRoleJobInstroduceWidget>(true);
     }
@@ -40,6 +41,15 @@ public class CreateRoleWin : Window
     {
         SetWidgetActive<CreateRoleJobSelectWidget>(false);
         SetWidgetActive<CreateRoleJobInstroduceWidget>(false);
+    }
+
+    public override void OnLateUpdate()
+    {
+        if (CreateRole.Instance.browsingGender.dirty || CreateRole.Instance.browsingJob.dirty)
+        {
+        }
+
+
     }
 
     #endregion

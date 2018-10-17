@@ -18,8 +18,6 @@ namespace Actor
             {
                 throw new ArgumentNullException("transform is null");
             }
-
-
         }
 
     }

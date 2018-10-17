@@ -12,6 +12,8 @@ public class CreateRole : Presenter<CreateRole>, IPresenterWindow
 
     BrowseJob browseJob = new BrowseJob();
     public readonly IntProperty browsingJob = new IntProperty(1);
+    public readonly IntProperty browsingGender = new IntProperty(0);
+    public readonly StringProperty randomName = new StringProperty();
 
     public void OpenWindow(object @object)
     {
@@ -25,6 +27,13 @@ public class CreateRole : Presenter<CreateRole>, IPresenterWindow
     public void ViewJob(int job)
     {
         browsingJob.value = job;
+        randomName.value = GetRandomName();
+    }
+
+    public void ViewGender(int gender)
+    {
+        browsingGender.value = gender;
+        randomName.value = GetRandomName();
     }
 
     public void Create(int job, string name)
@@ -58,8 +67,6 @@ public class CreateRole : Presenter<CreateRole>, IPresenterWindow
 
     public bool IsValidRoleName(string name)
     {
-
-
         return true;
     }
 

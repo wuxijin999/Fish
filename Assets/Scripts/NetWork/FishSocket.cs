@@ -156,6 +156,7 @@ public class FishSocket
                 var bytes = new byte[dataLength];
                 Array.Copy(bufferBytes, 0, bytes, 0, dataLength);
                 ReadInfo(bytes);
+                lastTimeGotNetPackage = DateTime.Now;
             }
             catch (Exception e)
             {

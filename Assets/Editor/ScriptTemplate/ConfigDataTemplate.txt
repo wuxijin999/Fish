@@ -30,7 +30,13 @@ public partial class #ClassName#
 
     static Dictionary<int, #ClassName#> configs = new Dictionary<int, #ClassName#>();
     public static #ClassName# Get(int id)
-    {
+    {   
+		if (!inited)
+        {
+            Debug.Log("#ClassName#Config 还未完成初始化。");
+            return null;
+        }
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -51,9 +57,11 @@ public partial class #ClassName#
         return configs.ContainsKey(id);
     }
 
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
+	    inited = false;
         var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "#FileName#.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
@@ -68,6 +76,8 @@ public partial class #ClassName#
 
                 rawDatas[id] = line;
             }
+
+			inited=true;
         });
     }
 

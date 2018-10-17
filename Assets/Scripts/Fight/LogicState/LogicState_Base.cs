@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class LogicState_Base : MonoBehaviour {
+namespace Actor
+{
+    public abstract class LogicState_Base
+    {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        public FightActor owner { get; private set; }
+        public abstract void Enter();
+        public abstract void Update();
+        public abstract void Exit();
+
+        public LogicState_Base(FightActor actor)
+        {
+            this.owner = actor;
+        }
+
+    }
 }
+

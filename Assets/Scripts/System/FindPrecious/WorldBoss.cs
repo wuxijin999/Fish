@@ -76,7 +76,7 @@ public class WorldBoss : Presenter<WorldBoss>, IPresenterInit, IPresenterReset
         model.UpdateBossSubscribe(bossId, false);
     }
 
-    public void UpdateBossInfoes(List<int> bossIds, List<int> seconds, List<bool> subscribes)
+    public void UpdateBossInfos(List<int> bossIds, List<int> seconds, List<bool> subscribes)
     {
         if (bossIds == null)
         {
