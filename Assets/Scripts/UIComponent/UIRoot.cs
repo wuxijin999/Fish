@@ -8,6 +8,7 @@ public class UIRoot : MonoBehaviour
 
     public static Camera uiCamera { get; private set; }
     public static RectTransform windowRoot { get; private set; }
+    public static HUDRoot hudRoot { get; private set; }
 
     [RuntimeInitializeOnLoadMethod]
     static void RunTimeInit()
@@ -22,6 +23,7 @@ public class UIRoot : MonoBehaviour
     }
 
     [SerializeField] Camera m_UICamera;
+    [SerializeField] HUDRoot m_HUDRoot;
     [SerializeField] RectTransform m_WindowRoot;
 
     private void Awake()
@@ -34,6 +36,11 @@ public class UIRoot : MonoBehaviour
         if (this.m_WindowRoot != null)
         {
             windowRoot = this.m_WindowRoot;
+        }
+
+        if (this.m_HUDRoot != null)
+        {
+            hudRoot = this.m_HUDRoot;
         }
     }
 

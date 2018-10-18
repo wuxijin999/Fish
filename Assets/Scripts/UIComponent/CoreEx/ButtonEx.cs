@@ -10,10 +10,10 @@ public class ButtonEx : Button
     [SerializeField] float m_Interval;
     [SerializeField] int m_PositiveSound = 0;
     [SerializeField] int m_NegativeSound = 0;
-    [SerializeField] TextMeshProUGUI m_TitleMesh;
+    [SerializeField] TextEx m_TitleMesh;
     [SerializeField] Color m_NormalColor = Color.white;
     [SerializeField] Color m_DisableColor = Color.white;
-    [SerializeField] TextMeshProUGUI m_CoolDownText;
+    [SerializeField] TextEx m_CoolDownText;
     [SerializeField] ImageEx m_Image;
 
     float coolDownTimer = 0f;
@@ -114,7 +114,7 @@ public class ButtonEx : Button
         {
             this.m_TitleMesh.gameObject.SetActive(false);
             this.m_CoolDownText.gameObject.SetActive(true);
-            this.m_CoolDownText.text = "";
+            this.m_CoolDownText.SetText(Mathf.RoundToInt(surplusTime));
         }
         else
         {

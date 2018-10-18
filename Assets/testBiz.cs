@@ -5,7 +5,6 @@ using UnityEngine;
 public class testBiz : MonoBehaviour
 {
 
-
     WorldBossModel model = new WorldBossModel();
     public void Update()
     {

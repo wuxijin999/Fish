@@ -14,7 +14,7 @@ public class HeadUpName : HUDBase
         headUpName.camera = camera;
         headUpName.target = target;
         headUpName.offset = new Vector3(0, offsetY, 0);
-        headUpName.transform.SetParentEx(UIRoot.windowRoot);
+        headUpName.transform.SetParentEx(UIRoot.hudRoot.headUpBar.transform);
         headUpName.SyncPosition(true);
         return headUpName;
     }
