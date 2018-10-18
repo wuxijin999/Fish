@@ -10,3 +10,4 @@ Npc表	Npc
 窗口表	Window
 世界Boss表	WorldBoss
 副本表	Dungeon
+伤害数字表	DamageNum

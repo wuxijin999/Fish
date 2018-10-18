@@ -6,7 +6,7 @@ using System;
 
 public static class CameraUtil
 {
-
+    public static Camera uiCamera;
     public static Camera fightCamera;
 
     public static void AddCullingMask(this Camera camera, int layer)

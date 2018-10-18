@@ -9,19 +9,17 @@ public class HeadUpGuild : HUDBase
 
     public static HeadUpGuild Get(Transform target, float offsetY, Camera camera)
     {
-        var headUpName = HeadUpGuildPool.Get();
-        headUpName.camera = camera;
-        headUpName.target = target;
-        headUpName.offset = new Vector3(0, offsetY, 0);
-        headUpName.transform.SetParentEx(UIRoot.windowRoot);
-        headUpName.SyncPosition(true);
-        return headUpName;
+        var headGuild = HeadUpGuildPool.Get();
+        headGuild.Follow(target, Vector3.zero.SetY(offsetY), camera);
+        headGuild.transform.SetParentEx(UIRoot.windowRoot);
+        return headGuild;
     }
 
     public static void Release(HeadUpGuild headUpGuild)
     {
         if (headUpGuild != null)
         {
+            headUpGuild.Dispose();
             HeadUpGuildPool.Release(headUpGuild);
         }
     }
@@ -29,7 +27,6 @@ public class HeadUpGuild : HUDBase
     public HeadUpGuild Display(string name)
     {
         m_GuildName.SetText(name);
-        SyncPosition(true);
         return this;
     }
 

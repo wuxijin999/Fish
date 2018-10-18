@@ -56,6 +56,14 @@ public class GameObjectPool
         this.m_FreeList.AddEx(instance);
     }
 
+    public void ReleaseAll()
+    {
+        foreach (var item in m_ActiveList)
+        {
+            Release(item);
+        }
+    }
+
     public void Clear()
     {
         foreach (var item in this.m_FreeList)

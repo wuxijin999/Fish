@@ -11,11 +11,8 @@ public class HeadUpName : HUDBase
     public static HeadUpName Get(Transform target, float offsetY, Camera camera)
     {
         var headUpName = HeadUpNamePool.Get();
-        headUpName.camera = camera;
-        headUpName.target = target;
-        headUpName.offset = new Vector3(0, offsetY, 0);
+        headUpName.Follow(target, Vector3.zero.SetY(offsetY), camera);
         headUpName.transform.SetParentEx(UIRoot.hudRoot.headUpBar.transform);
-        headUpName.SyncPosition(true);
         return headUpName;
     }
 
@@ -23,6 +20,7 @@ public class HeadUpName : HUDBase
     {
         if (headUpName != null)
         {
+            headUpName.Dispose();
             HeadUpNamePool.Release(headUpName);
         }
     }
@@ -59,7 +57,6 @@ public class HeadUpName : HUDBase
             m_LevelBehaviour.SetText(level);
         }
 
-        SyncPosition(true);
         return this;
     }
 

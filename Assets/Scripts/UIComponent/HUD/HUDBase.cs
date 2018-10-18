@@ -4,35 +4,18 @@ using System.Collections;
 public class HUDBase : MonoBehaviour
 {
     [SerializeField] FacingCamera m_FacingCamera;
-    public FacingCamera facingCamera {
-        get { return this.m_FacingCamera; }
-    }
-
     [SerializeField] Transform m_Target;
-    public Transform target {
-        get { return this.m_Target; }
-        set { this.m_Target = value; }
-    }
-
     [SerializeField] Vector3 m_Offset;
-    public Vector3 offset {
-        get { return m_Offset; }
-        set { m_Offset = value; }
-    }
-
     [SerializeField] bool m_IsLocal = false;
-    public bool isLocal {
-        get { return m_IsLocal; }
-    }
 
     Camera m_Camera;
     new public Camera camera {
         get { return this.m_Camera; }
         set {
             this.m_Camera = value;
-            if (this.m_Camera != null && this.facingCamera != null)
+            if (this.m_Camera != null && this.m_FacingCamera != null)
             {
-                this.facingCamera.camera = this.m_Camera;
+                this.m_FacingCamera.camera = this.m_Camera;
             }
         }
     }
@@ -49,27 +32,45 @@ public class HUDBase : MonoBehaviour
         SyncPosition(false);
     }
 
-    public void SyncPosition(bool force)
+    public virtual void Follow(Transform target, Vector3 offset, Camera camera)
     {
-        if (target == null || camera == null)
+        SyncPosition(true);
+        this.m_Target = target;
+        this.m_Offset = offset;
+        this.camera = camera;
+    }
+
+    public virtual void Dispose()
+    {
+        this.m_Target = null;
+        this.camera = null;
+        if (this.m_FacingCamera != null)
+        {
+            this.m_FacingCamera.camera = null;
+        }
+    }
+
+    void SyncPosition(bool force)
+    {
+        if (this.m_Target == null || this.camera == null)
         {
             return;
         }
 
-        if (isLocal)
+        if (this.m_IsLocal)
         {
-            var uiposition = CameraUtil.ConvertPosition(camera, UIRoot.uiCamera, target.position + offset);
+            var uiposition = CameraUtil.ConvertPosition(this.camera, UIRoot.uiCamera, this.m_Target.position + this.m_Offset);
             if (force || Vector3.Distance(this.prePosition, uiposition) > 0.0001f)
             {
-                prePosition = this.transform.position = uiposition;
+                this.prePosition = this.transform.position = uiposition;
                 this.transform.localPosition = this.transform.localPosition.SetZ(0);
             }
         }
         else
         {
-            if (force || Vector3.Distance(this.prePosition, target.position + offset) > 0.001f)
+            if (force || Vector3.Distance(this.prePosition, this.m_Target.position + this.m_Offset) > 0.001f)
             {
-                prePosition = this.transform.position = target.position + offset;
+                this.prePosition = this.transform.position = this.m_Target.position + this.m_Offset;
             }
         }
     }
