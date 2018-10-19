@@ -24,6 +24,7 @@ public class ConfigInitiator
 		MapConfig.Init();
 		DungeonConfig.Init();
 		DamageNumConfig.Init();
+		SkillConfig.Init();
 		//初始化结束
     }
 

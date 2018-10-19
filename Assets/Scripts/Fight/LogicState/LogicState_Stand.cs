@@ -7,17 +7,17 @@ namespace Actor
     public class LogicState_Stand : LogicState_Base
     {
 
-        public LogicState_Stand(ActorBase owner) : base(owner)
-        {
-
-        }
-
         public override void Enter()
         {
         }
 
         public override void Exit()
         {
+        }
+
+        public override bool CanTransit(LogicStateType state)
+        {
+            return true;
         }
 
         public override void Update()

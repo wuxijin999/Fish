@@ -7,12 +7,20 @@ namespace Actor
 {
     public class FightActor : ActorBase
     {
+
+        public readonly PropertyController propertyController = new PropertyController();
+
         public FightActor(Transform transform) : base(transform)
         {
             if (transform == null)
             {
                 throw new ArgumentNullException("transform is null");
             }
+        }
+
+        public int GetFightProperty(FightProperty property)
+        {
+            return propertyController.GetProperty(property);
         }
 
         public override void OnFixedUpdate()
@@ -40,12 +48,22 @@ namespace Actor
             base.OnUpdate2();
         }
 
-        internal virtual void Attack(int index)
+        public virtual void Attack(int index)
         {
 
         }
 
-        internal virtual void CastSkill(int index)
+        public virtual void CastSkill(int index)
+        {
+
+        }
+
+        public virtual void Hurt(HurtInfo info)
+        {
+
+        }
+
+        public virtual void Dead()
         {
 
         }

@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Config\MapConfig.cs" />
     <Compile Include="Assets\Scripts\Config\NpcConfig.cs" />
     <Compile Include="Assets\Scripts\Config\PriorLanguageConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\SkillConfig.cs" />
     <Compile Include="Assets\Scripts\Config\TestConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WindowConfig.cs" />
     <Compile Include="Assets\Scripts\Config\WorldBossConfig.cs" />
@@ -97,10 +98,13 @@
     <Compile Include="Assets\Scripts\Fight\HUD\HudController.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicController.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Base.cs" />
+    <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Dead.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Stand.cs" />
+    <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Stun.cs" />
     <Compile Include="Assets\Scripts\Fight\MyPlayer.cs" />
     <Compile Include="Assets\Scripts\Fight\OhterPlayer.cs" />
     <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />
+    <Compile Include="Assets\Scripts\Fight\Property\PropertyController.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\ActionController.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Attack.cs" />
     <Compile Include="Assets\Scripts\Fight\StateMechineBehaviours\SMB_Base.cs" />
@@ -284,6 +288,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Equip.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
+    <None Include="Assets\ResourcesOut\5_Config\Skill.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Test.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Map.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\BlurEffectConeTaps.shader" />

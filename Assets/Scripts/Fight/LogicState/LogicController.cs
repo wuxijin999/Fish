@@ -7,60 +7,83 @@ namespace Actor
 
     public class LogicController
     {
-        Dictionary<LogicState, LogicState_Base> states = new Dictionary<LogicState, LogicState_Base>();
+        Dictionary<LogicStateType, LogicState_Base> states = new Dictionary<LogicStateType, LogicState_Base>();
 
-        public ActorBase owner { get; private set; }
+        public LogicStateType currentStateType { get; private set; }
 
-        public LogicController(ActorBase actor)
+        public readonly ActionController actionController;
+        public bool stateCompleted { get { return actionController.stateCompleted; } }
+        public int nextAction { get; set; }
+
+        public LogicController( )
         {
-            this.owner = actor;
+            actionController = new ActionController();
+            currentStateType = LogicStateType.Stand;
+            EnterState(currentStateType);
         }
 
-        public bool EnterState(LogicState logicState)
+        public bool DoAction(LogicStateType stateType, string parameter = null)
         {
-            var canEnter = false;
-            switch (logicState)
+            var canDo = true;
+            if (states.ContainsKey(this.currentStateType))
             {
-                case LogicState.Stand:
-                    canEnter = CanEnterStandState();
-                    break;
-                default:
-                    break;
+                canDo = states[this.currentStateType].CanTransit(stateType);
             }
 
-            if (canEnter)
+            nextAction = 0;
+            if (canDo)
             {
-                var stateInstance = states.ContainsKey(logicState) ? states[logicState] : states[logicState] = CreateLogicState(logicState);
-                stateInstance.Enter();
+                EnterState(stateType);
+                return true;
             }
+            else
+            {
+                return false;
+            }
+        }
 
-            return canEnter;
+        public bool DoActionQueue(LogicStateType stateType, string parameter = null)
+        {
+            nextAction = (int)stateType;
+            return true;
         }
 
         public void Update()
         {
-
-        }
-
-        private bool CanEnterStandState()
-        {
-            foreach (var item in states.Values)
+            this.states[this.currentStateType].Update();
+            if (actionController.stateCompleted)
             {
-                if (item is LogicState_Stand)
+                if (nextAction != 0)
                 {
-                    return false;
+                    actionController.EnterState((ActionStateType)nextAction);
+                }
+                else
+                {
+                    var isFight = false;
+                    actionController.EnterState(isFight ? ActionStateType.CombatIdle : ActionStateType.Idle);
                 }
             }
 
-            return true;
+            actionController.Update();
         }
 
-        private LogicState_Base CreateLogicState(LogicState state)
+        void EnterState(LogicStateType stateType)
+        {
+            if (states.ContainsKey(currentStateType))
+            {
+                states[currentStateType].Exit();
+            }
+
+            var state = states.ContainsKey(stateType) ? states[stateType] : states[stateType] = CreateLogicState(stateType);
+            state.Enter();
+        }
+
+        private LogicState_Base CreateLogicState(LogicStateType state)
         {
             switch (state)
             {
-                case LogicState.Stand:
-                    return new LogicState_Stand(this.owner);
+                case LogicStateType.Stand:
+                    return new LogicState_Stand();
                 default:
                     return null;
             }
@@ -68,17 +91,18 @@ namespace Actor
 
     }
 
-    public enum LogicState
+    public enum LogicStateType
     {
         Stand,
-        Walk,
-        Run,
+        Move,
         Attack,
         Skill,
         Silence,
         Stun,
         Twine,
-
+        Dead,
+        Up,                //浮空
+        Diaup            //击飞
     }
 
 }

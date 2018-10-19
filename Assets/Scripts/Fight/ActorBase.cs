@@ -31,15 +31,13 @@ namespace Actor
         public float speed { get; set; }
         public bool alive { get; set; }
 
-
-        public readonly LogicController m_LogicController;
-        public readonly ActionController actionController = new ActionController();
-
-        public int nextAction { get; set; }
-
+        public readonly LogicController logicController = new LogicController();
         public ActorBrain actorBrain { get; private set; }
         public PathFinder pathFinder { get; private set; }
         public Transform transform { get; private set; }
+        public Vector3 position {
+            get { return transform.position; }
+        }
 
         public ActorBase(Transform transform)
         {
@@ -51,7 +49,6 @@ namespace Actor
             this.transform = transform;
             this.pathFinder = new PathFinder(this);
             this.actorBrain = new ActorBrain(this);
-            this.m_LogicController = new LogicController(this);
             ActorEngine.Instance.Register(this);
         }
 
@@ -84,17 +81,6 @@ namespace Actor
 
         }
 
-        public void DoAction(ActionState state)
-        {
-            actionController.state = state;
-            nextAction = 0;
-        }
-
-        public void DoActionQueue(ActionState state)
-        {
-            nextAction = (int)state;
-        }
-
         public virtual void OnFixedUpdate()
         {
         }
@@ -115,18 +101,6 @@ namespace Actor
 
         public virtual void OnLateUpdate2()
         {
-            if (actionController.stateCompleted)
-            {
-                if (nextAction != 0)
-                {
-                    actionController.state = (ActionState)nextAction;
-                }
-                else
-                {
-                    var isFight = false;
-                    actionController.state = isFight ? ActionState.CombatIdle : ActionState.Idle;
-                }
-            }
         }
 
     }

@@ -10,19 +10,9 @@ namespace Actor
         public static readonly int Param_ActorInstanceId = Animator.StringToHash("ActorInstanceId");
         public static readonly int Param_MoveState = Animator.StringToHash("MoveState");
 
-        ActionState m_State = ActionState.CombatIdle;
-        public ActionState state {
-            get { return this.m_State; }
-            set {
-                if (this.m_State != value)
-                {
-                    this.m_State = value;
-                    if (this.animator != null)
-                    {
-                        this.animator.SetInteger(Param_Action, (int)this.m_State);
-                    }
-                }
-            }
+        ActionStateType m_StateType = ActionStateType.CombatIdle;
+        public ActionStateType stateType {
+            get { return this.m_StateType; }
         }
 
         public bool stateCompleted {
@@ -50,7 +40,7 @@ namespace Actor
                     this.m_Animator.runtimeAnimatorController = this.overrideController;
                     if (this.m_Animator != null)
                     {
-                        this.m_Animator.SetTrigger((int)this.state);
+                        this.m_Animator.SetTrigger((int)this.stateType);
                     }
                 }
             }
@@ -60,6 +50,17 @@ namespace Actor
 
         public bool isIntransition {
             get { return this.animator != null && this.animator.IsInTransition(0); }
+        }
+
+        public bool EnterState(ActionStateType state)
+        {
+            this.m_StateType = state;
+            if (this.animator != null)
+            {
+                this.animator.SetInteger(Param_Action, (int)this.m_StateType);
+            }
+
+            return true;
         }
 
         public void SetStateAnimationClip(string stateName, AnimationClip clip)
@@ -74,14 +75,14 @@ namespace Actor
         {
         }
 
-        private bool IsLoopState(ActionState actionState)
+        private bool IsLoopState(ActionStateType actionState)
         {
             switch (actionState)
             {
-                case ActionState.Idle:
-                case ActionState.CombatIdle:
-                case ActionState.Move:
-                case ActionState.Dead:
+                case ActionStateType.Idle:
+                case ActionStateType.CombatIdle:
+                case ActionStateType.Move:
+                case ActionStateType.Dead:
                     return true;
                 default:
                     return false;
@@ -90,7 +91,7 @@ namespace Actor
 
     }
 
-    public enum ActionState
+    public enum ActionStateType
     {
         Idle = 1,
         CombatIdle = 2,
