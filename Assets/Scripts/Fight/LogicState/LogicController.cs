@@ -5,14 +5,13 @@ using UnityEngine;
 namespace Actor
 {
 
-    public class LogicStateController
+    public class LogicController
     {
-
         Dictionary<LogicState, LogicState_Base> states = new Dictionary<LogicState, LogicState_Base>();
 
-        public FightActor owner { get; private set; }
+        public ActorBase owner { get; private set; }
 
-        public LogicStateController(FightActor actor)
+        public LogicController(ActorBase actor)
         {
             this.owner = actor;
         }
@@ -68,7 +67,6 @@ namespace Actor
         }
 
     }
-
 
     public enum LogicState
     {

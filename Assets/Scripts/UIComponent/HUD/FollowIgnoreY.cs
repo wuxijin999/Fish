@@ -11,10 +11,10 @@ public class FollowIgnoreY : UIBase
     Camera m_Camera;
     float yRecord = 0f;
 
-    public void Follow(Transform _target, Camera _camera)
+    public void Follow(Transform target, Camera camera)
     {
-        m_Target = _target;
-        m_Camera = _camera;
+        m_Target = target;
+        m_Camera = camera;
 
         if (m_Target != null)
         {
@@ -22,7 +22,13 @@ public class FollowIgnoreY : UIBase
         }
     }
 
-    public void OnLateUpdate()
+    public void Dispose()
+    {
+        this.m_Target = null;
+        this.m_Camera = null;
+    }
+
+    public override void OnLateUpdate()
     {
         if (m_Target != null && m_Camera != null)
         {

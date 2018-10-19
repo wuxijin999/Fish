@@ -7,7 +7,7 @@ namespace Actor
     public class LogicState_Stand : LogicState_Base
     {
 
-        public LogicState_Stand(FightActor owner) : base(owner)
+        public LogicState_Stand(ActorBase owner) : base(owner)
         {
 
         }

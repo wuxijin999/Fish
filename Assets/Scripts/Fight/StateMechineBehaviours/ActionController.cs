@@ -19,8 +19,22 @@ namespace Actor
                     this.m_State = value;
                     if (this.animator != null)
                     {
-                        this.animator.SetTrigger((int)this.m_State);
+                        this.animator.SetInteger(Param_Action, (int)this.m_State);
                     }
+                }
+            }
+        }
+
+        public bool stateCompleted {
+            get {
+                var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+                if (stateInfo.loop)
+                {
+                    return false;
+                }
+                else
+                {
+                    return stateInfo.normalizedTime > 0.95f;
                 }
             }
         }
@@ -56,29 +70,51 @@ namespace Actor
             }
         }
 
+        public void Update()
+        {
+        }
+
+        private bool IsLoopState(ActionState actionState)
+        {
+            switch (actionState)
+            {
+                case ActionState.Idle:
+                case ActionState.CombatIdle:
+                case ActionState.Walk:
+                case ActionState.Run:
+                case ActionState.Dead:
+                    return true;
+                default:
+                    return false;
+            }
+
+        }
+
     }
 
     public enum ActionState
     {
-        CombatIdle = 1,
-        Walk = 2,
-        Run = 3,
-        Jump = 4,
+        Idle = 1,
+        CombatIdle = 2,
+        Walk = 3,
+        Run = 4,
+        Jump = 5,
+        Dead = 6,
+        Dance = 7,
 
-        Attack1 = 11,
-        Attack2 = 12,
-        Attack3 = 13,
-        Attack4 = 14,
-        Skill1 = 21,
-        Skill2 = 22,
-        Skill3 = 23,
-        Skill4 = 24,
-        Skill5 = 25,
+        Attack1 = 101,
+        Attack2 = 102,
+        Attack3 = 103,
+        Attack4 = 104,
+        Skill1 = 201,
+        Skill2 = 202,
+        Skill3 = 203,
+        Skill4 = 204,
+        Skill5 = 205,
 
-        Hurt = 31,
-        FaceUp = 32,
-        FaceDown = 33,
-        Stun = 34,
+        Hurt = 1001,
+        HurtDown = 1002,
+        Stun = 1004,
     }
 
 }

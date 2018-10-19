@@ -95,9 +95,9 @@
     <Compile Include="Assets\Scripts\Fight\FightActor.cs" />
     <Compile Include="Assets\Scripts\Fight\FightJudge.cs" />
     <Compile Include="Assets\Scripts\Fight\HUD\HudController.cs" />
+    <Compile Include="Assets\Scripts\Fight\LogicState\LogicController.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Base.cs" />
     <Compile Include="Assets\Scripts\Fight\LogicState\LogicState_Stand.cs" />
-    <Compile Include="Assets\Scripts\Fight\LogicState\LogicStateController.cs" />
     <Compile Include="Assets\Scripts\Fight\MyPlayer.cs" />
     <Compile Include="Assets\Scripts\Fight\OhterPlayer.cs" />
     <Compile Include="Assets\Scripts\Fight\PathFinder.cs" />

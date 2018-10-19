@@ -6,12 +6,12 @@ namespace Actor
     public abstract class LogicState_Base
     {
 
-        public FightActor owner { get; private set; }
+        public ActorBase owner { get; private set; }
         public abstract void Enter();
         public abstract void Update();
         public abstract void Exit();
 
-        public LogicState_Base(FightActor actor)
+        public LogicState_Base(ActorBase actor)
         {
             this.owner = actor;
         }
