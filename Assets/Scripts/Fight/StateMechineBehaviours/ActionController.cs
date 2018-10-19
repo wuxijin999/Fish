@@ -80,14 +80,12 @@ namespace Actor
             {
                 case ActionState.Idle:
                 case ActionState.CombatIdle:
-                case ActionState.Walk:
-                case ActionState.Run:
+                case ActionState.Move:
                 case ActionState.Dead:
                     return true;
                 default:
                     return false;
             }
-
         }
 
     }
@@ -96,11 +94,10 @@ namespace Actor
     {
         Idle = 1,
         CombatIdle = 2,
-        Walk = 3,
-        Run = 4,
-        Jump = 5,
-        Dead = 6,
-        Dance = 7,
+        Move = 3,
+        Jump = 4,
+        Dead = 5,
+        Dance = 6,
 
         Attack1 = 101,
         Attack2 = 102,
