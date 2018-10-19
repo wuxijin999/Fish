@@ -32,21 +32,21 @@ namespace Actor
             return this.actors.TryGetValue(instanceId, out actorBase);
         }
 
-        public List<ActorBase> GetActors(ActorType type)
+        public List<int> GetActors(ActorType type)
         {
-            var temp = new List<ActorBase>();
+            var temp = new List<int>();
             foreach (var item in this.actors.Values)
             {
                 if (item != null && item.actorType == type)
                 {
-                    temp.Add(item);
+                    temp.Add(item.instanceId);
                 }
             }
 
             return temp;
         }
 
-        public ActorBase FindNearestEmeny(Vector3 center, float radius)
+        public int FindNearestEmeny(Vector3 center, float radius)
         {
             var centerXZ = new Vector2(center.x, center.z);
             var distance = 99999f;
@@ -70,10 +70,10 @@ namespace Actor
                 }
             }
 
-            return emeny;
+            return emeny.instanceId;
         }
 
-        public ActorBase FindNearestEmeny(Vector3 center, Vector3 forward, float radius, float angleRange)
+        public int FindNearestEmeny(Vector3 center, Vector3 forward, float radius, float angleRange)
         {
             var centerXZ = new Vector2(center.x, center.z);
             var forwardXZ = new Vector2(forward.x, forward.z);
@@ -104,7 +104,7 @@ namespace Actor
                 }
             }
 
-            return emeny;
+            return emeny.instanceId;
         }
 
     }
