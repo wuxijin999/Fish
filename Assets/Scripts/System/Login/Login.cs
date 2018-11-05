@@ -25,8 +25,8 @@ public class Login : Presenter<Login>, IPresenterWindow
     string accountBuf;
     string passwordBuf;
 
-    public BizEvent<int> accountErrorEvent = new BizEvent<int>();
-    public BizEvent<int> passwordErrorEvent = new BizEvent<int>();
+    public readonly IntProperty accountError = new IntProperty();
+    public readonly IntProperty passwordError = new IntProperty();
 
     public readonly BoolProperty accountLogining = new BoolProperty();
     public readonly BoolProperty enterWorlding = new BoolProperty();
@@ -43,17 +43,16 @@ public class Login : Presenter<Login>, IPresenterWindow
 
     public void AccountLogin(string account, string password)
     {
-        var accountError = 0;
-        if (!IsValidAccount(account, out accountError))
+        var error = 0;
+        if (!IsValidAccount(account, out error))
         {
-            this.accountErrorEvent.Invoke(accountError);
+            accountError.value = error;
             return;
         }
 
-        var passwordError = 0;
-        if (!IsValidPassword(password, out passwordError))
+        if (!IsValidPassword(password, out error))
         {
-            this.passwordErrorEvent.Invoke(passwordError);
+            this.passwordError.value = error;
             return;
         }
 
@@ -61,7 +60,6 @@ public class Login : Presenter<Login>, IPresenterWindow
         passwordBuf = password;
         model.Reset();
         accountLogining.value = true;
-
     }
 
     public void ReAccountLogin()

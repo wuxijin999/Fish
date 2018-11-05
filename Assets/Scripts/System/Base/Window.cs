@@ -43,7 +43,6 @@ public class Window : UIBase
 
     internal void Open(int _order)
     {
-        this.order = _order;
         try
         {
             if (!this.initialized)
@@ -73,7 +72,7 @@ public class Window : UIBase
             Debug.Log(ex.StackTrace);
         }
 
-        this.m_Canvas.sortingOrder = this.order;
+        this.order = _order;
 
         try
         {

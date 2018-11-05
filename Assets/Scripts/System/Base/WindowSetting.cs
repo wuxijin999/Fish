@@ -21,4 +21,26 @@ public class WindowSetting : MonoBehaviour
     [SerializeField] RectTransform m_Content;
     public RectTransform content { get { return m_Content; } }
 
+    private void Awake()
+    {
+        if (m_BackGround == null)
+        {
+            var temp = this.transform.Find("BackGround");
+            if (temp != null)
+            {
+                m_BackGround = temp as RectTransform;
+            }
+        }
+
+        if (m_Content == null)
+        {
+            var temp = this.transform.Find("Content");
+            if (temp != null)
+            {
+                m_Content = temp as RectTransform;
+            }
+        }
+
+    }
+
 }

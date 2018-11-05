@@ -9,8 +9,27 @@ public class UIAssets
 
     public static GameObject LoadWindow(string name)
     {
+        GameObject window = null;
+        if (AssetSource.uiFromEditor)
+        {
+#if UNITY_EDITOR
+            var path = StringUtil.Contact(AssetPath.UI_WINDOW_PATH, name, ".prefab");
+            window = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(path);
+#endif
+        }
+        else
+        {
+            var bundleName = "ui/window";
+            var assetInfo = new AssetInfo(bundleName, name);
+            window = AssetBundleUtility.Instance.Sync_LoadAsset(assetInfo) as GameObject;
+        }
 
-        return null;
+        if (window == null)
+        {
+            DebugEx.LogErrorFormat("UIAssets.LoadWindow() => 加载不到资源: {0}.", name);
+        }
+
+        return window;
     }
 
     public static void LoadWindowAsync(string name, UnityAction<bool, UnityEngine.Object> callBack)
@@ -41,13 +60,13 @@ public class UIAssets
     }
 
 
-    public static Sprite LoadSprite(string folder,string name)
+    public static Sprite LoadSprite(string folder, string name)
     {
         Sprite sprite = null;
         if (AssetSource.uiFromEditor)
         {
 #if UNITY_EDITOR
-            var path = StringUtil.Contact(AssetPath.UI_SPRITE_ROOT_PATH, "/",folder,"/" ,name, ".png");
+            var path = StringUtil.Contact(AssetPath.UI_SPRITE_ROOT_PATH, "/", folder, "/", name, ".png");
             sprite = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(path);
 #endif
         }

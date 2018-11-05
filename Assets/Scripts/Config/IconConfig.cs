@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Monday, November 05, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -36,7 +36,13 @@ public partial class IconConfig
 
     static Dictionary<int, IconConfig> configs = new Dictionary<int, IconConfig>();
     public static IconConfig Get(int id)
-    {
+    {   
+		if (!inited)
+        {
+            Debug.Log("IconConfigConfig 还未完成初始化。");
+            return null;
+        }
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -57,9 +63,11 @@ public partial class IconConfig
         return configs.ContainsKey(id);
     }
 
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
+	    inited = false;
         var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Icon.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
@@ -74,6 +82,8 @@ public partial class IconConfig
 
                 rawDatas[id] = line;
             }
+
+			inited=true;
         });
     }
 

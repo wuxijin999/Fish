@@ -123,8 +123,10 @@ public class Windows : SingletonMonobehaviour<Windows>
     {
         if (!this.windows.ContainsKey(type))
         {
-            var prefab = UIAssets.LoadWindow(StringUtil.Contact(type, "Win"));
+            var name = StringUtil.Contact(type, "Win");
+            var prefab = UIAssets.LoadWindow(name);
             var instance = GameObject.Instantiate(prefab);
+            instance.name = name;
             var window = instance.GetComponent<Window>();
             if (window != null)
             {

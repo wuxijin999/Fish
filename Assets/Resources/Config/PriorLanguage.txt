@@ -1,5 +1,0 @@
-﻿int	string
-id	content
-语言key	语言内容
-1	我是个勇士
-2	今天我要打酱油

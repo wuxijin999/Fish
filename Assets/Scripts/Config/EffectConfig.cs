@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Monday, November 05, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -13,8 +13,8 @@ public partial class EffectConfig
 {
 
     public readonly int id;
-    public readonly string assetName;
-    public readonly bool bindParent;
+	public readonly string assetName;
+	public readonly bool bindParent;
 
     public EffectConfig(string content)
     {
@@ -22,13 +22,13 @@ public partial class EffectConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0], out id);
+            int.TryParse(tables[0],out id); 
 
-            assetName = tables[1];
+			assetName = tables[1];
 
-            var bindParentTemp = 0;
-            int.TryParse(tables[2], out bindParentTemp);
-            bindParent = bindParentTemp != 0;
+			var bindParentTemp = 0;
+			int.TryParse(tables[2],out bindParentTemp); 
+			bindParent=bindParentTemp!=0;
         }
         catch (Exception ex)
         {
@@ -38,7 +38,13 @@ public partial class EffectConfig
 
     static Dictionary<int, EffectConfig> configs = new Dictionary<int, EffectConfig>();
     public static EffectConfig Get(int id)
-    {
+    {   
+		if (!inited)
+        {
+            Debug.Log("EffectConfigConfig 还未完成初始化。");
+            return null;
+        }
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -54,14 +60,16 @@ public partial class EffectConfig
         return config;
     }
 
-    public static bool Has(int id)
+	public static bool Has(int id)
     {
         return configs.ContainsKey(id);
     }
 
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
+	    inited = false;
         var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Effect.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
@@ -76,6 +84,8 @@ public partial class EffectConfig
 
                 rawDatas[id] = line;
             }
+
+			inited=true;
         });
     }
 

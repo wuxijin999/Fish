@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Wednesday, October 10, 2018
+//    [  Date ]:           Monday, November 05, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ public partial class PriorLanguageConfig
 {
 
     public readonly int id;
-    public readonly string content;
+	public readonly string content;
 
     public PriorLanguageConfig(string content)
     {
@@ -21,9 +21,9 @@ public partial class PriorLanguageConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0], out id);
+            int.TryParse(tables[0],out id); 
 
-            content = tables[1];
+			content = tables[1];
         }
         catch (Exception ex)
         {
@@ -33,7 +33,13 @@ public partial class PriorLanguageConfig
 
     static Dictionary<int, PriorLanguageConfig> configs = new Dictionary<int, PriorLanguageConfig>();
     public static PriorLanguageConfig Get(int id)
-    {
+    {   
+		if (!inited)
+        {
+            Debug.Log("PriorLanguageConfigConfig 还未完成初始化。");
+            return null;
+        }
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -49,26 +55,33 @@ public partial class PriorLanguageConfig
         return config;
     }
 
-    public static bool Has(int id)
+	public static bool Has(int id)
     {
         return configs.ContainsKey(id);
     }
 
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        var path = Application.dataPath + Path.DirectorySeparatorChar + "Resources/PriorLanguage.txt";
-        var lines = File.ReadAllLines(path);
-        rawDatas = new Dictionary<int, string>(lines.Length - 3);
-        for (int i = 3; i < lines.Length; i++)
+	    inited = false;
+        var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "PriorLanguage.txt";
+        ThreadPool.QueueUserWorkItem((object _object) =>
         {
-            var line = lines[i];
-            var index = line.IndexOf("\t");
-            var idString = line.Substring(0, index);
-            var id = int.Parse(idString);
+            var lines = File.ReadAllLines(path);
+            rawDatas = new Dictionary<int, string>(lines.Length - 3);
+            for (int i = 3; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                var index = line.IndexOf("\t");
+                var idString = line.Substring(0, index);
+                var id = int.Parse(idString);
 
-            rawDatas[id] = line;
-        }
+                rawDatas[id] = line;
+            }
+
+			inited=true;
+        });
     }
 
 }

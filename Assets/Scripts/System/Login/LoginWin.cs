@@ -8,13 +8,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LoginWin : Window
 {
-
     [SerializeField] ButtonEx m_Login;
-    [SerializeField] InputField m_Account;
-    [SerializeField] InputField m_Password;
+    [SerializeField] TMP_InputField m_Account;
 
     #region Built-in
 
@@ -25,21 +24,37 @@ public class LoginWin : Window
 
     protected override void OnPreOpen()
     {
-        Login.Instance.accountErrorEvent += this.OnAccountError;
-        Login.Instance.passwordErrorEvent += this.OnPasswordError;
     }
 
     protected override void OnPreClose()
     {
-        Login.Instance.accountErrorEvent -= this.OnAccountError;
-        Login.Instance.passwordErrorEvent -= this.OnPasswordError;
+    }
+
+    protected override void OnActived()
+    {
+        base.OnActived();
+        Login.Instance.accountError.Fetch();
+        Login.Instance.passwordError.Fetch();
+    }
+
+    public void LateUpdate()
+    {
+        if (Login.Instance.accountError.dirty)
+        {
+            OnAccountError(Login.Instance.accountError.Fetch());
+        }
+
+        if (Login.Instance.passwordError.dirty)
+        {
+            OnPasswordError(Login.Instance.passwordError.Fetch());
+        }
     }
 
     #endregion
 
     private void AccountLogin()
     {
-        Login.Instance.AccountLogin(this.m_Account.text, this.m_Password.text);
+        Login.Instance.AccountLogin(this.m_Account.text, "123456");
     }
 
     private void OnAccountError(int error)

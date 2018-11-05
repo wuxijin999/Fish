@@ -104,7 +104,6 @@ public class ButtonEx : Button
                 DisplayCoolDown();
             }
         }
-
     }
 
     private void DisplayCoolDown()

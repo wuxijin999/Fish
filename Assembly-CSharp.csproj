@@ -194,6 +194,8 @@
     <Compile Include="Assets\Scripts\System\Tip\PopupTipsWidget.cs" />
     <Compile Include="Assets\Scripts\System\Tip\Tips.cs" />
     <Compile Include="Assets\Scripts\System\Tip\TipsWin.cs" />
+    <Compile Include="Assets\Scripts\System\UI3DModel\GestureCatcher.cs" />
+    <Compile Include="Assets\Scripts\System\UI3DModel\UI3DImage.cs" />
     <Compile Include="Assets\Scripts\System\UI3DModel\UI3DModelDrawer.cs" />
     <Compile Include="Assets\Scripts\System\UI3DModel\UI3DNpcDrawer.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\CyclicScroll.cs" />
@@ -224,6 +226,7 @@
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Utility\AccountLocalSave.cs" />
     <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
+    <Compile Include="Assets\Scripts\Utility\AssetCopyTask.cs" />
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\Clock.cs" />
@@ -284,7 +287,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Window.txt" />
     <None Include="Assets\ResourcesOut\5_Config\DamageNum.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Dungeon.txt" />
-    <None Include="Assets\Resources\Config\PriorLanguage.txt" />
+    <None Include="Assets\ResourcesOut\5_Config\PriorLanguage.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Equip.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />

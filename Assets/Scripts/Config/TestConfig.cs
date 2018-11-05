@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Monday, November 05, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -44,7 +44,13 @@ public partial class TestConfig
 
     static Dictionary<int, TestConfig> configs = new Dictionary<int, TestConfig>();
     public static TestConfig Get(int id)
-    {
+    {   
+		if (!inited)
+        {
+            Debug.Log("TestConfigConfig 还未完成初始化。");
+            return null;
+        }
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -65,9 +71,11 @@ public partial class TestConfig
         return configs.ContainsKey(id);
     }
 
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
+	    inited = false;
         var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Test.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
@@ -82,6 +90,8 @@ public partial class TestConfig
 
                 rawDatas[id] = line;
             }
+
+			inited=true;
         });
     }
 

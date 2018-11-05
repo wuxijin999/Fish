@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Tuesday, October 09, 2018
+//    [  Date ]:           Monday, November 05, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ public partial class LanguageConfig
 {
 
     public readonly int id;
-    public readonly string content;
+	public readonly string content;
 
     public LanguageConfig(string content)
     {
@@ -21,9 +21,9 @@ public partial class LanguageConfig
         {
             var tables = content.Split('\t');
 
-            int.TryParse(tables[0], out id);
+            int.TryParse(tables[0],out id); 
 
-            content = tables[1];
+			content = tables[1];
         }
         catch (Exception ex)
         {
@@ -33,13 +33,13 @@ public partial class LanguageConfig
 
     static Dictionary<int, LanguageConfig> configs = new Dictionary<int, LanguageConfig>();
     public static LanguageConfig Get(int id)
-    {
-        if (!inited)
+    {   
+		if (!inited)
         {
-            Debug.Log("LanguageConfig 还未完成初始化。");
+            Debug.Log("LanguageConfigConfig 还未完成初始化。");
             return null;
         }
-
+		
         if (configs.ContainsKey(id))
         {
             return configs[id];
@@ -55,16 +55,16 @@ public partial class LanguageConfig
         return config;
     }
 
-    public static bool Has(int id)
+	public static bool Has(int id)
     {
         return configs.ContainsKey(id);
     }
 
-    static bool inited = false;
+	static bool inited = false;
     protected static Dictionary<int, string> rawDatas = null;
     public static void Init()
     {
-        inited = false;
+	    inited = false;
         var path = AssetPath.CONFIG_ROOT_PATH + Path.DirectorySeparatorChar + "Language.txt";
         ThreadPool.QueueUserWorkItem((object _object) =>
         {
@@ -80,7 +80,7 @@ public partial class LanguageConfig
                 rawDatas[id] = line;
             }
 
-            inited = true;
+			inited=true;
         });
     }
 

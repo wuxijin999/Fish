@@ -60,7 +60,7 @@ public class NormalDungeonWin : Window
         m_SingleChallenge.SetActive(NormalDungeon.Instance.showSingleEnterance.Fetch());
         m_TeamChallenge.SetActive(NormalDungeon.Instance.showMultipEnterance.Fetch());
 
-        m_BossModel.Display(config.boss);
+        m_BossModel.Display(config.boss,Vector3.zero,Vector3.zero,Vector3.one);
     }
 
     private void DisplaySweepButton()
