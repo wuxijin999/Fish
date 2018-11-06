@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [DisallowMultipleComponent]
+[ExecuteInEditMode]
 public class WindowSetting : MonoBehaviour
 {
     [SerializeField] int m_Id;
@@ -21,6 +22,7 @@ public class WindowSetting : MonoBehaviour
     [SerializeField] RectTransform m_Content;
     public RectTransform content { get { return m_Content; } }
 
+    [ExecuteInEditMode]
     private void Awake()
     {
         if (m_BackGround == null)
@@ -42,5 +44,33 @@ public class WindowSetting : MonoBehaviour
         }
 
     }
+
+#if UNITY_EDITOR
+    [ExecuteInEditMode]
+    private void OnEnable()
+    {
+        if (!Application.isPlaying)
+        {
+            var uiroot = GameObject.FindObjectOfType<UIRoot>();
+            if (uiroot == null)
+            {
+                var prefab = Resources.Load<GameObject>("UIPrefab/UIRoot");
+                var instance = GameObject.Instantiate(prefab);
+                instance.name = "UIRoot";
+
+                uiroot = instance.GetComponent<UIRoot>();
+                var windowRoot = uiroot.transform.GetChildTransformDeeply("WindowRoot");
+                if (windowRoot != null)
+                {
+                    (this.transform as RectTransform).MatchWhith(windowRoot as RectTransform);
+                }
+
+                var uicamera = uiroot.GetComponentInChildren<Camera>(true);
+                uicamera.clearFlags = CameraClearFlags.SolidColor;
+            }
+        }
+    }
+
+#endif
 
 }

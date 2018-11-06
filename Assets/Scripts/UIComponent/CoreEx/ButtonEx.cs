@@ -24,6 +24,14 @@ public class ButtonEx : Button
         private set { this.m_AbleTime = value; }
     }
 
+    State m_State;
+    public State state {
+        get { return this.m_State; }
+        private set {
+            this.m_State = value;
+        }
+    }
+
     string m_Title;
     public string title {
         get { return this.m_Title; }
@@ -36,14 +44,6 @@ public class ButtonEx : Button
         }
     }
 
-    State m_State;
-    public State state {
-        get { return this.m_State; }
-        set {
-            this.m_State = value;
-        }
-    }
-
     public void SetState(State state)
     {
         this.state = state;
@@ -51,12 +51,16 @@ public class ButtonEx : Button
         {
             case State.CoolDown:
                 this.m_Image.gray = true;
+                this.m_TitleMesh.color = m_DisableColor;
+                DisplayCoolDown();
                 break;
             case State.Disable:
                 this.m_Image.gray = true;
+                this.m_TitleMesh.color = m_DisableColor;
                 break;
             case State.Normal:
                 this.m_Image.gray = false;
+                this.m_TitleMesh.color = m_NormalColor;
                 break;
         }
     }
@@ -73,8 +77,11 @@ public class ButtonEx : Button
             case State.Normal:
                 base.OnPointerClick(eventData);
                 PlayPositiveSound();
-                this.ableTime = Time.realtimeSinceStartup + Mathf.Clamp(this.m_Interval, 0, float.MaxValue);
-                SetState(State.CoolDown);
+                if (this.m_Interval > 0.033f)
+                {
+                    this.ableTime = Time.realtimeSinceStartup + Mathf.Clamp(this.m_Interval, 0, float.MaxValue);
+                    SetState(State.CoolDown);
+                }
                 break;
         }
     }
@@ -82,6 +89,12 @@ public class ButtonEx : Button
     protected override void Awake()
     {
         base.Awake();
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        SetState(state);
     }
 
     private void PlayPositiveSound()
@@ -102,6 +115,11 @@ public class ButtonEx : Button
             {
                 this.coolDownTimer = 0f;
                 DisplayCoolDown();
+            }
+
+            if (Time.realtimeSinceStartup > this.ableTime)
+            {
+                SetState(State.Normal);
             }
         }
     }

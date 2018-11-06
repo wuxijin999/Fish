@@ -7,7 +7,7 @@ using System.Text;
 
 public class FileExtension
 {
-    public readonly static string lineSplit = "\r\n"; //行间隔体
+    public readonly static string[] lineSplit = new string[] { "\r\n" }; //行间隔体
 
     public static List<FileInfo> GetFileInfos(string path, string[] searchPatterns)
     {

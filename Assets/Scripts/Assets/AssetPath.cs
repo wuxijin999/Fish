@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class AssetPath
 {
-
-    public const string AssetDependentFileBundleName =
-#if UNITY_ANDROID
-        "android";
-#elif UNITY_IOS
-        "ios";
-#else
-        "standalone";
-#endif
-
     public readonly static string AssetRootPath = Application.dataPath + "/ResourcesOut/";
     public const string AssetRootRelativePath = "Assets/ResourcesOut/";
     public const string AssetDependentFileAssetName = "AssetBundleManifest";
 
-    public static readonly string StreamingAssetPath = Application.streamingAssetsPath + "/" + AssetDependentFileBundleName;
-    public static readonly string ExternalStorePath = Application.persistentDataPath;
+    public static readonly string StreamingAssetPath = Application.streamingAssetsPath + "/";
+    public static readonly string ExternalStorePath = Application.persistentDataPath + "/";
 
     #region 具体asset资源读取路径
 

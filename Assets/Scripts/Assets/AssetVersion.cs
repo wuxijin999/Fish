@@ -24,8 +24,7 @@ public class AssetVersion
     public StorageLocation fileLocation { get { return this.m_FileLocation; } }
 
     bool m_LocalValid = false;
-    public bool localValid
-    {
+    public bool localValid {
         get { return this.m_LocalValid; }
         set { this.m_LocalValid = value; }
     }
@@ -43,14 +42,7 @@ public class AssetVersion
 
         var lastPath = paths[paths.Length - 1];
         var index = lastPath.IndexOf('.');
-        if (index != -1)
-        {
-            this.m_FileName = lastPath.Substring(0, index);
-        }
-        else
-        {
-            this.m_FileName = lastPath;
-        }
+        this.m_FileName = index != -1 ? lastPath.Substring(0, index) : lastPath;
     }
 
     public AssetCategory GetAssetCategory()
@@ -127,6 +119,33 @@ public class AssetVersion
         }
 
         return true;
+    }
+
+    public string GetAssetPath()
+    {
+        switch (Application.platform)
+        {
+            case RuntimePlatform.Android:
+                return StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+            default:
+                var path = StringUtil.Contact(AssetPath.ExternalStorePath, m_RelativePath);
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+                else
+                {
+                    var streamingAssetsPath = StringUtil.Contact(AssetPath.StreamingAssetPath, m_RelativePath);
+                    if (File.Exists(streamingAssetsPath))
+                    {
+                        return streamingAssetsPath;
+                    }
+                    else
+                    {
+                        return path;
+                    }
+                }
+        }
     }
 
     public enum StorageLocation

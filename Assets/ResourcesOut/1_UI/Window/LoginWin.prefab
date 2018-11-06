@@ -440,7 +440,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278255430
-  m_fontColor: {r: 0.2765906, g: 1, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -820,8 +820,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278255430
-  m_fontColor: {r: 0.2765906, g: 1, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -1047,14 +1047,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_Interval: 0
+  m_Interval: 1
   m_PositiveSound: 0
   m_NegativeSound: 0
   m_TitleMesh: {fileID: 114615046047194298}
-  m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-  m_DisableColor: {r: 1, g: 1, b: 1, a: 1}
+  m_NormalColor: {r: 1, g: 1, b: 0, a: 1}
+  m_DisableColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
   m_CoolDownText: {fileID: 114124107799887784}
-  m_Image: {fileID: 114843438245962512}
+  m_Image: {fileID: 114471019286206444}
 --- !u!114 &114821838414800754
 MonoBehaviour:
   m_ObjectHideFlags: 1

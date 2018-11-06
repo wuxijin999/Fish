@@ -53,7 +53,8 @@ public class AssetVersionUtility
     public static void GetAssetVersionFile()
     {
         Debug.LogFormat("开始获取资源版本文件：时间 {0}", DateTime.Now);
-        var assetVersionUrl = StringUtil.Contact(VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch), "/", "AssetsVersion.txt");
+        var remoteUrlRoot = VersionUtil.Instance.versionInfo.GetResourcesURL(VersionConfig.Get().branch);
+        var assetVersionUrl = StringUtil.Contact(remoteUrlRoot, "/", "AssetsVersion.txt");
         HttpRequest.Instance.RequestHttpGet(assetVersionUrl, OnGetAssetVersionFile);
     }
 
@@ -63,7 +64,7 @@ public class AssetVersionUtility
 
         if (ok)
         {
-            var assetVersions = AssetVersionUtility.UpdateAssetVersions(result);
+            var assetVersions = ParseAssetVersions(result);
             foreach (var assetVersion in assetVersions.Values)
             {
                 if (!assetVersion.CheckLocalFileValid())
@@ -108,10 +109,10 @@ public class AssetVersionUtility
         }
     }
 
-    public static Dictionary<string, AssetVersion> UpdateAssetVersions(string assetVersionFile)
+    static Dictionary<string, AssetVersion> ParseAssetVersions(string assetVersionFile)
     {
-        var lines = assetVersionFile.Split(new string[] { FileExtension.lineSplit }, StringSplitOptions.RemoveEmptyEntries);
         assetVersions.Clear();
+        var lines = assetVersionFile.Split(FileExtension.lineSplit, StringSplitOptions.RemoveEmptyEntries);
         for (int i = 0; i < lines.Length; i++)
         {
             var assetVersion = new AssetVersion(lines[i]);
@@ -139,15 +140,7 @@ public class AssetVersionUtility
         if (assetVersions.ContainsKey(assetKey))
         {
             var assetVersion = assetVersions[assetKey];
-            switch (assetVersion.fileLocation)
-            {
-                case AssetVersion.StorageLocation.StreamingAsset:
-                    path = StringUtil.Contact(AssetPath.StreamingAssetPath, assetKey);
-                    break;
-                case AssetVersion.StorageLocation.ExternalStore:
-                    path = StringUtil.Contact(AssetPath.ExternalStorePath, assetKey);
-                    break;
-            }
+            return assetVersion.GetAssetPath();
         }
         else
         {

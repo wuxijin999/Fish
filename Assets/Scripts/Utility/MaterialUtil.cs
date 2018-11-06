@@ -6,7 +6,7 @@ public static class MaterialUtil
 
     public static Material GetDefaultSpriteGrayMaterial()
     {
-        return Resources.Load<Material>("Material/SpriteGray");
+        return Resources.Load<Material>("Materials/SpriteGray");
     }
 
     public static Material GetInstantiatedSpriteGrayMaterial()
