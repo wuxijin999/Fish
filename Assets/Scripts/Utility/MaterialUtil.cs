@@ -6,7 +6,7 @@ public static class MaterialUtil
 
     public static Material GetDefaultSpriteGrayMaterial()
     {
-        return Resources.Load<Material>("Materials/SpriteGray");
+        return BuiltInAssets.LoadMaterial("SpriteGray");
     }
 
     public static Material GetInstantiatedSpriteGrayMaterial()
@@ -71,10 +71,8 @@ public static class MaterialUtil
 
 
     static Material m_HudMaterial;
-    public static Material hudMaterial
-    {
-        get
-        {
+    public static Material hudMaterial {
+        get {
             if (m_HudMaterial == null)
             {
                 m_HudMaterial = Resources.Load<Material>("Material/HUD_HeadupName");

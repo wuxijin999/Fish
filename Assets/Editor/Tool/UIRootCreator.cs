@@ -12,7 +12,7 @@ public class UIRootCreator
         var uiroot = GameObject.FindObjectOfType<UIRoot>();
         if (uiroot == null)
         {
-            var prefab = Resources.Load<GameObject>("UIPrefab/UIRoot");
+            var prefab = BuiltInAssets.LoadPrefab("UIRoot");
             var instance = GameObject.Instantiate(prefab);
             instance.name = "UIRoot";
 

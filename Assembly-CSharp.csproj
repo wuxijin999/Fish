@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Assets\AssetSource.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetVersion.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetVersionUtility.cs" />
+    <Compile Include="Assets\Scripts\Assets\BuiltInAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\EffectAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\UIAssets.cs" />
     <Compile Include="Assets\Scripts\Config\DamageNumConfig.cs" />

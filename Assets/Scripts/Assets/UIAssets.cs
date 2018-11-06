@@ -21,7 +21,7 @@ public class UIAssets
         {
             var bundleName = "ui/window";
             var assetInfo = new AssetInfo(bundleName, name);
-            window = AssetBundleUtility.Instance.Sync_LoadAsset(assetInfo) as GameObject;
+            window = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as GameObject;
         }
 
         if (window == null)

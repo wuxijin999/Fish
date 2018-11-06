@@ -15,7 +15,7 @@ public class UIRoot : MonoBehaviour
     {
         if (GameObject.FindObjectOfType<UIRoot>() == null)
         {
-            var prefab = Resources.Load<GameObject>("UIPrefab/UIRoot");
+            var prefab = BuiltInAssets.LoadPrefab("UIRoot");
             var instance = GameObject.Instantiate(prefab);
             instance.name = "UIRoot";
             DontDestroyOnLoad(instance);

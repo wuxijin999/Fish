@@ -13,7 +13,8 @@ public class AssetSource
                 && refdataFromEditor
                 && sceneFromEditor
                 && shaderFromEditor
-                && uiFromEditor;
+                && uiFromEditor
+                && builtInFromEditor;
         }
         set {
             audioFromEditor = value;
@@ -23,6 +24,7 @@ public class AssetSource
             shaderFromEditor = value;
             sceneFromEditor = value;
             uiFromEditor = value;
+            builtInFromEditor = value;
         }
     }
 
@@ -148,6 +150,24 @@ public class AssetSource
             LocalSave.SetBool("Asset_UIFromEditor", value);
 #else
             m_UIFromEditor = value;
+#endif
+        }
+    }
+
+    static bool m_BuiltInFromEditor = false;
+    public static bool builtInFromEditor {
+        get {
+#if UNITY_EDITOR
+            return LocalSave.GetBool("Asset_BuiltInFromEditor", true);
+#else
+            return false;
+#endif
+        }
+        set {
+#if UNITY_EDITOR
+            LocalSave.SetBool("Asset_BuiltInFromEditor", value);
+#else
+            m_BuiltInFromEditor = value;
 #endif
         }
     }

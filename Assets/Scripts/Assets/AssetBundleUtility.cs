@@ -6,28 +6,23 @@ using UnityEngine;
 
 public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 {
-    private List<AssetBundleInfo> m_AssetBundleInfoList = new List<AssetBundleInfo>();
-    private Dictionary<string, AssetInfo> m_AssetInfoDict = new Dictionary<string, AssetInfo>();
-    private Dictionary<string, AssetBundle> m_AssetBundleDict = new Dictionary<string, AssetBundle>();
-    private Dictionary<string, Dictionary<string, UnityEngine.Object>> m_AssetDict = new Dictionary<string, Dictionary<string, UnityEngine.Object>>();
+    List<AssetBundleInfo> m_AssetBundleInfoList = new List<AssetBundleInfo>();
+    Dictionary<string, AssetInfo> m_AssetInfoDict = new Dictionary<string, AssetInfo>();
+    Dictionary<string, AssetBundle> m_AssetBundleDict = new Dictionary<string, AssetBundle>();
+    Dictionary<string, Dictionary<string, UnityEngine.Object>> m_AssetDict = new Dictionary<string, Dictionary<string, UnityEngine.Object>>();
 
-    public bool initialized { get; private set; }
-    public bool initializedUIAssetBundle { get; private set; }
-
-    public IEnumerator Initialize()
+    public void Initialize()
     {
-        yield return StartCoroutine(Co_LoadMainfestFile("audio"));
-        yield return StartCoroutine(Co_LoadMainfestFile("effect"));
-        yield return StartCoroutine(Co_LoadMainfestFile("mob"));
-        yield return StartCoroutine(Co_LoadMainfestFile("config"));
-        yield return StartCoroutine(Co_LoadMainfestFile("maps"));
-        yield return StartCoroutine(Co_LoadMainfestFile("graphic"));
-        yield return StartCoroutine(Co_LoadMainfestFile("ui"));
-
-        this.initialized = true;
+        LoadMainfestFile("audio");
+        LoadMainfestFile("effect");
+        LoadMainfestFile("mob");
+        LoadMainfestFile("config");
+        LoadMainfestFile("maps");
+        LoadMainfestFile("graphic");
+        LoadMainfestFile("ui");
     }
 
-    private IEnumerator Co_LoadMainfestFile(string category)
+    private void LoadMainfestFile(string category)
     {
         var path = AssetVersionUtility.GetAssetFilePath(StringUtil.Contact(category, "_assetbundle"));
         var assetBundle = AssetBundle.LoadFromFile(path);
@@ -35,22 +30,22 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         if (assetBundle == null)
         {
             DebugEx.LogError("AssetBundleManifest的包文件为空或者加载出错.");
-            yield break;
+            return;
         }
 
         var manifest = assetBundle.LoadAsset<AssetBundleManifest>(AssetPath.AssetDependentFileAssetName);
         if (manifest == null)
         {
             DebugEx.LogError("AssetBundleManifest文件为空或者加载出错.");
-            yield break;
+            return;
         }
 
         var assetBundleNames = manifest.GetAllAssetBundles();
         foreach (var assetBundleName in assetBundleNames)
         {
-            var _dependenices = manifest.GetAllDependencies(assetBundleName);
-            var _hash = manifest.GetAssetBundleHash(assetBundleName);
-            var assetBundleInfo = new AssetBundleInfo(assetBundleName, _hash, _dependenices);
+            var dependenices = manifest.GetAllDependencies(assetBundleName);
+            var hash = manifest.GetAssetBundleHash(assetBundleName);
+            var assetBundleInfo = new AssetBundleInfo(assetBundleName, hash, dependenices);
             this.m_AssetBundleInfoList.Add(assetBundleInfo);
         }
 
@@ -63,79 +58,19 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         return this.m_AssetBundleInfoList.Find((x) => { return x.name == assetBundleName; });
     }
 
-    #region 对AssetBundle资源进行异步协程加载的方法
-
-    public void Co_LoadAsset(AssetInfo assetInfo, Action<bool, UnityEngine.Object> callBack = null)
+    public void AsyncLoadAsset(AssetInfo assetInfo, Action<bool, UnityEngine.Object> callBack = null)
     {
-        Co_LoadAsset(assetInfo.assetBundleName, assetInfo.name, callBack);
+        StartCoroutine(Co_LoadAsset(assetInfo.assetBundleName, assetInfo.name, callBack));
     }
 
-    public void Co_LoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
+    public void AsyncLoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
     {
-        StartCoroutine(Co_DoLoadAsset(assetBundleName, assetName, callBack));
+        StartCoroutine(Co_LoadAsset(assetBundleName, assetName, callBack));
     }
 
-    private IEnumerator Co_LoadAssetBundle(string assetBundleName)
+    private IEnumerator Co_LoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
     {
-#if UNITY_5
-        assetBundleName = assetBundleName.ToLower();
-#endif
-
-        if (JudgeExistAssetBundle(assetBundleName))
-        {
-            yield break;
-        }
-
-        var assetBundleInfo = GetAssetBundleInfo(assetBundleName);
-        if (assetBundleInfo == null)
-        {
-            DebugEx.LogErrorFormat("Co_LoadAssetBundle(): {0}出现错误 => 不存在AssetBundleInfo. ", assetBundleName);
-            yield break;
-        }
-
-        if (assetBundleInfo.dependentBundles.Length > 0)
-        {
-            yield return Co_LoadAssetBundleDependenice(assetBundleInfo);
-        }
-
-        var filePath = AssetVersionUtility.GetAssetFilePath(assetBundleName);
-
-        DebugEx.LogFormat("Co_LoadAssetBundle(): 将要加载的assetBundle包路径 => {0}", filePath);
-        var assetBundle = AssetBundle.LoadFromFile(filePath);
-        CacheAssetBundle(assetBundleName, assetBundle);
-    }
-
-    private IEnumerator Co_LoadAssetBundleDependenice(AssetBundleInfo assetBundleInfo)
-    {
-        AssetBundle assetBundle = null;
-
-        if (assetBundleInfo.dependentBundles == null
-         || assetBundleInfo.dependentBundles.Length == 0)
-        {
-            yield break;
-        }
-
-        for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
-        {
-
-            if (this.m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
-            {
-                yield return Co_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
-            }
-            else
-            {
-                if (assetBundle == null)
-                {
-                    yield return Co_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
-                }
-            }
-        }
-    }
-
-    private IEnumerator Co_DoLoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
-    {
-
-        if (JudgeExistAsset(assetBundleName, assetName))
+        if (ExistAsset(assetBundleName, assetName))
         {
             if (callBack != null)
             {
@@ -144,8 +79,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             yield break;
         }
 
-        yield return Co_LoadAssetBundle(assetBundleName);
-
+        SyncLoadAssetBundle(assetBundleName);
         var request = this.m_AssetBundleDict[assetBundleName].LoadAssetAsync(assetName);
         while (!request.isDone)
         {
@@ -167,62 +101,39 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
                 callBack(false, null);
             }
         }
-
     }
 
-    private IEnumerator Co_DoLoadAsset(AssetInfo assetInfo, Action<bool, UnityEngine.Object> callBack = null)
+    public UnityEngine.Object[] SyncLoadAllAssets(string assetBundleName)
     {
-        if (assetInfo == null)
-        {
-            DebugEx.LogErrorFormat("Co_DoLoadAsset(): {0}, 出现错误 => 存入的AssetInfo为null. ", assetInfo);
-            yield break;
-        }
-        yield return Co_DoLoadAsset(assetInfo.assetBundleName, assetInfo.name, callBack);
-    }
-
-    #endregion
-
-    #region 对AssetBundle资源进行同步加载的方法
-
-    public void Sync_LoadAll(string assetBundleName)
-    {
-        if (JudgeExistAssetBundle(assetBundleName))
-        {
-            return;
-        }
-
-#if UNITY_5
         assetBundleName = assetBundleName.ToLower();
-#endif
-
-        Sync_LoadAssetBundle(assetBundleName);
-
-    }
-
-    public UnityEngine.Object Sync_LoadAsset(AssetInfo assetInfo, Type type = null)
-    {
-        return Sync_LoadAsset(assetInfo.assetBundleName, assetInfo.name, type);
-    }
-
-    public UnityEngine.Object Sync_LoadAsset(string assetBundleName, string assetName, Type type = null)
-    {
-
-#if UNITY_5
-        assetBundleName = assetBundleName.ToLower();
-#endif
-
-        UnityEngine.Object @object = null;
-
-        if (JudgeExistAsset(assetBundleName, assetName))
+        SyncLoadAssetBundle(assetBundleName);
+        if (ExistAssetBundle(assetBundleName))
         {
-
-            @object = this.m_AssetDict[assetBundleName][assetName];
-
+            var bundle = m_AssetBundleDict[assetBundleName];
+            return bundle.LoadAllAssets();
         }
         else
         {
+            return null;
+        }
+    }
 
-            Sync_LoadAssetBundle(assetBundleName);
+    public UnityEngine.Object SyncLoadAsset(AssetInfo assetInfo, Type type = null)
+    {
+        return SyncLoadAsset(assetInfo.assetBundleName, assetInfo.name, type);
+    }
+
+    public UnityEngine.Object SyncLoadAsset(string assetBundleName, string assetName, Type type = null)
+    {
+        assetBundleName = assetBundleName.ToLower();
+        UnityEngine.Object @object = null;
+        if (ExistAsset(assetBundleName, assetName))
+        {
+            @object = this.m_AssetDict[assetBundleName][assetName];
+        }
+        else
+        {
+            SyncLoadAssetBundle(assetBundleName);
             if (this.m_AssetBundleDict.ContainsKey(assetBundleName))
             {
                 if (type != null)
@@ -239,7 +150,6 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
                     CacheAsset(assetBundleName, assetName, @object);
                 }
             }
-
         }
 
         if (@object == null)
@@ -250,110 +160,113 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         return @object;
     }
 
-    private void Sync_LoadAssetBundle(string assetBundleName)
+    private void SyncLoadAssetBundle(string assetBundleName)
     {
-        if (JudgeExistAssetBundle(assetBundleName))
+        if (ExistAssetBundle(assetBundleName))
         {
             return;
         }
 
-        AssetBundleInfo assetBundleInfo = GetAssetBundleInfo(assetBundleName);
-        if (assetBundleInfo == null)
-        {
-            DebugEx.LogErrorFormat("Sync_LoadAssetBundle(): {0} 出现错误 => 不存在AssetBundleInfo. ", assetBundleName);
-            return;
-        }
+        var assetBundleInfo = GetAssetBundleInfo(assetBundleName);
+        LoadAssetBundleDependenice(assetBundleInfo.dependentBundles);
 
-        Sync_LoadAssetBundleDependenice(assetBundleInfo);
-
-        string path = AssetVersionUtility.GetAssetFilePath(assetBundleName);
-        AssetBundle _assetBundle = AssetBundle.LoadFromFile(path);
-
-        CacheAssetBundle(assetBundleName, _assetBundle);
+        var path = AssetVersionUtility.GetAssetFilePath(assetBundleName);
+        var assetBundle = AssetBundle.LoadFromFile(path);
+        CacheAssetBundle(assetBundleName, assetBundle);
     }
 
-    private void Sync_LoadAssetBundleDependenice(AssetBundleInfo assetBundleInfo)
+    private void LoadAssetBundleDependenice(string[] dependentBundles)
     {
-        if (assetBundleInfo.dependentBundles == null
-         || assetBundleInfo.dependentBundles.Length == 0)
+        if (dependentBundles == null
+         || dependentBundles.Length == 0)
         {
             return;
         }
 
         AssetBundle assetBundle = null;
-
-        for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
+        for (int i = 0; i < dependentBundles.Length; ++i)
         {
-            if (this.m_AssetBundleDict.TryGetValue(assetBundleInfo.dependentBundles[i], out assetBundle) == false)
-            {
-                Sync_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
-            }
-            else
+            var name = dependentBundles[i];
+            if (this.m_AssetBundleDict.TryGetValue(name, out assetBundle))
             {
                 if (assetBundle == null)
                 {
-                    Sync_LoadAssetBundle(assetBundleInfo.dependentBundles[i]);
+                    SyncLoadAssetBundle(name);
                 }
+            }
+            else
+            {
+                SyncLoadAssetBundle(name);
             }
         }
     }
 
-    #endregion
-
-    #region 对AssetBundle资源进行异步线程加载的方法
-    #endregion
-
-    #region AssetBundle资源卸载方法
-
     public void UnloadAssetBundle(string assetBundleName, bool unloadAllLoadedObjects, bool includeDependenice)
     {
-
-#if UNITY_5
         assetBundleName = assetBundleName.ToLower();
-#endif
-
-        if (JudgeExistAssetBundle(assetBundleName) == false)
+        if (!ExistAssetBundle(assetBundleName))
         {
             DebugEx.LogWarningFormat("UnloadAssetBundle(): 要卸载的包不在缓存中或者已经被卸载 => {0}. ", assetBundleName);
             return;
         }
 
-        AssetBundleInfo assetBundleInfo = GetAssetBundleInfo(assetBundleName);
-
+        var assetBundleInfo = GetAssetBundleInfo(assetBundleName);
         UnloadAssetBundle(assetBundleInfo, unloadAllLoadedObjects, includeDependenice);
+    }
+
+    private void UnloadAssetBundle(AssetBundleInfo assetBundleInfo, bool unloadAllLoadedObjects, bool includeDependenice)
+    {
+        if (includeDependenice)
+        {
+            if (assetBundleInfo.dependentBundles != null
+             && assetBundleInfo.dependentBundles.Length > 0)
+            {
+                for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
+                {
+                    UnloadAssetBundle(assetBundleInfo.dependentBundles[i], unloadAllLoadedObjects, includeDependenice);
+                }
+            }
+        }
+
+        if (this.m_AssetDict.ContainsKey(assetBundleInfo.name))
+        {
+            var assetNames = new List<string>(this.m_AssetDict[assetBundleInfo.name].Keys);
+            foreach (var assetName in assetNames)
+            {
+                UnloadAsset(assetBundleInfo.name, assetName);
+            }
+        }
+        else
+        {
+            DebugEx.LogFormat("UnloadAssetBundle(): 要卸载assetBundle包 {0} 没有资源被加载. ", assetBundleInfo.name);
+        }
+
+        this.m_AssetBundleDict[assetBundleInfo.name].Unload(unloadAllLoadedObjects);
+        this.m_AssetDict.Remove(assetBundleInfo.name);
+        this.m_AssetBundleDict.Remove(assetBundleInfo.name);
+
+        DebugEx.LogFormat("UnloadAssetBundle(): 成功卸载assetBundle包 => {0}. ", assetBundleInfo.name);
     }
 
     public void UnloadAsset(string assetBundleName, string assetName)
     {
-        string assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
-
-        if (JudgeExistAsset(assetBundleName, assetName) == false)
+        if (!ExistAsset(assetBundleName, assetName))
         {
-            DebugEx.LogWarningFormat("UnloadAsset(): 要卸载的资源不在缓存中 => {0}. ", assembleName);
+            DebugEx.LogWarningFormat("UnloadAsset(): 要卸载的资源不在缓存中 =>bundle: {0}--asset:{1} ", assetBundleName, assetName);
             return;
         }
 
-        UnityEngine.Object assetObject = this.m_AssetDict[assetBundleName][assetName];
-
+        var assetObject = this.m_AssetDict[assetBundleName][assetName];
         this.m_AssetDict[assetBundleName].Remove(assetName);
 
         if (assetObject is GameObject)
         {
-            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 不做其他处理. ", assetName, assetObject.GetType().Name);
+            DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为gameObject, 不做其他处理. ", assetName);
         }
         else
         {
             Resources.UnloadAsset(assetObject);
             DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 执行Resources.UnloadAsset(). ", assetName, assetObject.GetType().Name);
-        }
-
-        if (Application.isEditor)
-        {
-            Transform asset = this.transform.Find(assetBundleName + "/Asset:" + assetName);
-            if (asset)
-            {
-                Destroy(asset.gameObject);
-            }
         }
     }
 
@@ -364,81 +277,14 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     public void UnloadAll()
     {
-
-        List<string> assetBundleNameList = new List<string>(this.m_AssetBundleDict.Keys);
-
+        var assetBundleNameList = new List<string>(this.m_AssetBundleDict.Keys);
         foreach (var assetBundleName in assetBundleNameList)
         {
             UnloadAssetBundle(assetBundleName, true, true);
         }
     }
 
-    private void UnloadAssetBundle(AssetBundleInfo assetBundleInfo, bool unloadAllLoadedObjects, bool includeDependenice)
-    {
-
-        // 是否卸载依赖资源
-        if (includeDependenice)
-        {
-            if (assetBundleInfo.dependentBundles != null
-             && assetBundleInfo.dependentBundles.Length > 0)
-            {
-
-                for (int i = 0; i < assetBundleInfo.dependentBundles.Length; ++i)
-                {
-                    UnloadAssetBundle(assetBundleInfo.dependentBundles[i], unloadAllLoadedObjects, includeDependenice);
-                }
-
-            }
-        }
-
-        if (this.m_AssetDict.ContainsKey(assetBundleInfo.name))
-        {
-
-            List<string> _assetNames = new List<string>(this.m_AssetDict[assetBundleInfo.name].Keys);
-
-            // 卸载对应缓存住的asset资源
-            foreach (var _assetName in _assetNames)
-            {
-                UnloadAsset(assetBundleInfo.name, _assetName);
-            }
-
-        }
-        else
-        {
-            DebugEx.LogFormat("UnloadAssetBundle(): 要卸载assetBundle包 {0} 没有资源被加载. ", assetBundleInfo.name);
-        }
-
-        // assetBundle包卸载
-        this.m_AssetBundleDict[assetBundleInfo.name].Unload(unloadAllLoadedObjects);
-
-        this.m_AssetDict.Remove(assetBundleInfo.name);
-
-        // 卸载缓存的assetBundle资源
-        this.m_AssetBundleDict.Remove(assetBundleInfo.name);
-
-        DebugEx.LogFormat("UnloadAssetBundle(): 成功卸载assetBundle包 => {0}. ", assetBundleInfo.name);
-
-        if (Application.isEditor)
-        {
-
-            Transform asset = this.transform.Find(assetBundleInfo.name);
-            Transform parent = asset.parent;
-
-            if (asset)
-            {
-                DestroyImmediate(asset.gameObject);
-            }
-
-            if (parent.childCount == 0 && parent != this.transform)
-            {
-                DestroyImmediate(parent.gameObject);
-            }
-        }
-    }
-
-    #endregion
-
-    public bool JudgeExistAsset(string assetBundleName, string assetName)
+    public bool ExistAsset(string assetBundleName, string assetName)
     {
         if (string.IsNullOrEmpty(assetBundleName)
          || string.IsNullOrEmpty(assetName))
@@ -446,7 +292,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             return false;
         }
 
-        if (JudgeExistAssetBundle(assetBundleName) == false)
+        if (ExistAssetBundle(assetBundleName) == false)
         {
             return false;
         }
@@ -461,11 +307,10 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         return true;
     }
 
-    public bool JudgeExistAssetBundle(string assetBundleName)
+    public bool ExistAssetBundle(string assetBundleName)
     {
         assetBundleName = assetBundleName.ToLower();
-
-        if (this.m_AssetBundleDict.ContainsKey(assetBundleName) == false)
+        if (!this.m_AssetBundleDict.ContainsKey(assetBundleName))
         {
             return false;
         }
@@ -490,19 +335,18 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             (asset as GameObject).SetActive(true);
         }
 
-        if (this.m_AssetDict.ContainsKey(assetBundleName) == false)
+        if (!this.m_AssetDict.ContainsKey(assetBundleName))
         {
-            Dictionary<string, UnityEngine.Object> _temp = new Dictionary<string, UnityEngine.Object>();
-            this.m_AssetDict.Add(assetBundleName, _temp);
+            this.m_AssetDict[assetBundleName] = new Dictionary<string, UnityEngine.Object>();
         }
 
         this.m_AssetDict[assetBundleName][assetName] = asset;
 
-        string assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
+        var assembleName = StringUtil.Contact(assetBundleName, "@", assetName);
         if (this.m_AssetInfoDict.ContainsKey(assembleName) == false)
         {
-            AssetInfo _assetInfo = new AssetInfo(assetBundleName, assetName);
-            this.m_AssetInfoDict[assembleName] = _assetInfo;
+            var assetInfo = new AssetInfo(assetBundleName, assetName);
+            this.m_AssetInfoDict[assembleName] = assetInfo;
         }
 
         DebugEx.LogFormat("CacheAsset(): 成功缓存asset => {0}. ", assetName);
@@ -510,7 +354,6 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
 
     private void CacheAssetBundle(string assetBundleName, AssetBundle assetBundle)
     {
-
         if (assetBundle == null)
         {
             DebugEx.LogErrorFormat("CacheAssetBundle(): {0}出现错误 => 将要缓存的包为 null. ", assetBundleName);
@@ -524,44 +367,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         }
 
         this.m_AssetBundleDict[assetBundleName] = assetBundle;
-        if (Application.isEditor)
-        {
-            string[] names = assetBundleName.Split('/');
-            string selfPath = string.Empty;
-            string parentPath = string.Empty;
-            for (int i = 0; i < names.Length; ++i)
-            {
-                selfPath = names[0];
-                for (int j = 1; j <= i; ++j)
-                {
-                    selfPath = selfPath + "/" + names[j];
-                }
-                if (this.transform.Find(selfPath))
-                {
-                    continue;
-                }
-                GameObject _go = new GameObject(names[i]);
-                if (i == 0)
-                {
-                    _go.transform.parent = this.transform;
-                }
-                else
-                {
-                    parentPath = names[0];
-                    for (int j = 1; j < i; ++j)
-                    {
-                        parentPath = parentPath + "/" + names[j];
-                    }
-                    Transform parent = this.transform.Find(parentPath);
-                    if (parent)
-                    {
-                        _go.transform.parent = parent;
-                    }
-                }
-            }
-        }
-
-        DebugEx.LogFormat("CacheAssetBundle(): 成功缓存assetBundle包资源 => {0}. 目前有 {1} 个资源.", assetBundleName, this.m_AssetBundleDict.Count);
+        DebugEx.LogFormat("成功缓存assetBundle包资源 => {0}. 目前有 {1} 个资源.", assetBundleName, this.m_AssetBundleDict.Count);
     }
 
 }

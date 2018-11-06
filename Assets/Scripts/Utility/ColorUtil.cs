@@ -16,7 +16,7 @@ public static class ColorUtil
 
     static ColorUtil()
     {
-        var colorPattern = Resources.Load<ColorPattern>("Config/ColorPattern");
+        var colorPattern = BuiltInAssets.LoadConfig<ColorPattern>("Config/ColorPattern");
         white = colorPattern.white;
         green = colorPattern.green;
         blue = colorPattern.blue;

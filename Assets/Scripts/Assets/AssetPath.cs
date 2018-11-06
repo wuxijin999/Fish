@@ -24,6 +24,7 @@ public class AssetPath
     public static readonly string CONFIG_ROOT_PATH = AssetRootRelativePath + "5_Config/";
     public static readonly string AUDIO_ROOT_PATH = AssetRootRelativePath + "6_Audio/";
     public static readonly string EFFECT_ROOT_PATH = AssetRootRelativePath + "7_Effect/";
+    public static readonly string BUILTIN_ROOT_PATH = AssetRootRelativePath + "8_BuiltIn/";
 
     #endregion
 
