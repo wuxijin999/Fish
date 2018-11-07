@@ -222,7 +222,7 @@
     <Compile Include="Assets\Scripts\UIComponent\HUD\HeadUpNamePool.cs" />
     <Compile Include="Assets\Scripts\UIComponent\HUD\HUDBase.cs" />
     <Compile Include="Assets\Scripts\UIComponent\HUD\HUDRoot.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\JoyStick\HandShank.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\JoyStick\JoyStick.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
     <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Utility\AccountLocalSave.cs" />
