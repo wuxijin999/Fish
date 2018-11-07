@@ -66,9 +66,7 @@ public static class MathUtil
 
     public static float FreeFall(float startY, float time)
     {
-
-        float deltaY = 0.5f * GlobalDefine.GRAVITY_RATE * Mathf.Pow(time, 2f);
-
+        var deltaY = 0.5f * GlobalDefine.GRAVITY_RATE * Mathf.Pow(time, 2f);
         return startY - deltaY;
     }
 
@@ -92,7 +90,7 @@ public static class MathUtil
         return scale;
     }
 
-    public static float CalDistance(Vector3 srcPos, Vector3 desPos)
+    public static float ProjectDistance(Vector3 srcPos, Vector3 desPos)
     {
         return (srcPos.x - desPos.x) * (srcPos.x - desPos.x) + (srcPos.z - desPos.z) * (srcPos.z - desPos.z);
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Language
 {
-
     public static string Get(int id)
     {
         var config = LanguageConfig.Get(id);
@@ -57,6 +56,17 @@ public class Language
             Debug.Log(ex);
             return string.Empty;
         }
+    }
+
+    static string m_CurrentLanguage = string.Empty;
+    public static string currentLanguage {
+        get { return m_CurrentLanguage; }
+        private set { m_CurrentLanguage = value; }
+    }
+
+    public static void SwitchLanguage(string language)
+    {
+        currentLanguage = language;
     }
 
 }

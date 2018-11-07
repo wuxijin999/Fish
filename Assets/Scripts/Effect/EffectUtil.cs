@@ -6,8 +6,11 @@ public class EffectUtil : Singleton<EffectUtil>
 {
 
     Dictionary<int, GameObjectPool> effectPools = new Dictionary<int, GameObjectPool>();
+    Dictionary<int, EffectBehaviour> playingEffect = new Dictionary<int, EffectBehaviour>();
 
-    public EffectBehaviour Play(int id, Transform parent = null)
+    int playInstanceId = 1;
+
+    public int Play(int id, Transform parent = null)
     {
         try
         {
@@ -27,31 +30,45 @@ public class EffectUtil : Singleton<EffectUtil>
                 behaviour.SetActive(true);
             }
 
-            behaviour.OnPlay(parent);
-            return behaviour;
+            playInstanceId++;
+            playingEffect[playInstanceId] = behaviour;
+            behaviour.OnPlay(playInstanceId, parent);
+            return playInstanceId;
         }
         catch (System.Exception ex)
         {
             DebugEx.Log(ex);
-            return null;
+            return 0;
         }
     }
 
-    public void Stop(EffectBehaviour effect)
+    public void Stop(int instanceId)
     {
+        if (!playingEffect.ContainsKey(instanceId))
+        {
+            return;
+        }
+
+        var effect = playingEffect[instanceId];
+        playingEffect.Remove(instanceId);
+        if (effect == null)
+        {
+            return;
+        }
+
         try
         {
-            if (effect == null)
-            {
-                return;
-            }
-            var id = effect.effectId;
-            var pool = this.effectPools[id];
             effect.OnStop();
 
+            var id = effect.effectId;
+            var pool = this.effectPools[id];
             if (pool != null)
             {
                 pool.Release(effect.gameObject);
+            }
+            else
+            {
+                effect.gameObject.DestroySelf();
             }
         }
         catch (System.Exception ex)

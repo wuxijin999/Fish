@@ -12,8 +12,22 @@ using TMPro;
 public class TextEx : TextMeshProUGUI
 {
 
+    [SerializeField] int m_Key;
 
+    string currentLanguge = string.Empty;
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        if (m_Key != 0)
+        {
+            if (currentLanguge != Language.currentLanguage)
+            {
+                SetText(Language.Get(m_Key));
+                currentLanguge = Language.currentLanguage;
+            }
+        }
+    }
 
 
 }

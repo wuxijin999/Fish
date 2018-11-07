@@ -10,7 +10,6 @@ using UnityEditor;
 [CreateAssetMenu(menuName = "Config/VersionConfig")]
 public class VersionConfig : ScriptableObject
 {
-    public const string VERSION_ALTERNATIVE = "0.0.0";
 
     [SerializeField] public string m_AppId = string.Empty;
     public string appId { get { return this.m_AppId; } }
@@ -19,13 +18,13 @@ public class VersionConfig : ScriptableObject
     public VersionAuthority versionAuthority { get { return this.m_VersionAuthority; } }
 
     [SerializeField] public string m_Version;
-    public string version { get { return VersionCompare(this.m_Version, VERSION_ALTERNATIVE); } }
-
-    [SerializeField] string m_ClientPackageFlag;
-    public string clientPackageFlag { get { return this.m_ClientPackageFlag; } }
+    public string version { get { return m_Version; } }
 
     [SerializeField] int m_Branch = 0;
     public int branch { get { return this.m_Branch; } }
+
+    [SerializeField] string m_ClientFlag;
+    public string clientFlag { get { return this.m_ClientFlag; } }
 
     [SerializeField] InstalledAsset m_AssetAccess = InstalledAsset.IngoreDownLoad;
     public InstalledAsset assetAccess { get { return this.m_AssetAccess; } }
@@ -33,54 +32,11 @@ public class VersionConfig : ScriptableObject
     [SerializeField] bool m_PartAssetPackage = false;
     public bool partAssetPackage { get { return this.m_PartAssetPackage; } }
 
-    [SerializeField] string m_ProductName = string.Empty;
-    public string productName { get { return this.m_ProductName; } }
-
-    [SerializeField] string m_BundleIdentifier = string.Empty;
-    public string bundleIdentifier { get { return this.m_BundleIdentifier; } }
-
-    [SerializeField] string m_KeystoreFileName;
-    public string keystoreFileName { get { return this.m_KeystoreFileName; } }
-
-    [SerializeField] string m_KeystorePassword;
-    public string keystorePassword { get { return this.m_KeystorePassword; } }
-
-    [SerializeField] string m_KeystoreAlias;
-    public string keystoreAlias { get { return this.m_KeystoreAlias; } }
-
-    [SerializeField] string m_KeystoreAliasPassword;
-    public string keystoreAliasPassword { get { return this.m_KeystoreAliasPassword; } }
-
-    [SerializeField] string m_AppleDeveloperTeamID;
-    public string appleDeveloperTeamID { get { return this.m_AppleDeveloperTeamID; } }
-
-    [SerializeField] bool m_DebugVersion = false;
-    public bool debugVersion
-    {
-        get { return this.m_DebugVersion; }
-        set { this.m_DebugVersion = value; }
-    }
-
-    [SerializeField] bool m_IsBanShu = false;
-    public bool isBanShu
-    {
-        get { return this.m_IsBanShu; }
-        set { this.m_IsBanShu = value; }
-    }
-
     [SerializeField] string m_BuildTime;
-    public string buildTime
-    {
-        get { return this.m_BuildTime; }
-        set { this.m_BuildTime = value; }
-    }
+    public string buildTime { get { return this.m_BuildTime; } }
 
     [SerializeField] int m_BuildIndex;
-    public int buildIndex
-    {
-        get { return this.m_BuildIndex; }
-        set { this.m_BuildIndex = value; }
-    }
+    public int buildIndex { get { return this.m_BuildIndex; } }
 
     public void Read(string _data)
     {
@@ -88,47 +44,18 @@ public class VersionConfig : ScriptableObject
         this.m_AppId = dataStrings[1];
         this.m_VersionAuthority = (VersionAuthority)int.Parse(dataStrings[2]);
         this.m_Version = dataStrings[3];
-        this.m_ClientPackageFlag = dataStrings[4];
+        this.m_ClientFlag = dataStrings[4];
         this.m_Branch = int.Parse(dataStrings[5]);
         this.m_AssetAccess = (InstalledAsset)int.Parse(dataStrings[6]);
         this.m_PartAssetPackage = int.Parse(dataStrings[7]) == 1;
-        this.m_ProductName = dataStrings[8];
-        this.m_BundleIdentifier = dataStrings[9];
-        this.m_KeystoreFileName = dataStrings[10];
-        this.m_KeystorePassword = dataStrings[11];
-        this.m_KeystoreAlias = dataStrings[12];
-        this.m_KeystoreAliasPassword = dataStrings[13];
-        this.m_AppleDeveloperTeamID = dataStrings[14];
-        this.m_DebugVersion = int.Parse(dataStrings[15]) == 1;
-        this.m_IsBanShu = int.Parse(dataStrings[16]) == 1;
     }
-
-#if UNITY_EDITOR
-    [ContextMenu("Apply")]
-    public void Apply()
-    {
-        var newVersionConfigPath = StringUtil.Contact("Assets/Resources/ScriptableObject/Config/VersionConfig", ".asset");
-
-        var fromVersionConfig = this;
-        var newVersionConfig = ScriptableObject.CreateInstance<VersionConfig>();
-        if (File.Exists(newVersionConfigPath))
-        {
-            AssetDatabase.DeleteAsset(newVersionConfigPath);
-        }
-
-        Copy(fromVersionConfig, newVersionConfig);
-        AssetDatabase.CreateAsset(newVersionConfig, newVersionConfigPath);
-        EditorUtility.SetDirty(newVersionConfig);
-        AssetDatabase.SaveAssets();
-    }
-#endif
 
     static VersionConfig config = null;
     public static VersionConfig Get()
     {
         if (config == null)
         {
-            config = Resources.Load<VersionConfig>("ScriptableObject/Config/VersionConfig");
+            config = BuiltInAssets.LoadConfig<VersionConfig>("VersionConfig");
         }
 
         return config;
@@ -143,62 +70,8 @@ public class VersionConfig : ScriptableObject
         _to.m_AssetAccess = _from.m_AssetAccess;
         _to.m_PartAssetPackage = _from.m_PartAssetPackage;
         _to.m_BuildTime = _from.m_BuildTime;
-        _to.m_DebugVersion = _from.m_DebugVersion;
-        _to.m_ProductName = _from.m_ProductName;
-        _to.m_BundleIdentifier = _from.m_BundleIdentifier;
-        _to.m_KeystoreFileName = _from.m_KeystoreFileName;
-        _to.m_KeystoreAlias = _from.m_KeystoreAlias;
-        _to.m_KeystorePassword = _from.m_KeystorePassword;
-        _to.m_KeystoreAliasPassword = _from.m_KeystoreAliasPassword;
-        _to.m_AppleDeveloperTeamID = _from.m_AppleDeveloperTeamID;
-        _to.m_IsBanShu = _from.m_IsBanShu;
-        _to.m_ClientPackageFlag = _from.m_ClientPackageFlag;
+        _to.m_ClientFlag = _from.m_ClientFlag;
     }
-
-    /// <summary>
-    /// 比较两个版本，返回更大的那个
-    /// </summary>
-    /// <param name="_lhs"></param>
-    /// <param name="_rhs"></param>
-    /// <returns></returns>
-    static string VersionCompare(string _lhs, string _rhs)
-    {
-        var lhsStrings = _lhs.Split('.');
-        var rhsStrings = _rhs.Split('.');
-
-        if (lhsStrings.Length > rhsStrings.Length)
-        {
-            return _lhs;
-        }
-        else if (lhsStrings.Length < rhsStrings.Length)
-        {
-            return _rhs;
-        }
-        else
-        {
-            var version1 = 0;
-            for (int i = 0; i < lhsStrings.Length; i++)
-            {
-                var input = lhsStrings[i];
-                var intTemp = 0;
-                int.TryParse(input, out intTemp);
-                version1 += intTemp * MathUtil.Power(100, lhsStrings.Length - i);
-            }
-
-            var version2 = 0;
-            for (int i = 0; i < rhsStrings.Length; i++)
-            {
-                var input = rhsStrings[i];
-                var intTemp = 0;
-                int.TryParse(input, out intTemp);
-                version2 += intTemp * MathUtil.Power(100, rhsStrings.Length - i);
-            }
-
-            return version1 > version2 ? _lhs : _rhs;
-
-        }
-    }
-
 }
 
 public enum InstalledAsset
@@ -211,6 +84,6 @@ public enum InstalledAsset
 
 public enum VersionAuthority
 {
-    InterTest = 0,
+    Debug = 0,
     Release = 1,
 }

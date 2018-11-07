@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EffectBehaviour : MonoBehaviour
 {
-
     [SerializeField] bool m_Loop;
     [SerializeField] float m_Duration;
 
     int m_EffectId = 0;
     public int effectId { get { return this.m_EffectId; } set { this.m_EffectId = value; } }
 
+    int instanceId = 0;
     float stopTime = 0f;
     Animator[] animators;
     Animation[] animations;
@@ -25,8 +25,9 @@ public class EffectBehaviour : MonoBehaviour
         this.particleSystems = this.GetComponentsInChildren<ParticleSystem>(true);
     }
 
-    public void OnPlay(Transform target = null)
+    public void OnPlay(int instanceId, Transform target = null)
     {
+        this.instanceId = instanceId;
         if (this.animators != null)
         {
             foreach (var animator in this.animators)
@@ -80,7 +81,7 @@ public class EffectBehaviour : MonoBehaviour
         {
             if (Time.time >= this.stopTime)
             {
-                EffectUtil.Instance.Stop(this);
+                EffectUtil.Instance.Stop(instanceId);
             }
         }
     }

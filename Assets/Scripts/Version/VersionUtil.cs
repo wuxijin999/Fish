@@ -14,7 +14,7 @@ public class VersionUtil : Singleton<VersionUtil>
 {
     public const string VERSION_URL = "http://pub.game.secondworld.net.cn:11000/appversion/?";
 
-    public string androidRoot { get { return VersionConfig.Get().bundleIdentifier; } }
+    public string androidRoot { get; private set; }
 
     public float progress {
         get { return 0 / ((float)this.versionInfo.GetLatestVersion().file_size * 1024); }

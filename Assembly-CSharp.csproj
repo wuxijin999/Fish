@@ -208,8 +208,11 @@
     <Compile Include="Assets\Scripts\UIComponent\Common\UIFlippable.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIBase.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Core\UIEngine.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Core\UIEventExtersion.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Core\UIRoot.cs" />
     <Compile Include="Assets\Scripts\UIComponent\CoreEx\ButtonEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\CoreEx\ImageEx.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\CoreEx\InputFieldEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\CoreEx\TextEx.cs" />
     <Compile Include="Assets\Scripts\UIComponent\HUD\DamageNum.cs" />
     <Compile Include="Assets\Scripts\UIComponent\HUD\DamageNumPool.cs" />
@@ -223,8 +226,6 @@
     <Compile Include="Assets\Scripts\UIComponent\HUD\HUDBase.cs" />
     <Compile Include="Assets\Scripts\UIComponent\HUD\HUDRoot.cs" />
     <Compile Include="Assets\Scripts\UIComponent\JoyStick\JoyStick.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\UIEventExtersion.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\UIRoot.cs" />
     <Compile Include="Assets\Scripts\Utility\AccountLocalSave.cs" />
     <Compile Include="Assets\Scripts\Utility\AnimatorGenerateConfig.cs" />
     <Compile Include="Assets\Scripts\Utility\AssetCopyTask.cs" />

@@ -7,26 +7,25 @@ public class UIEffectPlay : MonoBehaviour
 
     [SerializeField] int m_Id;
 
-    EffectBehaviour effect;
+    int effectInstanceId = 0;
 
     public void Play()
     {
-        if (this.effect != null)
+        if (this.effectInstanceId != 0)
         {
-            EffectUtil.Instance.Stop(this.effect);
+            EffectUtil.Instance.Stop(this.effectInstanceId);
         }
 
-        this.effect = EffectUtil.Instance.Play(this.m_Id, this.transform);
+        this.effectInstanceId = EffectUtil.Instance.Play(this.m_Id, this.transform);
     }
 
     public void Stop()
     {
-        if (this.effect != null)
+        if (this.effectInstanceId != 0)
         {
-            EffectUtil.Instance.Stop(this.effect);
+            EffectUtil.Instance.Stop(this.effectInstanceId);
+            this.effectInstanceId = 0;
         }
-
-        this.effect = null;
     }
 
 }

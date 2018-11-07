@@ -9,7 +9,7 @@ namespace Actor
         [SerializeField] int m_SkillIndex = 0;
 
         FightActor fightActor;
-        EffectBehaviour effect;
+        int effectInstanceId = 0;
 
         protected override void OnEnter(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -29,8 +29,12 @@ namespace Actor
         protected override void OnExit(ActorBase owner, Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             this.fightActor = null;
-            EffectUtil.Instance.Stop(this.effect);
-            this.effect = null;
+            if (effectInstanceId != 0)
+            {
+                EffectUtil.Instance.Stop(effectInstanceId);
+                this.effectInstanceId = 0;
+            }
+
             base.OnExit(owner, animator, stateInfo, layerIndex);
         }
 

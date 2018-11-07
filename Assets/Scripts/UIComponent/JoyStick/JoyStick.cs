@@ -3,10 +3,7 @@
 //    [  Date ]:           Wednesday, January 24, 2018
 //--------------------------------------------------------
 using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System;
 
 public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
