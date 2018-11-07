@@ -115,7 +115,7 @@ public class FunctionButton : Button
     {
         if (m_Locked != null)
         {
-            m_Locked.gameObject.SetActive(m_State == State.Locked);
+            m_Locked.SetActive(m_State == State.Locked);
         }
 
         if (m_Group != null && m_State == State.Selected)

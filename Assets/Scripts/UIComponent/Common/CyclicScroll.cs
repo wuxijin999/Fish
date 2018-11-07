@@ -132,7 +132,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
                 var infiniteItem = this.infiniteItems[i];
                 if (infiniteItem != null)
                 {
-                    infiniteItem.gameObject.SetActive(false);
+                    infiniteItem.SetActive(false);
                 }
             }
         }
@@ -186,7 +186,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
         StopAllCoroutines();
         for (int i = 0; i < this.content.childCount; i++)
         {
-            this.content.GetChild(i).gameObject.SetActive(false);
+            this.content.GetChild(i).SetActive(false);
         }
     }
 
@@ -197,7 +197,7 @@ public class CyclicScroll : UIBase, IBeginDragHandler, IDragHandler, IEndDragHan
             var infiniteItem = this.infiniteItems[i];
             if (infiniteItem != null && i < this.datas.Count)
             {
-                infiniteItem.gameObject.SetActive(true);
+                infiniteItem.SetActive(true);
                 yield return WaitingForConst.millisecond100;
             }
         }

@@ -41,7 +41,7 @@ public class HttpAsyncHandle : MonoBehaviour
     {
         var behaviour = pool.Get().GetComponent<HttpAsyncHandle>();
 
-        behaviour.gameObject.SetActive(true);
+        behaviour.SetActive(true);
         behaviour.Reinitialize();
         behaviour.Begin(url, method, content, result);
     }

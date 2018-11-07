@@ -43,19 +43,12 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
         if (SkillCast.Instance.IsCountDown(this.m_Index))
         {
-            if (!m_CoolDownContainer.gameObject.activeInHierarchy)
-            {
-                m_CoolDownContainer.gameObject.SetActive(true);
-            }
-
+            m_CoolDownContainer.SetActive(true);
             m_CoolDown.SetText(SkillCast.Instance.GetSkillCountDown(this.m_Index));
         }
         else
         {
-            if (m_CoolDownContainer.gameObject.activeInHierarchy)
-            {
-                m_CoolDownContainer.gameObject.SetActive(false);
-            }
+            m_CoolDownContainer.SetActive(false);
         }
     }
 

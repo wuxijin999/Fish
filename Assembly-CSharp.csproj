@@ -182,7 +182,6 @@
     <Compile Include="Assets\Scripts\System\Player\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWait.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWaitWin.cs" />
-    <Compile Include="Assets\Scripts\System\Redpoint\Redpoint.cs" />
     <Compile Include="Assets\Scripts\System\Redpoint\RedpointBehaviour.cs" />
     <Compile Include="Assets\Scripts\System\Redpoint\RedpointCenter.cs" />
     <Compile Include="Assets\Scripts\System\SceneLoad\LaunchPresenter.cs" />
@@ -202,7 +201,7 @@
     <Compile Include="Assets\Scripts\UIComponent\Common\CyclicScroll.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButton.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButtonGroup.cs" />
-    <Compile Include="Assets\Scripts\UIComponent\Common\ScrollItem.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\ScrollBehaviour.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\SmoothSlider.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\UIFlippable.cs" />

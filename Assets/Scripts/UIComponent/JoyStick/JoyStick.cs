@@ -142,9 +142,9 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void Hide(bool hide)
     {
-        this.m_Fore.gameObject.SetActive(!hide);
-        this.m_BackGround.gameObject.SetActive(!hide);
-        this.m_Arrow.gameObject.SetActive(false);
+        this.m_Fore.SetActive(!hide);
+        this.m_BackGround.SetActive(!hide);
+        this.m_Arrow.SetActive(false);
     }
 
     private void ResetPosition()

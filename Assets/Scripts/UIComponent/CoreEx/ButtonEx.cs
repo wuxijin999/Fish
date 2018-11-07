@@ -129,14 +129,14 @@ public class ButtonEx : Button
         var surplusTime = this.ableTime - Time.realtimeSinceStartup;
         if (surplusTime >= 1f)
         {
-            this.m_TitleMesh.gameObject.SetActive(false);
-            this.m_CoolDownText.gameObject.SetActive(true);
+            this.m_TitleMesh.SetActive(false);
+            this.m_CoolDownText.SetActive(true);
             this.m_CoolDownText.SetText(Mathf.RoundToInt(surplusTime));
         }
         else
         {
-            this.m_TitleMesh.gameObject.SetActive(true);
-            this.m_CoolDownText.gameObject.SetActive(false);
+            this.m_TitleMesh.SetActive(true);
+            this.m_CoolDownText.SetActive(false);
         }
     }
 

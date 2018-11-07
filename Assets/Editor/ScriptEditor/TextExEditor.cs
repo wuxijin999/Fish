@@ -10,8 +10,16 @@ using UnityEditor;
 public class TextExEditor : TMP_UiEditorPanel
 {
 
+    SerializedProperty m_LanguageKey;
+
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+
+        this.m_LanguageKey = this.m_LanguageKey ?? (this.m_LanguageKey = this.serializedObject.FindProperty("m_LanguageKey"));
+        this.m_LanguageKey.intValue = EditorGUILayout.IntField("语言key", this.m_LanguageKey.intValue);
+
+        this.serializedObject.ApplyModifiedProperties();
+        Repaint();
     }
 }
