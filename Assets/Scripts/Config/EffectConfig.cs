@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, November 05, 2018
+//    [  Date ]:           Wednesday, November 07, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ public partial class EffectConfig
 {
 
     public readonly int id;
+	public readonly string package;
 	public readonly string assetName;
 	public readonly bool bindParent;
 
@@ -24,10 +25,12 @@ public partial class EffectConfig
 
             int.TryParse(tables[0],out id); 
 
-			assetName = tables[1];
+			package = tables[1];
+
+			assetName = tables[2];
 
 			var bindParentTemp = 0;
-			int.TryParse(tables[2],out bindParentTemp); 
+			int.TryParse(tables[3],out bindParentTemp); 
 			bindParent=bindParentTemp!=0;
         }
         catch (Exception ex)

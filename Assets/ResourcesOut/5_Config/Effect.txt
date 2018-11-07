@@ -1,6 +1,6 @@
-int	string	bool
-id	assetName	bindParent
-唯一标识	资源名	绑定父对象
-1	Effect1	1
-2	Effect2	1
-
+﻿int	string	string	bool
+id	package	assetName	bindParent
+唯一标识	文件夹	资源名	绑定父对象
+1	skill	Effect1	1
+2	skill	Effect2	1
+3	skill	Effect3	1

@@ -1,38 +1,81 @@
-﻿public class Redpoint
+﻿//--------------------------------------------------------
+//    [Author]:           第二世界
+//    [  Date ]:           Monday, August 14, 2017
+//--------------------------------------------------------
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+public class Redpoint : UIBase
 {
-    public readonly int id;
-    public readonly int parent;
-
-    public readonly IntProperty count = new IntProperty(0);
-    public readonly EnumProperty<RedPointState> state = new EnumProperty<RedPointState>(RedPointState.None);
-
-    public Redpoint(int id)
-    {
-        this.id = id;
+    [SerializeField] int m_RedpointId;
+    public int redpointId {
+        get { return m_RedpointId; }
+        set {
+            m_RedpointId = value;
+            state = RedpointCenter.Instance.GetRedpointState(m_RedpointId);
+            count = RedpointCenter.Instance.GetRedpointCount(m_RedpointId);
+            UpdateRedpoint(state.Fetch(), count.Fetch());
+        }
     }
 
-    public Redpoint(int parent, int id)
+    [SerializeField] RectTransform m_Simple;
+    [SerializeField] RectTransform m_Count;
+    [SerializeField] TextEx m_CountText;
+    [SerializeField] RectTransform m_Full;
+
+    IntProperty count;
+    EnumProperty<RedPointState> state;
+
+    protected virtual void OnEnable()
     {
-        this.parent = parent;
-        this.id = id;
+        state = RedpointCenter.Instance.GetRedpointState(m_RedpointId);
+        count = RedpointCenter.Instance.GetRedpointCount(m_RedpointId);
+        if (state != null && count != null)
+        {
+            UpdateRedpoint(state.Fetch(), count.Fetch());
+        }
     }
 
-    public void SetState(RedPointState state, int count = 0)
+    public override void OnLateUpdate()
     {
-        this.state.value = state;
-        this.count.value = count;
+        base.OnLateUpdate();
+        if (state != null && count != null && (state.dirty || count.dirty))
+        {
+            UpdateRedpoint(state.Fetch(), count.Fetch());
+        }
     }
 
-    public void SetCount(int count)
+    void UpdateRedpoint(RedPointState state, int count)
     {
-        this.count.value = count;
+        if (m_Simple != null)
+        {
+            m_Simple.gameObject.SetActive(state == RedPointState.Simple);
+        }
+
+        if (m_Count != null)
+        {
+            m_Count.gameObject.SetActive(state == RedPointState.Count);
+        }
+
+        if (m_CountText != null)
+        {
+            m_CountText.gameObject.SetActive(state == RedPointState.Count);
+            if (state == RedPointState.Count)
+            {
+                m_CountText.SetText(count > 9 ? "N" : count >= 1 ? count.ToString() : "");
+            }
+        }
+
+        if (m_Full != null)
+        {
+            m_Full.gameObject.SetActive(state == RedPointState.Full);
+        }
+
     }
+
 }
 
-public enum RedPointState
-{
-    None,
-    Simple,
-    Count,
-    Full,
-}
+
+
+

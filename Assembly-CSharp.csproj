@@ -182,7 +182,7 @@
     <Compile Include="Assets\Scripts\System\Player\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWait.cs" />
     <Compile Include="Assets\Scripts\System\PleaseWait\PleaseWaitWin.cs" />
-    <Compile Include="Assets\Scripts\System\Redpoint\RedpointBehaviour.cs" />
+    <Compile Include="Assets\Scripts\System\Redpoint\Redpoint.cs" />
     <Compile Include="Assets\Scripts\System\Redpoint\RedpointCenter.cs" />
     <Compile Include="Assets\Scripts\System\SceneLoad\LaunchPresenter.cs" />
     <Compile Include="Assets\Scripts\System\SceneLoad\LaunchWin.cs" />
