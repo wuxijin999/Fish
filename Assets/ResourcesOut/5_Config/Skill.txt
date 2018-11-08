@@ -1,10 +1,10 @@
-﻿int	int	int	int	bool	int	int
-id	name	attackType	castType	needTarget	distance	description
-技能id	技能名称	攻击类型	释放方式	是否需要目标	攻击距离	技能说明
-10001	1	1	1	1	100	1
-10002	2	2	2	0	600	2
-10003	3	3	3	1	100	3
-10004	4	4	1	0	600	4
-10005	5	5	2	1	100	5
-10006	6	6	3	0	600	6
-10007	7	7	3	1	100	7
+﻿int	int	int	int	int	bool	int	int
+id	name	icon	attackType	castType	needTarget	distance	description
+技能id	技能名称	图标	攻击类型	释放方式	是否需要目标	攻击距离	技能说明
+10001	1	1	1	1	1	100	1
+10002	2	2	2	2	0	600	2
+10003	3	3	3	3	1	100	3
+10004	4	4	4	1	0	600	4
+10005	5	5	5	2	1	100	5
+10006	6	6	6	3	0	600	6
+10007	7	7	7	3	1	100	7

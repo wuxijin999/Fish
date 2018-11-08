@@ -177,6 +177,9 @@
     <Compile Include="Assets\Scripts\System\Login\Login.cs" />
     <Compile Include="Assets\Scripts\System\Login\LoginModel.cs" />
     <Compile Include="Assets\Scripts\System\Login\LoginWin.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\AttackButton.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\AttackPresenter.cs" />
+    <Compile Include="Assets\Scripts\System\MainWin\JoyStickWidget.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\MainWin.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\PlayerBriefInfoWidget.cs" />
     <Compile Include="Assets\Scripts\System\MainWin\SkillButton.cs" />
@@ -206,6 +209,7 @@
     <Compile Include="Assets\Scripts\UIComponent\Common\CyclicScroll.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButton.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\FunctionButtonGroup.cs" />
+    <Compile Include="Assets\Scripts\UIComponent\Common\RayAccepter.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\ScrollBehaviour.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\SmoothSlider.cs" />
     <Compile Include="Assets\Scripts\UIComponent\Common\Tween\Tween.cs" />

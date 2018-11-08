@@ -13,6 +13,12 @@ public class SkillCast : Presenter<SkillCast>
 
     SkillModel skillModel = new SkillModel();
 
+    public readonly IntProperty skill1 = new IntProperty();
+    public readonly IntProperty skill2 = new IntProperty();
+    public readonly IntProperty skill3 = new IntProperty();
+    public readonly IntProperty skill4 = new IntProperty();
+    public readonly IntProperty skillSpecial = new IntProperty();
+
     public void CastSkill(int index)
     {
         var skill = this.skillModel.GetSkill(index);

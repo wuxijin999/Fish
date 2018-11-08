@@ -451,14 +451,13 @@ inline float3 RotationZ(float3 _vertex, float _angle)
 
 inline float2 RotationUV(float2 _uv, float _angle)
 {
-    _uv -= float2(0.5, 0.5);
+    float2 uv = _uv - float2(0.5, 0.5);
     float radz = radians(_angle);
     float sinz = sin(radz);
     float cosz = cos(radz);
-    AW
-    _uv = float2(_uv.x * cosz - _uv.y * sinz, _uv.x * sinz + _uv.y * cosz) + float2(0.5, 0.5);
+    uv = float2(uv.x * cosz - uv.y * sinz, uv.x * sinz + uv.y * cosz) + float2(0.5, 0.5);
     
-    return _uv;
+    return uv;
 }
 
 inline float2 TranslateUV(float2 _uv, float2 _offset)

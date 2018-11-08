@@ -16,6 +16,7 @@ public abstract class Widget : UIBase
 
     }
 
+    protected virtual void OnBeforeActived() { }
     protected virtual void OnActived() { }
     protected virtual void OnDeactived() { }
 
@@ -30,6 +31,7 @@ public abstract class Widget : UIBase
                 this.inited = true;
             }
 
+            OnBeforeActived();
             this.gameObject.SetActive(true);
             OnActived();
         }

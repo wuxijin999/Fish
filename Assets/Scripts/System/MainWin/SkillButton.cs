@@ -12,10 +12,17 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
     [SerializeField] int m_Index = 0;
 
+    [SerializeField] ImageEx m_Icon;
     [SerializeField] RectTransform m_CoolDownContainer;
     [SerializeField] TextEx m_CoolDown;
 
     PointerState m_PointerState = PointerState.Up;
+
+    public void Display(int skillId)
+    {
+        var config = SkillConfig.Get(skillId);
+        m_Icon.SetSprite(config.icon);
+    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -37,10 +44,20 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
         this.m_PointerState = PointerState.Exit;
     }
 
+    private void OnEnable()
+    {
+        DisplayCountDown();
+    }
+
     public override void OnLateUpdate()
     {
         base.OnLateUpdate();
 
+        DisplayCountDown();
+    }
+
+    private void DisplayCountDown()
+    {
         if (SkillCast.Instance.IsCountDown(this.m_Index))
         {
             m_CoolDownContainer.SetActive(true);

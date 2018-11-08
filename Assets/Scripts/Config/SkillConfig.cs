@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, November 05, 2018
+//    [  Date ]:           Thursday, November 08, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ public partial class SkillConfig
 
     public readonly int id;
 	public readonly int name;
+	public readonly int icon;
 	public readonly int attackType;
 	public readonly int castType;
 	public readonly bool needTarget;
@@ -30,17 +31,19 @@ public partial class SkillConfig
 
 			int.TryParse(tables[1],out name); 
 
-			int.TryParse(tables[2],out attackType); 
+			int.TryParse(tables[2],out icon); 
 
-			int.TryParse(tables[3],out castType); 
+			int.TryParse(tables[3],out attackType); 
+
+			int.TryParse(tables[4],out castType); 
 
 			var needTargetTemp = 0;
-			int.TryParse(tables[4],out needTargetTemp); 
+			int.TryParse(tables[5],out needTargetTemp); 
 			needTarget=needTargetTemp!=0;
 
-			int.TryParse(tables[5],out distance); 
+			int.TryParse(tables[6],out distance); 
 
-			int.TryParse(tables[6],out description); 
+			int.TryParse(tables[7],out description); 
         }
         catch (Exception ex)
         {

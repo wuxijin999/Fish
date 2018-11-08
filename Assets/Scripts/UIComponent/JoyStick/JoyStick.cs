@@ -50,7 +50,10 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         this.m_Fore.SetActive(true);
         this.m_BackGround.SetActive(true);
-        this.m_Arrow.SetActive(true);
+        if (this.m_Arrow)
+        {
+            this.m_Arrow.SetActive(true);
+        }
 
         UpdateArrowDirection();
 
@@ -144,7 +147,10 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         this.m_Fore.SetActive(!hide);
         this.m_BackGround.SetActive(!hide);
-        this.m_Arrow.SetActive(false);
+        if (this.m_Arrow)
+        {
+            this.m_Arrow.SetActive(false);
+        }
     }
 
     private void ResetPosition()
