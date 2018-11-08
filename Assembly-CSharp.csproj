@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Assets\BuiltInAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\EffectAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\MobAssets.cs" />
+    <Compile Include="Assets\Scripts\Assets\SpriteSettingConfig.cs" />
     <Compile Include="Assets\Scripts\Assets\UIAssets.cs" />
     <Compile Include="Assets\Scripts\Avatar\AvatarPool.cs" />
     <Compile Include="Assets\Scripts\Avatar\PlayerAvatar.cs" />

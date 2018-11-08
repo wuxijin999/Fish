@@ -102,9 +102,9 @@ TextureImporter:
     indices: 
     edges: []
     weights: []
-  spritePackingTag: Controls
+  spritePackingTag: controls
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
-  assetBundleName: 
+  assetBundleName: ui/sprite/controls
   assetBundleVariant: 

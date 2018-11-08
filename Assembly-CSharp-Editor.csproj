@@ -61,7 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Editor\AssetsImport\IconClearUp.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\AudioClipPostProcessor.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\IconClearUp.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\SpritePostProcessor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ButtonExEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\FunctionButtonEditor.cs" />
