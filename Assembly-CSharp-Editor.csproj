@@ -61,8 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Editor\AssetsProcessor\AnimationClipPostProcessor.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\AnimationCompression.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\AudioClipPostProcessor.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\IconClearUp.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\PrefabPostProcessor.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\SpritePostProcessor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ButtonExEditor.cs" />
     <Compile Include="Assets\Editor\ScriptEditor\ColorPatternEditor.cs" />

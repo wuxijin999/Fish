@@ -17,6 +17,7 @@ public class AssetPath
     public static readonly string UI_PREFAB_PATH = UI_ROOT_PATH + "Prefab/";
     public static readonly string UI_WINDOW_PATH = UI_ROOT_PATH + "Window/";
     public static readonly string UI_SPRITE_ROOT_PATH = UI_ROOT_PATH + "Sprite/";
+    public static readonly string UI_FONT_ROOT_PATH = UI_ROOT_PATH + "Font/";
 
     public static readonly string MOB_ROOT_PATH = AssetRootRelativePath + "2_Mob/";
     public static readonly string SHADER_ROOT_PATH = AssetRootRelativePath + "3_Shader/";
