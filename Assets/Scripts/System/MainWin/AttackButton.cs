@@ -11,6 +11,9 @@ using UnityEngine.UI;
 public class AttackButton : UIBase, IPointerDownHandler, IPointerUpHandler
 {
     const float PRESS_TRIGGERTIME = 0.2f;
+
+    [SerializeField] ImageEx m_Icon;
+
     readonly UIEvent attackEvent = new UIEvent();
 
     bool m_IsDown = false;

@@ -57,16 +57,16 @@ public class WindowSetting : MonoBehaviour
                 var prefab = BuiltInAssets.LoadPrefab("UIRoot");
                 var instance = GameObject.Instantiate(prefab);
                 instance.name = "UIRoot";
-
                 uiroot = instance.GetComponent<UIRoot>();
-                var windowRoot = uiroot.transform.GetChildTransformDeeply("WindowRoot");
-                if (windowRoot != null)
-                {
-                    (this.transform as RectTransform).MatchWhith(windowRoot as RectTransform);
-                }
 
                 var uicamera = uiroot.GetComponentInChildren<Camera>(true);
                 uicamera.clearFlags = CameraClearFlags.SolidColor;
+            }
+
+            var windowRoot = uiroot.transform.GetChildTransformDeeply("WindowRoot");
+            if (windowRoot != null)
+            {
+                (this.transform as RectTransform).MatchWhith(windowRoot as RectTransform);
             }
         }
     }

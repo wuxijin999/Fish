@@ -53,6 +53,19 @@ public class SkillCast : Presenter<SkillCast>
         return countDown;
     }
 
+    public float GetSkillCountDownAmount(int index)
+    {
+        var skill = this.skillModel.GetSkill(index);
+
+        var canCastTime = 0f;
+        this.skillModel.TryGetNextCastTime(skill, out canCastTime);
+        var seconds = canCastTime - Time.realtimeSinceStartup;
+        var countDownTotal = 0f;
+        this.skillModel.TryGetTotalCountDown(skill, out countDownTotal);
+
+        return Mathf.Clamp01(seconds / countDownTotal);
+    }
+
     public SkillBaseInfo GetSkillBaseInfo(int index)
     {
         return new SkillBaseInfo()

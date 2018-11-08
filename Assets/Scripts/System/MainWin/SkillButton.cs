@@ -14,7 +14,8 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
 
     [SerializeField] ImageEx m_Icon;
     [SerializeField] RectTransform m_CoolDownContainer;
-    [SerializeField] TextEx m_CoolDown;
+    [SerializeField] ImageEx m_CoolDownCircle;
+    [SerializeField] TextEx m_CoolDownNumber;
 
     PointerState m_PointerState = PointerState.Up;
 
@@ -61,7 +62,10 @@ public class SkillButton : UIBase, IPointerDownHandler, IPointerUpHandler, IPoin
         if (SkillCast.Instance.IsCountDown(this.m_Index))
         {
             m_CoolDownContainer.SetActive(true);
-            m_CoolDown.SetText(SkillCast.Instance.GetSkillCountDown(this.m_Index));
+            m_CoolDownNumber.SetText(SkillCast.Instance.GetSkillCountDown(this.m_Index));
+
+            var amount = SkillCast.Instance.GetSkillCountDownAmount(this.m_Index);
+            m_CoolDownCircle.fillAmount = amount;
         }
         else
         {
