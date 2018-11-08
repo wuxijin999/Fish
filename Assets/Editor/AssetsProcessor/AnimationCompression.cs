@@ -186,7 +186,6 @@ namespace EditorTool
         static List<string> _Errors = new List<string>();
         static int _Index = 0;
 
-        [MenuItem("Assets/Animation/裁剪浮点数去除Scale")]
         public static void Optimize()
         {
             _AnimOptList = FindAnims(Selection.GetFiltered(typeof(object), SelectionMode.Assets));

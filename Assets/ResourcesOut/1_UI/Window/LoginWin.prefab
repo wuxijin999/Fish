@@ -524,6 +524,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  m_LanguageKey: 0
 --- !u!114 &114218180744828368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -905,6 +906,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+  m_LanguageKey: 0
 --- !u!114 &114728930709436458
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -64,6 +64,7 @@
     <Compile Include="Assets\Editor\AssetsProcessor\AnimationClipPostProcessor.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\AnimationCompression.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\AudioClipPostProcessor.cs" />
+    <Compile Include="Assets\Editor\AssetsProcessor\EffectRemover.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\IconClearUp.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\PrefabPostProcessor.cs" />
     <Compile Include="Assets\Editor\AssetsProcessor\SpritePostProcessor.cs" />
