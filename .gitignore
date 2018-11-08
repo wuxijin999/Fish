@@ -41,3 +41,5 @@ RunTimeLog/*
 *.cache
 *.csproj*
 obj/*
+*.csproj
+*.cache

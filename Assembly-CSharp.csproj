@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\astest.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetBundleInfo.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetBundleUtility.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetInfo.cs" />
@@ -70,7 +71,10 @@
     <Compile Include="Assets\Scripts\Assets\AssetVersionUtility.cs" />
     <Compile Include="Assets\Scripts\Assets\BuiltInAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\EffectAssets.cs" />
+    <Compile Include="Assets\Scripts\Assets\MobAssets.cs" />
     <Compile Include="Assets\Scripts\Assets\UIAssets.cs" />
+    <Compile Include="Assets\Scripts\Avatar\AvatarPool.cs" />
+    <Compile Include="Assets\Scripts\Avatar\PlayerAvatar.cs" />
     <Compile Include="Assets\Scripts\Config\DamageNumConfig.cs" />
     <Compile Include="Assets\Scripts\Config\DungeonConfig.cs" />
     <Compile Include="Assets\Scripts\Config\EffectConfig.cs" />
@@ -79,6 +83,7 @@
     <Compile Include="Assets\Scripts\Config\ItemConfig.cs" />
     <Compile Include="Assets\Scripts\Config\LanguageConfig.cs" />
     <Compile Include="Assets\Scripts\Config\MapConfig.cs" />
+    <Compile Include="Assets\Scripts\Config\MobAssetConfig.cs" />
     <Compile Include="Assets\Scripts\Config\NpcConfig.cs" />
     <Compile Include="Assets\Scripts\Config\PriorLanguageConfig.cs" />
     <Compile Include="Assets\Scripts\Config\SkillConfig.cs" />
@@ -293,6 +298,7 @@
     <None Include="Assets\ResourcesOut\5_Config\Equip.txt" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurvesSimple.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionSelective.shader" />
+    <None Include="Assets\ResourcesOut\5_Config\MobAsset.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Skill.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Test.txt" />
     <None Include="Assets\ResourcesOut\5_Config\Map.txt" />

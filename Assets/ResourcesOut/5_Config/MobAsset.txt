@@ -1,0 +1,10 @@
+﻿int	int	int	string	string
+id	type	place	package	assetName
+id	资源类型	部位	资源包	资源名
+1	1	1	mob	aa
+2	2	2	mob	a
+3	3	3	mob	b
+4	4	4	mob	bbb
+5	5		mob	ccc
+6	1	1	mob	ccc
+7	2	2	mob	ddd

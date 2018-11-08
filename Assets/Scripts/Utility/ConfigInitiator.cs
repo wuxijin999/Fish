@@ -25,6 +25,7 @@ public class ConfigInitiator
 		DungeonConfig.Init();
 		DamageNumConfig.Init();
 		SkillConfig.Init();
+		MobAssetConfig.Init();
 		//初始化结束
     }
 

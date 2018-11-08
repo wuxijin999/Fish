@@ -12,3 +12,4 @@ Npc表	Npc
 副本表	Dungeon
 伤害数字表	DamageNum
 技能表	Skill
+Mob资源表	MobAsset

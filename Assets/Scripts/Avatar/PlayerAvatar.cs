@@ -13,9 +13,12 @@ public class PlayerAvatar : MonoBehaviour
 
     public void Assemble(Parts parts)
     {
-
     }
 
+    public void Disassemble()
+    {
+
+    }
 
     public struct Parts
     {
