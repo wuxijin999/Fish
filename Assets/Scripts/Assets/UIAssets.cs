@@ -20,9 +20,7 @@ public class UIAssets
         }
         else
         {
-            var bundleName = "ui/window";
-            var assetInfo = new AssetInfo(bundleName, name);
-            window = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as GameObject;
+            window = AssetBundleUtility.Instance.SyncLoadAsset("ui/window", name) as GameObject;
         }
 
         if (window == null)
@@ -50,9 +48,7 @@ public class UIAssets
         }
         else
         {
-            var bundleName = "ui/window";
-            var assetInfo = new AssetInfo(bundleName, name);
-            AssetBundleUtility.Instance.AsyncLoadAsset(assetInfo, callBack);
+            AssetBundleUtility.Instance.AsyncLoadAsset("ui/window", name, callBack);
         }
     }
 
@@ -68,9 +64,7 @@ public class UIAssets
         }
         else
         {
-            var bundleName = "ui/prefab";
-            var assetInfo = new AssetInfo(bundleName, name);
-            prefab = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as GameObject;
+            prefab = AssetBundleUtility.Instance.SyncLoadAsset("ui/prefab", name) as GameObject;
         }
 
         if (prefab == null)
@@ -98,9 +92,7 @@ public class UIAssets
         }
         else
         {
-            var bundleName = "ui/window";
-            var assetInfo = new AssetInfo(bundleName, name);
-            AssetBundleUtility.Instance.AsyncLoadAsset(assetInfo, callBack);
+            AssetBundleUtility.Instance.AsyncLoadAsset("ui/window", name, callBack);
         }
     }
 
@@ -133,8 +125,7 @@ public class UIAssets
         else
         {
             var bundleName = StringUtil.Contact("ui/sprite/", folder);
-            var assetInfo = new AssetInfo(bundleName, name);
-            AssetBundleUtility.Instance.SyncLoadAsset(assetInfo);
+            sprite = AssetBundleUtility.Instance.SyncLoadAsset(bundleName, name) as Sprite;
         }
 
         return sprite;

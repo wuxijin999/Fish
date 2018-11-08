@@ -58,17 +58,7 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         return this.m_AssetBundleInfoList.Find((x) => { return x.name == assetBundleName; });
     }
 
-    public void AsyncLoadAsset(AssetInfo assetInfo, Action<bool, UnityEngine.Object> callBack = null)
-    {
-        StartCoroutine(Co_LoadAsset(assetInfo.assetBundleName, assetInfo.name, callBack));
-    }
-
     public void AsyncLoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
-    {
-        StartCoroutine(Co_LoadAsset(assetBundleName, assetName, callBack));
-    }
-
-    private IEnumerator Co_LoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
     {
         if (ExistAsset(assetBundleName, assetName))
         {
@@ -76,9 +66,15 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             {
                 callBack(true, this.m_AssetDict[assetBundleName][assetName]);
             }
-            yield break;
         }
+        else
+        {
+            StartCoroutine(Co_LoadAsset(assetBundleName, assetName, callBack));
+        }
+    }
 
+    private IEnumerator Co_LoadAsset(string assetBundleName, string assetName, Action<bool, UnityEngine.Object> callBack = null)
+    {
         SyncLoadAssetBundle(assetBundleName);
         var request = this.m_AssetBundleDict[assetBundleName].LoadAssetAsync(assetName);
         while (!request.isDone)
@@ -116,11 +112,6 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
         {
             return null;
         }
-    }
-
-    public UnityEngine.Object SyncLoadAsset(AssetInfo assetInfo, Type type = null)
-    {
-        return SyncLoadAsset(assetInfo.assetBundleName, assetInfo.name, type);
     }
 
     public UnityEngine.Object SyncLoadAsset(string assetBundleName, string assetName, Type type = null)
@@ -268,11 +259,6 @@ public class AssetBundleUtility : SingletonMonobehaviour<AssetBundleUtility>
             Resources.UnloadAsset(assetObject);
             DebugEx.LogFormat("UnloadAsset(): 成功卸载asset资源 => {0}. 类型为{1}, 执行Resources.UnloadAsset(). ", assetName, assetObject.GetType().Name);
         }
-    }
-
-    public void UnloadAsset(AssetInfo assetInfo)
-    {
-        UnloadAsset(assetInfo.assetBundleName, assetInfo.name);
     }
 
     public void UnloadAll()

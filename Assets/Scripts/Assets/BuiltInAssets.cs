@@ -18,9 +18,7 @@ public class BuiltInAssets
         }
         else
         {
-            var bundleName = "builtin/prefabs";
-            var assetInfo = new AssetInfo(bundleName, name);
-            prefab = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as GameObject;
+            prefab = AssetBundleUtility.Instance.SyncLoadAsset("builtin/prefabs", name) as GameObject;
         }
 
         if (prefab == null)
@@ -52,9 +50,7 @@ public class BuiltInAssets
         }
         else
         {
-            var bundleName = "builtin/prefabs";
-            var assetInfo = new AssetInfo(bundleName, name);
-            AssetBundleUtility.Instance.AsyncLoadAsset(assetInfo, callBack);
+            AssetBundleUtility.Instance.AsyncLoadAsset("builtin/prefabs", name, callBack);
         }
     }
 
@@ -70,9 +66,7 @@ public class BuiltInAssets
         }
         else
         {
-            var bundleName = "builtin/materials";
-            var assetInfo = new AssetInfo(bundleName, name);
-            material = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as Material;
+            material = AssetBundleUtility.Instance.SyncLoadAsset("builtin/materials", name) as Material;
         }
 
         if (material == null)
@@ -95,9 +89,7 @@ public class BuiltInAssets
         }
         else
         {
-            var bundleName = "builtin/configs";
-            var assetInfo = new AssetInfo(bundleName, name);
-            config = AssetBundleUtility.Instance.SyncLoadAsset(assetInfo) as T;
+            config = AssetBundleUtility.Instance.SyncLoadAsset("builtin/configs", name) as T;
         }
 
         if (config == null)
