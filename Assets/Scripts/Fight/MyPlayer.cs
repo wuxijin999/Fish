@@ -20,6 +20,17 @@ namespace Actor
             }
         }
 
+
+        public override void OnLateUpdate1()
+        {
+            base.OnLateUpdate1();
+            if (JoyStick.direction != Vector2.zero)
+            {
+                var toPosition = position + new Vector3(JoyStick.direction.x, 0f, JoyStick.direction.y) * speed * Time.deltaTime;
+                PushCommand(CommandType.Move, toPosition);
+            }
+        }
+
     }
 }
 

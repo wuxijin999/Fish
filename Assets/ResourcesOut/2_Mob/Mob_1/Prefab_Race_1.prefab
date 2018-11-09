@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 484492}
   - component: {fileID: 9584520}
   m_Layer: 18
-  m_Name: Prefab_Race_106
+  m_Name: Prefab_Race_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

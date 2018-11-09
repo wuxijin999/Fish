@@ -61,6 +61,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Art\Model\Scripts\Animation_view.cs" />
+    <Compile Include="Assets\Art\Model\Scripts\Blue_CameraControll.cs" />
     <Compile Include="Assets\astest.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetBundleInfo.cs" />
     <Compile Include="Assets\Scripts\Assets\AssetBundleUtility.cs" />
@@ -286,6 +288,7 @@
     <Compile Include="Assets\testBiz.cs" />
     <Compile Include="Assets\TimeTest.cs" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_01_OutLine.shader" />
+    <None Include="Assets\Art\Model\readme.txt" />
     <None Include="Assets\ScenesResources\Plugins\T4M\Shaders\ShaderModel2\Diffuse\T4M 4 Textures.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\Fish_02_SeaWave.shader" />
     <None Include="Assets\ResourcesOut\3_Shader\ColorCorrectionCurves.shader" />

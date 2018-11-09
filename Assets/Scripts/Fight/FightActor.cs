@@ -8,7 +8,7 @@ namespace Actor
     public class FightActor : ActorBase
     {
 
-        public readonly PropertyController propertyController = new PropertyController();
+
 
         public FightActor(Transform transform) : base(transform)
         {

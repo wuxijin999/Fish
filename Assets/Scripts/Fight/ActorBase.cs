@@ -28,9 +28,10 @@ namespace Actor
         }
 
         public ActorType actorType { get; set; }
-        public float speed { get; set; }
-        public bool alive { get; set; }
+        public float speed { get { return propertyController.GetProperty(FightProperty.MoveSpeed) * 0.001f; } }
+        public bool alive { get { return propertyController.GetProperty(FightProperty.Hp) > 0; } }
 
+        public readonly PropertyController propertyController = new PropertyController();
         public readonly LogicController logicController = new LogicController();
         public ActorBrain actorBrain { get; private set; }
         public PathFinder pathFinder { get; private set; }
@@ -74,12 +75,13 @@ namespace Actor
 
         internal virtual void MoveTo(Vector3 position)
         {
-
+            logicController.DoAction(LogicStateType.Move);
+            this.pathFinder.MoveTo(position);
         }
 
         internal virtual void Stop()
         {
-
+            this.pathFinder.Stop();
         }
 
         public virtual void OnFixedUpdate()

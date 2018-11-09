@@ -85,10 +85,7 @@ namespace Actor
                 case CommandType.Stop:
                     this.actorBase.Stop();
                     break;
-                case CommandType.Run:
-                    this.actorBase.MoveTo((Vector3)command.value);
-                    break;
-                case CommandType.Walk:
+                case CommandType.Move:
                     this.actorBase.MoveTo((Vector3)command.value);
                     break;
                 case CommandType.Attack:
@@ -135,8 +132,7 @@ namespace Actor
 
     public enum CommandType//命令优先级为命令值除以10
     {
-        Walk = 1,
-        Run = 2,
+        Move = 1,
 
         Attack = 10,
         Skill = 20,

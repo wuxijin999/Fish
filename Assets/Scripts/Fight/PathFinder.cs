@@ -8,7 +8,8 @@ namespace Actor
     public class PathFinder
     {
         NavMeshPath m_NavMeshPath = new NavMeshPath();
-        public Vector3[] corners { get { return this.m_NavMeshPath.corners; } }
+        public Vector3[] corners { get { return this.state == State.Idle ? this.m_NavMeshPath.corners : null; } }
+
         int cornerIndex = 0;
         State state = State.Idle;
 
@@ -50,6 +51,12 @@ namespace Actor
             {
                 this.state = State.Idle;
             }
+        }
+
+        public void Stop()
+        {
+            this.state = State.Idle;
+            cornerIndex = 0;
         }
 
         public void Update()
