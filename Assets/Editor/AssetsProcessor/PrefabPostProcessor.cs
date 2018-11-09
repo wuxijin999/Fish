@@ -6,29 +6,41 @@ using UnityEditor;
 public class PrefabPostProcessor : AssetPostprocessor
 {
 
-    void OnPostprocessModel(GameObject prefab)
+    static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
     {
-        RemoveMissingScript(prefab);
+        foreach (var assetPath in importedAssets)
+        {
+            if (assetPath.EndsWith(".prefab"))
+            {
+                var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(assetPath);
+                if (prefab == null)
+                {
+                    continue;
+                }
 
-        if (this.assetPath.Contains(AssetPath.UI_WINDOW_PATH))
-        {
-            this.assetImporter.assetBundleName = "ui/window";
-        }
-        else if (this.assetPath.Contains(AssetPath.UI_PREFAB_PATH))
-        {
-            this.assetImporter.assetBundleName = "ui/prefab";
-        }
-        else if (this.assetPath.Contains(AssetPath.EFFECT_ROOT_PATH))
-        {
-            var paths = this.assetPath.Split('/');
-            var directroy = paths[paths.Length - 2];
-            this.assetImporter.assetBundleName = StringUtil.Contact("effect/", directroy);
-        }
-        else if (this.assetPath.Contains(AssetPath.MOB_ROOT_PATH))
-        {
-            var paths = this.assetPath.Split('/');
-            var directroy = paths[paths.Length - 2];
-            this.assetImporter.assetBundleName = StringUtil.Contact("mob/", directroy);
+                RemoveMissingScript(prefab);
+                var assetImporter = AssetImporter.GetAtPath(assetPath);
+                if (assetPath.Contains(AssetPath.UI_WINDOW_PATH))
+                {
+                    assetImporter.assetBundleName = "ui/window";
+                }
+                else if (assetPath.Contains(AssetPath.UI_PREFAB_PATH))
+                {
+                    assetImporter.assetBundleName = "ui/prefab";
+                }
+                else if (assetPath.Contains(AssetPath.EFFECT_ROOT_PATH))
+                {
+                    var paths = assetPath.Split('/');
+                    var directroy = paths[paths.Length - 2];
+                    assetImporter.assetBundleName = StringUtil.Contact("effect/", directroy);
+                }
+                else if (assetPath.Contains(AssetPath.MOB_ROOT_PATH))
+                {
+                    var paths = assetPath.Split('/');
+                    var directroy = paths[paths.Length - 2];
+                    assetImporter.assetBundleName = StringUtil.Contact("mob/", directroy);
+                }
+            }
         }
     }
 

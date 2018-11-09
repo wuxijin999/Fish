@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class PlayerInfo : Presenter<PlayerInfo>
 {
-    PlayerModel playerModel = new PlayerModel();
+    PlayerModel model = new PlayerModel();
     public BizEvent<PropertyType> propertyEvent = new BizEvent<PropertyType>();
 
     public int GetIntProperty(PropertyType type)
@@ -17,31 +17,31 @@ public class PlayerInfo : Presenter<PlayerInfo>
         switch (type)
         {
             case PropertyType.PlayerId:
-                return this.playerModel.id;
+                return this.model.id;
             case PropertyType.Level:
-                return this.playerModel.level;
+                return this.model.level;
             case PropertyType.Exp:
-                return this.playerModel.exp;
+                return this.model.exp;
             case PropertyType.Job:
-                return this.playerModel.job;
+                return this.model.job;
             case PropertyType.MinAttack:
-                return this.playerModel.minAttack;
+                return this.model.minAttack;
             case PropertyType.MaxAttack:
-                return this.playerModel.maxAttack;
+                return this.model.maxAttack;
             case PropertyType.Hp:
-                return this.playerModel.hp;
+                return this.model.hp;
             case PropertyType.Defense:
-                return this.playerModel.defense;
+                return this.model.defense;
             case PropertyType.Hit:
-                return this.playerModel.hit;
+                return this.model.hit;
             case PropertyType.MoveSpeed:
-                return this.playerModel.moveSpeed;
+                return this.model.moveSpeed;
             case PropertyType.Crit:
-                return this.playerModel.crit;
+                return this.model.crit;
             case PropertyType.Haste:
-                return this.playerModel.haste;
+                return this.model.haste;
             case PropertyType.Proficiency:
-                return this.playerModel.proficiency;
+                return this.model.proficiency;
             default:
                 return 0;
         }
@@ -52,7 +52,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
         switch (type)
         {
             case PropertyType.PlayerName:
-                return this.playerModel.playerName;
+                return this.model.playerName;
             default:
                 return string.Empty;
         }
@@ -60,13 +60,13 @@ public class PlayerInfo : Presenter<PlayerInfo>
 
     public void SetProperty(PropertyType type, int value)
     {
-        this.playerModel.UpdateProperty(type, value);
+        this.model.UpdateProperty(type, value);
         this.propertyEvent.Invoke(type);
     }
 
     public void SetProperty(PropertyType type, string value)
     {
-        this.playerModel.UpdateProperty(type, value);
+        this.model.UpdateProperty(type, value);
         this.propertyEvent.Invoke(type);
     }
 
@@ -74,15 +74,32 @@ public class PlayerInfo : Presenter<PlayerInfo>
     {
         return new PlayerBriefInfo()
         {
-            name = this.playerModel.playerName,
-            level = this.playerModel.level,
+            name = this.model.playerName,
+            level = this.model.level,
             icon = 0,
+        };
+    }
+
+    public PlayerAvatar GetPlayerAvatar()
+    {
+        return new PlayerAvatar()
+        {
+            cuirass = model.cuirass,
+            weapon = model.weapon,
+            offhand = model.offhand,
         };
     }
 
     public Int2 GetPlayerHp()
     {
-        return new Int2(this.playerModel.hp, this.playerModel.maxHp);
+        return new Int2(this.model.hp, this.model.maxHp);
+    }
+
+    public struct PlayerAvatar
+    {
+        public int cuirass;
+        public int weapon;
+        public int offhand;
     }
 
     public struct PlayerBriefInfo
@@ -91,6 +108,7 @@ public class PlayerInfo : Presenter<PlayerInfo>
         public int icon;
         public int level;
     }
+
 }
 
 

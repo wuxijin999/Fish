@@ -60,6 +60,9 @@ public class Login : Presenter<Login>, IPresenterWindow
         passwordBuf = password;
         model.Reset();
         accountLogining.value = true;
+
+
+        OnAccountLoginResult(true, "");
     }
 
     public void ReAccountLogin()
@@ -83,6 +86,8 @@ public class Login : Presenter<Login>, IPresenterWindow
         {
             localSaveAccount = accountBuf;
             localSavePassword = passwordBuf;
+
+            SceneLoad.Instance.Load<DungeonScene>(10001);
         }
     }
 

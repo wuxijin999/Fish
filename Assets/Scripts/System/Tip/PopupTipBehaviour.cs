@@ -12,7 +12,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(RectTransform))]
 public class PopupTipBehaviour : UIBase
 {
-    [SerializeField] TextMeshProUGUI m_Content;
+    [SerializeField] TextEx m_Content;
     [SerializeField] Tween m_Tween;
     [SerializeField] CanvasGroup m_CanvasGroup;
 

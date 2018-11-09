@@ -37,6 +37,7 @@ namespace Actor
         public Transform transform { get; private set; }
         public Vector3 position {
             get { return transform.position; }
+            set { transform.position = value; }
         }
 
         public ActorBase(Transform transform)

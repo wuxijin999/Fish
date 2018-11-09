@@ -1,6 +1,6 @@
 ﻿//--------------------------------------------------------
 //    [Author]:           Fish
-//    [  Date ]:           Monday, November 05, 2018
+//    [  Date ]:           Friday, November 09, 2018
 //--------------------------------------------------------
 
 using System.Collections.Generic;
@@ -19,6 +19,8 @@ public partial class MapConfig
 	public readonly int levelMax;
 	public readonly int music;
 	public readonly int camp;
+	public readonly string sceneName;
+	public readonly Vector3 bornPoint;
 
     public MapConfig(string content)
     {
@@ -39,6 +41,10 @@ public partial class MapConfig
 			int.TryParse(tables[5],out music); 
 
 			int.TryParse(tables[6],out camp); 
+
+			sceneName = tables[7];
+
+			bornPoint=tables[8].Vector3Parse();
         }
         catch (Exception ex)
         {

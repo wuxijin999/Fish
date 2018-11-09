@@ -1,7 +1,7 @@
 ﻿int	int	int	string	string
 id	type	place	package	assetName
 id	资源类型	部位	资源包	资源名
-1	1	1	mob	aa
+1	1	1	Mob_1	Prefab_Race_1
 2	2	2	mob	a
 3	3	3	mob	b
 4	4	4	mob	bbb

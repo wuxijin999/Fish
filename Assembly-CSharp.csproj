@@ -130,6 +130,7 @@
     <Compile Include="Assets\Scripts\NetWork\NetSecretKey.cs" />
     <Compile Include="Assets\Scripts\NetWork\NetState.cs" />
     <Compile Include="Assets\Scripts\Stage\CreateRoleScene.cs" />
+    <Compile Include="Assets\Scripts\Stage\DungeonScene.cs" />
     <Compile Include="Assets\Scripts\Stage\Launch.cs" />
     <Compile Include="Assets\Scripts\Stage\LoginScene.cs" />
     <Compile Include="Assets\Scripts\Stage\Scene.cs" />

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    public Vector2 direction;
+    public static Vector2 direction;
 
     [SerializeField] RectTransform m_Fore;
     [SerializeField] RectTransform m_BackGround;

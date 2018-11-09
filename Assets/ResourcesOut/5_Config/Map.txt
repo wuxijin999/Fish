@@ -1,5 +1,5 @@
-﻿int	int	int	int	int	int	int
-id	backGround	name	levelMin	levelMax	music	camp
-地图id	地图背景	地图名称	最低等级	最高等级	音乐	地图阵营
-1	1	1	1	10	1	1
-2	2	2	10	20	2	2
+﻿int	int	int	int	int	int	int	string	Vector3
+id	backGround	name	levelMin	levelMax	music	camp	sceneName	bornPoint
+地图id	地图背景	地图名称	最低等级	最高等级	音乐	地图阵营	地图资源名	出生点
+10001	1	1	1	10	1	1	Map_001	51.5,0,2
+10002	2	2	10	20	2	2	Map_002	51.5,0,2

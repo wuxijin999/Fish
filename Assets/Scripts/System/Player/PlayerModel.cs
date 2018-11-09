@@ -7,7 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerModel :Model
+public class PlayerModel : Model
 {
     public int id { get; private set; }
     public string playerName { get; private set; }
@@ -25,6 +25,10 @@ public class PlayerModel :Model
     public int crit { get; private set; }
     public int haste { get; private set; }
     public int proficiency { get; private set; }
+
+    public int cuirass { get; private set; }
+    public int weapon { get; private set; }
+    public int offhand { get; private set; }
 
     public override void Reset()
     {
@@ -73,6 +77,15 @@ public class PlayerModel :Model
             case PropertyType.Proficiency:
                 this.proficiency = value;
                 break;
+            case PropertyType.Cuirass:
+                this.cuirass = value;
+                break;
+            case PropertyType.Offhand:
+                this.offhand = value;
+                break;
+            case PropertyType.Weapon:
+                this.weapon = value;
+                break;
             default:
                 break;
         }
@@ -112,6 +125,9 @@ public enum PropertyType
     Haste,
     Proficiency,
 
+    Cuirass,
+    Weapon,
+    Offhand,
 }
 
 
