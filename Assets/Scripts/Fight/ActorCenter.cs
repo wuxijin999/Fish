@@ -2,111 +2,116 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Actor
+public class ActorCenter : Singleton<ActorCenter>
 {
-    public class ActorCenter : Singleton<ActorCenter>
+
+    int instanceId = 10000;
+    Dictionary<int, ActorBase> actors = new Dictionary<int, ActorBase>();
+
+    public ActorBase Create(ActorType actorType, Transform model)
     {
-
-        int instanceId = 10000;
-        Dictionary<int, ActorBase> actors = new Dictionary<int, ActorBase>();
-
-        public ActorBase Create(Transform model)
+        if (model == null)
         {
-            if (model == null)
+            Debug.LogWarning("ActorBase 创建时依赖的 Transform 为 null ,这是禁止的！");
+            return null;
+        }
+        else
+        {
+            this.instanceId++;
+            switch (actorType)
             {
-                Debug.LogWarning("ActorBase 创建时依赖的 Transform 为 null ,这是禁止的！");
-                return null;
+                case ActorType.Player:
+                    return new MyPlayer(++this.instanceId, actorType, model);
+                case ActorType.Emeny:
+                    return new FightActor(++this.instanceId, actorType, model);
+                case ActorType.NPC:
+                    return new ActorBase(++this.instanceId, actorType, model);
+                default:
+                    return new ActorBase(++this.instanceId, actorType, model);
             }
-            else
-            {
-                this.instanceId++;
-                var actor = new ActorBase(model);
-                actor.instanceId = this.instanceId;
 
-                return actor;
+        }
+    }
+
+    public bool TryGet(int instanceId, out ActorBase actorBase)
+    {
+        return this.actors.TryGetValue(instanceId, out actorBase);
+    }
+
+    public List<int> GetActors(ActorType type)
+    {
+        var temp = new List<int>();
+        foreach (var item in this.actors.Values)
+        {
+            if (item != null && item.actorType == type)
+            {
+                temp.Add(item.instanceId);
             }
         }
 
-        public bool TryGet(int instanceId, out ActorBase actorBase)
-        {
-            return this.actors.TryGetValue(instanceId, out actorBase);
-        }
+        return temp;
+    }
 
-        public List<int> GetActors(ActorType type)
+    public int FindNearestEmeny(Vector3 center, float radius)
+    {
+        var centerXZ = new Vector2(center.x, center.z);
+        var distance = 99999f;
+        ActorBase emeny = null;
+        foreach (var item in this.actors.Values)
         {
-            var temp = new List<int>();
-            foreach (var item in this.actors.Values)
+            if (item == null)
             {
-                if (item != null && item.actorType == type)
+                continue;
+            }
+
+            if (item.alive && item.actorType == ActorType.Emeny)
+            {
+                var xz = new Vector2(item.transform.position.x, item.transform.position.z);
+                var tempDistance = Vector2.Distance(centerXZ, xz);
+                if (tempDistance < radius && tempDistance < distance)
                 {
-                    temp.Add(item.instanceId);
+                    distance = tempDistance;
+                    emeny = item;
                 }
             }
-
-            return temp;
         }
 
-        public int FindNearestEmeny(Vector3 center, float radius)
-        {
-            var centerXZ = new Vector2(center.x, center.z);
-            var distance = 99999f;
-            ActorBase emeny = null;
-            foreach (var item in this.actors.Values)
-            {
-                if (item == null)
-                {
-                    continue;
-                }
+        return emeny.instanceId;
+    }
 
-                if (item.alive && item.actorType == ActorType.Emeny)
+    public int FindNearestEmeny(Vector3 center, Vector3 forward, float radius, float angleRange)
+    {
+        var centerXZ = new Vector2(center.x, center.z);
+        var forwardXZ = new Vector2(forward.x, forward.z);
+        var distance = 99999f;
+        ActorBase emeny = null;
+        var directionXZ = forwardXZ - centerXZ;
+
+        foreach (var item in this.actors.Values)
+        {
+            if (item == null)
+            {
+                continue;
+            }
+
+            if (item.alive && item.actorType == ActorType.Emeny)
+            {
+                var xz = new Vector2(item.transform.position.x, item.transform.position.z);
+                var tempDistance = Vector2.Distance(centerXZ, xz);
+                if (tempDistance < radius && tempDistance < distance)
                 {
-                    var xz = new Vector2(item.transform.position.x, item.transform.position.z);
-                    var tempDistance = Vector2.Distance(centerXZ, xz);
-                    if (tempDistance < radius && tempDistance < distance)
+                    var angle = Vector2.Angle((xz - centerXZ), directionXZ);
+                    if (Mathf.Abs(angle) < angleRange * 0.5f)
                     {
                         distance = tempDistance;
                         emeny = item;
                     }
                 }
             }
-
-            return emeny.instanceId;
         }
 
-        public int FindNearestEmeny(Vector3 center, Vector3 forward, float radius, float angleRange)
-        {
-            var centerXZ = new Vector2(center.x, center.z);
-            var forwardXZ = new Vector2(forward.x, forward.z);
-            var distance = 99999f;
-            ActorBase emeny = null;
-            var directionXZ = forwardXZ - centerXZ;
-
-            foreach (var item in this.actors.Values)
-            {
-                if (item == null)
-                {
-                    continue;
-                }
-
-                if (item.alive && item.actorType == ActorType.Emeny)
-                {
-                    var xz = new Vector2(item.transform.position.x, item.transform.position.z);
-                    var tempDistance = Vector2.Distance(centerXZ, xz);
-                    if (tempDistance < radius && tempDistance < distance)
-                    {
-                        var angle = Vector2.Angle((xz - centerXZ), directionXZ);
-                        if (Mathf.Abs(angle) < angleRange * 0.5f)
-                        {
-                            distance = tempDistance;
-                            emeny = item;
-                        }
-                    }
-                }
-            }
-
-            return emeny.instanceId;
-        }
-
+        return emeny.instanceId;
     }
+
 }
 

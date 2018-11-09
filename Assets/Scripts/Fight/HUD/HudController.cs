@@ -2,72 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Actor
+public class HudController
 {
-    public class HudController
+    public ActorBase owner { get; private set; }
+
+    Transform headUpPoint;
+    HeadUpName headUpName;
+    HeadUpGuild headUpGuild;
+
+    public HudController(ActorBase actor)
     {
-        public ActorBase owner { get; private set; }
+        this.owner = actor;
+    }
 
-        Transform headUpPoint;
-        HeadUpName headUpName;
-        HeadUpGuild headUpGuild;
+    public void Dispose()
+    {
+        owner = null;
+    }
 
-        public HudController(ActorBase actor)
+    public void DisplayName(string name, string tile, int level)
+    {
+        if (headUpName != null)
         {
-            this.owner = actor;
+            HeadUpName.Release(headUpName);
         }
 
-        public void DisplayName(string name, string tile, int level)
-        {
-            if (headUpName != null)
-            {
-                HeadUpName.Release(headUpName);
-            }
+        headUpName = HeadUpName.Get(this.owner.transform, 0.3f, CameraUtil.fightCamera).Display(name, tile, level);
+    }
 
-            headUpName = HeadUpName.Get(this.owner.transform, 0.3f, CameraUtil.fightCamera).Display(name, tile, level);
+    public void HideName()
+    {
+        if (headUpName != null)
+        {
+            HeadUpName.Release(headUpName);
         }
 
-        public void HideName()
-        {
-            if (headUpName != null)
-            {
-                HeadUpName.Release(headUpName);
-            }
+        headUpName = null;
+    }
 
-            headUpName = null;
+    public void DisplayGuild(string name)
+    {
+        if (headUpGuild != null)
+        {
+            HeadUpGuild.Release(headUpGuild);
         }
 
-        public void DisplayGuild(string name)
-        {
-            if (headUpGuild != null)
-            {
-                HeadUpGuild.Release(headUpGuild);
-            }
+        headUpGuild = HeadUpGuild.Get(this.owner.transform, 0.3f, CameraUtil.fightCamera).Display(name);
+    }
 
-            headUpGuild = HeadUpGuild.Get(this.owner.transform, 0.3f, CameraUtil.fightCamera).Display(name);
+    public void HideGuild()
+    {
+        if (headUpGuild != null)
+        {
+            HeadUpGuild.Release(headUpGuild);
         }
 
-        public void HideGuild()
-        {
-            if (headUpGuild != null)
-            {
-                HeadUpGuild.Release(headUpGuild);
-            }
+        headUpGuild = null;
+    }
 
-            headUpGuild = null;
-        }
-
-        public void DisplayDrop()
-        {
-
-        }
-
-        public void HideDrop()
-        {
-
-        }
-
+    public void DisplayDrop()
+    {
 
     }
+
+    public void HideDrop()
+    {
+
+    }
+
 }
 

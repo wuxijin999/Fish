@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Actor
+public interface IOtherPlayer
 {
-    public interface IOtherPlayer
-    {
 
-    }
+}
 
-    public sealed class OtherPlayer : FightActor, IOtherPlayer
+public sealed class OtherPlayer : FightActor, IOtherPlayer
+{
+    public OtherPlayer(int instanceId, ActorType type, Transform transform)
+        : base(instanceId, type, transform)
     {
-        public OtherPlayer(Transform model) : base(model)
+        if (transform == null)
         {
-            if (model == null)
-            {
-                throw new ArgumentNullException("model is null");
-            }
-
+            throw new ArgumentNullException("model is null");
         }
 
     }
+
 }
 

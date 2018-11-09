@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_Dead : LogicState_Base
+public class LogicState_Attack : LogicState_Base
 {
-    public LogicState_Dead(ActionController controller) : base(controller)
+
+    public LogicState_Attack(ActionController controller) : base(controller)
     {
     }
 
@@ -24,4 +25,5 @@ public class LogicState_Dead : LogicState_Base
     public override void Update()
     {
     }
+
 }

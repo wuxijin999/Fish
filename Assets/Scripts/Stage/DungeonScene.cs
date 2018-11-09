@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Actor;
 
 public class DungeonScene : Scene
 {
@@ -15,7 +14,7 @@ public class DungeonScene : Scene
         var playerAvatar = PlayerInfo.Instance.GetPlayerAvatar();
         var prefab = MobAssets.LoadPrefab(playerAvatar.cuirass);
         var model = GameObject.Instantiate(prefab);
-        myPlayer = new MyPlayer(model.transform);
+        myPlayer = ActorCenter.Instance.Create(ActorType.Player, model.transform) as MyPlayer;
 
         var mapConfig = MapConfig.Get(SceneLoad.Instance.currentSceneId);
         myPlayer.position = mapConfig.bornPoint;

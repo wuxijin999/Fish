@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_Dead : LogicState_Base
+public class LogicState_Dance : LogicState_Base
 {
-    public LogicState_Dead(ActionController controller) : base(controller)
+    public LogicState_Dance(ActionController controller) : base(controller)
     {
     }
 
