@@ -83,10 +83,10 @@ public class ActorBrain
                 this.actorBase.MoveTo((Vector3)command.value);
                 break;
             case CommandType.Attack:
-                (this.actorBase as FightActor).Attack((int)command.value);
+                this.actorBase.logicController.DoAction(LogicStateType.Attack1, null);
                 break;
             case CommandType.Skill:
-                (this.actorBase as FightActor).CastSkill((int)command.value);
+                this.actorBase.logicController.DoAction(LogicStateType.Skill1, null);
                 break;
             default:
                 break;
