@@ -6,17 +6,18 @@ using UnityEngine.AI;
 public class PathFinder
 {
     NavMeshPath m_NavMeshPath = new NavMeshPath();
-    public Vector3[] corners { get { return this.state == State.Idle ? this.m_NavMeshPath.corners : null; } }
+    public Vector3[] corners { get { return this.state == State.Move ? this.m_NavMeshPath.corners : null; } }
 
     int cornerIndex = 0;
     State state = State.Idle;
+
+    Vector3 prePosition = Vector3.zero;
 
     Transform transform { get { return this.owner.transform; } }
     ActorBase owner;
 
     public PathFinder(ActorBase actor)
     {
-
         var list = new List<int>();
         this.owner = actor;
     }
@@ -40,6 +41,7 @@ public class PathFinder
 
     public void MoveTo(Vector3 position)
     {
+        Debug.Log("Move to " + position);
         if (CalculatePath(this.transform.position, position, NavMesh.AllAreas))
         {
             this.cornerIndex = 0;
@@ -59,6 +61,20 @@ public class PathFinder
 
     public void Update()
     {
+        if (prePosition != transform.position)
+        {
+            if (this.owner.syncHeight)
+            {
+                var groundHeight = transform.position.y;
+                if (CollisionUtil.TryGetGroundHeight(transform.position, out groundHeight))
+                {
+                    transform.position = transform.position.SetY(groundHeight);
+                }
+            }
+
+            prePosition = transform.position;
+        }
+
         if (this.state == State.Move)
         {
             var direction = Vector3.Normalize(this.corners[this.cornerIndex] - this.transform.position);

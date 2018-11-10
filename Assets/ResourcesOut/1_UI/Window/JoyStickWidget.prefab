@@ -141,7 +141,7 @@ MonoBehaviour:
   m_MovePort: {fileID: 224767442834927646}
   m_Arrow: {fileID: 0}
   m_HideOnRelease: 0
-  m_Radius: 46
+  m_Radius: 72
 --- !u!114 &114167609219286742
 MonoBehaviour:
   m_ObjectHideFlags: 1

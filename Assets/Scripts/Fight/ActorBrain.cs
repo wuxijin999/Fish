@@ -68,10 +68,6 @@ public class ActorBrain
             if (GetCommand(out cmd))
             {
                 ExecuteCommand(cmd);
-                if (cmd.type != CommandType.Stop)
-                {
-                    this.m_State = State.Busy;
-                }
             }
         }
     }

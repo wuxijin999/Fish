@@ -18,6 +18,11 @@ public class SkillModel : Model
     {
     }
 
+    public void SetSkill(int index, int skillId)
+    {
+        indexToSkills[index] = skillId;
+    }
+
     public int GetSkill(int index)
     {
         var skill = 0;

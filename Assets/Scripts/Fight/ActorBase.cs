@@ -17,7 +17,13 @@ public class ActorBase
     public float speed { get { return propertyController.GetProperty(FightProperty.MoveSpeed) * 0.001f; } }
     public bool alive { get { return propertyController.GetProperty(FightProperty.Hp) > 0; } }
 
-    bool m_Enable = false;
+    bool m_SyncHeight = true;
+    public bool syncHeight {
+        get { return m_SyncHeight; }
+        set { m_SyncHeight = value; }
+    }
+
+    bool m_Enable = true;
     public bool enable {
         get { return this.m_Enable; }
         set { this.m_Enable = value; }

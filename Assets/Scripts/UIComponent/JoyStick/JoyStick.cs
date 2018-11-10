@@ -91,7 +91,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         var distance = Vector2.Distance(this.center, mousePosition);
         if (distance > 0.001f)
         {
-            var t = Mathf.Clamp01(this.m_Radius / distance);
+            var t = Mathf.Clamp01(this.m_Radius * 0.01f / distance);
             this.m_Fore.transform.position = Vector3.Lerp(this.center, mousePosition, t);
         }
 
@@ -119,7 +119,7 @@ public class JoyStick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         else
         {
             var direction = this.m_Fore.transform.position - this.center;
-            var distance = Mathf.Clamp01(direction.magnitude / m_Radius);
+            var distance = Mathf.Clamp01(direction.magnitude / (m_Radius * 0.01f));
 
             return direction.normalized * distance;
         }

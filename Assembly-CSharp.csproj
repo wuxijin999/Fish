@@ -258,6 +258,7 @@
     <Compile Include="Assets\Scripts\Utility\Bezier.cs" />
     <Compile Include="Assets\Scripts\Utility\CameraUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\Clock.cs" />
+    <Compile Include="Assets\Scripts\Utility\CollisionUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorPattern.cs" />
     <Compile Include="Assets\Scripts\Utility\ColorUtil.cs" />
     <Compile Include="Assets\Scripts\Utility\ComponentExtension.cs" />

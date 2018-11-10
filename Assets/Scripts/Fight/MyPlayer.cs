@@ -11,6 +11,8 @@ public interface IMyPlayer
 public sealed class MyPlayer : FightActor, IMyPlayer
 {
 
+    public static MyPlayer myPlayer;
+
     public MyPlayer(int instanceId, ActorType actorType, Transform model)
         : base(instanceId, actorType, model)
     {

@@ -103,7 +103,7 @@ NavMeshSettings:
     agentRadius: 0.1
     agentHeight: 0.1
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 0.3
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -114,7 +114,7 @@ NavMeshSettings:
     accuratePlacement: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: ed5e85a82579bc246bf7ccdc3068dbc4, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &992845
 GameObject:
   m_ObjectHideFlags: 0
@@ -2386,45 +2386,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4919454660211186, guid: c6b58e08de3c8e54b99c3bf5bbcfcc78,
     type: 2}
   m_PrefabInternal: {fileID: 87952538}
---- !u!1 &88909432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 88909434}
-  - component: {fileID: 88909433}
-  m_Layer: 0
-  m_Name: Occlusion Area
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!192 &88909433
-OcclusionArea:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 88909432}
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
-  m_IsViewVolume: 0
---- !u!4 &88909434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 88909432}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &89906218
 Prefab:
   m_ObjectHideFlags: 0
@@ -14090,6 +14051,10 @@ Prefab:
     - target: {fileID: 1597657634184766, guid: f0f4ead7d11c93f4e82c122317e56b07, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1597657634184766, guid: f0f4ead7d11c93f4e82c122317e56b07, type: 2}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64189643059004492, guid: f0f4ead7d11c93f4e82c122317e56b07, type: 2}
@@ -37813,6 +37778,10 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110503921381624, guid: dedc000ed8a66964ea46a88e0df98e95, type: 2}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 64760814748335970, guid: dedc000ed8a66964ea46a88e0df98e95, type: 2}
