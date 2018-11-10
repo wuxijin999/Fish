@@ -3,27 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
 public class ActorBase
 {
-
     public int instanceId { get; private set; }
     public ActorType actorType { get; private set; }
     public Transform transform { get; private set; }
-
-    bool m_Enable = false;
-    public bool enable {
-        get { return this.m_Enable; }
-        set {
-            this.m_Enable = value;
-        }
-    }
-
-    ActorBrainState m_BrainState = ActorBrainState.Sane;
-    public ActorBrainState brainState {
-        get { return this.m_BrainState; }
-        set { this.m_BrainState = value; }
-    }
 
     public LogicController logicController { get; private set; }
     public ActorBrain actorBrain { get; private set; }
@@ -32,6 +16,12 @@ public class ActorBase
     public PropertyController propertyController { get; private set; }
     public float speed { get { return propertyController.GetProperty(FightProperty.MoveSpeed) * 0.001f; } }
     public bool alive { get { return propertyController.GetProperty(FightProperty.Hp) > 0; } }
+
+    bool m_Enable = false;
+    public bool enable {
+        get { return this.m_Enable; }
+        set { this.m_Enable = value; }
+    }
 
     public Vector3 position {
         get { return transform.position; }
@@ -57,10 +47,12 @@ public class ActorBase
 
     public void Dispose()
     {
-        enable = false;
-        actorBrain = null;
-        pathFinder = null;
-        transform = null;
+        this.enable = false;
+        this.actorBrain = null;
+        this.pathFinder = null;
+        this.transform = null;
+        this.logicController = null;
+        this.propertyController = null;
         ActorEngine.Instance.UnRegister(this);
     }
 
@@ -107,14 +99,6 @@ public class ActorBase
     {
     }
 
-}
-
-
-public enum ActorBrainState
-{
-    Sane = 1,                   //理智状态，可以正常思考
-    Obstinate = 2,            //执着于做某件事情，直到做完为止
-    Lost = 3,                    //失去控制，完全不能控制自己的行为
 }
 
 public enum ActorType

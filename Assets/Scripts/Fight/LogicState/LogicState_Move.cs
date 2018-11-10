@@ -5,13 +5,13 @@ using UnityEngine;
 public class LogicState_Move : LogicState_Base
 {
 
-    public LogicState_Move(ActionController controller) : base(controller)
+    public LogicState_Move(Animator animator) : base(animator)
     {
     }
 
     public override void Enter(object value)
     {
-        this.controller.EnterState(ActionStateType.Move);
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Move]);
     }
 
     public override void Exit()

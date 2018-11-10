@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class LogicState_Base
 {
-    protected ActionController controller;
+    protected Animator animator;
 
-    public LogicState_Base(ActionController controller)
+    public LogicState_Base(Animator animator)
     {
-        this.controller = controller;
+        this.animator = animator;
     }
 
     public abstract void Enter(object value);

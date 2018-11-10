@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_Hurt : LogicState_Base
+public class LogicState_Jump : LogicState_Base
 {
-    public LogicState_Hurt(Animator animator) : base(animator)
+    public LogicState_Jump(Animator animator) : base(animator)
     {
     }
 
@@ -15,7 +15,7 @@ public class LogicState_Hurt : LogicState_Base
 
     public override void Enter(object value)
     {
-        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Hurt]);
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Jump]);
     }
 
     public override void Exit()
@@ -25,5 +25,4 @@ public class LogicState_Hurt : LogicState_Base
     public override void Update()
     {
     }
-
 }

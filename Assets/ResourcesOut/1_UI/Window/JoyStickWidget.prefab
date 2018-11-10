@@ -136,13 +136,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5834d1321c3456942aaa652a5a4c15e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
-  m_Fore: {fileID: 0}
-  m_BackGround: {fileID: 0}
-  m_MovePort: {fileID: 0}
+  m_Fore: {fileID: 224998749504609890}
+  m_BackGround: {fileID: 224453649885081578}
+  m_MovePort: {fileID: 224767442834927646}
   m_Arrow: {fileID: 0}
-  m_HideOnRelease: 1
-  m_Radius: 1
+  m_HideOnRelease: 0
+  m_Radius: 46
 --- !u!114 &114167609219286742
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -99,7 +99,7 @@ public class Login : Presenter<Login>, IPresenterWindow
             return false;
         }
 
-        if (account.Length > 6)
+        if (account.Length > 16)
         {
             error = 2;
             return false;

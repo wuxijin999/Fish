@@ -18,7 +18,6 @@ public class DungeonScene : Scene
 
         var mapConfig = MapConfig.Get(SceneLoad.Instance.currentSceneId);
         myPlayer.position = mapConfig.bornPoint;
-
     }
 
     public override void OnUnInitialize()

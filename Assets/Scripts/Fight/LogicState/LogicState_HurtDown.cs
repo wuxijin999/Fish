@@ -5,7 +5,7 @@ using UnityEngine;
 public class LogicState_HurtDown : LogicState_Base
 {
 
-    public LogicState_HurtDown(ActionController controller) : base(controller)
+    public LogicState_HurtDown(Animator animator) : base(animator)
     {
     }
 
@@ -16,6 +16,7 @@ public class LogicState_HurtDown : LogicState_Base
 
     public override void Enter(object value)
     {
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.HurtDown]);
     }
 
     public override void Exit()

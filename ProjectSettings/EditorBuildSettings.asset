@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ResourcesOut/4_Scene/Empty.unity
     guid: dbb8fe51106a60e428fc9362b724d597
+  - enabled: 1
+    path: Assets/ResourcesOut/4_Scene/Map_001.unity
+    guid: b8df460c5f6f19b448e16a287e29e9f4
   m_configObjects: {}

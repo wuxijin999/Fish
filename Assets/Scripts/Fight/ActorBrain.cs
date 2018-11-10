@@ -128,6 +128,13 @@ public class ActorBrain
 
 }
 
+public enum ActorBrainState
+{
+    Sane = 1,                   //理智状态，可以正常思考
+    Obstinate = 2,            //执着于做某件事情，直到做完为止
+    Lost = 3,                    //失去控制，完全不能控制自己的行为
+}
+
 public enum CommandType//命令优先级为命令值除以10
 {
     Move = 1,
@@ -135,6 +142,8 @@ public enum CommandType//命令优先级为命令值除以10
     Attack = 10,
     Skill = 20,
 
+    Hurt = 100,
+    Dead = 1000,
     Stop = 100000,
 }
 

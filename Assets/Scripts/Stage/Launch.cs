@@ -34,6 +34,8 @@ public class Launch : MonoBehaviour
         }
 
         ConfigInitiator.Init();
+
+        yield return new WaitForSeconds(1f);
         SceneLoad.Instance.LoadLogin();
     }
 

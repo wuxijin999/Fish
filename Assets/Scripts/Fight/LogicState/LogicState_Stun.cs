@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class LogicState_Stun : LogicState_Base
 {
-    public LogicState_Stun(ActionController controller) : base(controller)
+    public LogicState_Stun(Animator animator) : base(animator)
     {
     }
 
     public override void Enter(object value)
     {
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Stun]);
     }
 
     public override void Exit()

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class LogicState_Idle : LogicState_Base
 {
-    public LogicState_Idle(ActionController controller) : base(controller)
+    public LogicState_Idle(Animator animator) : base(animator)
     {
     }
 
     public override void Enter(object value)
     {
-        this.controller.EnterState(ActionStateType.Idle);
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Idle]);
     }
 
     public override void Exit()

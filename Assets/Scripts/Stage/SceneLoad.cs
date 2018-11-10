@@ -119,9 +119,22 @@ public class SceneLoad : Singleton<SceneLoad>
             Debug.LogException(ex);
         }
 
+        switch (currentSceneId)
+        {
+            case LOGIN_SCENEID:
+                break;
+            case CREATEROLE_SCENEID:
+                break;
+            case SELECTROLE_SCENEID:
+                break;
+            default:
+                MainWinPresenter.Instance.OpenWindow();
+                break;
+        }
+
+
         LoadingPresenter.Instance.CloseWindow();
     }
-
 
     private string GetSceneName(int id)
     {
@@ -134,7 +147,8 @@ public class SceneLoad : Singleton<SceneLoad>
             case SELECTROLE_SCENEID:
                 return "SelectRole";
             default:
-                return string.Empty;
+                var config = MapConfig.Get(id);
+                return config.sceneName;
         }
     }
 

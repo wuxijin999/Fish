@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogicState_Dead : LogicState_Base
 {
-    public LogicState_Dead(ActionController controller) : base(controller)
+    public LogicState_Dead(Animator animator) : base(animator)
     {
     }
 
@@ -15,6 +15,7 @@ public class LogicState_Dead : LogicState_Base
 
     public override void Enter(object value)
     {
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Dead]);
     }
 
     public override void Exit()

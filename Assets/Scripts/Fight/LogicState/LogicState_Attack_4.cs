@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_Skill : LogicState_Base
+public class LogicState_Attack_4 : LogicState_Base
 {
-    public LogicState_Skill(ActionController controller) : base(controller)
+
+    public LogicState_Attack_4(Animator animator) : base(animator)
     {
     }
 
@@ -15,6 +16,7 @@ public class LogicState_Skill : LogicState_Base
 
     public override void Enter(object value)
     {
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Attack4]);
     }
 
     public override void Exit()
@@ -24,4 +26,5 @@ public class LogicState_Skill : LogicState_Base
     public override void Update()
     {
     }
+
 }

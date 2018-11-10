@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogicState_Dance : LogicState_Base
 {
-    public LogicState_Dance(ActionController controller) : base(controller)
+    public LogicState_Dance(Animator animator) : base(animator)
     {
     }
 
@@ -15,6 +15,7 @@ public class LogicState_Dance : LogicState_Base
 
     public override void Enter(object value)
     {
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Dance]);
     }
 
     public override void Exit()

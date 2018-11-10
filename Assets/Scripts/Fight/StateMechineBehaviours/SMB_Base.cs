@@ -14,7 +14,7 @@ public class SMB_Base : StateMachineBehaviour
 
         this.frame = 0;
         this.processedFrame = -1;
-        var instanceId = animator.GetInteger(ActionController.Param_ActorInstanceId);
+        var instanceId = animator.GetInteger(LogicController.Param_ActorInstanceId);
         if (ActorCenter.Instance.TryGet(instanceId, out this.actor))
         {
             OnEnter(this.actor, animator, stateInfo, layerIndex);

@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_Hurt : LogicState_Base
+public class LogicState_Skill_4 : LogicState_Base
 {
-    public LogicState_Hurt(Animator animator) : base(animator)
+    int skillId = 0;
+    public LogicState_Skill_4(Animator animator) : base(animator)
     {
     }
 
@@ -15,15 +16,16 @@ public class LogicState_Hurt : LogicState_Base
 
     public override void Enter(object value)
     {
-        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Hurt]);
+        skillId = (int)value;
+        this.animator.SetTrigger(LogicController.stateHashs[ActionType.Skill4]);
     }
 
     public override void Exit()
     {
+        skillId = 0;
     }
 
     public override void Update()
     {
     }
-
 }

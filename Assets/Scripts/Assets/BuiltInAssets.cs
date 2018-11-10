@@ -60,7 +60,7 @@ public class BuiltInAssets
         if (AssetSource.builtInFromEditor)
         {
 #if UNITY_EDITOR
-            var path = StringUtil.Contact(AssetPath.BUILTIN_ROOT_PATH, "Materials/", name);
+            var path = StringUtil.Contact(AssetPath.BUILTIN_ROOT_PATH, "Materials/", name, ".mat");
             material = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>(path);
 #endif
         }
